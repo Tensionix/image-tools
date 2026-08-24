@@ -1,0 +1,30 @@
+:root {
+            --audion-background: var(--color-background-tertiary);
+            --audion-header-background: var(--color-background-primary);
+            --audion-header-text: var(--color-text-primary);
+            --audion-panel-background: var(--color-background-secondary);
+            --audion-block-background: color-mix(in srgb, var(--color-background-secondary) 72%, var(--color-background-tertiary) 28%);
+            --audion-terminal-background: var(--color-background-tertiary);
+            --audion-text: var(--color-text-primary);
+            --audion-secondary-text: var(--color-text-secondary);
+            --audion-muted-text: var(--color-text-tertiary);
+            --audion-button-text: var(--color-accent-primary);
+            --audion-active-button-text: var(--color-active-button-text, var(--color-text-secondary));
+            --audion-mode-accent: #378ADD;
+            --audion-mode-border: color-mix(in srgb, var(--audion-mode-accent) 58%, var(--audion-panel-border) 42%);
+            --audion-mode-bg: color-mix(in srgb, var(--audion-mode-accent) 16%, var(--audion-terminal-background) 84%);
+            --audion-mode-bg-hover: color-mix(in srgb, var(--audion-mode-accent) 24%, var(--audion-terminal-background) 76%);
+            --audion-action-amber: #B7791F;
+            --audion-action-amber-border: color-mix(in srgb, var(--audion-action-amber) 58%, var(--audion-panel-border) 42%);
+            --audion-action-amber-bg: color-mix(in srgb, var(--audion-action-amber) 20%, var(--audion-terminal-background) 80%);
+            --audion-action-amber-bg-hover: color-mix(in srgb, var(--audion-action-amber) 28%, var(--audion-terminal-background) 72%);
+            --audion-button-hover-background: var(--color-background-primary);
+            --audion-panel-border: color-mix(in srgb, var(--color-border-tertiary) 62%, transparent 38%);
+            --audion-divider: color-mix(in srgb, var(--color-border-tertiary) 48%, transparent 52%);
+            --audion-input-border: color-mix(in srgb, var(--color-border-secondary) 54%, transparent 46%);
+            --audion-input-border-hover: color-mix(in srgb, var(--color-border-secondary) 72%, transparent 28%);
+            --audion-input-border-focus: color-mix(in srgb, var(--color-accent-primary) 78%, var(--color-border-secondary) 22%);
+            --audion-button-hover-border: var(--audion-input-border-hover);
+            --audion-border: var(--audion-panel-border);
+            --audion-strong-border: var(--audion-input-border-hover);
+}

@@ -1,0 +1,28 @@
+# Audion Image Tools photo sheet settings.
+# Sizes are millimeters. DPI is the final output sheet DPI.
+# Default size_source=pixels keeps source image pixels unchanged on the sheet.
+
+input: input
+size_source: pixels
+background: white
+preview_width_px: 1800
+recursive: true
+to: png
+jpeg_quality: 90
+
+modes:
+  paper_saver:
+    output: output/photo_sheet_width
+    page_width_mm: 600
+    dpi: 300
+    gap_mm: 0
+    layout: shelf
+    height_tolerance_mm: 0.2
+
+  cut_lines:
+    output: output/photo_sheet_cut_lines
+    page_width_mm: 600
+    dpi: 300
+    gap_mm: 0
+    layout: cut-lines
+    height_tolerance_mm: 0.2

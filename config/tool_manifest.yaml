@@ -1,0 +1,2043 @@
+tool:
+  id: audion_image_tools
+  name: "Audion Image Tools"
+  category: "Image tools"
+  version: "1.0.0"
+
+paths:
+  input: "input"
+  output: "output"
+  logs: "logs"
+  report: "report"
+  workspace: "workspace"
+  config: "config"
+  release: "release"
+
+module_io_fields: &module_io_fields
+  - id: input_path
+    type: "folder"
+    group: "source"
+    label: "SOURCE"
+    label_ru: "ИСТОЧНИК"
+    hint: "Optional. Leave empty to use the command default input folder."
+    hint_ru: "Необязательно. Оставь пустым, чтобы использовать стандартную папку input для команды."
+    placeholder: "input"
+    default: ""
+    omit_if_empty: true
+  - id: output_path
+    type: "folder"
+    group: "output"
+    label: "DESTINATION"
+    label_ru: "ПРИЁМНИК"
+    hint: "Optional. Leave empty to use the command default output folder."
+    hint_ru: "Необязательно. Оставь пустым, чтобы использовать стандартную папку output для команды."
+    placeholder: "output"
+    default: ""
+    omit_if_empty: true
+    show_new_folder_button: true
+
+delivery_format_options: &delivery_format_options
+  - value: "jpg"
+    label: "JPG"
+    label_ru: "JPG"
+  - value: "png"
+    label: "PNG"
+    label_ru: "PNG"
+  - value: "tiff"
+    label: "TIFF"
+    label_ru: "TIFF"
+  - value: "webp"
+    label: "WebP"
+    label_ru: "WebP"
+  - value: "avif"
+    label: "AVIF"
+    label_ru: "AVIF"
+  - value: "heif"
+    label: "HEIF"
+    label_ru: "HEIF"
+  - value: "heic"
+    label: "HEIC"
+    label_ru: "HEIC"
+
+extract_format_options: &extract_format_options
+  - value: "original"
+    label: "Original"
+    label_ru: "Исходный формат"
+  - value: "jpg"
+    label: "JPG"
+    label_ru: "JPG"
+    new_row: true
+  - value: "png"
+    label: "PNG"
+    label_ru: "PNG"
+  - value: "tiff"
+    label: "TIFF"
+    label_ru: "TIFF"
+  - value: "webp"
+    label: "WebP"
+    label_ru: "WebP"
+  - value: "avif"
+    label: "AVIF"
+    label_ru: "AVIF"
+  - value: "heif"
+    label: "HEIF"
+    label_ru: "HEIF"
+  - value: "heic"
+    label: "HEIC"
+    label_ru: "HEIC"
+
+pixel_dpi_format_options: &pixel_dpi_format_options
+  - value: "jpg"
+    label: "JPG"
+    label_ru: "JPG"
+  - value: "png"
+    label: "PNG"
+    label_ru: "PNG"
+  - value: "tiff"
+    label: "TIFF"
+    label_ru: "TIFF"
+
+quality_output_formats: &quality_output_formats ["jpg", "webp", "avif", "heif", "heic"]
+dpi_metadata_output_formats: &dpi_metadata_output_formats ["jpg", "png", "tiff"]
+
+quality_field_75: &quality_field_75
+  id: jpeg_quality
+  type: "quality"
+  group: "format"
+  label: "Quality"
+  label_ru: "Качество"
+  span: "full"
+  disabled_if:
+    field: "to"
+    not_contains_any: *quality_output_formats
+  default: 75
+  options:
+    - value: 60
+      label: "60% quality"
+      label_ru: "60% качества"
+    - value: 75
+      label: "75% quality"
+      label_ru: "75% качества"
+    - value: 90
+      label: "90% quality"
+      label_ru: "90% качества"
+
+quality_field_90: &quality_field_90
+  id: jpeg_quality
+  type: "quality"
+  group: "format"
+  label: "Quality"
+  label_ru: "Качество"
+  span: "full"
+  disabled_if:
+    field: "to"
+    not_contains_any: *quality_output_formats
+  default: 90
+  options:
+    - value: 60
+      label: "60% quality"
+      label_ru: "60% качества"
+    - value: 75
+      label: "75% quality"
+      label_ru: "75% качества"
+    - value: 90
+      label: "90% quality"
+      label_ru: "90% качества"
+
+quality_field_92: &quality_field_92
+  id: jpeg_quality
+  type: "quality"
+  group: "format"
+  label: "Quality"
+  label_ru: "Качество"
+  span: "full"
+  disabled_if:
+    field: "to"
+    not_contains_any: *quality_output_formats
+  default: 92
+  options:
+    - value: 75
+      label: "75% quality"
+      label_ru: "75% качества"
+    - value: 92
+      label: "92% quality"
+      label_ru: "92% качества"
+
+ui:
+  title: "Audion Image Tools"
+  host: "127.0.0.1"
+  port: 8080
+  native: false
+  reload: false
+  open_browser: false
+
+operations:
+  - id: info
+    title: "Project info"
+    title_ru: "Информация о проекте"
+    description: "Show project paths and runtime information."
+    description_ru: "Показать пути проекта и информацию о runtime."
+    service: "system_core.services.image_tools_gui:run_cli_command"
+    kind: "safe"
+    parameters:
+      args: ["info"]
+
+operation_groups:
+  - id: convert
+    title: "Conversion"
+    title_ru: "Конвертация"
+    description: "Batch conversion for everyday format changes: JPG/PNG/TIFF/WebP/AVIF/HEIC, quality, DPI metadata and quick one-click presets."
+    description_ru: "Пакетный перевод изображений между JPG/PNG/TIFF/WebP/AVIF/HEIC: качество, запись DPI, несколько форматов за один запуск и быстрые пресеты."
+    fields: *module_io_fields
+    children:
+      - id: convert_images
+        title: "Convert images"
+        title_ru: "Конвертировать"
+        description: "Convert input to selected output formats."
+        description_ru: "Конвертировать папку в выбранные форматы."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: to
+            type: "checkboxes"
+            group: "format"
+            label: "Output formats"
+            label_ru: "Форматы вывода"
+            default: ["jpg"]
+            min_selected: 1
+            options: *delivery_format_options
+          - id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "Quality"
+            label_ru: "Качество"
+            disabled_if:
+              field: "to"
+              not_contains_any: *quality_output_formats
+            default: 83
+            min: 1
+            max: 100
+            step: 1
+            options:
+              - value: 60
+                label: "60%"
+                label_ru: "60%"
+              - value: 75
+                label: "75%"
+                label_ru: "75%"
+              - value: 90
+                label: "90%"
+                label_ru: "90%"
+          - id: set_dpi
+            type: "number"
+            group: "output"
+            label: "Set DPI (optional)"
+            label_ru: "Записать DPI (необязательно)"
+            hint: "Leave empty to preserve existing metadata."
+            hint_ru: "Оставь пустым, чтобы сохранить существующие метаданные."
+            disabled_if:
+              field: "to"
+              not_contains_any: *dpi_metadata_output_formats
+            default: ""
+            min: 1
+            max: 1200
+            step: 1
+        parameters:
+          fixed_args: ["convert"]
+          multi_field: "to"
+          multi_output_key: "output_path"
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--set-dpi": "set_dpi"
+          defaults:
+            input_path: "input"
+            output_path: "output"
+
+      - id: quick_jpg_75
+        title: "JPG 75% quality"
+        title_ru: "JPG 75% качества"
+        description: "Convert input to JPG at 75% quality."
+        description_ru: "Конвертировать папку в JPG, 75% качества."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["convert"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+          defaults:
+            input_path: "input"
+            output_path: "output/quick_jpg_75"
+            to: "jpg"
+            jpeg_quality: 75
+
+      - id: quick_png
+        title: "PNG"
+        title_ru: "PNG"
+        description: "Convert input to PNG."
+        description_ru: "Конвертировать папку в PNG."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["convert"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+          defaults:
+            input_path: "input"
+            output_path: "output/quick_png"
+            to: "png"
+
+      - id: quick_gray_png
+        title: "Grayscale PNG"
+        title_ru: "PNG в оттенках серого"
+        description: "Convert input to grayscale PNG."
+        description_ru: "Перевести папку в PNG в оттенках серого."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["grayscale"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+          defaults:
+            input_path: "input"
+            output_path: "output/gray_png"
+            to: "png"
+
+      - id: quick_2160_jpg
+        title: "2160p JPG 90% quality"
+        title_ru: "2160p JPG 90% качества"
+        description: "Fit to UHD 3840x2160 with center crop and save JPG at 90% quality. Uses Lanczos resize; actual UHD upscale gets a mild Unsharp Mask."
+        description_ru: "Подогнать под UHD 3840x2160 с центральной обрезкой и сохранить JPG 90%. Используется Lanczos; при реальном апскейле до UHD применяется мягкая Unsharp Mask."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["resize-screen"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--target": "target"
+            "--mode": "mode"
+            "--jpeg-quality": "jpeg_quality"
+          defaults:
+            input_path: "input"
+            output_path: "output/screen_2160p_crop_jpg"
+            to: "jpg"
+            target: "2160p"
+            mode: "crop"
+            jpeg_quality: 90
+
+      - id: quick_169_jpg
+        title: "16:9 JPG 90% quality"
+        title_ru: "16:9 JPG 90% качества"
+        description: "Crop to 16:9 and save JPG at 90% quality."
+        description_ru: "Обрезать под 16:9 и сохранить JPG, 90% качества."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["aspect"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--ratio": "ratio"
+            "--mode": "mode"
+            "--jpeg-quality": "jpeg_quality"
+          defaults:
+            input_path: "input"
+            output_path: "output/aspect_16x9_crop_jpg"
+            to: "jpg"
+            ratio: "16:9"
+            mode: "crop"
+            jpeg_quality: 90
+
+  - id: photo_sheet
+    title: "Photo sheet"
+    title_ru: "Фото-лист"
+    description: "Prepare printable sheets from source images without resampling pixels by default; final width and DPI describe the output sheet."
+    description_ru: "Подготовка печатных листов из исходных картинок без пересчёта пикселей по умолчанию; ширина и DPI описывают итоговый лист."
+    fields:
+      - id: input_path
+        type: "folder"
+        group: "source"
+        label: "SOURCE"
+        label_ru: "ИСТОЧНИК"
+        hint: "Optional. Leave empty to use the input folder from config/photo_sheet.yaml."
+        hint_ru: "Необязательно. Оставь пустым, чтобы взять input из config/photo_sheet.yaml."
+        placeholder: "input"
+        default: ""
+        omit_if_empty: true
+      - id: output_path
+        type: "folder"
+        group: "output"
+        label: "DESTINATION"
+        label_ru: "ПРИЁМНИК"
+        hint: "Optional. Leave empty to use the output folder from config/photo_sheet.yaml."
+        hint_ru: "Необязательно. Оставь пустым, чтобы взять output из config/photo_sheet.yaml."
+        placeholder: "output"
+        default: ""
+        omit_if_empty: true
+        show_new_folder_button: true
+      - id: page_width_mm
+        type: "number"
+        group: "output"
+        label: "Sheet width, mm"
+        label_ru: "Ширина листа, мм"
+        hint: "Final sheet width. Height is calculated automatically. Source pixels stay unchanged in the default mode."
+        hint_ru: "Итоговая ширина листа. Высота считается автоматически. В дефолтном режиме пиксели исходников не меняются."
+        default: 600
+        min: 1
+        max: 10000
+        step: 1
+      - id: dpi
+        type: "number"
+        group: "output"
+        label: "Final DPI"
+        label_ru: "Конечный DPI"
+        hint: "Output sheet DPI. If unchanged source pixels do not fit the selected width, the engine can raise the sheet DPI instead of resizing images."
+        hint_ru: "DPI итогового листа. Если исходные пиксели не помещаются в выбранную ширину, движок поднимет DPI листа вместо resize картинок."
+        default: 300
+        min: 72
+        max: 1200
+        step: 1
+      - id: recursive
+        type: "checkbox"
+        group: "options"
+        label: "Read input recursively"
+        label_ru: "Читать вложенные папки"
+        hint: "Enabled by default: subfolders are mirrored into output."
+        hint_ru: "Включено по умолчанию: подпапки зеркалятся в output."
+        default: true
+      - id: background
+        type: "radio"
+        group: "options"
+        label: "Background"
+        label_ru: "Фон"
+        default: "white"
+        options:
+          - value: "white"
+            label: "White"
+            label_ru: "Белый"
+          - value: "black"
+            label: "Black"
+            label_ru: "Чёрный"
+      - id: to
+        type: "radio"
+        group: "format"
+        label: "Output format"
+        label_ru: "Формат вывода"
+        default: "png"
+        options: *delivery_format_options
+      - *quality_field_90
+    children:
+      - id: paper_saver
+        title: "Paper saver"
+        title_ru: "Экономия бумаги"
+        description: "Compact no-gap line layout."
+        description_ru: "Компактная раскладка строками без зазоров."
+        service: "system_core.services.image_tools_gui:run_photo_sheet"
+        kind: "safe"
+        parameters:
+          config_mode: "paper_saver"
+
+      - id: cut_lines
+        title: "Cut-lines"
+        title_ru: "Быстрая резка"
+        description: "Group by similar heights and write cut_plan.txt."
+        description_ru: "Группировать по похожей высоте и записать cut_plan.txt."
+        service: "system_core.services.image_tools_gui:run_photo_sheet"
+        kind: "safe"
+        parameters:
+          config_mode: "cut_lines"
+        fields:
+          - id: height_tolerance_mm
+            type: "number"
+            group: "options"
+            label: "Height tolerance, mm"
+            label_ru: "Допуск высоты, мм"
+            hint: "Larger values make fewer strips but less exact shared cut lines."
+            hint_ru: "Больше значение — меньше полос, но менее точные общие линии реза."
+            default: 0.2
+            min: 0
+            max: 20
+            step: 0.1
+
+  - id: color
+    title: "Color"
+    title_ru: "Цвет"
+    description: "Normalize color profiles before delivery or print: keep source color, convert to sRGB/CMYK, and choose what metadata should remain."
+    description_ru: "Подготовка цвета перед публикацией или печатью: оставить исходный профиль, привести к sRGB/CMYK и выбрать, какие метаданные сохранить."
+    fields: *module_io_fields
+    children:
+      - id: normalize_profile
+        title: "Normalize profile"
+        title_ru: "Нормализовать профиль"
+        description: "Normalize to keep, sRGB or CMYK."
+        description_ru: "Сохранить исходный профиль или привести к sRGB/CMYK."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: target_profile
+            type: "radio"
+            group: "format"
+            label: "Target profile"
+            label_ru: "Целевой профиль"
+            default: "srgb"
+            options:
+              - value: "keep"
+                label: "Keep"
+                label_ru: "Оставить"
+              - value: "srgb"
+                label: "sRGB"
+                label_ru: "sRGB"
+              - value: "cmyk"
+                label: "CMYK"
+                label_ru: "CMYK"
+          - id: to
+            type: "checkboxes"
+            group: "format"
+            label: "Output formats"
+            label_ru: "Форматы вывода"
+            default: ["jpg"]
+            min_selected: 1
+            options: *delivery_format_options
+          - *quality_field_75
+          - id: metadata
+            type: "radio"
+            group: "options"
+            label: "Metadata"
+            label_ru: "Метаданные"
+            default: "preserve_dpi_color"
+            options:
+              - value: "preserve_dpi_color"
+                label: "DPI + color"
+                label_ru: "DPI + цвет"
+              - value: "preserve_all"
+                label: "Preserve all"
+                label_ru: "Сохранить всё"
+              - value: "strip_all"
+                label: "Strip all"
+                label_ru: "Удалить всё"
+        parameters:
+          fixed_args: ["normalize"]
+          multi_field: "to"
+          multi_output_key: "output_path"
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--target-profile": "target_profile"
+            "--metadata": "metadata"
+          defaults:
+            input_path: "input"
+            output_path: "output"
+
+  - id: crop
+    title: "Crop"
+    title_ru: "Обрезка"
+    description: "Crop cleanup tools: remove solid borders, trim white fields to content, add safety margins, or split images into strips and grids."
+    description_ru: "Инструменты обрезки: убрать однотонные рамки, обрезать белые поля до содержимого, добавить защитный запас или разрезать изображение на ленты и сетку."
+    fields: *module_io_fields
+    children:
+      - id: trim_border
+        title: "Trim border"
+        title_ru: "Обрезать рамку"
+        description: "Trim solid border by corner color."
+        description_ru: "Обрезать однотонную рамку по угловому цвету."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: tolerance
+            type: "number"
+            group: "parameters"
+            label: "Tolerance"
+            label_ru: "Допуск"
+            default: 10
+            min: 0
+            max: 255
+            step: 1
+          - id: safety_margin_mm
+            type: "number"
+            group: "parameters"
+            label: "Safety margin, mm"
+            label_ru: "Защитное поле, мм"
+            hint: "0 mm crops exactly to the meaningful pixels. Larger values use image DPI, fallback 300 DPI."
+            hint_ru: "0 мм — ровно по значимым пикселям. Больше — запас по DPI изображения, если DPI нет — 300."
+            default: 0
+            min: 0
+            max: 50
+            step: 0.1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_75
+          - id: pdf_after_crop
+            type: "checkbox"
+            group: "output"
+            label: "Build PDF after crop"
+            label_ru: "Собрать PDF после обрезки"
+            hint: "Keeps pixels unchanged. PDF page size comes from result image DPI."
+            hint_ru: "Пиксели не меняются. Размер страниц PDF берётся из DPI результата."
+            default: false
+          - id: pdf_embed_mode
+            type: "radio"
+            group: "output"
+            label: "PDF content"
+            label_ru: "Внутри PDF"
+            disabled_if:
+              field: "pdf_after_crop"
+              equals: false
+            default: "png_embedded"
+            options:
+              - value: "png_embedded"
+                label: "PNG embedded"
+                label_ru: "Встроенный PNG"
+              - value: "jpg75_embedded"
+                label: "JPG(75) embedded"
+                label_ru: "Встроенный JPG 75%"
+        parameters:
+          fixed_args: ["trim-border"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--tolerance": "tolerance"
+            "--safety-margin-mm": "safety_margin_mm"
+          defaults:
+            input_path: "input"
+            output_path: "output/trimmed"
+
+      - id: smart_crop_white
+        title: "Smart crop white"
+        title_ru: "Умный кроп белого"
+        description: "Trim white background to meaningful pixels."
+        description_ru: "Обрезать белый фон до значимых пикселей."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: tolerance
+            type: "number"
+            group: "parameters"
+            label: "White tolerance"
+            label_ru: "Допуск белого"
+            default: 10
+            min: 0
+            max: 255
+            step: 1
+          - id: safety_margin_mm
+            type: "number"
+            group: "parameters"
+            label: "Safety margin, mm"
+            label_ru: "Защитное поле, мм"
+            hint: "0 mm crops exactly to the meaningful pixels. Larger values use image DPI, fallback 300 DPI."
+            hint_ru: "0 мм — ровно по значимым пикселям. Больше — запас по DPI изображения, если DPI нет — 300."
+            default: 0
+            min: 0
+            max: 50
+            step: 0.1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_75
+          - id: pdf_after_crop
+            type: "checkbox"
+            group: "output"
+            label: "Build PDF after crop"
+            label_ru: "Собрать PDF после обрезки"
+            hint: "Keeps pixels unchanged. PDF page size comes from result image DPI."
+            hint_ru: "Пиксели не меняются. Размер страниц PDF берётся из DPI результата."
+            default: false
+          - id: pdf_embed_mode
+            type: "radio"
+            group: "output"
+            label: "PDF content"
+            label_ru: "Внутри PDF"
+            disabled_if:
+              field: "pdf_after_crop"
+              equals: false
+            default: "png_embedded"
+            options:
+              - value: "png_embedded"
+                label: "PNG embedded"
+                label_ru: "Встроенный PNG"
+              - value: "jpg75_embedded"
+                label: "JPG(75) embedded"
+                label_ru: "Встроенный JPG 75%"
+        parameters:
+          fixed_args: ["smart-crop-white"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--tolerance": "tolerance"
+            "--safety-margin-mm": "safety_margin_mm"
+          defaults:
+            input_path: "input"
+            output_path: "output/smart_crop_white"
+
+      - id: split_half
+        title: "Split..."
+        title_ru: "Разрезать..."
+        description: "Split images into strips or grid cells."
+        description_ru: "Разрезать изображения на ленты или прямоугольники по сетке."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Mode"
+            label_ru: "Режим"
+            default: "strips"
+            options:
+              - value: "strips"
+                label: "Strips"
+                label_ru: "Ленты"
+              - value: "grid"
+                label: "Grid"
+                label_ru: "Сетка"
+          - id: orientation
+            type: "radio"
+            group: "parameters"
+            label: "Strip direction"
+            label_ru: "Направление лент"
+            default: "vertical"
+            hint: "Used in Strips mode."
+            hint_ru: "Используется в режиме «Ленты»."
+            disabled_if:
+              field: "mode"
+              not_equals: "strips"
+            options:
+              - value: "vertical"
+                label: "Vertical"
+                label_ru: "Вертикальные"
+              - value: "horizontal"
+                label: "Horizontal"
+                label_ru: "Горизонтальные"
+          - id: parts
+            type: "number"
+            group: "parameters"
+            label: "Parts"
+            label_ru: "Частей"
+            hint: "For strips: 2 to 10."
+            hint_ru: "Для лент: от 2 до 10."
+            disabled_if:
+              field: "mode"
+              not_equals: "strips"
+            default: 2
+            min: 2
+            max: 10
+            step: 1
+          - id: rows
+            type: "number"
+            group: "parameters"
+            label: "Rows"
+            label_ru: "По вертикали"
+            hint: "For grid: 2 to 10."
+            hint_ru: "Для сетки: от 2 до 10."
+            disabled_if:
+              field: "mode"
+              not_equals: "grid"
+            default: 2
+            min: 2
+            max: 10
+            step: 1
+          - id: columns
+            type: "number"
+            group: "parameters"
+            label: "Columns"
+            label_ru: "По горизонтали"
+            hint: "For grid: 2 to 10."
+            hint_ru: "Для сетки: от 2 до 10."
+            disabled_if:
+              field: "mode"
+              not_equals: "grid"
+            default: 2
+            min: 2
+            max: 10
+            step: 1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_75
+        parameters:
+          fixed_args: ["split-half"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--mode": "mode"
+            "--orientation": "orientation"
+            "--parts": "parts"
+            "--rows": "rows"
+            "--columns": "columns"
+          defaults:
+            input_path: "input"
+            output_path: "output/split_png"
+
+  - id: size
+    title: "Size"
+    title_ru: "Размер"
+    description: "Resize without guesswork: fit to screen targets, enforce aspect ratios, downscale, write DPI, or set a physical side in millimeters."
+    description_ru: "Изменение размера без гадания: подогнать под экран, привести к пропорциям, уменьшить, записать DPI или задать физическую сторону в миллиметрах."
+    fields: *module_io_fields
+    children:
+      - id: downscale_percent
+        title: "File size"
+        title_ru: "Размер файла"
+        description: "Reduce pixel dimensions by percent or fit output files to a target size."
+        description_ru: "Уменьшить пиксельный размер по проценту или подобрать максимальный процент под целевой размер файла."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: scale_mode
+            type: "radio"
+            group: "parameters"
+            label: "Mode"
+            label_ru: "Режим"
+            hint: "Preset percent, custom percent, or automatic fit to target megabytes."
+            hint_ru: "Фиксированный процент, свой процент или автоматический подбор под целевой размер в мегабайтах."
+            default: "percent-50"
+            choice_style: "segmented"
+            span: "full"
+            options:
+              - value: "percent-25"
+                label: "25%"
+                label_ru: "25%"
+              - value: "percent-50"
+                label: "50%"
+                label_ru: "50%"
+              - value: "custom"
+                label: "Custom %"
+                label_ru: "Свой %"
+              - value: "target-mb"
+                label: "Fit"
+                label_ru: "Подогнать"
+          - id: custom_percent
+            type: "number"
+            group: "parameters"
+            label: "Custom percent"
+            label_ru: "Свой процент"
+            hint: "Manual scale percent from 0.1 to 100. Active only in Custom % mode."
+            hint_ru: "Ручной процент масштаба от 0,1 до 100. Работает только в режиме «Свой %»."
+            default: 75
+            min: 0.1
+            max: 100
+            step: 1
+            visible_if:
+              field: "scale_mode"
+              equals: "custom"
+          - id: target_mb
+            type: "float"
+            group: "parameters"
+            label: "Target MB"
+            label_ru: "Цель, MB"
+            hint: "Target output size per file. The engine searches the largest percent that fits the limit; 0.8-1.0 of the target is considered a good hit."
+            hint_ru: "Целевой размер каждого файла. Движок ищет максимальный процент, который влезает в лимит; попадание 0,8-1,0 от цели считается нормальным."
+            default: 1
+            min: 0.1
+            max: 999
+            step: 0.1
+            visible_if:
+              field: "scale_mode"
+              equals: "target-mb"
+          - id: algorithm
+            type: "radio"
+            group: "parameters"
+            label: "Algorithm"
+            label_ru: "Алгоритм"
+            hint: "Lanczos: best visual quality for photos and soft images, but can create halos and inflate PNG maps. Bicubic: good photo/JPG compromise; smoother and smarter than simple averaging, but may add intermediate colors around sharp map lines. Box: dry averaging filter for maps, plans, screenshots and flat graphics; fewer halos and usually smaller PNG than Lanczos/Bicubic. Nearest: no new colors, often smallest PNG, but diagonals and text can become jagged."
+            hint_ru: "Lanczos: лучшее визуальное качество для фото и мягких изображений, но может давать ореолы и раздувать PNG-карты. Bicubic: хороший компромисс для фото/JPG; умнее простого усреднения, но может добавлять промежуточные цвета вокруг резких линий карты. Box: сухое усреднение для карт, планов, скриншотов и плоской графики; меньше ореолов и обычно легче PNG, чем Lanczos/Bicubic. Nearest: не создаёт новых цветов, часто даёт самый маленький PNG, но диагонали и текст могут стать ступенчатыми."
+            default: "lanczos"
+            choice_style: "segmented"
+            span: "full"
+            options:
+              - value: "lanczos"
+                label: "Lanczos"
+                label_ru: "Lanczos"
+              - value: "bicubic"
+                label: "Bicubic"
+                label_ru: "Bicubic"
+              - value: "box"
+                label: "Box"
+                label_ru: "Box"
+              - value: "nearest"
+                label: "Nearest"
+                label_ru: "Nearest"
+          - id: unsharp
+            type: "radio"
+            group: "parameters"
+            label: "Unsharp Mask"
+            label_ru: "Unsharp Mask"
+            hint: "Mild sharpening after Lanczos downscale."
+            hint_ru: "Мягкая резкость после уменьшения Lanczos."
+            disabled_if:
+              field: "algorithm"
+              not_equals: "lanczos"
+            default: true
+            options:
+              - value: true
+                label: "On"
+                label_ru: "Вкл"
+              - value: false
+                label: "Off"
+                label_ru: "Выкл"
+          - id: print_size_mode
+            type: "radio"
+            group: "parameters"
+            label: "Print size"
+            label_ru: "Печать"
+            hint: "Scale changes pixel dimensions and keeps DPI metadata, so printed centimeters change. DPI changes pixel dimensions and writes proportional DPI, so printed centimeters stay the same."
+            hint_ru: "«Изменить масштаб» меняет пиксели и сохраняет DPI, поэтому сантиметры при печати меняются. «Изменить DPI» меняет пиксели и записывает пропорциональный DPI, поэтому сантиметры при печати остаются прежними."
+            default: "scale"
+            choice_style: "segmented"
+            span: "full"
+            options:
+              - value: "dpi"
+                label: "Change DPI"
+                label_ru: "Изменить DPI"
+              - value: "scale"
+                label: "Change scale"
+                label_ru: "Изменить масштаб"
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_75
+        parameters:
+          fixed_args: ["downscale-percent"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--scale-mode": "scale_mode"
+            "--custom-percent": "custom_percent"
+            "--target-mb": "target_mb"
+            "--algorithm": "algorithm"
+            "--unsharp": "unsharp"
+            "--print-size-mode": "print_size_mode"
+          defaults:
+            input_path: "input"
+            output_path: "output/downscale_percent"
+
+      - id: plotter_size
+        title: "Fit to roll"
+        title_ru: "Под рулон"
+        description: "Keep pixels and write DPI so the selected side matches millimeters."
+        description_ru: "Оставить пиксели и записать DPI так, чтобы выбранная сторона совпала с мм."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: side
+            type: "radio"
+            group: "parameters"
+            label: "Side"
+            label_ru: "Сторона"
+            default: "short"
+            options:
+              - value: "short"
+                label: "Short"
+                label_ru: "Короткая"
+              - value: "long"
+                label: "Long"
+                label_ru: "Длинная"
+          - id: target_mm
+            type: "number"
+            group: "parameters"
+            label: "Target mm"
+            label_ru: "Цель, мм"
+            hint: "Final physical size of the selected side."
+            hint_ru: "Итоговый физический размер выбранной стороны."
+            default: 900
+            min: 1
+            max: 5000
+            step: 1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *pixel_dpi_format_options
+        parameters:
+          fixed_args: ["plotter-size"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--side": "side"
+            "--target-mm": "target_mm"
+          defaults:
+            input_path: "input"
+            output_path: "output/plotter_roll_fit"
+
+      - id: plotter_dpi_only
+        title: "DPI only for roll"
+        title_ru: "DPI"
+        description: "Keep pixels and write DPI metadata only."
+        description_ru: "Оставить пиксели и только записать DPI."
+        service: "system_core.services.image_tools_gui:run_plotter_dpi_only"
+        kind: "safe"
+        fields:
+          - id: dpi_preset
+            type: "radio"
+            group: "parameters"
+            label: "DPI"
+            label_ru: "DPI"
+            default: "300"
+            options:
+              - value: "150"
+                label: "150"
+                label_ru: "150"
+              - value: "300"
+                label: "300"
+                label_ru: "300"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Ввести"
+          - id: dpi_custom
+            type: "number"
+            group: "parameters"
+            label: "Custom DPI"
+            label_ru: "Свой DPI"
+            hint: "Used only when DPI is set to Custom."
+            hint_ru: "Используется только если выбран пункт «Ввести»."
+            disabled_if:
+              field: "dpi_preset"
+              not_equals: "custom"
+            default: ""
+            min: 1
+            max: 2400
+            step: 1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *pixel_dpi_format_options
+        parameters:
+          defaults:
+            input_path: "input"
+            output_path: "output/plotter_dpi_only"
+      - id: resize_screen
+        title: "Fit to screen"
+        title_ru: "Под экран"
+        description: "Resize to 1080p, 1440p or 2160p/UHD with Lanczos. Actual upscale to UHD applies a mild Unsharp Mask."
+        description_ru: "Подогнать под 1080p, 1440p или 2160p/UHD через Lanczos. При реальном апскейле до UHD применяется мягкая Unsharp Mask."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: target
+            type: "radio"
+            group: "parameters"
+            label: "Screen target"
+            label_ru: "Размер экрана"
+            hint: "1080p = 1920x1080, 1440p = 2560x1440, 2160p/UHD = 3840x2160. Actual UHD upscale adds a mild Unsharp Mask after Lanczos."
+            hint_ru: "1080p = 1920x1080, 1440p = 2560x1440, 2160p/UHD = 3840x2160. Если 2160p реально увеличивает изображение, после Lanczos добавляется мягкая Unsharp Mask."
+            default: "2160p"
+            options:
+              - value: "1080p"
+                label: "1080p"
+                label_ru: "1080p"
+              - value: "1440p"
+                label: "1440p"
+                label_ru: "1440p"
+              - value: "2160p"
+                label: "2160p"
+                label_ru: "2160p"
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Fit mode"
+            label_ru: "Режим подгонки"
+            hint: "Crop fills the target and cuts edges; Contain preserves all pixels; Pad preserves all pixels and adds background."
+            hint_ru: "Обрезка заполняет целевой кадр и режет края; Вписать сохраняет всё изображение; Поля сохраняют всё изображение и добавляют фон."
+            default: "crop"
+            options:
+              - value: "crop"
+                label: "Crop"
+                label_ru: "Обрезка"
+              - value: "contain"
+                label: "Contain"
+                label_ru: "Вписать"
+              - value: "pad"
+                label: "Pad"
+                label_ru: "Поля"
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "jpg"
+            options: *delivery_format_options
+          - *quality_field_75
+        parameters:
+          fixed_args: ["resize-screen"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--target": "target"
+            "--mode": "mode"
+          defaults:
+            input_path: "input"
+            output_path: "output/screen_fit"
+
+      - id: aspect_fit
+        title: "Fit aspect"
+        title_ru: "Пропорции"
+        description: "Fit to 16:9, A4 or A3."
+        description_ru: "Подогнать под 16:9, A4 или A3."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: ratio
+            type: "radio"
+            group: "parameters"
+            label: "Ratio"
+            label_ru: "Пропорция"
+            span: "full"
+            default: "16:9"
+            options:
+              - value: "16:9"
+                label: "16:9"
+                label_ru: "16:9"
+              - value: "a4-portrait"
+                label: "A4 portrait"
+                label_ru: "A4 вертикально"
+                new_row: true
+              - value: "a4-landscape"
+                label: "A4 landscape"
+                label_ru: "A4 горизонтально"
+              - value: "a3-portrait"
+                label: "A3 portrait"
+                label_ru: "A3 вертикально"
+                new_row: true
+              - value: "a3-landscape"
+                label: "A3 landscape"
+                label_ru: "A3 горизонтально"
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Fit mode"
+            label_ru: "Режим подгонки"
+            default: "crop"
+            options:
+              - value: "crop"
+                label: "Crop"
+                label_ru: "Обрезка"
+              - value: "contain"
+                label: "Contain"
+                label_ru: "Вписать"
+              - value: "pad"
+                label: "Pad"
+                label_ru: "Поля"
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "jpg"
+            options: *delivery_format_options
+          - *quality_field_75
+        parameters:
+          fixed_args: ["aspect"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--ratio": "ratio"
+            "--mode": "mode"
+          defaults:
+            input_path: "input"
+            output_path: "output/aspect_fit"
+
+
+  - id: pdf
+    title: "PDF"
+    title_ru: "PDF"
+    description: "PDF image workflows: render pages to raster files, extract embedded images, or assemble a PDF from prepared images."
+    description_ru: "PDF-сценарии для изображений: отрендерить страницы в растры, извлечь встроенные картинки или собрать PDF из подготовленных изображений."
+    fields: *module_io_fields
+    children:
+      - id: pdf_export
+        title: "PDF export"
+        title_ru: "Экспорт страниц PDF"
+        description: "Export PDF pages by embedded or render mode."
+        description_ru: "Экспортировать страницы PDF через встроенные растры или рендеринг."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Mode"
+            label_ru: "Режим"
+            default: "embedded"
+            options:
+              - value: "embedded"
+                label: "Embedded"
+                label_ru: "Встроенные растры"
+              - value: "render"
+                label: "Render"
+                label_ru: "Рендеринг"
+          - id: dpi
+            type: "number"
+            group: "output"
+            label: "Render DPI"
+            label_ru: "DPI рендеринга"
+            hint: "Used in Render mode. Embedded mode keeps source pixels."
+            hint_ru: "Используется для рендеринга. Режим встроенных растров берёт исходные пиксели."
+            disabled_if:
+              field: "mode"
+              not_equals: "render"
+            default: 300
+            min: 1
+            max: 1200
+            step: 1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_90
+        parameters:
+          fixed_args: ["pdf-export"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--mode": "mode"
+            "--dpi": "dpi"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_export"
+
+      - id: pdf_extract
+        title: "Extract embedded"
+        title_ru: "Извлечь из PDF"
+        description: "Extract embedded raster images from PDF."
+        description_ru: "Извлечь встроенные растры из PDF."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: to
+            type: "checkboxes"
+            group: "format"
+            label: "Output formats"
+            label_ru: "Форматы вывода"
+            default: ["original"]
+            min_selected: 1
+            options: *extract_format_options
+          - *quality_field_90
+          - id: layout
+            type: "radio"
+            group: "output"
+            label: "Layout"
+            label_ru: "Раскладка"
+            default: "flat"
+            options:
+              - value: "flat"
+                label: "One folder"
+                label_ru: "В одну папку"
+              - value: "folders"
+                label: "PDF-name folders"
+                label_ru: "По папкам имён PDF"
+          - id: png_side_tiff
+            type: "checkbox"
+            group: "options"
+            label: "PNG side TIFF"
+            label_ru: "TIFF рядом с PNG"
+            hint: "For PNG output: also write TIFF when the embedded image is CMYK or has ICC."
+            hint_ru: "Для PNG: дополнительно пишет TIFF, если встроенная картинка CMYK или содержит ICC."
+            disabled_if:
+              field: "to"
+              not_contains: "png"
+            default: true
+        parameters:
+          fixed_args: ["pdf-extract-embedded"]
+          multi_field: "to"
+          multi_output_key: "output_path"
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--layout": "layout"
+            "--jpeg-quality": "jpeg_quality"
+            "--png-side-tiff": "png_side_tiff"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_embedded_images"
+            jpeg_quality: 90
+
+      - id: images_to_pdf
+        title: "Images to PDF"
+        title_ru: "Картинки в PDF"
+        description: "Build PDF from input images."
+        description_ru: "Собрать PDF из изображений input."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: bundle
+            type: "radio"
+            group: "output"
+            label: "Build"
+            label_ru: "Сборка"
+            default: "folders"
+            options:
+              - value: "all"
+                label: "All images into one PDF"
+                label_ru: "Все картинки в один PDF"
+              - value: "folders"
+                label: "Separate PDFs by folder"
+                label_ru: "В несколько PDF"
+          - id: preserve_dpi
+            type: "checkbox"
+            group: "output"
+            label: "Do not change DPI"
+            label_ru: "Не менять DPI"
+            hint: "Keep source image DPI metadata for PDF page size."
+            hint_ru: "Использовать DPI исходных картинок для физического размера страниц PDF."
+            default: true
+          - id: mode
+            type: "radio"
+            group: "format"
+            label: "PDF mode"
+            label_ru: "PDF режим"
+            default: "lossless"
+            options:
+              - value: "lossless"
+                label: "PNG lossless"
+                label_ru: "PNG без потерь"
+              - value: "jpg75"
+                label: "JPG 75% quality"
+                label_ru: "JPG 75% качества"
+              - value: "jpg90"
+                label: "JPG 90% quality"
+                label_ru: "JPG 90% качества"
+          - id: dpi
+            type: "number"
+            group: "output"
+            label: "PDF DPI"
+            label_ru: "Свой DPI"
+            hint: "Used only when Do not change DPI is off. This changes PDF physical page size, not pixels."
+            hint_ru: "Используется только если выключено «Не менять DPI». Меняет физический размер страниц PDF, не пиксели."
+            disabled_if:
+              field: "preserve_dpi"
+              equals: true
+            default: ""
+            min: 1
+            max: 1200
+            step: 1
+        parameters:
+          fixed_args: ["images-to-pdf"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_file"
+            "--mode": "mode"
+            "--bundle": "bundle"
+            "--dpi": "dpi"
+          defaults:
+            input_path: "input"
+            output_file: "output/images.pdf"
+          ui_only_fields: ["preserve_dpi"]
+
+  - id: sheets_and_marks
+    title: "Sheets and marks"
+    title_ru: "Листы и метки"
+    description: "Production sheet helpers: tile labels, make overview/contact layouts, add text watermarks, and split multipage TIFF files."
+    description_ru: "Помощники для производственных листов: разложить наклейки, собрать обзорные/контактные раскладки, добавить водяной знак и разделить многостраничный TIFF."
+    fields: *module_io_fields
+    children:
+      - id: tile_sheet
+        title: "Tile sheet"
+        title_ru: "Замостить лист"
+        description: "Repeat one image across A5/A4/A3 or a custom-width roll."
+        description_ru: "Размножить одно изображение на A5/A4/A3 или рулон заданной ширины."
+        service: "system_core.services.image_tools_gui:run_tile_sheet"
+        kind: "safe"
+        fields:
+          - id: paper
+            type: "radio"
+            group: "format"
+            label: "Paper"
+            label_ru: "Бумага"
+            default: "a4"
+            options:
+              - value: "a5"
+                label: "A5"
+                label_ru: "A5"
+              - value: "a4"
+                label: "A4"
+                label_ru: "A4"
+              - value: "a3"
+                label: "A3"
+                label_ru: "A3"
+              - value: "roll"
+                label: "Roll"
+                label_ru: "Рулон"
+          - id: orientation
+            type: "radio"
+            group: "format"
+            label: "Orientation"
+            label_ru: "Ориентация"
+            default: "portrait"
+            visible_if:
+              field: "paper"
+              not_equals: "roll"
+              default: "a4"
+            options:
+              - value: "portrait"
+                label: "Portrait"
+                label_ru: "Портрет"
+              - value: "landscape"
+                label: "Landscape"
+                label_ru: "Альбом"
+          - id: margin_mm
+            type: "float"
+            group: "parameters"
+            label: "Margin, mm"
+            label_ru: "Поля, мм"
+            default: 7
+            min: 0
+            max: 100
+            step: 0.5
+          - id: gap_mm
+            type: "float"
+            group: "parameters"
+            label: "Gap, mm"
+            label_ru: "Зазор, мм"
+            default: 0
+            min: 0
+            max: 50
+            step: 0.5
+          - id: dpi
+            type: "number"
+            group: "format"
+            label: "DPI"
+            label_ru: "DPI"
+            default: 300
+            min: 72
+            max: 1200
+            step: 1
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output"
+            label_ru: "Вывод"
+            default: "tiff"
+            options:
+              - value: "tiff"
+                label: "TIFF"
+                label_ru: "TIFF"
+              - value: "png"
+                label: "PNG"
+                label_ru: "PNG"
+          - id: size_mode
+            type: "radio"
+            group: "parameters"
+            label: "Sticker size"
+            label_ru: "Размер наклейки"
+            default: "source"
+            options:
+              - value: "source"
+                label: "As is"
+                label_ru: "Как есть"
+              - value: "width"
+                label: "By width"
+                label_ru: "По ширине"
+              - value: "height"
+                label: "By height"
+                label_ru: "По высоте"
+              - value: "doc-40x30"
+                label: "Document 40x30"
+                label_ru: "Документ 40x30"
+              - value: "doc-60x40"
+                label: "Document 60x40"
+                label_ru: "Документ 60x40"
+          - id: item_width_mm
+            type: "float"
+            group: "parameters"
+            label: "Width, mm"
+            label_ru: "Ширина, мм"
+            default: 40
+            min: 1
+            max: 1000
+            step: 0.5
+          - id: item_height_mm
+            type: "float"
+            group: "parameters"
+            label: "Height, mm"
+            label_ru: "Высота, мм"
+            default: 30
+            min: 1
+            max: 1000
+            step: 0.5
+          - id: box_fit
+            type: "radio"
+            group: "parameters"
+            label: "Preset fit"
+            label_ru: "Вписывание пресета"
+            default: "contain"
+            options:
+              - value: "contain"
+                label: "No crop"
+                label_ru: "Без обрезки"
+              - value: "crop"
+                label: "Crop to box"
+                label_ru: "Обрезать в рамку"
+          - id: count_mode
+            type: "radio"
+            group: "options"
+            label: "Count"
+            label_ru: "Количество"
+            default: "fill"
+            visible_if:
+              field: "paper"
+              not_equals: "roll"
+              default: "a4"
+            options:
+              - value: "fill"
+                label: "Fill sheet"
+                label_ru: "Заполнить лист"
+              - value: "copies"
+                label: "Exact copies"
+                label_ru: "Точно копий"
+              - value: "rows"
+                label: "Exact rows"
+                label_ru: "Точно рядов"
+          - id: roll_count_mode
+            type: "radio"
+            group: "options"
+            label: "Roll count"
+            label_ru: "Количество на рулоне"
+            default: "rows"
+            visible_if:
+              field: "paper"
+              equals: "roll"
+              default: "a4"
+            options:
+              - value: "copies"
+                label: "Exact copies"
+                label_ru: "Точно копий"
+              - value: "rows"
+                label: "Exact rows"
+                label_ru: "Точно рядов"
+          - id: copies
+            type: "number"
+            group: "options"
+            label: "Copies"
+            label_ru: "Копий"
+            default: 24
+            min: 0
+            max: 10000
+            step: 1
+            visible_if_any:
+              - all:
+                  - field: "paper"
+                    not_equals: "roll"
+                    default: "a4"
+                  - field: "count_mode"
+                    equals: "copies"
+                    default: "fill"
+              - all:
+                  - field: "paper"
+                    equals: "roll"
+                    default: "a4"
+                  - field: "roll_count_mode"
+                    equals: "copies"
+                    default: "rows"
+          - id: rows
+            type: "number"
+            group: "options"
+            label: "Rows"
+            label_ru: "Рядов"
+            default: 1
+            min: 0
+            max: 1000
+            step: 1
+            visible_if_any:
+              - all:
+                  - field: "paper"
+                    not_equals: "roll"
+                    default: "a4"
+                  - field: "count_mode"
+                    equals: "rows"
+                    default: "fill"
+              - all:
+                  - field: "paper"
+                    equals: "roll"
+                    default: "a4"
+                  - field: "roll_count_mode"
+                    equals: "rows"
+                    default: "rows"
+          - id: roll_width_mm
+            type: "float"
+            group: "options"
+            label: "Roll width, mm"
+            label_ru: "Ширина рулона, мм"
+            default: 600
+            min: 1
+            max: 5000
+            step: 1
+            visible_if:
+              field: "paper"
+              equals: "roll"
+              default: "a4"
+          - id: frame_mm
+            type: "float"
+            group: "options"
+            label: "Frame, mm"
+            label_ru: "Рамка, мм"
+            default: 0.2
+            min: 0
+            max: 10
+            step: 0.1
+          - id: frame_color
+            type: "text"
+            group: "options"
+            label: "Frame color"
+            label_ru: "Цвет рамки"
+            default: "#999999"
+          - id: background
+            type: "text"
+            group: "options"
+            label: "Background"
+            label_ru: "Фон"
+            default: "white"
+        parameters:
+          defaults:
+            input_path: "input"
+            output_path: "output/tile_sheet"
+
+      - id: split_tiff
+        title: "Split TIFF"
+        title_ru: "Разделить TIFF"
+        description: "Split multi-page TIFF to PNG frames."
+        description_ru: "Разделить многостраничный TIFF на PNG-кадры."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["split-tiff"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/tiff_frames"
+
+      - id: watermark
+        title: "Watermark"
+        title_ru: "Водяной знак"
+        description: "Add a corner text watermark or a diagonal protective watermark."
+        description_ru: "Добавить текстовый водяной знак в углу или диагональную защитную надпись."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: text
+            type: "text"
+            group: "parameters"
+            label: "Watermark text"
+            label_ru: "Текст водяного знака"
+            default: ""
+            required: true
+          - id: watermark_mode
+            type: "radio"
+            group: "parameters"
+            label: "Mode"
+            label_ru: "Режим"
+            hint: "Corner mode adds a normal horizontal label in the selected corner. Diagonal protective mode centers the text across the image diagonal and scales it to the selected diagonal coverage."
+            hint_ru: "Режим в углу добавляет обычную горизонтальную подпись в выбранном углу. Диагональный защитный режим ставит текст по центру диагонали и масштабирует его по выбранному покрытию диагонали."
+            default: "corner"
+            choice_style: "segmented"
+            span: "full"
+            options:
+              - value: "corner"
+                label: "Corner"
+                label_ru: "В углу"
+              - value: "diagonal"
+                label: "Diagonal protective"
+                label_ru: "Диагональный защитный"
+          - id: position
+            type: "radio"
+            group: "parameters"
+            label: "Position"
+            label_ru: "Позиция"
+            hint: "Used only in Corner mode."
+            hint_ru: "Используется только в режиме «В углу»."
+            default: "bottom-right"
+            visible_if:
+              field: "watermark_mode"
+              equals: "corner"
+            options:
+              - value: "bottom-right"
+                label: "Bottom right"
+                label_ru: "Снизу справа"
+              - value: "bottom-left"
+                label: "Bottom left"
+                label_ru: "Снизу слева"
+              - value: "top-right"
+                label: "Top right"
+                label_ru: "Сверху справа"
+              - value: "top-left"
+                label: "Top left"
+                label_ru: "Сверху слева"
+          - id: diagonal_coverage
+            type: "float"
+            group: "parameters"
+            label: "Diagonal coverage, %"
+            label_ru: "Длина по диагонали, %"
+            hint: "Used only in Diagonal protective mode. 60 means the watermark text is fitted to about 60% of the full image diagonal, leaving room for short large words such as COPY."
+            hint_ru: "Используется только в диагональном защитном режиме. Значение 60 означает, что текст подгоняется примерно под 60% полной диагонали изображения и оставляет воздух для коротких крупных слов вроде «КОПИЯ»."
+            default: 60
+            min: 5
+            max: 150
+            step: 5
+            visible_if:
+              field: "watermark_mode"
+              equals: "diagonal"
+          - id: margin
+            type: "number"
+            group: "parameters"
+            label: "Corner margin, px"
+            label_ru: "Отступ от угла, px"
+            hint: "Used only in Corner mode."
+            hint_ru: "Используется только в режиме «В углу»."
+            default: 32
+            min: 0
+            max: 5000
+            step: 1
+            visible_if:
+              field: "watermark_mode"
+              equals: "corner"
+          - id: font_size
+            type: "number"
+            group: "parameters"
+            label: "Corner font size"
+            label_ru: "Кегль в углу"
+            hint: "Used only in Corner mode. Watermarks use Arial Bold when available. Diagonal protective mode chooses the font size automatically from the diagonal coverage."
+            hint_ru: "Используется только в режиме «В углу». Водяной знак использует Arial Bold, если шрифт доступен. Диагональный защитный режим подбирает размер шрифта автоматически по длине диагонали."
+            default: 36
+            min: 1
+            max: 1000
+            step: 1
+            visible_if:
+              field: "watermark_mode"
+              equals: "corner"
+          - id: opacity
+            type: "number"
+            group: "parameters"
+            label: "Opacity"
+            label_ru: "Прозрачность"
+            hint: "Alpha channel for the watermark: 0 is invisible, 255 is fully opaque. Default 64 is about 25% opacity and is chosen for print, where marks usually look darker than on screen."
+            hint_ru: "Альфа-канал водяного знака: 0 — невидимый, 255 — полностью непрозрачный. Дефолт 64 — около 25% непрозрачности; он выбран под печать, где знаки обычно выглядят темнее, чем на экране."
+            default: 64
+            min: 0
+            max: 255
+            step: 5
+          - id: color_mode
+            type: "radio"
+            group: "parameters"
+            label: "Color"
+            label_ru: "Цвет"
+            hint: "Color presets with visible swatches. Choose Custom RGB to enter exact Red, Green, and Blue values."
+            hint_ru: "Цветовые пресеты с видимыми плашками. Выберите «Свой RGB», чтобы вручную задать красный, зелёный и синий каналы."
+            default: "#cc0000"
+            choice_style: "chips"
+            span: "full"
+            options:
+              - value: "#cc0000"
+                label: "Red"
+                label_ru: "Красный"
+                swatch: "#cc0000"
+              - value: "#000000"
+                label: "Black"
+                label_ru: "Чёрный"
+                swatch: "#000000"
+              - value: "#ffffff"
+                label: "White"
+                label_ru: "Белый"
+                swatch: "#ffffff"
+              - value: "#ffcc00"
+                label: "Yellow"
+                label_ru: "Жёлтый"
+                swatch: "#ffcc00"
+              - value: "#666666"
+                label: "Gray"
+                label_ru: "Серый"
+                swatch: "#666666"
+              - value: "#0066cc"
+                label: "Blue"
+                label_ru: "Синий"
+                swatch: "#0066cc"
+              - value: "custom"
+                label: "Custom RGB"
+                label_ru: "Свой RGB"
+                swatch: "linear-gradient(90deg, #cc0000, #00aa44, #0066cc)"
+          - id: custom_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Custom RGB"
+            label_ru: "Свой RGB"
+            hint: "Live color patch and exact Red, Green, Blue channels, 0..255. The value is passed to the engine as R,G,B."
+            hint_ru: "Живой цветовой патч и точные каналы Red, Green, Blue, 0..255. В движок значение передаётся как R,G,B."
+            span: "full"
+            visible_if:
+              field: "color_mode"
+              equals: "custom"
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "png"
+            options: *delivery_format_options
+          - *quality_field_75
+        parameters:
+          fixed_args: ["watermark"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+            "--text": "text"
+            "--watermark-mode": "watermark_mode"
+            "--position": "position"
+            "--diagonal-coverage": "diagonal_coverage"
+            "--margin": "margin"
+            "--opacity": "opacity"
+            "--font-size": "font_size"
+          composite_args:
+            "--color":
+              field: "color_mode"
+              custom_if:
+                field: "color_mode"
+                equals: "custom"
+              fields: ["color_r", "color_g", "color_b"]
+              separator: ","
+          defaults:
+            input_path: "input"
+            output_path: "output/watermark"
+            color_r: 204
+            color_g: 0
+            color_b: 0
+          ui_only_fields: ["custom_rgb"]
+
+
+  - id: contact_sheet
+    title: "Contact sheet"
+    title_ru: "Контактный лист"
+    description: "Build visual proof sheets for checking a folder at a glance: thumbnails with KB, pixels, centimeters, DPI, output format and quality."
+    description_ru: "Собрать контрольный лист для быстрой проверки папки: превью с KB, пикселями, сантиметрами, DPI, форматом вывода и качеством."
+    service: "system_core.services.image_tools_gui:run_manifest_cli"
+    kind: "safe"
+    fields:
+      - id: input_path
+        type: "folder"
+        group: "source"
+        label: "SOURCE"
+        label_ru: "ИСТОЧНИК"
+        hint: "Optional. Leave empty to use the command default input folder."
+        hint_ru: "Необязательно. Оставь пустым, чтобы использовать стандартную папку input для команды."
+        placeholder: "input"
+        default: ""
+        omit_if_empty: true
+      - id: output_path
+        type: "folder"
+        group: "output"
+        label: "DESTINATION"
+        label_ru: "ПРИЁМНИК"
+        hint: "Optional. Leave empty to use the command default output folder."
+        hint_ru: "Необязательно. Оставь пустым, чтобы использовать стандартную папку output для команды."
+        placeholder: "output"
+        default: ""
+        omit_if_empty: true
+        show_new_folder_button: true
+      - id: columns
+        type: "number"
+        group: "parameters"
+        label: "Columns"
+        label_ru: "Колонки"
+        default: 4
+        min: 1
+        max: 20
+        step: 1
+      - id: thumb_size_mode
+        type: "radio"
+        group: "thumbnail"
+        label: "Size mode"
+        label_ru: "Режим размера"
+        default: "preset"
+        options:
+          - value: "preset"
+            label: "List"
+            label_ru: "Из списка"
+          - value: "custom"
+            label: "Custom"
+            label_ru: "Свой размер"
+      - id: thumb_preset
+        type: "select"
+        group: "thumbnail"
+        label: "Thumb size"
+        label_ru: "Размер миниатюры"
+        visible_if:
+          field: "thumb_size_mode"
+          equals: "preset"
+        default: "640x480"
+        options:
+          - value: "320x240"
+            label: "320x240"
+            label_ru: "320x240"
+          - value: "480x360"
+            label: "480x360"
+            label_ru: "480x360"
+          - value: "640x480"
+            label: "640x480"
+            label_ru: "640x480"
+          - value: "800x600"
+            label: "800x600"
+            label_ru: "800x600"
+          - value: "1024x768"
+            label: "1024x768"
+            label_ru: "1024x768"
+          - value: "1280x720"
+            label: "1280x720"
+            label_ru: "1280x720"
+          - value: "1280x960"
+            label: "1280x960"
+            label_ru: "1280x960"
+          - value: "1600x900"
+            label: "1600x900"
+            label_ru: "1600x900"
+          - value: "1920x1080"
+            label: "1920x1080"
+            label_ru: "1920x1080"
+      - id: thumb_width
+        type: "number"
+        group: "thumbnail"
+        label: "Thumb width"
+        label_ru: "Ширина миниатюры"
+        visible_if:
+          field: "thumb_size_mode"
+          equals: "custom"
+        default: 640
+        min: 1
+        max: 10000
+        step: 1
+      - id: thumb_height
+        type: "number"
+        group: "thumbnail"
+        label: "Thumb height"
+        label_ru: "Высота миниатюры"
+        visible_if:
+          field: "thumb_size_mode"
+          equals: "custom"
+        default: 480
+        min: 1
+        max: 10000
+        step: 1
+      - id: to
+        type: "radio"
+        group: "format"
+        label: "Output format"
+        label_ru: "Формат вывода"
+        default: "png"
+        options: *delivery_format_options
+      - *quality_field_92
+    parameters:
+      fixed_args: ["contact-sheet"]
+      value_args:
+        "--input": "input_path"
+        "--output": "output_file"
+        "--to": "to"
+        "--jpeg-quality": "jpeg_quality"
+        "--columns": "columns"
+      composite_args:
+        "--thumb-size":
+          field: "thumb_preset"
+          manual_if:
+            field: "thumb_size_mode"
+            equals: "custom"
+          fields: ["thumb_width", "thumb_height"]
+          separator: "x"
+      defaults:
+        input_path: "input"
+        output_file: "output/contact_sheet.png"
+
+  - id: diagnostics
+    title: "Diagnostics"
+    title_ru: "Диагностика"
+    description: "Safe diagnostics: list supported formats, show project paths and runtime information, and verify the portable environment."
+    description_ru: "Безопасная диагностика: показать поддерживаемые форматы, пути проекта, сведения о runtime и проверить портативное окружение."
+    children:
+      - id: formats
+        title: "Formats"
+        title_ru: "Форматы"
+        description: "Show supported formats and adapters."
+        description_ru: "Показать поддерживаемые форматы и адаптеры."
+        service: "system_core.services.image_tools_gui:run_cli_command"
+        kind: "safe"
+        parameters:
+          args: ["formats"]
+
+      - id: info
+        title: "Project info"
+        title_ru: "Информация"
+        description: "Show project paths and runtime information."
+        description_ru: "Показать пути проекта и информацию о runtime."
+        service: "system_core.services.image_tools_gui:run_cli_command"
+        kind: "safe"
+        parameters:
+          args: ["info"]
+
+      - id: doctor
+        title: "Doctor"
+        title_ru: "Проверка окружения"
+        description: "Run the project doctor script."
+        description_ru: "Запустить проверку окружения проекта."
+        service: "system_core.services.image_tools_gui:run_doctor"
+        kind: "safe"
+
+maintenance_operations:
+  - id: cleanup_input_output
+    title: "Clear I/O"
+    title_ru: "Очистить I/O"
+    description: "Delete contents of managed input and output folders."
+    description_ru: "Удалить содержимое управляемых папок input и output."
+    service: "system_core.services.image_tools_gui:cleanup_input_output"
+    kind: "dangerous"

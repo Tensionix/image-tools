@@ -1,0 +1,93 @@
+{
+  "project_name": "Audion Image Tools",
+  "jpeg_quality_default": 75,
+  "jpeg_quality_allowed": [
+    60,
+    75,
+    90
+  ],
+  "png_presets": {
+    "fast": {
+      "compress_level": 1,
+      "optimize": false
+    },
+    "balanced": {
+      "compress_level": 4,
+      "optimize": false
+    },
+    "small": {
+      "compress_level": 6,
+      "optimize": true
+    }
+  },
+  "screen_targets": {
+    "1080p": [
+      1920,
+      1080
+    ],
+    "1440p": [
+      2560,
+      1440
+    ],
+    "2160p": [
+      3840,
+      2160
+    ]
+  },
+  "aspect_targets": {
+    "16:9": [
+      16,
+      9
+    ],
+    "a4-portrait": [
+      210,
+      297
+    ],
+    "a4-landscape": [
+      297,
+      210
+    ],
+    "a3-portrait": [
+      297,
+      420
+    ],
+    "a3-landscape": [
+      420,
+      297
+    ]
+  },
+  "metadata_policy_default": "preserve_dpi_color",
+  "icc": {
+    "srgb_profile": "config/icc/sRGB2014.icc",
+    "cmyk_profile": "config/icc/Photoshop5DefaultCMYK.icc",
+    "embed_profiles_on_save": {
+      "srgb": true,
+      "cmyk": false
+    },
+    "embed_profiles_in_pdf": {
+      "normalized_images": true,
+      "preserve_input_images": true
+    }
+  },
+  "alpha_background_default": "white",
+  "watermark_default": {
+    "position": "bottom-right",
+    "margin": 32,
+    "font_size": 36,
+    "opacity": 160
+  },
+  "pdf": {
+    "raster_dpi_default": 300,
+    "raster_dpi_allowed": [
+      150,
+      300,
+      600
+    ],
+    "export_modes": [
+      "lossless",
+      "jpg75",
+      "jpg90"
+    ],
+    "page_prefix_pattern": "_001"
+  }
+}

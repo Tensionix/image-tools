@@ -1,0 +1,2839 @@
+{
+  "schema": "audion.build_licenses.components.v1",
+  "generated_utc": "2026-08-24T17:43:06Z",
+  "project_id": "audion-image-tools",
+  "project_name": "Audion Image Tools",
+  "scan_root": "S:\\Release\\Audion Image Tools",
+  "components": [
+    {
+      "id": "aiofiles",
+      "name": "aiofiles",
+      "normalized_name": "aiofiles",
+      "version": "25.1.0",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "fcfd3b2d4947e9dfabaf9c0af2bd109d2487413ebb9c04ed606752cd313623ea",
+      "artifact_path": "runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/INSTALLER; runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/METADATA; runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/RECORD; runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/WHEEL; runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/aiofiles-25.1.0.dist-info/licenses/NOTICE; runtime/Lib/site-packages/aiofiles/__init__.py; runtime/Lib/site-packages/aiofiles/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "a8ad31b1c3f40dca5a84119351b8fa8ddc868edd77fad8a8ebf6d8f2d16fa4ae",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiofiles-25.1.0\\LICENSE_1.txt",
+          "raw_size": 11325
+        },
+        {
+          "sha256": "104c58d1d450bd6474c09d8b64bc0182733a60ac3d8c253e334cde8294520ff1",
+          "display_name": "NOTICE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiofiles-25.1.0\\NOTICE_1.txt",
+          "raw_size": 55
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "c92774fff1a83a444e869b96f000fa3629a31f0b82ff36f5e0536da396dcd937"
+    },
+    {
+      "id": "aiohappyeyeballs",
+      "name": "aiohappyeyeballs",
+      "normalized_name": "aiohappyeyeballs",
+      "version": "2.7.1",
+      "license_summary": "PSF-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "f11a08d2c173c35ca12aa98462c4bd2f43b27d48b9dc968542daf8ca6a59fcdc",
+      "artifact_path": "runtime/Lib/site-packages/aiohappyeyeballs-2.7.1.dist-info/INSTALLER; runtime/Lib/site-packages/aiohappyeyeballs-2.7.1.dist-info/METADATA; runtime/Lib/site-packages/aiohappyeyeballs-2.7.1.dist-info/RECORD; runtime/Lib/site-packages/aiohappyeyeballs-2.7.1.dist-info/WHEEL; runtime/Lib/site-packages/aiohappyeyeballs-2.7.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/aiohappyeyeballs/__init__.py; runtime/Lib/site-packages/aiohappyeyeballs/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/aiohappyeyeballs/__pycache__/_staggered.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiohappyeyeballs-2.7.1\\LICENSE_1.txt",
+          "raw_size": 13936
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "2b66515dc87395f8d389020f423edad90ea4c4d5e276d209d3e57f9b04c1868e"
+    },
+    {
+      "id": "aiohttp",
+      "name": "aiohttp",
+      "normalized_name": "aiohttp",
+      "version": "3.14.3",
+      "license_summary": "Apache-2.0 AND MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "c676ffe6822a218bb969de677b956f8e4874eb6409d2dbe43c348af0129ec150",
+      "artifact_path": "runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/INSTALLER; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/METADATA; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/RECORD; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/WHEEL; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/licenses/vendor/llhttp/LICENSE; runtime/Lib/site-packages/aiohttp-3.14.3.dist-info/top_level.txt; runtime/Lib/site-packages/aiohttp/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "2e4be5fc6c4c72a466fcb665d726e049a6891981fe536c4f04b6366749461d23",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiohttp-3.14.3\\LICENSE_1txt",
+          "raw_size": 11514
+        },
+        {
+          "sha256": "628168d68bb5a8a17e0bbefb3bd74e326e1edc20583d76f52f457c82c921867d",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiohttp-3.14.3\\LICENSE_1.txt",
+          "raw_size": 1091
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "2eb4a820b0213caa9eeab06a6deed1ba83833ae87b40e0ce57d174183f20f597"
+    },
+    {
+      "id": "aiosignal",
+      "name": "aiosignal",
+      "normalized_name": "aiosignal",
+      "version": "1.4.0",
+      "license_summary": "Apache 2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "b25392c62b2f248591a873e4870129d0eb0b68584705b74a89d38e6b9d9c2fa9",
+      "artifact_path": "runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/INSTALLER; runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/METADATA; runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/RECORD; runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/WHEEL; runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/aiosignal-1.4.0.dist-info/top_level.txt; runtime/Lib/site-packages/aiosignal/__init__.py; runtime/Lib/site-packages/aiosignal/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "6fd5243e92dd7f98ec69c7ac377728e74905709ff527a5bf98d6d0263c04f5b6",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\aiosignal-1.4.0\\LICENSE_1.txt",
+          "raw_size": 11332
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "3c52814f3beb3dd8fdbcca52a213eff562bf0c1fb3db48d151f207b1efeb9ea7"
+    },
+    {
+      "id": "annotated-doc",
+      "name": "annotated-doc",
+      "normalized_name": "annotated-doc",
+      "version": "0.0.5",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "d7a7ea54a4d9f46d4b8a5d36dda78abb1eb58cde5308a07678022a55da50fb95",
+      "artifact_path": "runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/INSTALLER; runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/METADATA; runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/RECORD; runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/WHEEL; runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/entry_points.txt; runtime/Lib/site-packages/annotated_doc-0.0.5.dist-info/licenses/LICENSE; runtime/Lib/site-packages/annotated_doc/__init__.py; runtime/Lib/site-packages/annotated_doc/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "fff170779a6acbf65abdb405c087f1cee1786691e4a96a4034517e4a504a0cdf",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\annotated-doc-0.0.5\\LICENSE_1.txt",
+          "raw_size": 1086
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "381c82cfa00dc0f0edc8d77f3a0c1f1d8e464188ef54724de840c7ee5862deb9"
+    },
+    {
+      "id": "annotated-types",
+      "name": "annotated-types",
+      "normalized_name": "annotated-types",
+      "version": "0.8.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "e5b4695ce830c87bb4c29ee139dda08ac5c0742195f786bb040acb7f471ca1e1",
+      "artifact_path": "runtime/Lib/site-packages/annotated_types-0.8.0.dist-info/INSTALLER; runtime/Lib/site-packages/annotated_types-0.8.0.dist-info/METADATA; runtime/Lib/site-packages/annotated_types-0.8.0.dist-info/RECORD; runtime/Lib/site-packages/annotated_types-0.8.0.dist-info/WHEEL; runtime/Lib/site-packages/annotated_types-0.8.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/annotated_types/__init__.py; runtime/Lib/site-packages/annotated_types/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/annotated_types/__pycache__/test_cases.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\annotated-types-0.8.0\\LICENSE_1.txt",
+          "raw_size": 1083
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "515292cac6b24e7e487b829330e23ea48e31c6255d328d9ba737cd9a77b0dfd7"
+    },
+    {
+      "id": "anyio",
+      "name": "anyio",
+      "normalized_name": "anyio",
+      "version": "4.14.2",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "ef0d4ccc7b9f9e7c5fe67c0ea6357383b744adb6d3c75785e6b7ad92f1ff3bfb",
+      "artifact_path": "runtime/Lib/site-packages/anyio-4.14.2.dist-info/INSTALLER; runtime/Lib/site-packages/anyio-4.14.2.dist-info/METADATA; runtime/Lib/site-packages/anyio-4.14.2.dist-info/RECORD; runtime/Lib/site-packages/anyio-4.14.2.dist-info/WHEEL; runtime/Lib/site-packages/anyio-4.14.2.dist-info/entry_points.txt; runtime/Lib/site-packages/anyio-4.14.2.dist-info/licenses/LICENSE; runtime/Lib/site-packages/anyio-4.14.2.dist-info/scm_file_list.json; runtime/Lib/site-packages/anyio-4.14.2.dist-info/scm_version.json",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\anyio-4.14.2\\LICENSE_1.txt",
+          "raw_size": 1081
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "6ff75a3027473f1c9e1241717c2c9956ab04364ef7fd1771894cbd1116fac120"
+    },
+    {
+      "id": "attrs",
+      "name": "attrs",
+      "normalized_name": "attrs",
+      "version": "26.1.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "d9fd283a66f1628ec7312817ffd148298539f33a219a5678c5e2df4ee79447ca",
+      "artifact_path": "runtime/Lib/site-packages/attr/__init__.py; runtime/Lib/site-packages/attr/__init__.pyi; runtime/Lib/site-packages/attr/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/attr/__pycache__/_cmp.cpython-312.pyc; runtime/Lib/site-packages/attr/__pycache__/_compat.cpython-312.pyc; runtime/Lib/site-packages/attr/__pycache__/_config.cpython-312.pyc; runtime/Lib/site-packages/attr/__pycache__/_funcs.cpython-312.pyc; runtime/Lib/site-packages/attr/__pycache__/_make.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "882115c95dfc2af1eeb6714f8ec6d5cbcabf667caff8729f42420da63f714e9f",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\attrs-26.1.0\\LICENSE_1.txt",
+          "raw_size": 1109
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "38cd07de7d7a9ba882404c056631a143569b0436620cdfd6a7d887ce52f7cc14"
+    },
+    {
+      "id": "beautifulsoup4",
+      "name": "beautifulsoup4",
+      "normalized_name": "beautifulsoup4",
+      "version": "4.15.0",
+      "license_summary": "MIT License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "31a5f6c11bdfe0557431c42a9276a6fb5e192445936a55fa5e119939e994b9cb",
+      "artifact_path": "runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/INSTALLER; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/METADATA; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/RECORD; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/REQUESTED; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/WHEEL; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/licenses/AUTHORS; runtime/Lib/site-packages/beautifulsoup4-4.15.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/bs4/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "55b4d8d4b1e5bc86d10efac91b74c87bcb77526b0f5b9edaf8b9cd2adc7397b2",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\beautifulsoup4-4.15.0\\LICENSE_1.txt",
+          "raw_size": 1441
+        },
+        {
+          "sha256": "b989238918e1fdac1e46717cb405b63e92497a272413af0d989c1df6c8abcb6f",
+          "display_name": "AUTHORS_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\beautifulsoup4-4.15.0\\AUTHORS_1.txt",
+          "raw_size": 2201
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "42d3bdabb17a1a3a3b03b1a2ed3291d14cfa9e98d539dbfc709b0b02a3f59c52"
+    },
+    {
+      "id": "bidict",
+      "name": "bidict",
+      "normalized_name": "bidict",
+      "version": "0.23.1",
+      "license_summary": "MPL 2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "f16b4ee9088b77a7287cdb5013bb2407e2d0096079444da22ed34a4d10cfb1ca",
+      "artifact_path": "runtime/Lib/site-packages/bidict-0.23.1.dist-info/INSTALLER; runtime/Lib/site-packages/bidict-0.23.1.dist-info/LICENSE; runtime/Lib/site-packages/bidict-0.23.1.dist-info/METADATA; runtime/Lib/site-packages/bidict-0.23.1.dist-info/RECORD; runtime/Lib/site-packages/bidict-0.23.1.dist-info/WHEEL; runtime/Lib/site-packages/bidict-0.23.1.dist-info/top_level.txt; runtime/Lib/site-packages/bidict/__init__.py; runtime/Lib/site-packages/bidict/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/bidict/0.23.1/",
+        "version": "0.23.1"
+      },
+      "legal_documents": [
+        {
+          "sha256": "f3f53adcecaa48d73a66e238fa5ba906cb41876783b45d28a1346b3142eebd9a",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\bidict-0.23.1\\LICENSE_1.txt",
+          "raw_size": 16784
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "1d3b8b6bca4fde30d09b3ac44b987f4415fd515fb4b149205ad2a53b8afa109f"
+    },
+    {
+      "id": "bottle",
+      "name": "bottle",
+      "normalized_name": "bottle",
+      "version": "0.13.4",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "d86f9ad78b64b6d893710ab73e2eadcd385cc5b0609ec35a243080a273d0ed00",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/bottle.cpython-312.pyc; runtime/Lib/site-packages/bottle-0.13.4.dist-info/INSTALLER; runtime/Lib/site-packages/bottle-0.13.4.dist-info/METADATA; runtime/Lib/site-packages/bottle-0.13.4.dist-info/RECORD; runtime/Lib/site-packages/bottle-0.13.4.dist-info/WHEEL; runtime/Lib/site-packages/bottle-0.13.4.dist-info/entry_points.txt; runtime/Lib/site-packages/bottle-0.13.4.dist-info/licenses/LICENSE; runtime/Lib/site-packages/bottle-0.13.4.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "af150257b1f7cce92b6207854f2e8f90ea9ae52d7cac758d13a47bd12e2a2443",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\bottle-0.13.4\\LICENSE_1.txt",
+          "raw_size": 1066
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "f2c2fe93b3eaf93cae9080f248a25641630da3bce5ab3a0c5a5be556ff1060f2"
+    },
+    {
+      "id": "build",
+      "name": "build",
+      "normalized_name": "build",
+      "version": "1.5.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "bfb0da126df59c8e2639f7b6916cec794f86a437acc85eed5ada68878ac62686",
+      "artifact_path": "runtime/Lib/site-packages/build-1.5.0.dist-info/INSTALLER; runtime/Lib/site-packages/build-1.5.0.dist-info/METADATA; runtime/Lib/site-packages/build-1.5.0.dist-info/RECORD; runtime/Lib/site-packages/build-1.5.0.dist-info/WHEEL; runtime/Lib/site-packages/build-1.5.0.dist-info/entry_points.txt; runtime/Lib/site-packages/build-1.5.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/build/__init__.py; runtime/Lib/site-packages/build/__main__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "aaf9a29ca5907971ccf07de025375db34539a8d5eeebce20b46099805722106f",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\build-1.5.0\\LICENSE_1.txt",
+          "raw_size": 1113
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "5c4fb8d56e07288358f82c6bea6d6293bc25673bf1af81c6bfb280e37e30a2e5"
+    },
+    {
+      "id": "certifi",
+      "name": "certifi",
+      "normalized_name": "certifi",
+      "version": "2026.7.22",
+      "license_summary": "MPL-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "7b86bd665d0669940657e0ea2d89a859cdb83cfb5b4fc3943f630c0af5dce3f8",
+      "artifact_path": "runtime/Lib/site-packages/certifi-2026.7.22.dist-info/INSTALLER; runtime/Lib/site-packages/certifi-2026.7.22.dist-info/METADATA; runtime/Lib/site-packages/certifi-2026.7.22.dist-info/RECORD; runtime/Lib/site-packages/certifi-2026.7.22.dist-info/WHEEL; runtime/Lib/site-packages/certifi-2026.7.22.dist-info/licenses/LICENSE; runtime/Lib/site-packages/certifi-2026.7.22.dist-info/top_level.txt; runtime/Lib/site-packages/certifi/__init__.py; runtime/Lib/site-packages/certifi/__main__.py",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/certifi/2026.7.22/",
+        "version": "2026.7.22"
+      },
+      "legal_documents": [
+        {
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\certifi-2026.7.22\\LICENSE_1.txt",
+          "raw_size": 989
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "75854d6691e0cda20736f702fe1fa47b6f29cd0a338b715cb1e3193dde39049d"
+    },
+    {
+      "id": "cffi",
+      "name": "cffi",
+      "normalized_name": "cffi",
+      "version": "2.1.1",
+      "license_summary": "MIT-0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "92d766bd7445076a1f69a3928c3c59f2f000cf2c49f871bc5ac0ef2f9224c0cb",
+      "artifact_path": "runtime/Lib/site-packages/_cffi_backend.cp312-win_amd64.pyd; runtime/Lib/site-packages/cffi-2.1.1.dist-info/INSTALLER; runtime/Lib/site-packages/cffi-2.1.1.dist-info/METADATA; runtime/Lib/site-packages/cffi-2.1.1.dist-info/RECORD; runtime/Lib/site-packages/cffi-2.1.1.dist-info/WHEEL; runtime/Lib/site-packages/cffi-2.1.1.dist-info/entry_points.txt; runtime/Lib/site-packages/cffi-2.1.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/cffi-2.1.1.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "1d2438cadca31cb11257f8440703766e42c995202aa27e7f629f9a79a8b5c07f",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\cffi-2.1.1\\LICENSE_1.txt",
+          "raw_size": 1123
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "621d1968bc8c748ef820e711cd4f0b06abd0c3c79cb095e1650a260a72cbf4c1"
+    },
+    {
+      "id": "charset-normalizer",
+      "name": "charset-normalizer",
+      "normalized_name": "charset-normalizer",
+      "version": "3.5.1",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "b6d6c6a949979d7b178af966fa972ee2d0d29f3cd76fabb76eecad9d42a0c392",
+      "artifact_path": "runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/INSTALLER; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/METADATA; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/RECORD; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/WHEEL; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/entry_points.txt; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/charset_normalizer-3.5.1.dist-info/top_level.txt; runtime/Lib/site-packages/charset_normalizer/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "6d0d41bfe170ac6c7dc248c9a63e254d0fb45a60d50a8257d0af92c6e249b887",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\charset-normalizer-3.5.1\\LICENSE_1.txt",
+          "raw_size": 1092
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "43473bdc3611460b4d0f383052b6a3565a27fdca16d2e0c67fc5b73df9ceb42a"
+    },
+    {
+      "id": "click",
+      "name": "click",
+      "normalized_name": "click",
+      "version": "8.4.2",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "fbbf661e103eae75b830016d3e62672d7b01a5179cc5325e6f74beda32d2330d",
+      "artifact_path": "runtime/Lib/site-packages/click-8.4.2.dist-info/INSTALLER; runtime/Lib/site-packages/click-8.4.2.dist-info/METADATA; runtime/Lib/site-packages/click-8.4.2.dist-info/RECORD; runtime/Lib/site-packages/click-8.4.2.dist-info/WHEEL; runtime/Lib/site-packages/click-8.4.2.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/click/__init__.py; runtime/Lib/site-packages/click/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/click/__pycache__/_compat.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\click-8.4.2\\LICENSE_1txt",
+          "raw_size": 1475
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "7fc3839a526ea45cd718696779a1df884e60c40dfc7981db0c38e4c84c5836ab"
+    },
+    {
+      "id": "clr-loader",
+      "name": "clr_loader",
+      "normalized_name": "clr-loader",
+      "version": "0.3.1",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "8ccc80c1cc72469c978cad7516d2aac1e0de58ecc27ca8b57e254d7ec5562793",
+      "artifact_path": "runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/INSTALLER; runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/METADATA; runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/RECORD; runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/WHEEL; runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/clr_loader-0.3.1.dist-info/top_level.txt; runtime/Lib/site-packages/clr_loader/__init__.py; runtime/Lib/site-packages/clr_loader/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "dd6bdca10cdc3b24c6b0b6cef5fd611b7feb6917f127833283ddcdb310d3b453",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\clr-loader-0.3.1\\LICENSE_1.txt",
+          "raw_size": 1079
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "clr_loader",
+          "version": "present-in-release",
+          "license": "MIT",
+          "source": "baseline-package-fallback",
+          "whenPackagePresent": [
+            "clr_loader"
+          ],
+          "files": [
+            "files/LICENSE-clr_loader-MIT.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "6a9420ee079a0af2c86d210e1de46ba0a5678f7833073978ef32bd44f49c3f68"
+    },
+    {
+      "id": "colorama",
+      "name": "colorama",
+      "normalized_name": "colorama",
+      "version": "0.4.6",
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "dd32c7d0ab19ee298e7134cbac428559f1d95fe96cc43892419b427803a65732",
+      "artifact_path": "runtime/Lib/site-packages/colorama-0.4.6.dist-info/INSTALLER; runtime/Lib/site-packages/colorama-0.4.6.dist-info/METADATA; runtime/Lib/site-packages/colorama-0.4.6.dist-info/RECORD; runtime/Lib/site-packages/colorama-0.4.6.dist-info/WHEEL; runtime/Lib/site-packages/colorama-0.4.6.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/colorama/__init__.py; runtime/Lib/site-packages/colorama/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/colorama/__pycache__/ansi.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\colorama-0.4.6\\LICENSE_1txt",
+          "raw_size": 1491
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "d5b2b110783d76edffb5d79fefee03f2a111e650ccec3e47be06bdb3daa944f5"
+    },
+    {
+      "id": "docutils",
+      "name": "docutils",
+      "normalized_name": "docutils",
+      "version": "0.23",
+      "license_summary": "License :: Public Domain; License :: OSI Approved :: BSD License; License :: OSI Approved :: GNU General Public License (GPL)",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "480e07b116afbba2cf4ae5a81707bb6313922cfdd69dbc69cc437d930decf548",
+      "artifact_path": "runtime/Lib/site-packages/docutils-0.23.dist-info/INSTALLER; runtime/Lib/site-packages/docutils-0.23.dist-info/METADATA; runtime/Lib/site-packages/docutils-0.23.dist-info/RECORD; runtime/Lib/site-packages/docutils-0.23.dist-info/WHEEL; runtime/Lib/site-packages/docutils-0.23.dist-info/entry_points.txt; runtime/Lib/site-packages/docutils-0.23.dist-info/licenses/COPYING.rst; runtime/Lib/site-packages/docutils-0.23.dist-info/licenses/licenses/BSD-0-Clause.rst; runtime/Lib/site-packages/docutils-0.23.dist-info/licenses/licenses/BSD-2-Clause.rst",
+      "obligation_class": "strong_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/docutils/0.23/",
+        "version": "0.23"
+      },
+      "legal_documents": [
+        {
+          "sha256": "6ab4f27c76c74f96e5e692da5944a6f82968f3bddaac5660a4aa723e70eb5d8f",
+          "display_name": "COPYING_1rst",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\docutils-0.23\\COPYING_1rst",
+          "raw_size": 6075
+        },
+        {
+          "sha256": "c0e192fdb6671d51cc645d81b74a1da5b7762bbf79d8dc75a85411b816b87c15",
+          "display_name": "gpl-3-0_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\docutils-0.23\\gpl-3-0_1txt",
+          "raw_size": 35150
+        },
+        {
+          "sha256": "42ac50251ab8a6738f77d5707f2a788dbf3446a6ed68edecb6ac17489a78e163",
+          "display_name": "BSD-0-Clause_1rst",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\docutils-0.23\\BSD-0-Clause_1rst",
+          "raw_size": 644
+        },
+        {
+          "sha256": "b8f3b31a2f4312401fe4122fe932a333ec0d7e47d849c02da0404e8048fe74d0",
+          "display_name": "BSD-2-Clause_1rst",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\docutils-0.23\\BSD-2-Clause_1rst",
+          "raw_size": 1318
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "5b77782851baac7012698ad432617c7f767bbc504c10995395c562874e3b37f3"
+    },
+    {
+      "id": "fastapi",
+      "name": "fastapi",
+      "normalized_name": "fastapi",
+      "version": "0.141.1",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "dff2cda14856699d72a0d91a0a8a355ee4d37009f82cc71745e73de53572f04a",
+      "artifact_path": "runtime/Lib/site-packages/fastapi-0.141.1.dist-info/INSTALLER; runtime/Lib/site-packages/fastapi-0.141.1.dist-info/METADATA; runtime/Lib/site-packages/fastapi-0.141.1.dist-info/RECORD; runtime/Lib/site-packages/fastapi-0.141.1.dist-info/WHEEL; runtime/Lib/site-packages/fastapi-0.141.1.dist-info/entry_points.txt; runtime/Lib/site-packages/fastapi-0.141.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/fastapi/.agents/skills/fastapi/SKILL.md; runtime/Lib/site-packages/fastapi/.agents/skills/fastapi/references/dependencies.md",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\fastapi-0.141.1\\LICENSE_1.txt",
+          "raw_size": 1086
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "02741f6adab3efd66d3a80e5ee3b3ccf5ddb4c817b261185e03a3997bf58aba7"
+    },
+    {
+      "id": "frozenlist",
+      "name": "frozenlist",
+      "normalized_name": "frozenlist",
+      "version": "1.8.0",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "470a3aa5400356bc09e31efd3ce1c8605b5fad6509eb20141339843c7a15b3a1",
+      "artifact_path": "runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/INSTALLER; runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/METADATA; runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/RECORD; runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/WHEEL; runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/frozenlist-1.8.0.dist-info/top_level.txt; runtime/Lib/site-packages/frozenlist/__init__.py; runtime/Lib/site-packages/frozenlist/__init__.pyi",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "6fd5243e92dd7f98ec69c7ac377728e74905709ff527a5bf98d6d0263c04f5b6",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\frozenlist-1.8.0\\LICENSE_1.txt",
+          "raw_size": 11332
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "b9981f00c9277c58ee89cd951534d5677d12534f4aa6dd1c8373dbdfad42da4f"
+    },
+    {
+      "id": "fzf",
+      "name": "fzf",
+      "normalized_name": "fzf",
+      "version": "bundled",
+      "license_summary": "MIT",
+      "source_kind": "baseline-tool",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "026e190c444cdd2b19302f72b7107d5e0ea2e8f31ebb701966c647040068da48",
+      "artifact_path": "system_core/fzf.exe",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "a296f423c0d30ce3581435e78e7e36c5fe73984a882d8720c72e713b4593588b",
+          "display_name": "LICENSE-fzf.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\fzf-bundled\\LICENSE-fzf.txt",
+          "raw_size": 1106
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "fzf",
+          "version": "bundled",
+          "license": "MIT",
+          "source": "baseline-tool",
+          "whenPathExists": [
+            "system_core/fzf.exe",
+            "Payload/Scripts/bin/fzf.exe",
+            "Scripts/bin/fzf.exe"
+          ],
+          "files": [
+            "files/LICENSE-fzf.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "bf922c015772507627d2c31ca50843b51513316f59809753d8e79dc33501bc74"
+    },
+    {
+      "id": "h11",
+      "name": "h11",
+      "normalized_name": "h11",
+      "version": "0.16.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "c66a5205b78f67f13a307a502f19281df29ec02dbce7fee8a22cd2dc36b6a7d5",
+      "artifact_path": "runtime/Lib/site-packages/h11-0.16.0.dist-info/INSTALLER; runtime/Lib/site-packages/h11-0.16.0.dist-info/METADATA; runtime/Lib/site-packages/h11-0.16.0.dist-info/RECORD; runtime/Lib/site-packages/h11-0.16.0.dist-info/WHEEL; runtime/Lib/site-packages/h11-0.16.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/h11-0.16.0.dist-info/top_level.txt; runtime/Lib/site-packages/h11/__init__.py; runtime/Lib/site-packages/h11/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\h11-0.16.0\\LICENSE_1txt",
+          "raw_size": 1124
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "ae4509e334f4668d5ec07aa79aca15fd3a3ea0bd4eebd231d13a8b132ed7b7f9"
+    },
+    {
+      "id": "httpcore",
+      "name": "httpcore",
+      "normalized_name": "httpcore",
+      "version": "1.0.9",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "66fd333e63eba95beb173cc4437016928507ecf171318868d9b9b36acde68abd",
+      "artifact_path": "runtime/Lib/site-packages/httpcore-1.0.9.dist-info/INSTALLER; runtime/Lib/site-packages/httpcore-1.0.9.dist-info/METADATA; runtime/Lib/site-packages/httpcore-1.0.9.dist-info/RECORD; runtime/Lib/site-packages/httpcore-1.0.9.dist-info/WHEEL; runtime/Lib/site-packages/httpcore-1.0.9.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/httpcore/__init__.py; runtime/Lib/site-packages/httpcore/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/httpcore/__pycache__/_api.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\httpcore-1.0.9\\LICENSE_1md",
+          "raw_size": 1518
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "fe604c9125281ce34d3414fbf6123f0484950318eb61ad57ba84b9969808e218"
+    },
+    {
+      "id": "httptools",
+      "name": "httptools",
+      "normalized_name": "httptools",
+      "version": "0.8.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "d4bddccb56c6260416d9d1d30be0f9eed56683e8cd63ca329ab11e90dfee4cf2",
+      "artifact_path": "runtime/Lib/site-packages/httptools-0.8.0.dist-info/INSTALLER; runtime/Lib/site-packages/httptools-0.8.0.dist-info/METADATA; runtime/Lib/site-packages/httptools-0.8.0.dist-info/RECORD; runtime/Lib/site-packages/httptools-0.8.0.dist-info/WHEEL; runtime/Lib/site-packages/httptools-0.8.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/httptools-0.8.0.dist-info/licenses/vendor/http-parser/LICENSE-MIT; runtime/Lib/site-packages/httptools-0.8.0.dist-info/licenses/vendor/llhttp/LICENSE; runtime/Lib/site-packages/httptools-0.8.0.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "f4573e7cb7676745fb5b8d36fa548aa93e391cfb6872ddacd65130c45ea6a92d",
+          "display_name": "LICENSE_2.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\httptools-0.8.0\\LICENSE_2.txt",
+          "raw_size": 1114
+        },
+        {
+          "sha256": "628168d68bb5a8a17e0bbefb3bd74e326e1edc20583d76f52f457c82c921867d",
+          "display_name": "LICENSE_3.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\httptools-0.8.0\\LICENSE_3.txt",
+          "raw_size": 1091
+        },
+        {
+          "sha256": "2580ca6f428e469f8f6626f621ea867d5356638d97dc748b5790df8ae52b3926",
+          "display_name": "LICENSE-MIT_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\httptools-0.8.0\\LICENSE-MIT_1.txt",
+          "raw_size": 1096
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "65edade9f1a920b4d25b92da2e9d67276b872dc2f36c5319b43349a33a0452ea"
+    },
+    {
+      "id": "httpx",
+      "name": "httpx",
+      "normalized_name": "httpx",
+      "version": "0.28.1",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "2529163c89ce1e7ae966d5ea350ec6b77d87d05b80c1f3bfc0174ff415a158a9",
+      "artifact_path": "runtime/Lib/site-packages/httpx-0.28.1.dist-info/INSTALLER; runtime/Lib/site-packages/httpx-0.28.1.dist-info/METADATA; runtime/Lib/site-packages/httpx-0.28.1.dist-info/RECORD; runtime/Lib/site-packages/httpx-0.28.1.dist-info/WHEEL; runtime/Lib/site-packages/httpx-0.28.1.dist-info/entry_points.txt; runtime/Lib/site-packages/httpx-0.28.1.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/httpx/__init__.py; runtime/Lib/site-packages/httpx/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\httpx-0.28.1\\LICENSE_1md",
+          "raw_size": 1508
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "9130af16d06a1dcb6415401e2d88b0c8d79852a79d2faa7bdca4867ab0af3467"
+    },
+    {
+      "id": "idna",
+      "name": "idna",
+      "normalized_name": "idna",
+      "version": "3.19",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "691af1127da0c105a385fc6691c2e5da32aca3859f229adc16d48bfeb28d1edf",
+      "artifact_path": "runtime/Lib/site-packages/idna-3.19.dist-info/INSTALLER; runtime/Lib/site-packages/idna-3.19.dist-info/METADATA; runtime/Lib/site-packages/idna-3.19.dist-info/RECORD; runtime/Lib/site-packages/idna-3.19.dist-info/WHEEL; runtime/Lib/site-packages/idna-3.19.dist-info/entry_points.txt; runtime/Lib/site-packages/idna-3.19.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/idna/__init__.py; runtime/Lib/site-packages/idna/__main__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\idna-3.19\\LICENSE_1md",
+          "raw_size": 1541
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "d12132f39d3ab0208ec1dcbf4d1f9fede860fc89701a6697c0e7fc9d5c37563e"
+    },
+    {
+      "id": "ifaddr",
+      "name": "ifaddr",
+      "normalized_name": "ifaddr",
+      "version": "0.2.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "df754ec03d85dcba07246473986a84f42b3a0dc6c33b082d6b1377b83acdafd6",
+      "artifact_path": "runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/INSTALLER; runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/LICENSE.txt; runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/METADATA; runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/RECORD; runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/WHEEL; runtime/Lib/site-packages/ifaddr-0.2.0.dist-info/top_level.txt; runtime/Lib/site-packages/ifaddr/__init__.py; runtime/Lib/site-packages/ifaddr/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "8700856576ae2bc80c63bc970250510d9213fb02fed006d5f22742c9ddde24d7",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\ifaddr-0.2.0\\LICENSE_1txt",
+          "raw_size": 1084
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "8c305eacedb5f3cd156e47b752b1a3a0605c59cb87aebf1c4fd513c783624e48"
+    },
+    {
+      "id": "img2pdf",
+      "name": "img2pdf",
+      "normalized_name": "img2pdf",
+      "version": "0.6.3",
+      "license_summary": "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "bbbadc190f071a6753b325991cb9a06bf759cbf9bfde071ba19377ae1d8e2adc",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/img2pdf.cpython-312.pyc; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/INSTALLER; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/METADATA; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/RECORD; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/REQUESTED; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/WHEEL; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/entry_points.txt; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/licenses/LICENSE",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/img2pdf/0.6.3/",
+        "version": "0.6.3"
+      },
+      "legal_documents": [
+        {
+          "sha256": "6557adc4bc1d59232e27567a185dd70cf2ecca3154018b0be61ea29cf9e814e2",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\img2pdf-0.6.3\\LICENSE_1.txt",
+          "raw_size": 7652
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "969ec8686edf3d90fdc6af649e73d054bf1e36f6419f105d1de61190b9b3e823"
+    },
+    {
+      "id": "iniconfig",
+      "name": "iniconfig",
+      "normalized_name": "iniconfig",
+      "version": "2.3.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "099c7677c414be56f1aae2f14701447d04b0c51c9b38618175ac23b89044eb3d",
+      "artifact_path": "runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/INSTALLER; runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/METADATA; runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/RECORD; runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/WHEEL; runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/iniconfig-2.3.0.dist-info/top_level.txt; runtime/Lib/site-packages/iniconfig/__init__.py; runtime/Lib/site-packages/iniconfig/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\iniconfig-2.3.0\\LICENSE_1.txt",
+          "raw_size": 1098
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "0fedc61afba6e82fefd9ca319ed4c1e15c80bce64546704d128bbafb7ab90a99"
+    },
+    {
+      "id": "itsdangerous",
+      "name": "itsdangerous",
+      "normalized_name": "itsdangerous",
+      "version": "2.2.0",
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "210ebe28d12c5213c72c840b0764c2cae22359299df72023079ff4b4649a1eb9",
+      "artifact_path": "runtime/Lib/site-packages/itsdangerous-2.2.0.dist-info/INSTALLER; runtime/Lib/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt; runtime/Lib/site-packages/itsdangerous-2.2.0.dist-info/METADATA; runtime/Lib/site-packages/itsdangerous-2.2.0.dist-info/RECORD; runtime/Lib/site-packages/itsdangerous-2.2.0.dist-info/WHEEL; runtime/Lib/site-packages/itsdangerous/__init__.py; runtime/Lib/site-packages/itsdangerous/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/itsdangerous/__pycache__/_json.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "63af09891b6be8ad1a4252ed43af0f4efba7fc948e228367bed7f3c5ae0b09d7",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\itsdangerous-2.2.0\\LICENSE_1txt",
+          "raw_size": 1475
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "91a734c06e6e3f74de53c7eede5c77af1311561cccdc6e76eac269044c6740a6"
+    },
+    {
+      "id": "jinja2",
+      "name": "Jinja2",
+      "normalized_name": "jinja2",
+      "version": "3.1.6",
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "0d27533366273d26df51a01011372f57cb8b6fce9f5afb7a4a1139e9b8d84370",
+      "artifact_path": "runtime/Lib/site-packages/jinja2-3.1.6.dist-info/INSTALLER; runtime/Lib/site-packages/jinja2-3.1.6.dist-info/METADATA; runtime/Lib/site-packages/jinja2-3.1.6.dist-info/RECORD; runtime/Lib/site-packages/jinja2-3.1.6.dist-info/WHEEL; runtime/Lib/site-packages/jinja2-3.1.6.dist-info/entry_points.txt; runtime/Lib/site-packages/jinja2-3.1.6.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/jinja2/__init__.py; runtime/Lib/site-packages/jinja2/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\jinja2-3.1.6\\LICENSE_1txt",
+          "raw_size": 1475
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "783b4b29467847d1caf31152c7ba207eab9c3520cd7c2a06374637d4d5bc87db"
+    },
+    {
+      "id": "lxml",
+      "name": "lxml",
+      "normalized_name": "lxml",
+      "version": "6.1.2",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "ea85e22629f4f73e11ab810b96b26e97bb7e13ff5eac67661bbb594dde5ece5b",
+      "artifact_path": "runtime/Lib/site-packages/lxml-6.1.2.dist-info/INSTALLER; runtime/Lib/site-packages/lxml-6.1.2.dist-info/METADATA; runtime/Lib/site-packages/lxml-6.1.2.dist-info/RECORD; runtime/Lib/site-packages/lxml-6.1.2.dist-info/WHEEL; runtime/Lib/site-packages/lxml-6.1.2.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/lxml-6.1.2.dist-info/licenses/LICENSES.txt; runtime/Lib/site-packages/lxml-6.1.2.dist-info/top_level.txt; runtime/Lib/site-packages/lxml/ElementInclude.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "8fc2b568133516e46845d2147917adeee1648e70ae9ab5ed6c5417afef4ce855",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\lxml-6.1.2\\LICENSE_1txt",
+          "raw_size": 1538
+        },
+        {
+          "sha256": "388fa99f3bde4447cd5a4cbb114037be026854db6cfe89e112691c1d8abdcf3c",
+          "display_name": "LICENSES_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\lxml-6.1.2\\LICENSES_1txt",
+          "raw_size": 6348
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "0454fbcc643abf839f35de55591b8efb895597af36baaab03978eca3930aab76"
+    },
+    {
+      "id": "markdown-it-py",
+      "name": "markdown-it-py",
+      "normalized_name": "markdown-it-py",
+      "version": "4.2.0",
+      "license_summary": "License :: OSI Approved :: MIT License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "b3335d5da880d05ff64f06381a78085648876bd3ce9740920427d8608b18cbac",
+      "artifact_path": "runtime/Lib/site-packages/markdown_it/__init__.py; runtime/Lib/site-packages/markdown_it/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/_compat.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/_punycode.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/main.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/parser_block.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/parser_core.cpython-312.pyc; runtime/Lib/site-packages/markdown_it/__pycache__/parser_inline.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4a2260d6e2cd0f5a151a1e86dbfe7d3ed552b1e2beabf9941c1ba5c49cbce484",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\markdown-it-py-4.2.0\\LICENSE_1.txt",
+          "raw_size": 1078
+        },
+        {
+          "sha256": "792c48c5a849a15fdf9e37e8bcf9e6d1dd13b32b46c642a748a0a46a9919d473",
+          "display_name": "LICENSE_1markdown-it",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\markdown-it-py-4.2.0\\LICENSE_1markdown-it",
+          "raw_size": 1073
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "e276da62e4decb35f05de104754eb2ecb72979b7992ad675a48c98dd3b9ceda6"
+    },
+    {
+      "id": "markdown2",
+      "name": "markdown2",
+      "normalized_name": "markdown2",
+      "version": "2.5.5",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "294f38723a75cb9450de4bdec0edec0218b9462743da1a3abea6af7d5020932c",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/markdown2.cpython-312.pyc; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/INSTALLER; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/LICENSE.txt; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/METADATA; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/RECORD; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/WHEEL; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/entry_points.txt; runtime/Lib/site-packages/markdown2-2.5.5.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "350d81a24cca849298e755022fad37c43a006ccdea3f6dcf044f00832deeea6f",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\markdown2-2.5.5\\LICENSE_1txt",
+          "raw_size": 2313
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "f969e6cb2b22117d8d4d2938d48f91837e0310f573dc6fb2ced4b214117541e8"
+    },
+    {
+      "id": "markupsafe",
+      "name": "MarkupSafe",
+      "normalized_name": "markupsafe",
+      "version": "3.0.3",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "e9c3da99d27e25510ebe43eb67ea3701b263e2764eb18dd3bce1afe13f29e96a",
+      "artifact_path": "runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/INSTALLER; runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/METADATA; runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/RECORD; runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/WHEEL; runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/markupsafe-3.0.3.dist-info/top_level.txt; runtime/Lib/site-packages/markupsafe/__init__.py; runtime/Lib/site-packages/markupsafe/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\markupsafe-3.0.3\\LICENSE_1txt",
+          "raw_size": 1503
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "2bef664b3c0b0f54ae320169f2c8ecc53515b547d5c5eb01d86c2bd573270d38"
+    },
+    {
+      "id": "mdurl",
+      "name": "mdurl",
+      "normalized_name": "mdurl",
+      "version": "0.1.2",
+      "license_summary": "License :: OSI Approved :: MIT License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "9dfd6158d1e935bfa34f35f7ed84e8905472972ec0c4a292b7e23dbe2585e608",
+      "artifact_path": "runtime/Lib/site-packages/mdurl-0.1.2.dist-info/INSTALLER; runtime/Lib/site-packages/mdurl-0.1.2.dist-info/LICENSE; runtime/Lib/site-packages/mdurl-0.1.2.dist-info/METADATA; runtime/Lib/site-packages/mdurl-0.1.2.dist-info/RECORD; runtime/Lib/site-packages/mdurl-0.1.2.dist-info/WHEEL; runtime/Lib/site-packages/mdurl/__init__.py; runtime/Lib/site-packages/mdurl/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/mdurl/__pycache__/_decode.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "7c605df6e28667a9603118e98274f64a49ce3eed0d26fccce9534a345e0ef955",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\mdurl-0.1.2\\LICENSE_1.txt",
+          "raw_size": 2338
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "7704d05893bf632e209dadd6df9907084c836e889336519c9576e3c8b8c4218d"
+    },
+    {
+      "id": "multidict",
+      "name": "multidict",
+      "normalized_name": "multidict",
+      "version": "6.7.1",
+      "license_summary": "Apache License 2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "7d1205dc119d57bed37500d4302a25f4ccb9e311515dba2e7307a439d8e91556",
+      "artifact_path": "runtime/Lib/site-packages/multidict-6.7.1.dist-info/INSTALLER; runtime/Lib/site-packages/multidict-6.7.1.dist-info/METADATA; runtime/Lib/site-packages/multidict-6.7.1.dist-info/RECORD; runtime/Lib/site-packages/multidict-6.7.1.dist-info/WHEEL; runtime/Lib/site-packages/multidict-6.7.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/multidict-6.7.1.dist-info/top_level.txt; runtime/Lib/site-packages/multidict/__init__.py; runtime/Lib/site-packages/multidict/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "926b19214015f0cad2a2c31c418401961379ae8d72b25a637981bb7a5158a96b",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\multidict-6.7.1\\LICENSE_1.txt",
+          "raw_size": 611
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "f6a6a2d7189142a2bb0d3603cffe3d0f2070c4e3c98e870743d76764e77738f4"
+    },
+    {
+      "id": "nicegui",
+      "name": "nicegui",
+      "normalized_name": "nicegui",
+      "version": "3.16.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "d9246213a90f733cbe06e2a42e59f2439549e0f5473f74ee104958a8bf81bd4f",
+      "artifact_path": "runtime/Lib/site-packages/nicegui-3.16.0.dist-info/INSTALLER; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/METADATA; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/RECORD; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/REQUESTED; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/WHEEL; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/entry_points.txt; runtime/Lib/site-packages/nicegui-3.16.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/nicegui/.syncignore",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "41c065c2081141886f7d3004e3cd4000c1507cc4bf37a063f12be1d53e9db272",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\nicegui-3.16.0\\LICENSE_1.txt",
+          "raw_size": 1072
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "NiceGUI",
+          "version": "present-in-release",
+          "license": "MIT",
+          "source": "baseline-package",
+          "whenPackagePresent": [
+            "nicegui"
+          ],
+          "files": [
+            "files/LICENSE-NiceGUI.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "69b23c6bf5e54130cff3bf925dd6699c011f0416c4cdb616336c786d928e0200"
+    },
+    {
+      "id": "numpy",
+      "name": "numpy",
+      "normalized_name": "numpy",
+      "version": "2.5.2",
+      "license_summary": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "44e0c129cb54d5c199930fa0653b6428eb0b943e862a8d1c8bf3e567b35a1bf6",
+      "artifact_path": "runtime/Lib/site-packages/numpy-2.5.2.dist-info/DELVEWHEEL; runtime/Lib/site-packages/numpy-2.5.2.dist-info/INSTALLER; runtime/Lib/site-packages/numpy-2.5.2.dist-info/METADATA; runtime/Lib/site-packages/numpy-2.5.2.dist-info/RECORD; runtime/Lib/site-packages/numpy-2.5.2.dist-info/WHEEL; runtime/Lib/site-packages/numpy-2.5.2.dist-info/entry_points.txt; runtime/Lib/site-packages/numpy-2.5.2.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/numpy-2.5.2.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4a765ceefcddd40d6518f2f22f0fe2c6d532890be821d8bb1f2c21ebafed8817",
+          "display_name": "LICENSE_3.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_3.txt",
+          "raw_size": 1616
+        },
+        {
+          "sha256": "1900269b4c2f0ff0c7ad01ecf13f5ded5610968a0cf1fb6bc3a83bccc2b4c38d",
+          "display_name": "LICENSE_9md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_9md",
+          "raw_size": 3582
+        },
+        {
+          "sha256": "a7a1034ce1018ae36675f3e4c85f07854e4cc9ac87c1d0252e75002d52ec95e4",
+          "display_name": "LICENSE_3txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_3txt",
+          "raw_size": 45831
+        },
+        {
+          "sha256": "f419e990887622d00595611ea5da8497b906ab63ba868ed1f3d7b0384287e113",
+          "display_name": "LICENSE_4txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_4txt",
+          "raw_size": 1039
+        },
+        {
+          "sha256": "a85ca13fdf90160b64a0698215868c13b74d835ad0a4e2ba44713b8c5058a056",
+          "display_name": "LICENSE_10md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_10md",
+          "raw_size": 1523
+        },
+        {
+          "sha256": "b8b1fae5894cfbe213b47f1378bb2269cf82de18b34447e871c0225ace0d3ad7",
+          "display_name": "LICENSE_4.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_4.txt",
+          "raw_size": 21155
+        },
+        {
+          "sha256": "d7e9361b9533f48dd1e60ff7e4ab4dd1b53230ca2d4bf8d79bf3efa5f53336be",
+          "display_name": "LICENSE_11md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_11md",
+          "raw_size": 1176
+        },
+        {
+          "sha256": "9d4098846018319cd68e228ee6220361787f73bccbf00237a85e4fc9621b998f",
+          "display_name": "LICENSE_12md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_12md",
+          "raw_size": 1253
+        },
+        {
+          "sha256": "c17011467b4fe6e20fbfbeda4df09e58c2bca5480a063e55735a4000a379aad9",
+          "display_name": "LICENSE_5.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_5.txt",
+          "raw_size": 1573
+        },
+        {
+          "sha256": "6f5828a57223d4cc7f8ea505a2623e7b978b242752c1515e355f46ba2cec1800",
+          "display_name": "LICENSE_13md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_13md",
+          "raw_size": 1540
+        },
+        {
+          "sha256": "ef21afaad4bb20d2020491dc27ed55ba0d042f1b9487911a57f28b46b407a2b7",
+          "display_name": "LICENSE_14md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_14md",
+          "raw_size": 2986
+        },
+        {
+          "sha256": "a14cc25e10d40a3aa705b7de2fb764a6535d8ee9b2db4e1724900585457dfd55",
+          "display_name": "LICENSE_5txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_5txt",
+          "raw_size": 2314
+        },
+        {
+          "sha256": "82606ac1b37d264a2260639f8a1646f2a66b713941447e01362e1fef587b73a8",
+          "display_name": "LICENSE_15md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_15md",
+          "raw_size": 340
+        },
+        {
+          "sha256": "5f6ed77cd0326d7a2598962550123657845db4e8095ee29904f70e2717c0816e",
+          "display_name": "LICENSE_16md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_16md",
+          "raw_size": 2805
+        },
+        {
+          "sha256": "f7b14309e5f54e5022b26448eefd419988ada2aec01d3c1162d84a0ea8f21f2c",
+          "display_name": "dragon4_LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\dragon4_LICENSE_1txt",
+          "raw_size": 1441
+        },
+        {
+          "sha256": "211e7d737d6179a08f791ebb0a99897ce7cd2457410c542876d125576edfe910",
+          "display_name": "LICENSE_17md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\LICENSE_17md",
+          "raw_size": 1542
+        },
+        {
+          "sha256": "3f2c1ffa76383a55ae0aac01c9737cd70050dff63e1f026694fbe9d662573c98",
+          "display_name": "COPYING_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\numpy-2.5.2\\COPYING_1.txt",
+          "raw_size": 704
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "d32d2d30095acf0a41696c60f7248750963c2428dc276276c1b675a59bccff1b"
+    },
+    {
+      "id": "orjson",
+      "name": "orjson",
+      "normalized_name": "orjson",
+      "version": "3.12.0",
+      "license_summary": "MPL-2.0 AND (Apache-2.0 OR MIT)",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "e5580c78d0b60e402e7229715135171a79a919f1780543ba09a7138a5390520e",
+      "artifact_path": "runtime/Lib/site-packages/orjson-3.12.0.dist-info/INSTALLER; runtime/Lib/site-packages/orjson-3.12.0.dist-info/METADATA; runtime/Lib/site-packages/orjson-3.12.0.dist-info/RECORD; runtime/Lib/site-packages/orjson-3.12.0.dist-info/WHEEL; runtime/Lib/site-packages/orjson-3.12.0.dist-info/licenses/LICENSE-APACHE; runtime/Lib/site-packages/orjson-3.12.0.dist-info/licenses/LICENSE-MIT; runtime/Lib/site-packages/orjson-3.12.0.dist-info/licenses/LICENSE-MPL-2.0; runtime/Lib/site-packages/orjson-3.12.0.dist-info/sboms/orjson.cyclonedx.json",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/orjson/3.12.0/",
+        "version": "3.12.0"
+      },
+      "legal_documents": [
+        {
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "display_name": "LICENSE-MIT_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\orjson-3.12.0\\LICENSE-MIT_1.txt",
+          "raw_size": 1046
+        },
+        {
+          "sha256": "143368af9701a24ebaf89fe5310ad8116ca71e8e99f17415c0dd893f6a256ae4",
+          "display_name": "LICENSE-APACHE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\orjson-3.12.0\\LICENSE-APACHE_1.txt",
+          "raw_size": 11048
+        },
+        {
+          "sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+          "display_name": "LICENSE-MPL-2_10",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\orjson-3.12.0\\LICENSE-MPL-2_10",
+          "raw_size": 17100
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "bd6a74c15dd9267273f83341442d64b5cb0778be8b39ed1312f486c0cc6a1d4a"
+    },
+    {
+      "id": "packaging",
+      "name": "packaging",
+      "normalized_name": "packaging",
+      "version": "26.3",
+      "license_summary": "Apache-2.0 OR BSD-2-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "9ad3ed5bcb34944cd9211c712f98dd831b9c310777813307a5483fae46c786cb",
+      "artifact_path": "runtime/Lib/site-packages/packaging-26.3.dist-info/INSTALLER; runtime/Lib/site-packages/packaging-26.3.dist-info/METADATA; runtime/Lib/site-packages/packaging-26.3.dist-info/RECORD; runtime/Lib/site-packages/packaging-26.3.dist-info/REQUESTED; runtime/Lib/site-packages/packaging-26.3.dist-info/WHEEL; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE.APACHE; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE.BSD",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\packaging-26.3\\LICENSE_1.txt",
+          "raw_size": 197
+        },
+        {
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+          "display_name": "LICENSE_1BSD",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\packaging-26.3\\LICENSE_1BSD",
+          "raw_size": 1344
+        },
+        {
+          "sha256": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
+          "display_name": "LICENSE_1APACHE",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\packaging-26.3\\LICENSE_1APACHE",
+          "raw_size": 10174
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "34949e94d374d777e3a75b17dce7f63af384f7a08e941ba666a3745f38b9a568"
+    },
+    {
+      "id": "pikepdf",
+      "name": "pikepdf",
+      "normalized_name": "pikepdf",
+      "version": "10.12.0",
+      "license_summary": "MPL-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "c0e9ada37beea68d1e0cacc3a9a75ac345829c2021cea7df56a1e5d668cd01cf",
+      "artifact_path": "runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/DELVEWHEEL; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/INSTALLER; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/METADATA; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/RECORD; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/WHEEL; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/licenses/third-party-licenses/GCC-exception-3.1.txt; runtime/Lib/site-packages/pikepdf-10.12.0.dist-info/licenses/third-party-licenses/GPL-3.0.txt",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/pikepdf/10.12.0/",
+        "version": "10.12.0"
+      },
+      "legal_documents": [
+        {
+          "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\LICENSE_1txt",
+          "raw_size": 16725
+        },
+        {
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+          "display_name": "qpdf_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\qpdf_1txt",
+          "raw_size": 11358
+        },
+        {
+          "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243",
+          "display_name": "zlib_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\zlib_1txt",
+          "raw_size": 1002
+        },
+        {
+          "sha256": "7af47da6bfd971da0f307c583f3d75d52a18fdb8eeb687ff3273898aa8cfa61e",
+          "display_name": "README_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\README_1md",
+          "raw_size": 4705
+        },
+        {
+          "sha256": "605e9047a563c5c8396ffb18232aa4304ec56586aee537c45064c6fb425e44ad",
+          "display_name": "GPL-3.0_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\GPL-3.0_1txt",
+          "raw_size": 35149
+        },
+        {
+          "sha256": "657443fd2340ed2d45d44ceb57df718bc810abcc060a9032f93759c4afab9fa2",
+          "display_name": "openssl_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\openssl_1txt",
+          "raw_size": 10175
+        },
+        {
+          "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579",
+          "display_name": "libjpeg-turbo_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\libjpeg-turbo_1txt",
+          "raw_size": 6077
+        },
+        {
+          "sha256": "28e85c5aa4af9b4f1dfe6b4817aa3eefb3eaaee7fd735045016f29ccf50276a1",
+          "display_name": "GCC-exception-3.1_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\GCC-exception-3.1_1txt",
+          "raw_size": 3324
+        },
+        {
+          "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6",
+          "display_name": "libjpeg-turbo-README.ijg_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\libjpeg-turbo-README.ijg_1txt",
+          "raw_size": 12799
+        },
+        {
+          "sha256": "116b4e8ee0885dbc69828206586d7ecf05abe1bd66aaad26b4db7b22840d5012",
+          "display_name": "microsoft-visual-cpp-runtime_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pikepdf-10.12.0\\microsoft-visual-cpp-runtime_1txt",
+          "raw_size": 1697
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "aa8169f6fe07928bc0c10e3589d46992abbb1d050c322eb8cdde6548d2444d31"
+    },
+    {
+      "id": "pillow",
+      "name": "pillow",
+      "normalized_name": "pillow",
+      "version": "12.3.0",
+      "license_summary": "MIT-CMU",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "660359ed2046f6fec1398c8ffbaa0f83814c6615be33715af6989998fe72ef58",
+      "artifact_path": "runtime/Lib/site-packages/PIL/AvifImagePlugin.py; runtime/Lib/site-packages/PIL/BdfFontFile.py; runtime/Lib/site-packages/PIL/BlpImagePlugin.py; runtime/Lib/site-packages/PIL/BmpImagePlugin.py; runtime/Lib/site-packages/PIL/BufrStubImagePlugin.py; runtime/Lib/site-packages/PIL/ContainerIO.py; runtime/Lib/site-packages/PIL/CurImagePlugin.py; runtime/Lib/site-packages/PIL/DcxImagePlugin.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "ab0d05ea62c2817a068c92bf068db7a18a493da84cce4e43ad67acacc4d7b881",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pillow-12.3.0\\LICENSE_1.txt",
+          "raw_size": 78016
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "0306abdb2b68da5ed61f680b619320a237413c02cbf7433c3f921dc8d59b2809"
+    },
+    {
+      "id": "pillow-heif",
+      "name": "pillow_heif",
+      "normalized_name": "pillow-heif",
+      "version": "1.5.0",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "57fc3a72251ccf9696e6f020cf9b330b0c065a0233b19e8df0277333e8a2945c",
+      "artifact_path": "runtime/Lib/site-packages/_pillow_heif.cp312-win_amd64.pyd; runtime/Lib/site-packages/libde265-0-8d972a940366aaf7eaf6705a22de8e57.dll; runtime/Lib/site-packages/libgcc_s_seh-1-eff8eb7fc68513c933e71e04fe268e33.dll; runtime/Lib/site-packages/libheif-0840364bf533381e2055ff41f7009c9b.dll; runtime/Lib/site-packages/libstdc++-6-07ab034ef92ed1ea9b917556d8b72f2e.dll; runtime/Lib/site-packages/libwinpthread-1-f484ca5635ab90fd518c1beecebe8822.dll; runtime/Lib/site-packages/libx265-216-885aab310b379ba9f4fa0512bcdfba9d.dll; runtime/Lib/site-packages/pillow_heif-1.5.0.dist-info/DELVEWHEEL",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "9e2635f155b00af5a46cb2f2c9b052072ec546d59837ee74efc9cba2cbb83f3d",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pillow-heif-1.5.0\\LICENSE_1txt",
+          "raw_size": 1546
+        },
+        {
+          "sha256": "200ce164421a7ec6f0742dcacf100551847ad7b16ac58e6f30dd0f36fd8fcf7e",
+          "display_name": "LICENSES_bundled_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pillow-heif-1.5.0\\LICENSES_bundled_1txt",
+          "raw_size": 1015
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "18f8e71509690055fdf68ce5c3d24ba89e661e0790188fbd5a1d6c57b301ddd5"
+    },
+    {
+      "id": "pip",
+      "name": "pip",
+      "normalized_name": "pip",
+      "version": "26.2.1",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "efeac201d0d2293f25f4bcf966f13f14519305e684f2b24695e6fdce6a791778",
+      "artifact_path": "runtime/Lib/site-packages/pip-26.2.1.dist-info/INSTALLER; runtime/Lib/site-packages/pip-26.2.1.dist-info/METADATA; runtime/Lib/site-packages/pip-26.2.1.dist-info/RECORD; runtime/Lib/site-packages/pip-26.2.1.dist-info/REQUESTED; runtime/Lib/site-packages/pip-26.2.1.dist-info/WHEEL; runtime/Lib/site-packages/pip-26.2.1.dist-info/entry_points.txt; runtime/Lib/site-packages/pip-26.2.1.dist-info/licenses/AUTHORS.txt; runtime/Lib/site-packages/pip-26.2.1.dist-info/licenses/LICENSE.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+          "display_name": "LICENSE_12.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_12.txt",
+          "raw_size": 1056
+        },
+        {
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+          "display_name": "LICENSE_13.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_13.txt",
+          "raw_size": 1072
+        },
+        {
+          "sha256": "a8ad31b1c3f40dca5a84119351b8fa8ddc868edd77fad8a8ebf6d8f2d16fa4ae",
+          "display_name": "LICENSE_14.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_14.txt",
+          "raw_size": 11325
+        },
+        {
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+          "display_name": "LICENSE_15.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_15.txt",
+          "raw_size": 989
+        },
+        {
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_1md",
+          "raw_size": 1541
+        },
+        {
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
+          "display_name": "LICENSE_16.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_16.txt",
+          "raw_size": 1331
+        },
+        {
+          "sha256": "81932e77fef4cec306da54caf7d4d221dfd0f6fb6da214c712e36cb95ac47906",
+          "display_name": "LICENSE_17.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_17.txt",
+          "raw_size": 10142
+        },
+        {
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+          "display_name": "LICENSE_18.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_18.txt",
+          "raw_size": 197
+        },
+        {
+          "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d",
+          "display_name": "LICENSE_19.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_19.txt",
+          "raw_size": 751
+        },
+        {
+          "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca",
+          "display_name": "LICENSE_20.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_20.txt",
+          "raw_size": 1086
+        },
+        {
+          "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d",
+          "display_name": "LICENSE_4txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_4txt",
+          "raw_size": 14531
+        },
+        {
+          "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+          "display_name": "LICENSE_5txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_5txt",
+          "raw_size": 1093
+        },
+        {
+          "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
+          "display_name": "LICENSE_21.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_21.txt",
+          "raw_size": 1089
+        },
+        {
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+          "display_name": "LICENSE_1BSD",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_1BSD",
+          "raw_size": 1344
+        },
+        {
+          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
+          "display_name": "LICENSE_22.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_22.txt",
+          "raw_size": 1023
+        },
+        {
+          "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+          "display_name": "LICENSE_23.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_23.txt",
+          "raw_size": 1081
+        },
+        {
+          "sha256": "86eeee87be2a43f3ff1f56496f451f69243926f025fedbb033666c304c4c161b",
+          "display_name": "LICENSE_6txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_6txt",
+          "raw_size": 558
+        },
+        {
+          "sha256": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
+          "display_name": "LICENSE_1APACHE",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_1APACHE",
+          "raw_size": 10174
+        },
+        {
+          "sha256": "634300a669d49aeae65b12c6c48c924c51a4cdf3d1ff086dc3456dc8bcaa2104",
+          "display_name": "LICENSE_7txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\LICENSE_7txt",
+          "raw_size": 1093
+        },
+        {
+          "sha256": "9e98249234446e96ab6cd2ac59cbb2f7bfcb15a8e21a00548e1e14da939b6927",
+          "display_name": "COPYING_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\COPYING_1.txt",
+          "raw_size": 614
+        },
+        {
+          "sha256": "4eb1fb1705e2def898e81bcba19c3aac80620d27ba3569d6a6df7b4629d1b5c2",
+          "display_name": "AUTHORS_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-26.2.1\\AUTHORS_1txt",
+          "raw_size": 12139
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "8046bf7158e104c73acea8360fb24abf0244a321c6ad8c398e359a7f34ed3b58"
+    },
+    {
+      "id": "pip-tools",
+      "name": "pip-tools",
+      "normalized_name": "pip-tools",
+      "version": "7.6.1",
+      "license_summary": "BSD",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "c301a92f62eef44263dabbd8634b93c1952c911dde397f654a68f42dda7f96a3",
+      "artifact_path": "runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/INSTALLER; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/METADATA; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/RECORD; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/REQUESTED; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/WHEEL; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/entry_points.txt; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pip_tools-7.6.1.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "075f22737ed9245d386a23968c7ec906f66dfb7af35c3ff920aabd165a8ae920",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pip-tools-7.6.1\\LICENSE_1.txt",
+          "raw_size": 1522
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "fa36ff4132ba9dccfec1e6df3f852ba33d83e3a9fac9d616d29639eec142622f"
+    },
+    {
+      "id": "pluggy",
+      "name": "pluggy",
+      "normalized_name": "pluggy",
+      "version": "1.6.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "05626a03e8ab65a03f5e42b35f8dc2b35ad7a4b5351a196fb9b37e88ae55798f",
+      "artifact_path": "runtime/Lib/site-packages/pluggy-1.6.0.dist-info/INSTALLER; runtime/Lib/site-packages/pluggy-1.6.0.dist-info/METADATA; runtime/Lib/site-packages/pluggy-1.6.0.dist-info/RECORD; runtime/Lib/site-packages/pluggy-1.6.0.dist-info/WHEEL; runtime/Lib/site-packages/pluggy-1.6.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pluggy-1.6.0.dist-info/top_level.txt; runtime/Lib/site-packages/pluggy/__init__.py; runtime/Lib/site-packages/pluggy/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pluggy-1.6.0\\LICENSE_1.txt",
+          "raw_size": 1110
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "d4dc1fc43b633b5e6d170e7dae5cfd87b32df4271ac2317b49cfe94ed72a4eaf"
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell",
+      "normalized_name": "powershell",
+      "version": "portable",
+      "license_summary": "MIT",
+      "source_kind": "baseline-runtime",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "903d46e71e58d1a3ca39206cf8967b3a1a05853366ebb81ad3ad4edc5996634b",
+      "artifact_path": "system_core/powershell/Accessibility.dll; system_core/powershell/D3DCompiler_47_cor3.dll; system_core/powershell/DirectWriteForwarder.dll; system_core/powershell/Humanizer.dll; system_core/powershell/Install-PowerShellRemoting.ps1; system_core/powershell/InstallPSCorePolicyDefinitions.ps1; system_core/powershell/Json.More.dll; system_core/powershell/JsonPointer.Net.dll",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "7c77a44a8acd9b41fdc209864a8016b3d430b5d0e09309818d5b7444336df744",
+          "display_name": "LICENSE-PowerShell.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\powershell-portable\\LICENSE-PowerShell.txt",
+          "raw_size": 1095
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "PowerShell",
+          "version": "portable",
+          "license": "MIT",
+          "source": "baseline-runtime",
+          "whenPathExists": [
+            "Engine/PowerShell/pwsh.exe",
+            "system_core/powershell/pwsh.exe"
+          ],
+          "files": [
+            "files/LICENSE-PowerShell.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "d0683d9983a55f60dd8ef9ea38091fb4a6bc54ede806b3e832ec73fb2cd3c143"
+    },
+    {
+      "id": "propcache",
+      "name": "propcache",
+      "normalized_name": "propcache",
+      "version": "0.5.2",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "8ee249770a1d533a1ad8484aab0df25db1d2f175087bdd2a0abe85a92fec42a8",
+      "artifact_path": "runtime/Lib/site-packages/propcache-0.5.2.dist-info/INSTALLER; runtime/Lib/site-packages/propcache-0.5.2.dist-info/METADATA; runtime/Lib/site-packages/propcache-0.5.2.dist-info/RECORD; runtime/Lib/site-packages/propcache-0.5.2.dist-info/WHEEL; runtime/Lib/site-packages/propcache-0.5.2.dist-info/licenses/LICENSE; runtime/Lib/site-packages/propcache-0.5.2.dist-info/licenses/NOTICE; runtime/Lib/site-packages/propcache-0.5.2.dist-info/top_level.txt; runtime/Lib/site-packages/propcache/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\propcache-0.5.2\\LICENSE_1.txt",
+          "raw_size": 11358
+        },
+        {
+          "sha256": "42205088a265b992eda47039779e856e1f0d9ac819415bb6dc37bee47994ef44",
+          "display_name": "NOTICE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\propcache-0.5.2\\NOTICE_1.txt",
+          "raw_size": 609
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "eefcc6669a0f5018ef903c22015634819f47e3914c840d673c46be593ff00300"
+    },
+    {
+      "id": "proxy-tools",
+      "name": "proxy_tools",
+      "normalized_name": "proxy-tools",
+      "version": "0.1.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "03678e3a695f05e3d936ba78c505ca84b193d01b386bfcc03927a99c954f070d",
+      "artifact_path": "runtime/Lib/site-packages/proxy_tools-0.1.0.dist-info/INSTALLER; runtime/Lib/site-packages/proxy_tools-0.1.0.dist-info/METADATA; runtime/Lib/site-packages/proxy_tools-0.1.0.dist-info/RECORD; runtime/Lib/site-packages/proxy_tools-0.1.0.dist-info/WHEEL; runtime/Lib/site-packages/proxy_tools-0.1.0.dist-info/top_level.txt; runtime/Lib/site-packages/proxy_tools/__init__.py; runtime/Lib/site-packages/proxy_tools/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "c26a5009d736e4c1740859873d798e5283c867dbec9fe0a14b9ba47730bcfcb5",
+          "display_name": "LICENSE-proxy_tools-MIT.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\proxy-tools-present-in-release\\LICENSE-proxy_tools-MIT.txt",
+          "raw_size": 1140
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "proxy_tools",
+          "version": "present-in-release",
+          "license": "MIT",
+          "source": "baseline-package-fallback",
+          "whenPackagePresent": [
+            "proxy_tools"
+          ],
+          "files": [
+            "files/LICENSE-proxy_tools-MIT.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "2c122cc98481c60441a361afdd63d65faf40e65799af8fdd2db676841d626d50"
+    },
+    {
+      "id": "pycparser",
+      "name": "pycparser",
+      "normalized_name": "pycparser",
+      "version": "3.0",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "6b8a56a30c3d3166d09923aa3e5d6fa7ef46527fd4f73084b60e3589c4fa4206",
+      "artifact_path": "runtime/Lib/site-packages/pycparser-3.0.dist-info/INSTALLER; runtime/Lib/site-packages/pycparser-3.0.dist-info/METADATA; runtime/Lib/site-packages/pycparser-3.0.dist-info/RECORD; runtime/Lib/site-packages/pycparser-3.0.dist-info/WHEEL; runtime/Lib/site-packages/pycparser-3.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pycparser-3.0.dist-info/top_level.txt; runtime/Lib/site-packages/pycparser/__init__.py; runtime/Lib/site-packages/pycparser/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "b345a9762fdc5175d3d486d344cdcbb79078aee7c00e47fcc756ef2c4f5dcb61",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pycparser-3.0\\LICENSE_1.txt",
+          "raw_size": 1543
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "1ea81b8aa4f84d7bb44c11ca399840849bea1932611038dd258b527bb5bd1616"
+    },
+    {
+      "id": "pydantic",
+      "name": "pydantic",
+      "normalized_name": "pydantic",
+      "version": "2.13.4",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "a6c62f3a4f6757742c2c003667ecb1b5e613d814c03bda571622fb1c58ac8246",
+      "artifact_path": "runtime/Lib/site-packages/pydantic-2.13.4.dist-info/INSTALLER; runtime/Lib/site-packages/pydantic-2.13.4.dist-info/METADATA; runtime/Lib/site-packages/pydantic-2.13.4.dist-info/RECORD; runtime/Lib/site-packages/pydantic-2.13.4.dist-info/REQUESTED; runtime/Lib/site-packages/pydantic-2.13.4.dist-info/WHEEL; runtime/Lib/site-packages/pydantic-2.13.4.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pydantic/__init__.py; runtime/Lib/site-packages/pydantic/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pydantic-2.13.4\\LICENSE_1.txt",
+          "raw_size": 1129
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "d0f89ffbd0ccea45897a368a7e6430696ec5bbaa97e8a06039fac4e097a15d5b"
+    },
+    {
+      "id": "pydantic-core",
+      "name": "pydantic_core",
+      "normalized_name": "pydantic-core",
+      "version": "2.46.4",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "9d9da706cbf0c2f9669ab3f4811727dd68f475a26b67987e348284a3f708a8e0",
+      "artifact_path": "runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/INSTALLER; runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/METADATA; runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/RECORD; runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/WHEEL; runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pydantic_core-2.46.4.dist-info/sboms/pydantic-core.cyclonedx.json; runtime/Lib/site-packages/pydantic_core/__init__.py; runtime/Lib/site-packages/pydantic_core/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "2afdd30d54b4d62b6f488a6bcc1546e84ec5061f13f4209c03d012348783795a",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pydantic-core-2.46.4\\LICENSE_1.txt",
+          "raw_size": 1101
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "1d6384a2b10e57251fa55bd66050464dd6fb47799dc9d6b0d576126b28fb0e6c"
+    },
+    {
+      "id": "pygments",
+      "name": "Pygments",
+      "normalized_name": "pygments",
+      "version": "2.21.0",
+      "license_summary": "BSD-2-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "a25d71ef124eeec62e260e0648dc0bdb3b16ffcf077aa6d4a4071f6e9aaa1547",
+      "artifact_path": "runtime/Lib/site-packages/pygments-2.21.0.dist-info/INSTALLER; runtime/Lib/site-packages/pygments-2.21.0.dist-info/METADATA; runtime/Lib/site-packages/pygments-2.21.0.dist-info/RECORD; runtime/Lib/site-packages/pygments-2.21.0.dist-info/WHEEL; runtime/Lib/site-packages/pygments-2.21.0.dist-info/entry_points.txt; runtime/Lib/site-packages/pygments-2.21.0.dist-info/licenses/AUTHORS; runtime/Lib/site-packages/pygments-2.21.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pygments/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pygments-2.21.0\\LICENSE_1.txt",
+          "raw_size": 1331
+        },
+        {
+          "sha256": "ea74b9158f4587191549080d5713701859bf6f7b61ce491020338128131847f3",
+          "display_name": "AUTHORS_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pygments-2.21.0\\AUTHORS_1.txt",
+          "raw_size": 11048
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "34fc6b35d0f369eeedd6cad47d2c475977e4d399cb1c3d401bf9789a3de2bee7"
+    },
+    {
+      "id": "pymupdf",
+      "name": "pymupdf",
+      "normalized_name": "pymupdf",
+      "version": "1.28.2",
+      "license_summary": "Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "e7ed7a5df5ed0ebf5151c69c65218b1757ecdd9a1b1acde252284afd3d83b111",
+      "artifact_path": "runtime/Lib/site-packages/fitz/__init__.py; runtime/Lib/site-packages/fitz/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/fitz/__pycache__/table.cpython-312.pyc; runtime/Lib/site-packages/fitz/__pycache__/utils.cpython-312.pyc; runtime/Lib/site-packages/fitz/table.py; runtime/Lib/site-packages/fitz/utils.py; runtime/Lib/site-packages/pymupdf-1.28.2.dist-info/COPYING; runtime/Lib/site-packages/pymupdf-1.28.2.dist-info/INSTALLER",
+      "obligation_class": "strong_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/pymupdf/1.28.2/",
+        "version": "1.28.2"
+      },
+      "legal_documents": [
+        {
+          "sha256": "35a118c0313e258dd0079a4d6dfe3cc8ee961785683a721067a164718ef38851",
+          "display_name": "COPYING_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pymupdf-1.28.2\\COPYING_1.txt",
+          "raw_size": 64
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "a3f894c17d95cd582cf970a394765869f63c2af0aae49a7f0dc52d6ea549eead"
+    },
+    {
+      "id": "pyproject-hooks",
+      "name": "pyproject_hooks",
+      "normalized_name": "pyproject-hooks",
+      "version": "1.2.0",
+      "license_summary": "License :: OSI Approved :: MIT License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "88769ea0addd57f60e318b794263caaa238f1dca5f19c16edc96e72dab0d4526",
+      "artifact_path": "runtime/Lib/site-packages/pyproject_hooks-1.2.0.dist-info/INSTALLER; runtime/Lib/site-packages/pyproject_hooks-1.2.0.dist-info/LICENSE; runtime/Lib/site-packages/pyproject_hooks-1.2.0.dist-info/METADATA; runtime/Lib/site-packages/pyproject_hooks-1.2.0.dist-info/RECORD; runtime/Lib/site-packages/pyproject_hooks-1.2.0.dist-info/WHEEL; runtime/Lib/site-packages/pyproject_hooks/__init__.py; runtime/Lib/site-packages/pyproject_hooks/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/pyproject_hooks/__pycache__/_impl.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pyproject-hooks-1.2.0\\LICENSE_1.txt",
+          "raw_size": 1081
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "4ac97a7f5e927074bdabb2413ac3e58872e70eaae80f07082c2c531b16fe5d65"
+    },
+    {
+      "id": "pytest",
+      "name": "pytest",
+      "normalized_name": "pytest",
+      "version": "9.1.1",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "fe5f3fd89350da2b2a6b2f61014fd8fe77701dce91f62051e43e425c604f0fe8",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/py.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__init__.py; runtime/Lib/site-packages/_pytest/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_argcomplete.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_version.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/cacheprovider.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/capture.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/compat.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pytest-9.1.1\\LICENSE_1.txt",
+          "raw_size": 1091
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "fb678a9dadf97b8e75e38c500ec588a0e541c72ec04a62dbbd24a28b0c3720ff"
+    },
+    {
+      "id": "python-dotenv",
+      "name": "python-dotenv",
+      "normalized_name": "python-dotenv",
+      "version": "1.2.3",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "7f194c6ffc7f236296adc2cb878fc5504938237606d2613b9fb2f6ccbb088ca3",
+      "artifact_path": "runtime/Lib/site-packages/dotenv/__init__.py; runtime/Lib/site-packages/dotenv/__main__.py; runtime/Lib/site-packages/dotenv/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/dotenv/__pycache__/__main__.cpython-312.pyc; runtime/Lib/site-packages/dotenv/__pycache__/cli.cpython-312.pyc; runtime/Lib/site-packages/dotenv/__pycache__/ipython.cpython-312.pyc; runtime/Lib/site-packages/dotenv/__pycache__/main.cpython-312.pyc; runtime/Lib/site-packages/dotenv/__pycache__/parser.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\python-dotenv-1.2.3\\LICENSE_1.txt",
+          "raw_size": 1556
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "851574967e7280695ed0886286495e93dda88fcfb900a1c4716073ac18164f89"
+    },
+    {
+      "id": "python-embedded",
+      "name": "Python Embedded",
+      "normalized_name": "python-embedded",
+      "version": "3.12.x",
+      "license_summary": "PSF License Version 2 and bundled third-party notices",
+      "source_kind": "baseline-runtime",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "0e2d572c827635aefbab2ee8d48a7e817c0b08e9e16b97e275dab70c8559f96b",
+      "artifact_path": "runtime/LICENSE.txt; runtime/Scripts/bottle.exe; runtime/Scripts/cffi-gen-src.exe; runtime/Scripts/docutils.exe; runtime/Scripts/dotenv.exe; runtime/Scripts/f2py.exe; runtime/Scripts/fastapi.exe; runtime/Scripts/httpx.exe",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "f6fa51e9cc3f0a1ffad26fadc951585b6d0235677e5766ecc2de1aa4ef7ebac5",
+          "display_name": "LICENSE-Python-Embedded.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\python-embedded-3.12.x\\LICENSE-Python-Embedded.txt",
+          "raw_size": 36937
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "Python Embedded",
+          "version": "3.12.x",
+          "license": "PSF License Version 2 and bundled third-party notices",
+          "source": "baseline-runtime",
+          "whenPathExists": [
+            "runtime/python.exe"
+          ],
+          "files": [
+            "files/LICENSE-Python-Embedded.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "4981dfd483e5fa3c286442d1cd83ec943faee1376ae30dd446ec6a802ec29130"
+    },
+    {
+      "id": "python-engineio",
+      "name": "python-engineio",
+      "normalized_name": "python-engineio",
+      "version": "4.13.5",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "feda8eb952f1add0dd1ca73256a65977cee4085d45f9891cb8690f5c0bb26b65",
+      "artifact_path": "runtime/Lib/site-packages/engineio/__init__.py; runtime/Lib/site-packages/engineio/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/async_client.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/async_server.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/async_socket.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/base_client.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/base_server.cpython-312.pyc; runtime/Lib/site-packages/engineio/__pycache__/base_socket.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "c9e97d3dbc1fbbcdb4f7808b282cd646db887aff4f5313fe6bbe8d4c31405a9c",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\python-engineio-4.13.5\\LICENSE_1.txt",
+          "raw_size": 1082
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "ae847f684904b072619d7d12a8c0bf5bbac2c79d9f97ff7c468a2c5213f8f64d"
+    },
+    {
+      "id": "python-multipart",
+      "name": "python-multipart",
+      "normalized_name": "python-multipart",
+      "version": "0.0.32",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "4b350b4450a29025fe811a43416fc8afaed622ac3f02e47dab4a8660a4e27581",
+      "artifact_path": "runtime/Lib/site-packages/multipart/__init__.py; runtime/Lib/site-packages/multipart/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/multipart/__pycache__/decoders.cpython-312.pyc; runtime/Lib/site-packages/multipart/__pycache__/exceptions.cpython-312.pyc; runtime/Lib/site-packages/multipart/__pycache__/multipart.cpython-312.pyc; runtime/Lib/site-packages/multipart/decoders.py; runtime/Lib/site-packages/multipart/exceptions.py; runtime/Lib/site-packages/multipart/multipart.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\python-multipart-0.0.32\\LICENSE_1txt",
+          "raw_size": 11358
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "cb8cbe2724caba7ce9cffd8026eb1ca7704c4f5b4c0035f6a3ee62cc41d5cf6f"
+    },
+    {
+      "id": "python-socketio",
+      "name": "python-socketio",
+      "normalized_name": "python-socketio",
+      "version": "5.16.4",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "ff157144bc8f055b953ba4bb7045a243a6bb6c33d611b367a0b7b59181ed2138",
+      "artifact_path": "runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/INSTALLER; runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/METADATA; runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/RECORD; runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/WHEEL; runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/licenses/LICENSE; runtime/Lib/site-packages/python_socketio-5.16.4.dist-info/top_level.txt; runtime/Lib/site-packages/socketio/__init__.py; runtime/Lib/site-packages/socketio/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "c9e97d3dbc1fbbcdb4f7808b282cd646db887aff4f5313fe6bbe8d4c31405a9c",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\python-socketio-5.16.4\\LICENSE_1.txt",
+          "raw_size": 1082
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "77f5f88755ced7043fff160682fd88e514e65d959d088f43fde6685c970f5e4c"
+    },
+    {
+      "id": "pythonnet",
+      "name": "pythonnet",
+      "normalized_name": "pythonnet",
+      "version": "3.1.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "3214eb5e71fd7300833d9c5d7871b73c10f297e9f9e13b558f269a6cbd1a8efc",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/clr.cpython-312.pyc; runtime/Lib/site-packages/clr.py; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/INSTALLER; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/METADATA; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/RECORD; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/WHEEL; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/entry_points.txt; runtime/Lib/site-packages/pythonnet-3.1.0.dist-info/licenses/AUTHORS.md",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "e1dc3a6ff017a6800dc27a7220500f512b95fbcd996d38ebbbff85c693245369",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pythonnet-3.1.0\\LICENSE_1.txt",
+          "raw_size": 1104
+        },
+        {
+          "sha256": "65a13631f078bed51e9a4033dea257e57a7f23097f3003b1ce1ba1c8a9136c93",
+          "display_name": "AUTHORS_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pythonnet-3.1.0\\AUTHORS_1md",
+          "raw_size": 5096
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "3f646e768c7ba79b9ef375559e7b68f4fd7962dc4e6ef68c4631cbdc5f5caf49"
+    },
+    {
+      "id": "pywebview",
+      "name": "pywebview",
+      "normalized_name": "pywebview",
+      "version": "6.2.1",
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "a16b31f53b24ec69c5e2aa6d5c427855e08b3924aa409c31a1a095d2054d13b3",
+      "artifact_path": "runtime/Lib/site-packages/pywebview-6.2.1.dist-info/INSTALLER; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/METADATA; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/RECORD; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/REQUESTED; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/WHEEL; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/entry_points.txt; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pywebview-6.2.1.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pywebview-6.2.1\\LICENSE_1.txt",
+          "raw_size": 1518
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "ac6e7a673351039d2b446070498b9ad3986f728298b4f53a9098619533303170"
+    },
+    {
+      "id": "pyyaml",
+      "name": "PyYAML",
+      "normalized_name": "pyyaml",
+      "version": "6.0.3",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "5f7f3f9eb5919ea3f561ded066cdb91eee379dac5e22e42214183d0cf841c98f",
+      "artifact_path": "runtime/Lib/site-packages/_yaml/__init__.py; runtime/Lib/site-packages/_yaml/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/INSTALLER; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/METADATA; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/RECORD; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/REQUESTED; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/WHEEL; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/licenses/LICENSE",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\pyyaml-6.0.3\\LICENSE_1.txt",
+          "raw_size": 1101
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "cdc2e75a1a27365cd69180c6b4b0e38f2817db57f2fc133cec45ea3f37c5ed2a"
+    },
+    {
+      "id": "rawpy",
+      "name": "rawpy",
+      "normalized_name": "rawpy",
+      "version": "0.27.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "ddd01b02bc580c6ad567ff94b0c24997b5053da5cc391f5ac4b757b9c87fa2b7",
+      "artifact_path": "runtime/Lib/site-packages/rawpy-0.27.0.dist-info/INSTALLER; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/METADATA; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/RECORD; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/REQUESTED; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/WHEEL; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/licenses/LICENSE.LibRaw; runtime/Lib/site-packages/rawpy-0.27.0.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "2cc0e98a169e1a9927dee3c82d59dfac898a2aad5a1fcdd295db40c2f2fed516",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\rawpy-0.27.0\\LICENSE_1.txt",
+          "raw_size": 1101
+        },
+        {
+          "sha256": "af2955ab33fd2043eec7934f16f44599f2baa301b0ffef04a52fa3124025dc88",
+          "display_name": "LICENSE_1LibRaw",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\rawpy-0.27.0\\LICENSE_1LibRaw",
+          "raw_size": 24847
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "16985e9b38d107c98d9b97f4deda4c9278a84eceb3d3bee96b07b10d1e82dc2e"
+    },
+    {
+      "id": "requests",
+      "name": "requests",
+      "normalized_name": "requests",
+      "version": "2.34.2",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "6819d5d81fd72de6e0ec0cf6e69e7b3095b72089cb1c572433e4ed62e1b47957",
+      "artifact_path": "runtime/Lib/site-packages/requests-2.34.2.dist-info/INSTALLER; runtime/Lib/site-packages/requests-2.34.2.dist-info/METADATA; runtime/Lib/site-packages/requests-2.34.2.dist-info/RECORD; runtime/Lib/site-packages/requests-2.34.2.dist-info/REQUESTED; runtime/Lib/site-packages/requests-2.34.2.dist-info/WHEEL; runtime/Lib/site-packages/requests-2.34.2.dist-info/licenses/LICENSE; runtime/Lib/site-packages/requests-2.34.2.dist-info/licenses/NOTICE; runtime/Lib/site-packages/requests-2.34.2.dist-info/top_level.txt",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "81932e77fef4cec306da54caf7d4d221dfd0f6fb6da214c712e36cb95ac47906",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\requests-2.34.2\\LICENSE_1.txt",
+          "raw_size": 10142
+        },
+        {
+          "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc",
+          "display_name": "NOTICE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\requests-2.34.2\\NOTICE_1.txt",
+          "raw_size": 38
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "2574a6d3eef77719934c2428e0cc70ac5097c6b3147d4c350a95fff89b366297"
+    },
+    {
+      "id": "rich",
+      "name": "rich",
+      "normalized_name": "rich",
+      "version": "15.0.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "4921a7fd1f2575dd027b1b15ebda74b209695873c45ea34a6dab51e0fefc162a",
+      "artifact_path": "runtime/Lib/site-packages/rich-15.0.0.dist-info/INSTALLER; runtime/Lib/site-packages/rich-15.0.0.dist-info/METADATA; runtime/Lib/site-packages/rich-15.0.0.dist-info/RECORD; runtime/Lib/site-packages/rich-15.0.0.dist-info/REQUESTED; runtime/Lib/site-packages/rich-15.0.0.dist-info/WHEEL; runtime/Lib/site-packages/rich-15.0.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/rich/__init__.py; runtime/Lib/site-packages/rich/__main__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\rich-15.0.0\\LICENSE_1.txt",
+          "raw_size": 1056
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "09e5f07eac866912ed79c7061cc8339ad2feb114e39fcac62b150f86617ff9fe"
+    },
+    {
+      "id": "setuptools",
+      "name": "setuptools",
+      "normalized_name": "setuptools",
+      "version": "84.0.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "418c3fbb4fd5c8bd5751c888669b712e18de3220cc876fdc6de3d8d89617b9b4",
+      "artifact_path": "runtime/Lib/site-packages/_distutils_hack/__init__.py; runtime/Lib/site-packages/_distutils_hack/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/__pycache__/override.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/override.py; runtime/Lib/site-packages/distutils-precedence.pth; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/INSTALLER; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/METADATA; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/RECORD",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
+          "display_name": "LICENSE_9.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_9.txt",
+          "raw_size": 1023
+        },
+        {
+          "sha256": "6557adc4bc1d59232e27567a185dd70cf2ecca3154018b0be61ea29cf9e814e2",
+          "display_name": "LICENSE_10.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_10.txt",
+          "raw_size": 7634
+        },
+        {
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
+          "display_name": "LICENSE_11.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_11.txt",
+          "raw_size": 1072
+        },
+        {
+          "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d",
+          "display_name": "LICENSE_12.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_12.txt",
+          "raw_size": 1076
+        },
+        {
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
+          "display_name": "LICENSE_13.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_13.txt",
+          "raw_size": 197
+        },
+        {
+          "sha256": "30c23618679108f3e8ea1d2a658c7ca417bdfc891c98ef1a89fa4ff0c9828654",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_1txt",
+          "raw_size": 1107
+        },
+        {
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
+          "display_name": "LICENSE_1BSD",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_1BSD",
+          "raw_size": 1344
+        },
+        {
+          "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
+          "display_name": "LICENSE_14.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_14.txt",
+          "raw_size": 1089
+        },
+        {
+          "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683",
+          "display_name": "LICENSE_15.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_15.txt",
+          "raw_size": 1076
+        },
+        {
+          "sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+          "display_name": "LICENSE_16.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_16.txt",
+          "raw_size": 1053
+        },
+        {
+          "sha256": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
+          "display_name": "LICENSE_1APACHE",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_1APACHE",
+          "raw_size": 10174
+        },
+        {
+          "sha256": "458502e12d97bbf64438606a20044aa85eb05fb0a8a807bb35dbec253fd1fc04",
+          "display_name": "LICENSE_17.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\LICENSE_17.txt",
+          "raw_size": 10278
+        },
+        {
+          "sha256": "2dddf08818297a3b89d43d95ff659d8da85741108c9136dfa3a4d856c0623bd8",
+          "display_name": "NOTICE_2.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\NOTICE_2.txt",
+          "raw_size": 493
+        },
+        {
+          "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7",
+          "display_name": "NOTICE_3.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\setuptools-84.0.0\\NOTICE_3.txt",
+          "raw_size": 18737
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "4b2732ce807fc22e5cbc9c2240758b517808174103ad227c4f6bbe283aa78e62"
+    },
+    {
+      "id": "simple-websocket",
+      "name": "simple-websocket",
+      "normalized_name": "simple-websocket",
+      "version": "1.1.0",
+      "license_summary": "License :: OSI Approved :: MIT License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "4f0733f481e8315e172b5d27cf1dedf8d6bd5cff19b681603e8c71ef366b54c9",
+      "artifact_path": "runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/INSTALLER; runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/LICENSE; runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/METADATA; runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/RECORD; runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/WHEEL; runtime/Lib/site-packages/simple_websocket-1.1.0.dist-info/top_level.txt; runtime/Lib/site-packages/simple_websocket/__init__.py; runtime/Lib/site-packages/simple_websocket/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4b8abadcc5e3dd29c71905b84952945699f0a7ba41e6af99eaba46faabe95bb7",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\simple-websocket-1.1.0\\LICENSE_1.txt",
+          "raw_size": 1072
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "c3556783ca4b833098895570b66e5b77de3d049cc5cb58250786ad391c3013ac"
+    },
+    {
+      "id": "soupsieve",
+      "name": "soupsieve",
+      "normalized_name": "soupsieve",
+      "version": "2.9.2",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "3cb98d35f18c1b1b181819671d6e97b2927beacc6a590d37e200c6134f2ab7f4",
+      "artifact_path": "runtime/Lib/site-packages/soupsieve-2.9.2.dist-info/INSTALLER; runtime/Lib/site-packages/soupsieve-2.9.2.dist-info/METADATA; runtime/Lib/site-packages/soupsieve-2.9.2.dist-info/RECORD; runtime/Lib/site-packages/soupsieve-2.9.2.dist-info/WHEEL; runtime/Lib/site-packages/soupsieve-2.9.2.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/soupsieve/__init__.py; runtime/Lib/site-packages/soupsieve/__meta__.py; runtime/Lib/site-packages/soupsieve/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "76a0acdb98c3a63681e20b6f096699ef8cad5fb35d56eef8387e0fa71d797a9a",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\soupsieve-2.9.2\\LICENSE_1md",
+          "raw_size": 1096
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "8a7c7c68d86905611720f7c6ca3a6e317cd39f49f5201dfff24bebb164d6cfd1"
+    },
+    {
+      "id": "starlette",
+      "name": "starlette",
+      "normalized_name": "starlette",
+      "version": "1.6.0",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "298aafe14d5fddc6162105684a90444e6480721be29ed603b7af344ef9184315",
+      "artifact_path": "runtime/Lib/site-packages/starlette-1.6.0.dist-info/INSTALLER; runtime/Lib/site-packages/starlette-1.6.0.dist-info/METADATA; runtime/Lib/site-packages/starlette-1.6.0.dist-info/RECORD; runtime/Lib/site-packages/starlette-1.6.0.dist-info/WHEEL; runtime/Lib/site-packages/starlette-1.6.0.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/starlette/__init__.py; runtime/Lib/site-packages/starlette/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/starlette/__pycache__/_exception_handler.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\starlette-1.6.0\\LICENSE_1md",
+          "raw_size": 1518
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "06a02599313c6e18308f630538f02628b6e7baf61bb6ddf9c2731cb250742de3"
+    },
+    {
+      "id": "tinycss2",
+      "name": "tinycss2",
+      "normalized_name": "tinycss2",
+      "version": "1.5.1",
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "0a7468b8c141270f887b57b4dae254436cc0ce8d6389835ecb8c441e97ac2411",
+      "artifact_path": "runtime/Lib/site-packages/tinycss2-1.5.1.dist-info/INSTALLER; runtime/Lib/site-packages/tinycss2-1.5.1.dist-info/METADATA; runtime/Lib/site-packages/tinycss2-1.5.1.dist-info/RECORD; runtime/Lib/site-packages/tinycss2-1.5.1.dist-info/WHEEL; runtime/Lib/site-packages/tinycss2-1.5.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/tinycss2/__init__.py; runtime/Lib/site-packages/tinycss2/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/tinycss2/__pycache__/ast.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "6b94acee20ec9f2709333134f3ba70322535fb420af0ce8c1455d9cbe297f1d5",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\tinycss2-1.5.1\\LICENSE_1.txt",
+          "raw_size": 1534
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "9a62ad8e7edc3c464ee9490a7041bbbcd6708a308474481462d11b9ef0770fdf"
+    },
+    {
+      "id": "tqdm",
+      "name": "tqdm",
+      "normalized_name": "tqdm",
+      "version": "4.70.0",
+      "license_summary": "MPL-2.0 AND MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "1925633a4a5d4d5cae5d1a62df32b5e6d08b51646c7aa3c527ba95cf6f10deb9",
+      "artifact_path": "runtime/Lib/site-packages/tqdm-4.70.0.dist-info/INSTALLER; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/METADATA; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/RECORD; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/REQUESTED; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/WHEEL; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/entry_points.txt; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/licenses/LICENCE; runtime/Lib/site-packages/tqdm-4.70.0.dist-info/top_level.txt",
+      "obligation_class": "weak_copyleft",
+      "redistributable": true,
+      "source_reference": {
+        "type": "upstream_pin",
+        "url": "https://pypi.org/project/tqdm/4.70.0/",
+        "version": "4.70.0"
+      },
+      "legal_documents": [
+        {
+          "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de",
+          "display_name": "LICENCE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\tqdm-4.70.0\\LICENCE_1.txt",
+          "raw_size": 1985
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "6563430c127eb39bc0ff8f18c1b195e7b96c7f6a1ff456e7d45e4d4b82fa9677"
+    },
+    {
+      "id": "typing-extensions",
+      "name": "typing_extensions",
+      "normalized_name": "typing-extensions",
+      "version": "4.16.0",
+      "license_summary": "PSF-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "890a134ea4c43c6109c1576fd15759a780d7bf5856f976a407593fa12edb4723",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/typing_extensions.cpython-312.pyc; runtime/Lib/site-packages/typing_extensions-4.16.0.dist-info/INSTALLER; runtime/Lib/site-packages/typing_extensions-4.16.0.dist-info/METADATA; runtime/Lib/site-packages/typing_extensions-4.16.0.dist-info/RECORD; runtime/Lib/site-packages/typing_extensions-4.16.0.dist-info/WHEEL; runtime/Lib/site-packages/typing_extensions-4.16.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/typing_extensions.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\typing-extensions-4.16.0\\LICENSE_1.txt",
+          "raw_size": 13936
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "ef81f0f93b3e036ce317157c53bba2e2e7ce203e0f8c965cc103b5e5d39f9f51"
+    },
+    {
+      "id": "typing-inspection",
+      "name": "typing-inspection",
+      "normalized_name": "typing-inspection",
+      "version": "0.4.4",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "2bee2649985f077d53c1ebf13563850d3f674500369aa804a9c09fc03f19d668",
+      "artifact_path": "runtime/Lib/site-packages/typing_inspection-0.4.4.dist-info/INSTALLER; runtime/Lib/site-packages/typing_inspection-0.4.4.dist-info/METADATA; runtime/Lib/site-packages/typing_inspection-0.4.4.dist-info/RECORD; runtime/Lib/site-packages/typing_inspection-0.4.4.dist-info/WHEEL; runtime/Lib/site-packages/typing_inspection-0.4.4.dist-info/licenses/LICENSE; runtime/Lib/site-packages/typing_inspection/__init__.py; runtime/Lib/site-packages/typing_inspection/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/typing_inspection/__pycache__/introspection.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\typing-inspection-0.4.4\\LICENSE_1.txt",
+          "raw_size": 1090
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "a7dbf9e0f4edecea00b8ef99d5473b314eca321684fc0b3f235192ef0d4ed736"
+    },
+    {
+      "id": "urllib3",
+      "name": "urllib3",
+      "normalized_name": "urllib3",
+      "version": "2.7.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "0dc80dacba9a1ff40e602f36bbc497741c0837e785f8c46cb0c3ce5fe60a6020",
+      "artifact_path": "runtime/Lib/site-packages/urllib3-2.7.0.dist-info/INSTALLER; runtime/Lib/site-packages/urllib3-2.7.0.dist-info/METADATA; runtime/Lib/site-packages/urllib3-2.7.0.dist-info/RECORD; runtime/Lib/site-packages/urllib3-2.7.0.dist-info/WHEEL; runtime/Lib/site-packages/urllib3-2.7.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/urllib3/__init__.py; runtime/Lib/site-packages/urllib3/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/urllib3/__pycache__/_base_connection.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\urllib3-2.7.0\\LICENSE_1txt",
+          "raw_size": 1093
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "02e9ce94c96d8334d3b9b9de2330cbfbeecec52613dd84af9aefc85a611fa731"
+    },
+    {
+      "id": "uvicorn",
+      "name": "uvicorn",
+      "normalized_name": "uvicorn",
+      "version": "0.52.4",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "5315ed06a5231036e05c0451634208cd6ddb3d39bfdf3a3577e57d4bb30939a1",
+      "artifact_path": "runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/INSTALLER; runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/METADATA; runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/RECORD; runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/WHEEL; runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/entry_points.txt; runtime/Lib/site-packages/uvicorn-0.52.4.dist-info/licenses/LICENSE.md; runtime/Lib/site-packages/uvicorn/__init__.py; runtime/Lib/site-packages/uvicorn/__main__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "efe1acf3e62fb99c288b0ec73e5a773b7268ef4320fe757ea994214e4b63c371",
+          "display_name": "LICENSE_1md",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\uvicorn-0.52.4\\LICENSE_1md",
+          "raw_size": 1526
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "3f6be1121d8c81a476a11a2269c50f8e11fde3a68a13093d2ec89586ba8d98de"
+    },
+    {
+      "id": "watchfiles",
+      "name": "watchfiles",
+      "normalized_name": "watchfiles",
+      "version": "1.2.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "173721623777e07cde4d04ac0c47eec2e2659f4c95483f23e12c47967d06eb09",
+      "artifact_path": "runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/INSTALLER; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/METADATA; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/RECORD; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/WHEEL; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/entry_points.txt; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/watchfiles-1.2.0.dist-info/sboms/watchfiles_rust_notify.cyclonedx.json; runtime/Lib/site-packages/watchfiles/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "4fd78355b67ce2677ede9fb6f63a250f377bb7e22088136a5f4699adb4bc069f",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\watchfiles-1.2.0\\LICENSE_1.txt",
+          "raw_size": 1112
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "aebd4228c491ab8a3a7a08ad6cb26d6face9cc3add738160514c06039d91ee56"
+    },
+    {
+      "id": "webencodings",
+      "name": "webencodings",
+      "normalized_name": "webencodings",
+      "version": "0.6.1",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "131fdd850eca623d3c57ff3ac2591bb5551735f0fd7d5bf4224fa89ed227ce27",
+      "artifact_path": "runtime/Lib/site-packages/webencodings-0.6.1.dist-info/INSTALLER; runtime/Lib/site-packages/webencodings-0.6.1.dist-info/METADATA; runtime/Lib/site-packages/webencodings-0.6.1.dist-info/RECORD; runtime/Lib/site-packages/webencodings-0.6.1.dist-info/WHEEL; runtime/Lib/site-packages/webencodings-0.6.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/webencodings/__init__.py; runtime/Lib/site-packages/webencodings/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/webencodings/__pycache__/custom.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "01b876deaedb2e876a451c271903f3ad91ed6f62f60c0bbcfea6d8558e275c50",
+          "display_name": "LICENSE-webencodings-BSD-3-Clause.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\webencodings-present-in-release\\LICENSE-webencodings-BSD-3-Clause.txt",
+          "raw_size": 1453
+        },
+        {
+          "sha256": "e06ef33485e7498ad592887c41fa79cc8a7fecde576c7210e11bfdddef58040e",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\webencodings-0.6.1\\LICENSE_1.txt",
+          "raw_size": 1519
+        }
+      ],
+      "metadata": {
+        "manifest": {
+          "name": "webencodings",
+          "version": "present-in-release",
+          "license": "BSD-3-Clause",
+          "source": "baseline-package-fallback",
+          "whenPackagePresent": [
+            "webencodings"
+          ],
+          "files": [
+            "files/LICENSE-webencodings-BSD-3-Clause.txt"
+          ],
+          "obligation_class": "permissive",
+          "redistributable": true
+        }
+      },
+      "license_fingerprint": "a39046c6e5d0aaa45fb5e105c601179c59149aa5ec269aa5471e04813d941f4a"
+    },
+    {
+      "id": "websockets",
+      "name": "websockets",
+      "normalized_name": "websockets",
+      "version": "17.0.1",
+      "license_summary": "BSD-3-Clause",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "c407f9597ae3fde6a279f544f584e51d90ff6cdc2ef612296f669fc65b177a5d",
+      "artifact_path": "runtime/Lib/site-packages/websockets-17.0.1.dist-info/INSTALLER; runtime/Lib/site-packages/websockets-17.0.1.dist-info/METADATA; runtime/Lib/site-packages/websockets-17.0.1.dist-info/RECORD; runtime/Lib/site-packages/websockets-17.0.1.dist-info/WHEEL; runtime/Lib/site-packages/websockets-17.0.1.dist-info/entry_points.txt; runtime/Lib/site-packages/websockets-17.0.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/websockets-17.0.1.dist-info/top_level.txt; runtime/Lib/site-packages/websockets/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "3d6a0c050d8bec52fabad502e45fb25bd02bcadbd70dea34d447b6a0ff4e6da8",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\websockets-17.0.1\\LICENSE_1.txt",
+          "raw_size": 1538
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "42833599668b8ec760e4445ef5f57cc0deefed71febf2b12bcd6339b220ebe5e"
+    },
+    {
+      "id": "wheel",
+      "name": "wheel",
+      "normalized_name": "wheel",
+      "version": "0.48.0",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "3c03bd5532f2bbc8292ca0b3063ebf7c9a7f2ff3cd3b48eee46cc1d85d81f74c",
+      "artifact_path": "runtime/Lib/site-packages/wheel-0.48.0.dist-info/INSTALLER; runtime/Lib/site-packages/wheel-0.48.0.dist-info/METADATA; runtime/Lib/site-packages/wheel-0.48.0.dist-info/RECORD; runtime/Lib/site-packages/wheel-0.48.0.dist-info/REQUESTED; runtime/Lib/site-packages/wheel-0.48.0.dist-info/WHEEL; runtime/Lib/site-packages/wheel-0.48.0.dist-info/entry_points.txt; runtime/Lib/site-packages/wheel-0.48.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/wheel/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "30c23618679108f3e8ea1d2a658c7ca417bdfc891c98ef1a89fa4ff0c9828654",
+          "display_name": "LICENSE_1txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\wheel-0.48.0\\LICENSE_1txt",
+          "raw_size": 1107
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "158ca80492f41945773bcf092c53fe21aa3a353ae603ab0379985f124b63de1e"
+    },
+    {
+      "id": "wsproto",
+      "name": "wsproto",
+      "normalized_name": "wsproto",
+      "version": "1.3.2",
+      "license_summary": "MIT",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "676b767b3f574091e92bcca64146ab174bd68c6968a863600161de22f44be21d",
+      "artifact_path": "runtime/Lib/site-packages/wsproto-1.3.2.dist-info/INSTALLER; runtime/Lib/site-packages/wsproto-1.3.2.dist-info/METADATA; runtime/Lib/site-packages/wsproto-1.3.2.dist-info/RECORD; runtime/Lib/site-packages/wsproto-1.3.2.dist-info/WHEEL; runtime/Lib/site-packages/wsproto-1.3.2.dist-info/licenses/LICENSE; runtime/Lib/site-packages/wsproto-1.3.2.dist-info/top_level.txt; runtime/Lib/site-packages/wsproto/__init__.py; runtime/Lib/site-packages/wsproto/__pycache__/__init__.cpython-312.pyc",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "fdbe26ef1b61f1c72d38dbd71af8b42a334e3c58bca9775ef78c1d2ed15512d1",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\wsproto-1.3.2\\LICENSE_1.txt",
+          "raw_size": 1093
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "66d7cea878bc119c8206c70a683f484af29587a7880e974534f28493c26ab2c5"
+    },
+    {
+      "id": "yarl",
+      "name": "yarl",
+      "normalized_name": "yarl",
+      "version": "1.24.5",
+      "license_summary": "Apache-2.0",
+      "source_kind": "site-packages",
+      "bundled": true,
+      "optional_runtime": false,
+      "provider": "",
+      "artifact_sha256": "36e5e2268bff1b7b561aa00047876a9ee74af6146a69627c00efa36ffdf89336",
+      "artifact_path": "runtime/Lib/site-packages/yarl-1.24.5.dist-info/INSTALLER; runtime/Lib/site-packages/yarl-1.24.5.dist-info/METADATA; runtime/Lib/site-packages/yarl-1.24.5.dist-info/RECORD; runtime/Lib/site-packages/yarl-1.24.5.dist-info/WHEEL; runtime/Lib/site-packages/yarl-1.24.5.dist-info/licenses/LICENSE; runtime/Lib/site-packages/yarl-1.24.5.dist-info/licenses/NOTICE; runtime/Lib/site-packages/yarl-1.24.5.dist-info/top_level.txt; runtime/Lib/site-packages/yarl/__init__.py",
+      "obligation_class": "permissive",
+      "redistributable": true,
+      "source_reference": null,
+      "legal_documents": [
+        {
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+          "display_name": "LICENSE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\yarl-1.24.5\\LICENSE_1.txt",
+          "raw_size": 11358
+        },
+        {
+          "sha256": "42205088a265b992eda47039779e856e1f0d9ac819415bb6dc37bee47994ef44",
+          "display_name": "NOTICE_1.txt",
+          "source_path": "S:\\TOOLS\\Audion Build Licenses\\workspace\\runs\\20260824T174256Z_audion-image-tools_75235447\\collector_legal_files\\yarl-1.24.5\\NOTICE_1.txt",
+          "raw_size": 609
+        }
+      ],
+      "metadata": {},
+      "license_fingerprint": "a019aeb50326c135245d193bd285b9ce67af742fe7bcafaad1a584253f5a690e"
+    }
+  ]
+}
