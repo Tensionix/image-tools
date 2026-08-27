@@ -1,14 +1,19 @@
 # Audion Image Tools
 
 <!-- audion:release -->
-[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0b6db8?style=flat-square&logo=windows&logoColor=white)](https://audion.dev/downloads/image-tools) [![Release](https://img.shields.io/github/v/release/Tensionix/image-tools?style=flat-square&label=release&color=e08a63)](https://github.com/Tensionix/image-tools/releases/latest) [![Downloads](https://img.shields.io/github/downloads/Tensionix/image-tools/total?style=flat-square&label=downloads&color=5fd08a)](https://github.com/Tensionix/image-tools/releases) [![License](https://img.shields.io/github/license/Tensionix/image-tools?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600)](https://github.com/Tensionix/image-tools/blob/main/LICENSE)
+<p align="center">
+  <a href="https://audion.dev/downloads/image-tools"><img alt="Windows" src="https://img.shields.io/badge/Windows-10%20%7C%2011-0b6db8?style=flat-square&logo=windows&logoColor=white"></a>
+  <a href="https://github.com/Tensionix/image-tools/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/Tensionix/image-tools?style=flat-square&label=release&color=e08a63"></a>
+  <a href="https://github.com/Tensionix/image-tools/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/Tensionix/image-tools/total?style=flat-square&label=downloads&color=5fd08a"></a>
+  <a href="https://github.com/Tensionix/image-tools/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Tensionix/image-tools?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600"></a>
+</p>
 
 **Version 2.4.1** · 2026-08-25 · 298.0 MB
 
 - [Direct download](https://audion.dev/get/image-tools/2.4.1/Audion_Image_Tools_v2.4.1_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/image-tools) — every version and how to install
 
-<img src="docs/screenshot.png" alt="The program window" width="560">
+<p align="center"><img src="docs/screenshot.png" alt="The program window" width="560"></p>
 
 `SHA-256: 265940d0f17b503818554381b4b40b83755fc01920d93185c708805abf69b384`
 
