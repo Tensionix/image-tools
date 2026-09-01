@@ -32,6 +32,41 @@ Action buttons and `RUN` use a muted amber highlight with light gray text. Navig
 
 Short labels are intentional. Longer explanations live in tooltips on headings, buttons, checkboxes, radio controls, and toggles. The tooltip background is `RGB(23, 33, 43)`. The `BACK` button has no tooltip.
 
+## Workbench I/O
+
+The two top rows define the active processing route:
+
+* **Source** can be the internal `input\` folder, an external folder, or a single
+  external file.
+* **Target** can be the internal `output\` folder or a chosen external folder.
+* The system folder picker sits at the right edge of each row.
+* The pin button shows the route state: an active pin is highlighted, an inactive
+  one is muted. Pinning saves the path to the cache but does not make it the
+  mandatory route for a run.
+* The delete button on the left clears the contents of the current folder without
+  removing the folder itself. The internal `input\` needs no confirmation; an
+  external source raises a warning. If the source is a single file, deleting that
+  file is confirmed separately — it may be the only copy.
+
+The bottom row is split into groups by meaning:
+
+| button | what it does |
+|---|---|
+| Source | opens the current source in the file manager; for a single file, its folder with the file selected |
+| Add file… | picks exactly one file without copying; the source path becomes that file until the route changes |
+| Target | opens the current output folder |
+| Reset | drops every unpinned path from the cache and returns the active routes to the internal `input\` and `output\` |
+| Delete | after one shared confirmation, clears the contents of the current source and target |
+| List | shows the files of the current source; a single file appears as one line |
+
+`Reset` deletes neither files nor pinned entries — it is the safe way to clear
+routes before running the project on another machine.
+
+A long path is truncated only on real overflow and fades softly in a narrow zone
+at the right edge; a short path is shown in full. A path change is marked by a
+brief highlight, and these effects switch off with the system reduced-motion
+setting.
+
 ## Modules
 
 ### Conversion
@@ -154,6 +189,33 @@ Practical guide:
 
 The global Maintenance setting is the default for modes without a local override. A local mode switch affects only the current run and does not change Workbench/I/O.
 
+## Maintenance
+
+The maintenance block sits apart from the working commands. It holds the global
+threading setting. Route and file handling live in the Workbench above: `Reset`
+clears routes and cache without deleting files, `Delete` clears the contents of
+the current source and target after confirmation.
+
+### Threading and memory
+
+Threading processes independent images in parallel. It helps on batches, but
+large maps, TIFF and PDF rendering, and PNG output can occupy far more memory
+than the file takes on disk. Every extra worker may open another heavy image, so
+the speed-up turns into swapping — or a crash — sooner than expected.
+
+A practical guide:
+
+| memory | threads |
+|---|---|
+| 16 GB | leave threading off; 1–2 if needed |
+| 32 GB | usually 4 |
+| 64 GB | 8–12, after checking peak memory |
+| 128 GB and above | 16 and up, but only with memory watched |
+
+The global setting acts as the default for modes without a local override. A
+local switch inside a mode affects only the current run and does not change the
+Workbench routes.
+
 ## Main Folders
 
 ```text
@@ -186,693 +248,3 @@ Run compile checks, `system_core\doctor.py`, and the GUI smoke test described in
 Workbench uses the same Audion Image Tools public vocabulary in every project. Its buttons always keep the same order and labels: **Source**, **Add file...**, **Target**, **Reset**, **Delete**, **List**.
 
 `Reset` returns to project `input/output` and does not delete files; `Delete` clears the current `Source` and `Target` only after confirmation. The exact Russian labels are **Источник**, **Добавить файл...**, **Назначение**, **Сбросить**, **Удалить**, **Список**. The Workbench variants `Destination`, `Clear`, `Цель`, and `Очистить` are not used.
-
-## Project Structure And Launcher Reference
-
-> Status note: this is an early planning document. The current working GUI entry point is `launcher_gui.cmd`; `launcher_project.cmd` and `launcher_project_ru.cmd` remain as CLI/TUI launchers. For the current operator-facing behavior, use `README_RU.md`, `docs/USER_GUIDE_RU.md`, and `AGENTS.md`.
-
-## Project positioning
-
-**Audion Image Tools** is a portable Python image-processing toolkit focused on:
-
-- broad **input format ingestion**
-- strong **batch conversion**
-- reliable **normalization**
-- practical **JPG/PNG-centric processing**
-- large **project launcher** workflow with future **FZF** integration
-
-This project should treat most formats as **input sources**, while the most feature-complete processing pipeline targets:
-
-- **JPG / JPEG**
-- **PNG**
-
-These two formats are the main working formats for the project.
-
----
-
-## Core product logic
-
-### Principle 1 — Convert broadly, work deeply on JPG/PNG
-
-Most supported formats should be accepted as input and converted into stable working formats.
-
-Primary working outputs:
-
-- JPG
-- PNG
-
-Extended or special inputs:
-
-- BMP
-- GIF
-- TIFF / TIF
-- TGA
-- WebP
-- AVIF
-- HEIC / HEIF
-- SVG / SVGZ
-- PSD
-- WMF
-- CR2 / CR3 / DNG
-- IFF / XIF (best effort only)
-
-### Principle 2 — Do not touch `launcher_tools`
-
-`launcher_tools` remains untouched.
-
-All project-facing workflows live under a **large project launcher**:
-
-- `launcher_project.cmd`
-- `launcher_project.fzf`
-
-Optional helper launchers may be added later if the menu becomes too large.
-
-### Principle 3 — FZF-first future
-
-The launcher design should be prepared for:
-
-- plain CMD menu now
-- FZF-driven selection later
-- same command architecture underneath
-
-The FZF launcher should not redefine business logic.  
-It should only provide a better selection UI over the same workflow commands.
-
----
-
-## Recommended repository layout
-
-```text
-Audion_Image_Tools/
-│
-├─ README.md
-├─ README.en.md
-├─ README.ru.md
-├─ LICENSE
-├─ requirements.txt
-├─ requirements-extended.txt
-├─ pyproject.toml
-│
-├─ launcher_project.cmd
-├─ launcher_project.fzf
-├─ launcher_project.ps1
-│
-├─ launcher_tools.cmd
-├─ launcher_tools.fzf
-│
-├─ install_environment.cmd
-├─ install_environment.ps1
-├─ verify_environment.cmd
-├─ verify_environment.ps1
-│
-├─ input/
-├─ output/
-├─ workspace/
-├─ logs/
-├─ presets/
-├─ fonts/
-├─ profiles/
-├─ examples/
-├─ docs/
-│
-├─ system_core/
-│  ├─ cli/
-│  │  ├─ main.py
-│  │  ├─ commands_convert.py
-│  │  ├─ commands_normalize.py
-│  │  ├─ commands_resize.py
-│  │  ├─ commands_canvas.py
-│  │  ├─ commands_tiff.py
-│  │  ├─ commands_contact_sheet.py
-│  │  ├─ commands_watermark.py
-│  │  ├─ commands_batch.py
-│  │  └─ commands_inspect.py
-│  │
-│  ├─ pipeline/
-│  │  ├─ job_models.py
-│  │  ├─ pipeline_runner.py
-│  │  ├─ metadata_policy.py
-│  │  ├─ color_pipeline.py
-│  │  ├─ geometry_pipeline.py
-│  │  └─ save_pipeline.py
-│  │
-│  ├─ io/
-│  │  ├─ discover.py
-│  │  ├─ naming.py
-│  │  ├─ manifest.py
-│  │  ├─ sidecar.py
-│  │  └─ reporting.py
-│  │
-│  ├─ adapters/
-│  │  ├─ adapter_pillow.py
-│  │  ├─ adapter_heif.py
-│  │  ├─ adapter_svg.py
-│  │  ├─ adapter_raw.py
-│  │  ├─ adapter_psd.py
-│  │  └─ adapter_fallback.py
-│  │
-│  ├─ transforms/
-│  │  ├─ exif_fix.py
-│  │  ├─ convert.py
-│  │  ├─ grayscale.py
-│  │  ├─ alpha.py
-│  │  ├─ dpi.py
-│  │  ├─ resize.py
-│  │  ├─ crop.py
-│  │  ├─ aspect_ratio.py
-│  │  ├─ color_profile.py
-│  │  ├─ trim.py
-│  │  ├─ watermark.py
-│  │  ├─ contact_sheet.py
-│  │  └─ animation.py
-│  │
-│  ├─ presets/
-│  │  ├─ jpeg_presets.py
-│  │  ├─ png_presets.py
-│  │  ├─ size_presets.py
-│  │  ├─ aspect_presets.py
-│  │  └─ color_presets.py
-│  │
-│  ├─ inspect/
-│  │  ├─ image_info.py
-│  │  ├─ metadata_info.py
-│  │  ├─ icc_info.py
-│  │  └─ frame_info.py
-│  │
-│  ├─ ui/
-│  │  ├─ menu_data.py
-│  │  ├─ menu_render.py
-│  │  └─ fzf_bridge.py
-│  │
-│  ├─ utils/
-│  │  ├─ paths.py
-│  │  ├─ console.py
-│  │  ├─ validation.py
-│  │  ├─ progress.py
-│  │  └─ safe_ops.py
-│  │
-│  └─ license/
-│     ├─ collect_third_party_licenses.py
-│     └─ Collect-ThirdPartyLicenses.ps1
-│
-├─ tests/
-│  ├─ test_convert.py
-│  ├─ test_resize.py
-│  ├─ test_color_profile.py
-│  ├─ test_tiff_frames.py
-│  └─ test_naming.py
-│
-└─ third_party_licenses/
-```
-
----
-
-## Input format support tiers
-
-### Tier A — stable core
-
-These should be first-class supported in v1:
-
-- BMP
-- JPG / JPEG
-- PNG
-- TGA
-- TIFF / TIF
-- GIF
-- WebP
-- AVIF
-
-### Tier B — extended adapters
-
-These should be supported through optional dependencies:
-
-- HEIC / HEIF
-- SVG / SVGZ
-- CR2 / CR3 / DNG
-
-### Tier C — best-effort / fallback
-
-These may work but must not be overpromised:
-
-- PSD
-- WMF
-- IFF
-- XIF
-
----
-
-## Main processing groups
-
-## 1. Convert
-
-Purpose: broad input to stable working outputs.
-
-### Main modes
-
-- Convert to JPG
-- Convert to PNG
-- Convert to JPG + PNG
-- Batch convert mixed inputs to chosen target
-
-### JPG presets
-
-- 60
-- 75
-- 90
-
-### PNG presets
-
-Use compression presets rather than fake visual “quality”:
-
-- Fast
-- Balanced
-- Strong
-
----
-
-## 2. Normalize / Fix Image
-
-Purpose: make source images predictable before other work.
-
-### Included actions
-
-- EXIF rotation fix
-- safe mode conversion
-- palette / RGBA / LA / CMYK handling
-- embedded ICC detection
-- convert profile to sRGB
-- optional convert profile to CMYK
-- strip broken metadata
-- normalize output mode for target format
-
-### Safe conversions
-
-Examples:
-
-- RGBA -> JPG with white background
-- RGBA -> JPG with black background
-- RGBA -> JPG with custom background
-- CMYK -> sRGB JPG/PNG
-- P / indexed -> RGB
-- LA -> RGB or L
-
----
-
-## 3. DPI / Resolution Metadata
-
-Purpose: write or normalize DPI metadata without arbitrary geometric resampling.
-
-### Main modes
-
-- keep original geometry, write new DPI
-- set 72 / 96 / 150 / 300 / 600 DPI
-- preserve original DPI if present
-- strip DPI metadata
-
-### Important policy
-
-This mode changes **metadata intent**, not actual pixel dimensions.
-
----
-
-## 4. Screen Fit / Resize
-
-Purpose: prepare wallpaper, screen, display, and presentation assets.
-
-### Target presets
-
-- 1920x1080
-- 2560x1440
-- 3840x2160
-
-### Geometry modes
-
-- fit and crop
-- contain
-- pad
-- fit by height
-- fit by width
-
----
-
-## 5. Aspect Ratio Fit
-
-Purpose: crop or frame to practical ratios.
-
-### Ratio presets
-
-- 16:9 landscape
-- 9:16 portrait
-- A4 portrait
-- A4 landscape
-- A3 portrait
-- A3 landscape
-
-### Modes
-
-- crop to ratio
-- pad to ratio
-- fit to ratio without changing source geometry beyond required crop
-- keep original resolution where possible
-
----
-
-## 6. Grayscale
-
-Purpose: convert input images to grayscale working outputs.
-
-### Modes
-
-- grayscale to JPG
-- grayscale to PNG
-- grayscale preserve original format where safe
-- grayscale after normalization
-- grayscale after crop/resize
-
-This should be a first-class menu entry, not a hidden option.
-
----
-
-## 7. TIFF Tools
-
-Purpose: make multi-page TIFF practically usable.
-
-### Main modes
-
-- extract all pages to numbered PNG
-- extract first page only
-- extract all pages to numbered JPG
-- inspect TIFF frame/page count
-
-### Naming rule
-
-Use numbered prefixes:
-
-- `001_...`
-- `002_...`
-- ...
-- `999_...`
-
----
-
-## 8. Contact Sheet
-
-Purpose: quick visual review of batches.
-
-### Modes
-
-- contact sheet from folder
-- contact sheet after conversion
-- contact sheet after normalization
-- fixed grid
-- auto grid
-- filename labels on/off
-
----
-
-## 9. Watermark / Text Overlay
-
-Purpose: add reusable production marks.
-
-### Modes
-
-- text watermark
-- image watermark
-- corner placement
-- centered placement
-- tiled watermark
-- opacity control
-- margin control
-
----
-
-## 10. Border Trim
-
-Purpose: remove white or near-uniform borders from scans and exports.
-
-### Modes
-
-- white trim
-- black trim
-- auto edge trim
-- threshold controlled trim
-
----
-
-## 11. Animation / Multi-frame Policy
-
-Purpose: define how animated or multi-frame sources are handled.
-
-### Policies
-
-- first frame only
-- all frames
-- flatten to single output
-- export frames to sequence
-
-Applies to:
-
-- GIF
-- animated WebP
-- multi-page TIFF
-
----
-
-## Recommended launcher design
-
-## Main launcher
-
-### `launcher_project.cmd`
-
-This is the large primary launcher.
-
-It should contain grouped sections such as:
-
-1. Convert
-2. Normalize / Fix
-3. DPI / Metadata
-4. Screen Fit / Resize
-5. Aspect Ratio Tools
-6. JPG / PNG Advanced Tools
-7. TIFF Tools
-8. Contact Sheet
-9. Watermark / Overlay
-10. Border Trim
-11. Inspect / Report
-12. Batch Presets
-13. Open Input Folder
-14. Open Output Folder
-15. Open Workspace
-16. Cleanup Project Workspace
-
-## FZF launcher
-
-### `launcher_project.fzf`
-
-This should mirror the same operations with searchable selection.
-
-FZF should be ideal for large operation count.
-
-It should support:
-
-- fuzzy search
-- grouped operation names
-- short descriptions
-- preset selection
-- direct execution of matching action
-
-Example naming style:
-
-- `Convert -> Mixed Input -> JPG (Q75)`
-- `Convert -> Mixed Input -> PNG (Balanced)`
-- `Normalize -> EXIF + sRGB -> PNG`
-- `Resize -> 2160p -> Crop`
-- `Aspect -> A4 Portrait -> Crop`
-- `TIFF -> Extract All Pages -> PNG`
-- `JPG/PNG -> Grayscale`
-- `Inspect -> Image Metadata Report`
-
----
-
-## Optional helper launchers
-
-If the menu becomes too large, add optional helper launchers without replacing the main launcher:
-
-- `launcher_convert.cmd`
-- `launcher_normalize.cmd`
-- `launcher_resize.cmd`
-- `launcher_tiff.cmd`
-- `launcher_batch.cmd`
-
-These should remain secondary convenience launchers.
-
-Main identity stays with:
-
-- `launcher_project.cmd`
-- `launcher_project.fzf`
-
----
-
-## Preset philosophy
-
-Presets should be practical rather than abstract.
-
-### Recommended preset families
-
-#### JPG
-
-- Q60
-- Q75
-- Q90
-
-#### PNG
-
-- Fast
-- Balanced
-- Strong
-
-#### DPI
-
-- 72
-- 96
-- 150
-- 300
-- 600
-
-#### Screen
-
-- 1080p crop
-- 1080p contain
-- 1440p crop
-- 1440p contain
-- 2160p crop
-- 2160p contain
-
-#### Ratios
-
-- 16x9 landscape
-- 9x16 portrait
-- A4 portrait
-- A4 landscape
-- A3 portrait
-- A3 landscape
-
-#### Color
-
-- preserve if safe
-- force sRGB
-- force CMYK
-- grayscale
-
----
-
-## Metadata policy
-
-Recommended options:
-
-- preserve all when safe
-- preserve DPI + ICC only
-- strip all metadata
-
-This should be available globally or per job.
-
----
-
-## File naming policy
-
-Output names should be stable and predictable.
-
-Examples:
-
-- `photo__jpg_q75.jpg`
-- `photo__png_balanced.png`
-- `photo__srgb.png`
-- `photo__gray.jpg`
-- `photo__2160p_crop.jpg`
-- `scan__a4_portrait.png`
-- `document__001.png`
-
-Avoid random suffixes.
-
----
-
-## Batch workflow philosophy
-
-A strong batch workflow matters more than single-file perfection.
-
-Recommended batch flow:
-
-1. detect files
-2. classify by adapter
-3. normalize if needed
-4. transform
-5. save
-6. report success / failure
-7. produce manifest
-
----
-
-## Suggested v1 command set
-
-```text
-python -m system_core.cli.main convert --to jpg --quality 75
-python -m system_core.cli.main convert --to png --preset balanced
-python -m system_core.cli.main normalize --target-profile srgb
-python -m system_core.cli.main normalize --target-profile cmyk
-python -m system_core.cli.main dpi --set 300
-python -m system_core.cli.main resize --preset 2160p --mode crop
-python -m system_core.cli.main aspect --preset a4_portrait --mode crop
-python -m system_core.cli.main gray
-python -m system_core.cli.main tiff-extract --to png
-python -m system_core.cli.main contact-sheet
-python -m system_core.cli.main watermark --text "Audion"
-python -m system_core.cli.main trim --mode white
-python -m system_core.cli.main inspect
-```
-
----
-
-## MVP priority order
-
-### Phase 1 — main production core
-
-- mixed input discovery
-- convert to JPG
-- convert to PNG
-- EXIF fix
-- sRGB normalization
-- alpha handling for JPG
-- metadata policy
-- grayscale
-- resize to 1080p / 1440p / 2160p
-- aspect ratio crop for 16:9 / A4 / A3
-
-### Phase 2 — practical power tools
-
-- TIFF extraction
-- contact sheet
-- watermark / text overlay
-- border trim
-- inspect / manifest report
-
-### Phase 3 — extended adapters
-
-- HEIC / HEIF
-- SVG / SVGZ
-- CR2 / CR3 / DNG
-- fallback pipeline for PSD / WMF / niche inputs
-
----
-
-## Key design summary
-
-The heart of the project should be:
-
-- broad format ingestion
-- strong conversion
-- deep JPG/PNG workflows
-- large project launcher
-- clean future FZF transition
-- `launcher_tools` left untouched
-
-That is the most stable and scalable direction for **Audion Image Tools**.
