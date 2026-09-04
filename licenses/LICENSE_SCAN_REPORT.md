@@ -1,7 +1,7 @@
 # Audion Build Licenses Scan Report
 
 - Project: **Audion Image Tools** (`audion-image-tools`)
-- Run: `20260901T043529Z_audion-image-tools_087ea335`
+- Run: `20260904T022931Z_audion-image-tools_61d27db7`
 - Project root: `S:\Release\Audion Image Tools`
 - Scan root: `S:\Release\Audion Image Tools`
 - Output: `S:\Release\Audion Image Tools\licenses`
@@ -24,7 +24,7 @@ No issues detected.
 | aiosignal | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 1.4.0 | 1.4.0 |
 | annotated-doc | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 0.0.5 | 0.0.5 |
 | annotated-types | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 0.8.0 | 0.8.0 |
-| anyio | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 4.14.2 | 4.14.2 |
+| anyio | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 4.15.0 | 4.15.0 |
 | attrs | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 26.1.0 | 26.1.0 |
 | beautifulsoup4 | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 4.15.0 | 4.15.0 |
 | bidict | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 0.24.1 | 0.24.1 |
@@ -50,7 +50,7 @@ No issues detected.
 | iniconfig | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.3.0 | 2.3.0 |
 | itsdangerous | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.2.0 | 2.2.0 |
 | Jinja2 | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 3.1.6 | 3.1.6 |
-| lxml | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 6.1.2 | 6.1.2 |
+| lxml | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 6.1.3 | 6.1.3 |
 | markdown-it-py | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 4.2.0 | 4.2.0 |
 | markdown2 | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.5.5 | 2.5.5 |
 | MarkupSafe | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 3.0.3 | 3.0.3 |

@@ -1,5 +1,18 @@
 # Audion Image Tools - User Guide
 
+**Contents**
+
+- [Purpose](#purpose)
+- [Quick Route](#quick-route)
+- [New GUI Layout](#new-gui-layout)
+- [Workbench I/O](#workbench-io)
+- [Modules](#modules)
+- [Maintenance](#maintenance)
+- [Main Folders](#main-folders)
+- [CLI Examples](#cli-examples)
+- [Before Release](#before-release)
+- [Canonical Workbench labels](#canonical-workbench-labels)
+
 This is the English companion to `USER_GUIDE_RU.md`.
 
 ## Purpose

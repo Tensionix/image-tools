@@ -2,6 +2,19 @@
 
 [Русский](README_RU.md) · [User Guide](USER_GUIDE_EN.md)
 
+**Contents**
+
+- [Why It Exists](#why-it-exists)
+- [Principles](#principles)
+- [What It Can Do](#what-it-can-do)
+- [Next](#next)
+- [Technical Reference](#technical-reference)
+  - [Running](#running)
+  - [Defaults](#defaults)
+  - [Choosing a Colour Profile](#choosing-a-colour-profile)
+  - [Folders](#folders)
+  - [Workbench Naming](#workbench-naming)
+
 A portable toolkit for images: conversion, colour, sizing, cropping, watermarks,
 tiling, contact sheets.
 
