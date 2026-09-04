@@ -8,14 +8,14 @@
   <a href="https://github.com/Tensionix/image-tools/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Tensionix/image-tools?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600"></a>
 </p>
 
-**Version 2.4.2** · 2026-09-04 · 298.1 MB
+**Version 2.4.2** · 2026-09-04 · 6.1 MB
 
-- [Direct download](https://audion.dev/get/image-tools/2.4.2/Audion_Image_Tools_v2.4.2_Full.zip) — unmetered, no rate limits
+- [Direct download](https://dl.audion.dev/image-tools/2.4.2/Audion_Image_Tools_v2.4.2.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/image-tools) — every version and how to install
 
 <p align="center"><img src="docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: 26578413e69e549b78e5eb23d84fe5ab1ad7f2c3e066220218458e64620072d8`
+`SHA-256: ea13fbed33919823dfee5e9ab9da535edb4d6b7bf9294aa921ac198586bb4709`
 
 ---
 
