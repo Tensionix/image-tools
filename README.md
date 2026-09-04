@@ -23,7 +23,7 @@ An **Audion** tool, published by [Tensionix](https://github.com/Tensionix).
 <!-- /audion:release -->
 
 
-[Русский](docs/README_RU.md) · [User Guide](docs/USER_GUIDE_EN.md)
+[Русский](Docs/README_RU.md) · [User Guide](Docs/USER_GUIDE_EN.md)
 
 **Contents**
 
@@ -108,7 +108,7 @@ replace it with them by default.
 
 ## Next
 
-* [User Guide](docs/USER_GUIDE_EN.md) — step by step.
+* [User Guide](Docs/USER_GUIDE_EN.md) — step by step.
 * `tools\RELEASE_GUIDE_EN.md` — building a release.
 
 ---
