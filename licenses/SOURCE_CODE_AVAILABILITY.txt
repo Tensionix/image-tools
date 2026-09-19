@@ -39,10 +39,10 @@ version: 3.12.0
 url: https://pypi.org/project/orjson/3.12.0/
 
 Component: pikepdf
-Version/profile: 10.12.0
+Version/profile: 10.13.0.post1
 Method: upstream_pin
-version: 10.12.0
-url: https://pypi.org/project/pikepdf/10.12.0/
+version: 10.13.0.post1
+url: https://pypi.org/project/pikepdf/10.13.0.post1/
 
 Component: pymupdf
 Version/profile: 1.28.2
@@ -51,10 +51,10 @@ version: 1.28.2
 url: https://pypi.org/project/pymupdf/1.28.2/
 
 Component: tqdm
-Version/profile: 4.70.0
+Version/profile: 4.70.1
 Method: upstream_pin
-version: 4.70.0
-url: https://pypi.org/project/tqdm/4.70.0/
+version: 4.70.1
+url: https://pypi.org/project/tqdm/4.70.1/
 
 
 OPTIONAL RUNTIME COMPONENTS
