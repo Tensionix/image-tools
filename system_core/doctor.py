@@ -7,18 +7,24 @@ import os
 import platform
 import sys
 
+# What the engine imports (3.0.0): the pictures, the PDF and the pictures inside DOCX and PPTX. The window
+# on NiceGUI and the packages it lived on are gone; pydantic was never imported by the engine.
 REQUIRED_MODULES = [
     ("PIL", "Pillow"),
+    ("PIL.ImageCms", "Pillow ImageCms"),
+    ("numpy", "numpy"),
     ("tqdm", "tqdm"),
-    ("pydantic", "pydantic"),
+    ("yaml", "PyYAML"),
+    ("pymupdf", "PyMuPDF"),
+    ("pikepdf", "pikepdf"),
+    ("img2pdf", "img2pdf"),
+    ("lxml", "lxml"),
 ]
 
+# Formats the window shows as badges: without them those formats are refused, nothing else.
 OPTIONAL_MODULES = [
-    ("fitz", "PyMuPDF"),
-    ("img2pdf", "img2pdf"),
     ("pillow_heif", "pillow-heif"),
     ("rawpy", "rawpy"),
-    ("PIL.ImageCms", "Pillow ImageCms"),
 ]
 
 
@@ -95,7 +101,8 @@ def heif_feature() -> tuple[bool, str]:
 
 
 def feature_matrix() -> list[tuple[str, bool, str]]:
-    fitz_ok, fitz_detail = check_module("fitz")
+    # PyMuPDF by its own name: the old one, `fitz`, prints a warning of its end at every import.
+    fitz_ok, fitz_detail = check_module("pymupdf")
     img2pdf_ok, img2pdf_detail = check_module("img2pdf")
     raw_ok, raw_detail = check_module("rawpy")
     cms_ok, cms_detail = check_module("PIL.ImageCms")

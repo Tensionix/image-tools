@@ -10,7 +10,7 @@ from pathlib import Path
 
 from PIL import Image, ImageColor, ImageDraw, ImageOps
 
-from .io_utils import discover_inputs, open_image
+from .io_utils import discover_inputs, open_image, written_whole
 from .pipeline import flatten_alpha
 
 
@@ -401,13 +401,17 @@ def build_tile_sheet_for_image(
         output_format = 'tiff'
         sheet_path = output_dir / f'{prefix}_tile_sheet_{sheet_tag}_{dpi}dpi.tif'
         preview_path = output_dir / f'{prefix}_tile_sheet_preview.jpg'
-        canvas.save(sheet_path, dpi=(dpi, dpi), compression='tiff_lzw')
-        _render_preview(canvas, preview_width_px).save(preview_path, quality=90, optimize=True)
+        with written_whole(sheet_path) as temp:
+            canvas.save(temp, dpi=(dpi, dpi), compression='tiff_lzw')
+        with written_whole(preview_path) as temp:
+            _render_preview(canvas, preview_width_px).save(temp, quality=90, optimize=True)
     elif output_format == 'png':
         sheet_path = output_dir / f'{prefix}_tile_sheet_{sheet_tag}_{dpi}dpi.png'
         preview_path = output_dir / f'{prefix}_tile_sheet_preview.png'
-        canvas.save(sheet_path, format='PNG', dpi=(dpi, dpi), optimize=True)
-        _render_preview(canvas, preview_width_px).save(preview_path, format='PNG', optimize=True)
+        with written_whole(sheet_path) as temp:
+            canvas.save(temp, format='PNG', dpi=(dpi, dpi), optimize=True)
+        with written_whole(preview_path) as temp:
+            _render_preview(canvas, preview_width_px).save(temp, format='PNG', optimize=True)
     else:
         raise ValueError(f'Unsupported tile sheet output format: {out_format}')
 

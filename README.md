@@ -8,15 +8,14 @@
   <a href="https://github.com/Tensionix/image-tools/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Tensionix/image-tools?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600"></a>
 </p>
 
-**Version 3.0.0** · 2026-10-16 · 73.4 MB
+**Version 3.0.0** · 2026-10-16 · 216.5 MB
 
-- [Direct download](https://dl.audion.dev/image-tools/3.0.0/Audion_Image_Tools_v3.0.0.zip) — unmetered, no rate limits
+- [Direct download](https://audion.dev/get/image-tools/3.0.0/Audion_Image_Tools_v3.0.0_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/image-tools) — every version and how to install
-- [GitHub release](https://github.com/Tensionix/image-tools/releases/tag/v3.0.0)
 
 <p align="center"><img src="docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: beb7e6c3efa1b6ef9516022951e8f8f4d7f2f26c4ff443ee7b1304dd997fbfe0`
+`SHA-256: b9967bec3187fe7512e00ef5e9c8d8595188ba138b7732ac67c585f259d4601b`
 
 ---
 
@@ -24,7 +23,7 @@ An **Audion** tool, published by [Tensionix](https://github.com/Tensionix).
 <!-- /audion:release -->
 
 
-[Русский](docs/README_RU.md) · [User Guide](docs/USER_GUIDE_EN.md)
+[English README](docs/README_EN.md) · [User Guide](docs/USER_GUIDE_EN.md) | [Русский README](docs/README_RU.md) · [Руководство](docs/USER_GUIDE_RU.md)
 
 **Contents**
 
@@ -37,10 +36,10 @@ An **Audion** tool, published by [Tensionix](https://github.com/Tensionix).
   - [Defaults](#defaults)
   - [Choosing a Colour Profile](#choosing-a-colour-profile)
   - [Folders](#folders)
-  - [Workbench Naming](#workbench-naming)
+  - [Source and Target](#source-and-target)
 
 A portable toolkit for images: conversion, colour, sizing, cropping, watermarks,
-tiling, contact sheets.
+tiling, contact sheets - and PDF pages and the pictures inside DOCX, PPTX and PDF.
 
 ## Why It Exists
 
@@ -104,13 +103,25 @@ replace it with them by default.
 | Watermark | a caption in the corner or a diagonal protective line, with adjustable opacity and colour |
 | Tiling | one image across A5, A4, A3, or a roll — for stickers, with margins and gaps in millimetres |
 | Contact sheet | a grid of thumbnails: standard sizes or your own |
-| TIFF splitting | multi-frame into numbered PNG frames |
-| Rotation | fixing by the orientation tag |
+| Frames | a multi-frame picture (TIFF, GIF, WebP, APNG) into numbered PNG frames with their pauses; frames back into GIF, WebP or APNG |
+| Rotation | fixing by the orientation tag; a JPEG turned by 90, 180, 270 degrees without loss (jpegtran) |
+| Exact size | fit, pad, crop or stretch to a size in pixels; a scale of 0.1 to 1000 % |
+| Correction | levels, brightness, contrast, gamma, saturation, grey, sepia, a tint, inverse, white to transparent; PNG of 256 colours |
+| Metadata | EXIF and GPS taken out without writing the picture again, its pixels checked |
+| ICO | every size Windows asks for, in one file |
+| PDF pages | turn chosen pages, merge, split by ranges, clear the metadata; every copy checked before it is called done |
+| Pictures in documents | DOCX, PPTX, PDF: check their DPI, raise them, shrink them, fit a document under a size in MB, sRGB or CMYK, take them out; a small PNG - a coat of arms, a sign - stays PNG |
+| Preview | before, after, side by side - for the operations that are hard to set blind |
+
+PDF files and the pictures inside documents are read and written by the PyMuPDF
+library, which is distributed under the GNU AGPL 3.0. The program's own code
+stays under Apache 2.0, but the build as a whole — the program together with
+PyMuPDF — is offered under the terms of the GNU AGPL 3.0; see the `NOTICE` file.
 
 ## Next
 
 * [User Guide](docs/USER_GUIDE_EN.md) — step by step.
-* `tools\RELEASE_GUIDE_EN.md` — building a release.
+* `install\README_INSTALL.md` — building the environment and the window.
 
 ---
 
@@ -119,14 +130,20 @@ replace it with them by default.
 ### Running
 
 ```cmd
-launcher_gui.cmd          the main one, windowed
-launcher_project.cmd      command line and text menu
-launcher_project_ru.cmd   the same in Russian
+Start.exe                 the window
+image_cli.cmd describe    every section, operation and field as JSON
+image_cli.cmd run --operation downscale_percent --set scale_mode=custom --set custom_percent=75
 ```
 
-The menu uses the quick picker when available and falls back to a plain menu
-otherwise. For short, consequential choices it uses a simple list, so values
-cannot be confused at deeper steps.
+The window is a native Windows window (`App\`). A button of the window does
+nothing the console cannot: it runs `image_cli.cmd` with the same settings, and
+the journal writes that line at every start. Exit codes: `0` done, `1` failed,
+`130` stopped, `2` a wrong call - and then nothing is run.
+
+The journal shows a batch of many files as one live line: the share done, how
+many are done and how many there are, the speed, the time left and the file -
+each in its own colour. A file that went wrong stays in the journal as a line;
+every line of every file is in the log of the operation in `logs\`.
 
 ### Defaults
 
@@ -151,25 +168,26 @@ cannot be confused at deeper steps.
 ### Folders
 
 ```
+App\          the window and the PowerShell the program carries
+Start.exe     opens the window
 input\        quick source folder
 output\       results
-logs\         run logs
-report\       detailed reports
+logs\         the log of every operation, run reports
+report\       the reports of checks
 workspace\    temporary area
-config\       defaults, themes, profile paths
-system_core\  the implementation
+config\       the operations, the layout of the window, defaults, ICC profiles
+system_core\  the engine and the console command
 install\      portable environment
 wheelhouse\   packages for offline install
-release\      release archives
 ```
 
-### Workbench Naming
+### Source and Target
 
-This project's vocabulary is the shared one across all Audion programs:
-**Source**, **Add file…**, **Target**, **Reset**, **Delete**, **List**. In
-Russian: **Источник**, **Добавить файл…**, **Назначение**, **Сбросить**,
-**Удалить**, **Список**.
-
-`Reset` restores the project `input` and `output` without touching files.
-`Delete` clears the current source and target only after confirmation. The words
-`Destination`, `Clear`, «Цель», and «Очистить» are not used.
+**SOURCE** and **TARGET** are the two working paths, each with its history and
+its pins; SOURCE may be a single file. Under them: **RESET** returns both to the
+project `input` and `output` (the history is cleared, the pins stay, no file is
+touched); **LIST** writes into the journal what lies in SOURCE; **TO SOURCE**
+makes the result the source of the next operation; **CLEAR** deletes the
+contents of SOURCE, TARGET or both - into the Recycle Bin, after a question that
+names the paths. In Russian: **ИСТОЧНИК**, **НАЗНАЧЕНИЕ**, **СБРОСИТЬ**,
+**СПИСОК**, **В ИСТОЧНИК**, **ОЧИСТИТЬ**.

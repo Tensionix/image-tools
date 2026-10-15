@@ -13,7 +13,7 @@ except Exception:
     ImageCms = None
 
 from .constants import PNG_PRESETS, SCREEN_TARGETS, ASPECT_RATIOS
-from .io_utils import ensure_dir, open_image
+from .io_utils import ensure_dir, open_image, written_whole
 
 
 RESAMPLING = getattr(Image, 'Resampling', Image)
@@ -85,6 +85,10 @@ def parse_color(value: str) -> tuple[int, int, int]:
         return (255, 255, 255)
     if value.lower() == 'black':
         return (0, 0, 0)
+    # The colour of one's own from the window: "R,G,B".
+    parts = [part.strip() for part in value.split(',')]
+    if len(parts) == 3 and all(part.isdigit() for part in parts):
+        return tuple(max(0, min(255, int(part))) for part in parts)
     return ImageColor.getrgb(value)
 
 
@@ -272,6 +276,9 @@ def apply_metadata_policy(
     return save_kwargs
 
 
+ICO_SIZES = (16, 24, 32, 48, 64, 128, 256)
+
+
 def _prepare_image_for_save(
     src_image: Image.Image,
     out_format: str,
@@ -307,6 +314,16 @@ def _prepare_image_for_save(
         image = safe_rgb(src_image, alpha_bg)
         save_kwargs.update({'format': 'HEIF', 'quality': _quality_value(jpeg_quality)})
         suffix = f'.{out_format}'
+    elif out_format == 'ico':
+        # An icon is square: the picture is laid into a square with transparent margins, and every size Windows
+        # asks for up to the side of the picture (256 at most) is written inside one file.
+        rgba = src_image.convert('RGBA')
+        side = max(rgba.size)
+        image = Image.new('RGBA', (side, side), (0, 0, 0, 0))
+        image.paste(rgba, ((side - rgba.width) // 2, (side - rgba.height) // 2))
+        sizes = [(size, size) for size in ICO_SIZES if size <= min(side, 256)] or [(side, side)]
+        save_kwargs.update({'format': 'ICO', 'sizes': sizes})
+        suffix = '.ico'
     else:
         raise ValueError(f'Unsupported output format: {out_format}')
 
@@ -363,11 +380,14 @@ def save_image(
         embedded_icc=embedded_icc,
         metadata_fallback=metadata_source,
     )
+    # Beside its place first: a STOP in the middle of a large picture left a cut file over the result of the last run.
     try:
-        image.save(out_path, **save_kwargs)
+        with written_whole(out_path) as temp:
+            image.save(temp, **save_kwargs)
     except PermissionError:
         retry_path = _permission_fallback_path(out_path)
-        image.save(retry_path, **save_kwargs)
+        with written_whole(retry_path) as temp:
+            image.save(temp, **save_kwargs)
         out_path = retry_path
     return out_path
 
@@ -860,8 +880,6 @@ def fit_resize_to_target_bytes(
     return best_image, round(best_percent, 3), best_size
 
 
-
-
 def dpi_for_print_side(image: Image.Image, side: str, target_mm: int) -> float:
     side = (side or 'short').lower()
     if target_mm <= 0:
@@ -874,21 +892,6 @@ def dpi_for_print_side(image: Image.Image, side: str, target_mm: int) -> float:
     else:
         raise ValueError(f'Unsupported side mode: {side}')
     return basis_px / target_inches
-def fit_to_print_side(image: Image.Image, side: str, target_mm: int, dpi: int, algorithm: str = 'lanczos') -> Image.Image:
-    side = (side or 'short').lower()
-    method = RESAMPLE if (algorithm or 'lanczos').lower() == 'lanczos' else NEAREST
-    target_px = max(1, round((target_mm / 25.4) * dpi))
-    if side == 'short':
-        basis = min(image.width, image.height)
-    elif side == 'long':
-        basis = max(image.width, image.height)
-    else:
-        raise ValueError(f'Unsupported side mode: {side}')
-    ratio = target_px / basis
-    new_size = (max(1, round(image.width * ratio)), max(1, round(image.height * ratio)))
-    return image.resize(new_size, method)
-
-
 def split_image_strips(image: Image.Image, orientation: str = 'vertical', parts: int = 2) -> list[Image.Image]:
     orientation = (orientation or 'vertical').lower()
     if not 2 <= parts <= 10:
@@ -916,7 +919,3 @@ def split_image_grid(image: Image.Image, rows: int = 2, columns: int = 2) -> lis
             parts.append((row + 1, column + 1, crop))
     return parts
 
-
-def split_image_half(image: Image.Image, orientation: str = 'vertical') -> tuple[Image.Image, Image.Image]:
-    first, second = split_image_strips(image, orientation, 2)
-    return first, second

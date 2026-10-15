@@ -19,16 +19,6 @@ class Operation:
     parameters: dict[str, Any] = field(default_factory=dict)
     fields: tuple[dict[str, Any], ...] = ()
 
-    def display_title(self, language: str) -> str:
-        if language == "ru" and self.title_ru:
-            return self.title_ru
-        return self.title
-
-    def display_description(self, language: str) -> str:
-        if language == "ru" and self.description_ru:
-            return self.description_ru
-        return self.description
-
 
 @dataclass(frozen=True)
 class CommandNode:
@@ -42,16 +32,6 @@ class CommandNode:
     parameters: dict[str, Any] = field(default_factory=dict)
     fields: tuple[dict[str, Any], ...] = ()
     children: tuple["CommandNode", ...] = ()
-
-    def display_title(self, language: str) -> str:
-        if language == "ru" and self.title_ru:
-            return self.title_ru
-        return self.title
-
-    def display_description(self, language: str) -> str:
-        if language == "ru" and self.description_ru:
-            return self.description_ru
-        return self.description
 
     def to_operation(self, parameters: dict[str, Any] | None = None) -> Operation:
         return Operation(

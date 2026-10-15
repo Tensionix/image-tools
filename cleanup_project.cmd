@@ -82,16 +82,18 @@ echo   %BASE_DIR%
 echo.
 echo This script keeps source scripts, folders, documentation and configs.
 echo It removes generated workspace content, build/runtime payloads and caches:
-echo   - input, output, logs, report, workspace, data, release contents
+echo   - input, output, logs, report, workspace contents
 echo   - runtime, wheelhouse, install\download contents
 echo   - all folders named .runtime, _runtime, ._runtime, __pycache__
 echo   - pytest/mypy/ruff caches, root build/dist folders
-echo   - system_core\fzf.exe and system_core\powershell contents
-echo   - system_core\_pwsh_tmp, system_core\_powershell_tmp, system_core\_fzf_tmp
+echo   - system_core\jpegtran: install\get_jpegtran.py and step 02 or 03 of the builder bring it back
+echo   - Source\bin, Source\obj: what a build of the window leaves; App\ stays, it travels as it is
+echo   - the state of the window: config\window_settings.json, path_history.json, parallel_settings.json
 echo   - root licenses\ is preserved unchanged
 echo   - generated *.pyc, *.pyo, *.tmp, *.bak, *.log, Thumbs.db, desktop.ini
+echo     ^(the sweeps by name and by mask pass App\, config\, docs\ and licenses\ by^)
 echo.
-echo Protected: system_core source, config files including ui_colors.yaml and ICC profiles, docs, launchers, install scripts, license notices and records.
+echo Protected: App\, Start.exe, system_core source, config files and ICC profiles, docs, install scripts, license notices and records.
 echo.
 if "%DRY_RUN%"=="1" echo Dry-run: ON. Nothing will be deleted.
 echo.
@@ -123,19 +125,19 @@ call :ClearDir "%BASE_DIR%\output"
 call :ClearDir "%BASE_DIR%\logs"
 call :ClearDir "%BASE_DIR%\report"
 call :ClearDir "%BASE_DIR%\workspace"
-call :ClearDir "%BASE_DIR%\data"
-call :ClearDir "%BASE_DIR%\release"
 call :ClearDir "%BASE_DIR%\runtime"
 call :ClearDir "%BASE_DIR%\wheelhouse"
 call :ClearDir "%BASE_DIR%\install\download"
-call :ClearDir "%BASE_DIR%\system_core\powershell"
-call :RemoveDir "%BASE_DIR%\system_core\_pwsh_tmp"
-call :RemoveDir "%BASE_DIR%\system_core\_powershell_tmp"
-call :RemoveDir "%BASE_DIR%\system_core\_fzf_tmp"
+call :RemoveDir "%BASE_DIR%\system_core\jpegtran"
+call :RemoveDir "%BASE_DIR%\Source\bin"
+call :RemoveDir "%BASE_DIR%\Source\obj"
 rem licenses\ is intentionally preserved by release cleanup.
 call :RemoveDir "%BASE_DIR%\build"
 call :RemoveDir "%BASE_DIR%\dist"
-call :RemoveFile "%BASE_DIR%\system_core\fzf.exe"
+rem The state of the window: the folders of this machine must not travel in a release.
+call :RemoveFile "%BASE_DIR%\config\window_settings.json"
+call :RemoveFile "%BASE_DIR%\config\path_history.json"
+call :RemoveFile "%BASE_DIR%\config\parallel_settings.json"
 rem licenses\licenses.zip is intentionally preserved by release cleanup.
 
 call :RemoveFilesByPattern "*.pyc"
@@ -199,7 +201,10 @@ set "DIR_NAME=%~1"
 echo [DIRS] Removing folders named %DIR_NAME%
 for /f "delims=" %%D in ('dir /ad /b /s "%BASE_DIR%" 2^>nul') do (
   if /I "%%~nxD"=="%DIR_NAME%" (
-    if "%DRY_RUN%"=="1" (
+    call :IsProtected "%%~fD"
+    if not errorlevel 1 (
+      echo   [KEEP] %%~fD
+    ) else if "%DRY_RUN%"=="1" (
       echo   [DRY] rmdir /s /q "%%~fD"
     ) else (
       echo   rmdir "%%~fD"
@@ -300,7 +305,10 @@ exit /b 1
 set "PATTERN=%~1"
 echo [FILES] Removing %PATTERN%
 for /f "delims=" %%F in ('dir /a-d /b /s "%BASE_DIR%\%PATTERN%" 2^>nul') do (
-  if "%DRY_RUN%"=="1" (
+  call :IsProtected "%%~fF"
+  if not errorlevel 1 (
+    echo   [KEEP] %%~fF
+  ) else if "%DRY_RUN%"=="1" (
     echo   [DRY] del "%%~fF"
   ) else (
     echo   del "%%~fF"
@@ -310,6 +318,30 @@ for /f "delims=" %%F in ('dir /a-d /b /s "%BASE_DIR%\%PATTERN%" 2^>nul') do (
   )
 )
 exit /b 0
+
+:IsProtected
+rem Exit code 0: the path lies in a tree the cleanup keeps - App\, config\, docs\, licenses\. The sweeps by
+rem folder name and by file mask went through the whole project and took a log, a backup or a cache folder kept
+rem in those trees (the audit of 15.10.2026, F06); what they clear is named above, folder by folder.
+set "CANDIDATE=%~f1\"
+for %%P in (App config docs licenses) do (
+  call :HeadIs "!CANDIDATE!" "%BASE_PREFIX%%%P\" && exit /b 0
+)
+exit /b 1
+
+:HeadIs
+set "HEAD_WHOLE=%~1"
+set "HEAD_WANTED=%~2"
+set "HEAD_WORK=%~2"
+set /a HEAD_LEN=0
+:HeadIsCount
+if not defined HEAD_WORK goto HeadIsCompare
+set "HEAD_WORK=!HEAD_WORK:~1!"
+set /a HEAD_LEN+=1
+goto HeadIsCount
+:HeadIsCompare
+if /I "!HEAD_WHOLE:~0,%HEAD_LEN%!"=="!HEAD_WANTED!" exit /b 0
+exit /b 1
 
 :AssertInside
 set "TARGET_ABS=%~f1"

@@ -3,14 +3,36 @@ from __future__ import annotations
 
 import json
 import sys
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Iterable
 
 from PIL import Image
 
 from .constants import SUPPORTED_EXTENSIONS, HEIF_EXTENSIONS, RAW_EXTENSIONS
+
+
+@contextmanager
+def written_whole(target: Path) -> Iterator[Path]:
+    """A file written beside its place - `name.writing.ext`, its extension kept, so that a writer reading the format
+    from the name reads it right - and put in its place only whole: a stop or a failure in the middle leaves what lay
+    there before as it was. The part an ended engine leaves is cleared by the service (image_tools_gui._clear_parts)."""
+    target = Path(target)
+    temp = target.with_name(f"{target.stem}.writing{target.suffix}")
+    temp.unlink(missing_ok=True)
+    try:
+        yield temp
+        temp.replace(target)
+    finally:
+        temp.unlink(missing_ok=True)
+
+
+def write_whole(target: Path, data: bytes) -> None:
+    """Bytes made in memory written as a whole file (written_whole)."""
+    with written_whole(target) as temp:
+        temp.write_bytes(data)
 
 DEFAULT_MAX_IMAGE_PIXELS = 1_000_000_000
 Image.MAX_IMAGE_PIXELS = DEFAULT_MAX_IMAGE_PIXELS
@@ -26,7 +48,9 @@ except Exception:
     rawpy = None
 
 try:
-    import fitz
+    # The module of PyMuPDF by its own name: under the old one, `fitz`, every start of the engine
+    # put a deprecation warning into the journal.
+    import pymupdf as fitz
 except Exception:
     fitz = None
 
@@ -67,7 +91,8 @@ def discover_inputs(path: Path) -> list[Path]:
         return [path]
     files = []
     for p in path.rglob('*'):
-        if p.is_file() and p.suffix.lower() in SUPPORTED_EXTENSIONS:
+        # `name.writing.png` is the part of a picture an ended engine left half written (written_whole): no picture.
+        if p.is_file() and p.suffix.lower() in SUPPORTED_EXTENSIONS and '.writing.' not in p.name:
             files.append(p)
     return sorted(files)
 
@@ -123,18 +148,6 @@ def open_image(path: Path) -> Image.Image:
 
 def ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
-
-
-def unique_target_path(base: Path, suffix: str) -> Path:
-    candidate = base.with_suffix(suffix)
-    if not candidate.exists():
-        return candidate
-    index = 2
-    while True:
-        candidate = base.with_name(f"{base.name}_{index}").with_suffix(suffix)
-        if not candidate.exists():
-            return candidate
-        index += 1
 
 
 def write_json_report(log_dir: Path, payload: dict) -> Path:

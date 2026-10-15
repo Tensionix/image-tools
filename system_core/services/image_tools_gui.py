@@ -1,17 +1,18 @@
 from __future__ import annotations
 
 import json
-import os
+import queue
 import shutil
 import subprocess
 import sys
+import threading
 from pathlib import Path
 from typing import Any
 
+from system_core.core.lines import paint
 from system_core.core.jobs import (
     JobContext,
     UserFacingError,
-    decode_process_line,
     decoded_process_lines,
     hidden_subprocess_kwargs,
     is_python_command,
@@ -21,6 +22,8 @@ from system_core.core.jobs import (
 from system_core.image_tools.photo_sheet import load_photo_sheet_config, mode_config
 
 
+# What a run that was stopped before its engine started answers with: the code a console gives a stopped command.
+STOPPED_EXIT_CODE = 130
 PARALLEL_SETTINGS_FILE = 'parallel_settings.json'
 DEFAULT_PARALLEL_SETTINGS = {
     'parallel_enabled': False,
@@ -89,14 +92,6 @@ def _load_parallel_settings(root: Path) -> dict[str, Any]:
     if not isinstance(raw, dict):
         return dict(DEFAULT_PARALLEL_SETTINGS)
     return _normalize_parallel_settings(raw)
-
-
-def _save_parallel_settings(root: Path, values: dict[str, Any]) -> dict[str, Any]:
-    settings = _normalize_parallel_settings(values)
-    path = _parallel_settings_path(root)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(settings, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    return settings
 
 
 def _append_parallel_args(args: list[str], values: dict[str, Any], root: Path | None = None) -> None:
@@ -299,50 +294,78 @@ def _read_photo_sheet_summary(root: Path, settings: dict[str, Any]) -> dict[str,
 def _run_cli(context: JobContext, args: list[str]) -> int:
     args = unbuffer_python_command(args)
     use_python_text_stream = is_python_command(args)
-    context.log('Command:')
-    context.log(' '.join(f'"{part}"' if ' ' in str(part) else str(part) for part in args))
+    context.log(paint('Command:', 'muted'))
+    context.log(paint(' '.join(f'"{part}"' if ' ' in str(part) else str(part) for part in args), 'muted'))
 
-    if use_python_text_stream:
-        process = subprocess.Popen(
-            args,
-            cwd=str(context.paths.root),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            encoding='utf-8',
-            errors='replace',
-            env=utf8_subprocess_env(),
-            **hidden_subprocess_kwargs(),
-        )
+    # A stop asked for before the engine is started: there is nothing to end, and nothing is begun.
+    if context.cancelled():
+        context.log(paint('Stop requested: the engine is not started.', 'warn'))
+        return STOPPED_EXIT_CODE
 
-        assert process.stdout is not None
-        for line in process.stdout:
-            for decoded_line in decoded_process_lines(line):
-                context.log(decoded_line)
-            if context.cancelled() and process.poll() is None:
-                context.log('Cancellation requested. Terminating subprocess...')
-                process.terminate()
-                break
-    else:
-        process = subprocess.Popen(
-            args,
-            cwd=str(context.paths.root),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            env=utf8_subprocess_env(),
-            **hidden_subprocess_kwargs(),
-        )
+    # Python speaks UTF-8 text; another tool of Windows is read as bytes and decoded line by line.
+    as_text = {'text': True, 'encoding': 'utf-8', 'errors': 'replace'} if use_python_text_stream else {}
+    process = subprocess.Popen(
+        args,
+        cwd=str(context.paths.root),
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        env=utf8_subprocess_env(),
+        **as_text,
+        **hidden_subprocess_kwargs(),
+    )
+    assert process.stdout is not None
 
-        assert process.stdout is not None
-        for raw_line in process.stdout:
+    # The output is read aside, so that a stop is seen while the engine is silent. Until 3.0.0 the
+    # stop was looked at only after a line of output: an engine busy with one large file went on
+    # to its end, and the window showed the stop as an error.
+    lines: queue.Queue = queue.Queue()
+
+    def read() -> None:
+        try:
+            for raw_line in process.stdout:
+                lines.put(raw_line)
+        finally:
+            lines.put(None)
+
+    threading.Thread(target=read, daemon=True).start()
+    stopping = False
+    while True:
+        try:
+            raw_line = lines.get(timeout=0.25)
+        except queue.Empty:
+            raw_line = ''
+        if raw_line is None:
+            break
+        if raw_line:
             for line in decoded_process_lines(raw_line):
                 context.log(line)
-            if context.cancelled() and process.poll() is None:
-                context.log('Cancellation requested. Terminating subprocess...')
-                process.terminate()
-                break
+        if not stopping and context.cancelled() and process.poll() is None:
+            context.log(paint('Stop requested: ending the engine...', 'warn'))
+            process.terminate()
+            stopping = True
 
-    return process.wait()
+    code = process.wait()
+    if stopping:
+        _clear_parts(args)
+    return code
+
+
+def _clear_parts(args: list[str]) -> None:
+    """The copies an ended engine left half written beside their places - `*.writing`, the suffix every writer of the
+    engine gives them before a copy takes its place - taken out of the Target: a stop leaves what lay there before and
+    what was done, nothing half made."""
+    if '--output' not in args or args.index('--output') + 1 >= len(args):
+        return
+    target = Path(args[args.index('--output') + 1])
+    folder = target if target.is_dir() else target.parent
+    try:
+        for part in folder.rglob('*.writing*'):
+            # `doc.docx.writing` of a document, `photo.writing.jpg` of a picture (io_utils.written_whole).
+            if part.is_file() and (part.name.endswith('.writing') or '.writing.' in part.name):
+                part.unlink(missing_ok=True)
+    except OSError:
+        pass
 
 
 def build_photo_sheet_cli_args(root: Path, operation: Any) -> list[str]:
@@ -402,6 +425,16 @@ def _tile_sheet_values(operation: Any) -> dict[str, Any]:
     return {**defaults, **params}
 
 
+def _given(values: dict[str, Any], key: str, fallback: Any) -> Any:
+    """The value of a field, a nought among them; the fallback only for a field left empty.
+
+    `values.get(key) or fallback` turned a margin of 0 into 7 and 0 rows into 1, though the
+    manifest allows both (the inventory of the former window, 12.7).
+    """
+    value = values.get(key)
+    return fallback if value in (None, '') else value
+
+
 def build_tile_sheet_cli_args(root: Path, operation: Any) -> list[str]:
     values = _tile_sheet_values(operation)
     paper = str(values.get('paper') or 'a4').lower()
@@ -419,9 +452,9 @@ def build_tile_sheet_cli_args(root: Path, operation: Any) -> list[str]:
         '--orientation',
         str(values.get('orientation') or 'portrait'),
         '--margin-mm',
-        str(values.get('margin_mm') or 7),
+        str(_given(values, 'margin_mm', 7)),
         '--gap-mm',
-        str(values.get('gap_mm') or 0),
+        str(_given(values, 'gap_mm', 0)),
         '--dpi',
         str(values.get('dpi') or 300),
         '--to',
@@ -437,9 +470,9 @@ def build_tile_sheet_cli_args(root: Path, operation: Any) -> list[str]:
         '--count-mode',
         count_mode,
         '--copies',
-        str(values.get('copies') or 0),
+        str(_given(values, 'copies', 0)),
         '--rows',
-        str(values.get('rows') or 1),
+        str(_given(values, 'rows', 1)),
         '--frame-mm',
         str(values.get('frame_mm') if values.get('frame_mm') not in {None, ''} else 0.2),
         '--frame-color',
@@ -526,6 +559,9 @@ def _manifest_cli_runs(root: Path, operation: Any) -> list[tuple[list[str], dict
         if isinstance(value_args, dict):
             for option, value_key in value_args.items():
                 value = run_values.get(str(value_key), '')
+                # A list of ticks that is not run one value at a time (multi_field) goes as one word: "docx,pdf".
+                if isinstance(value, (list, tuple)):
+                    value = ','.join(str(item) for item in value)
                 if value is None or value == '':
                     continue
                 args.extend([str(option), str(value)])
@@ -580,20 +616,12 @@ def _manifest_cli_runs(root: Path, operation: Any) -> list[tuple[list[str], dict
     return runs
 
 
-def build_manifest_cli_args(root: Path, operation: Any, include_post_steps: bool = True) -> list[list[str]]:
-    args_list: list[list[str]] = []
-    for args, run_values in _manifest_cli_runs(root, operation):
-        args_list.append(args)
-        if include_post_steps:
-            args_list.extend(_build_pdf_after_crop_args(root, str(operation.id), run_values))
-    return args_list
-
-
 def run_manifest_cli(context: JobContext) -> dict[str, Any]:
     runs = _manifest_cli_runs(context.paths.root, context.operation)
     exit_codes: list[int] = []
     for index, (args, run_values) in enumerate(runs, start=1):
-        context.log(f'Run {index}/{len(runs)}')
+        # The engine once for every format ticked: the runs are parted by this line, a single run is not.
+        context.log(paint(f'Run {index}/{len(runs)}', 'head' if len(runs) > 1 else 'muted'))
         context.progress(max(0.05, (index - 1) / max(1, len(runs))))
         exit_code = _run_cli(context, args)
         exit_codes.append(exit_code)
@@ -604,6 +632,20 @@ def run_manifest_cli(context: JobContext) -> dict[str, Any]:
 
     context.progress(1.0)
     return {'runs': len(runs), 'exit_codes': exit_codes}
+
+
+def run_documents_cli(context: JobContext) -> dict[str, Any]:
+    """An operation over the pictures inside documents: the command of the manifest, told where its report goes."""
+    runs = _manifest_cli_runs(context.paths.root, context.operation)
+    exit_codes: list[int] = []
+    for index, (args, _run_values) in enumerate(runs, start=1):
+        context.progress(max(0.05, (index - 1) / max(1, len(runs))))
+        exit_code = _run_cli(context, [*args, '--report-dir', str(context.report_dir)])
+        exit_codes.append(exit_code)
+        if exit_code != 0:
+            raise RuntimeError(f'CLI command failed with exit code {exit_code}: the reason is in the journal and in {context.report_dir}')
+    context.progress(1.0)
+    return {'runs': len(runs), 'exit_codes': exit_codes, 'report': str(context.report_dir)}
 
 
 def _plotter_dpi_only_values(operation: Any) -> dict[str, Any]:
@@ -663,50 +705,3 @@ def run_doctor(context: JobContext) -> dict[str, Any]:
         raise RuntimeError(f'Doctor failed with exit code {exit_code}')
     return {'script': 'doctor.py'}
 
-
-def save_parallel_settings(context: JobContext) -> dict[str, Any]:
-    params = dict(context.operation.parameters)
-    settings = _save_parallel_settings(
-        context.paths.root,
-        {
-            'parallel_enabled': params.get('global_parallel_enabled', False),
-            'worker_count': params.get('global_worker_count', 8),
-        },
-    )
-    state = 'enabled' if settings['parallel_enabled'] else 'disabled'
-    context.log(f'Global multithreading {state}; workers: {settings["worker_count"]}.')
-    context.progress(1.0)
-    return settings
-
-
-def _clean_folder(context: JobContext, folder: Path, label: str) -> dict[str, Any]:
-    root = context.paths.root.resolve()
-    folder.mkdir(parents=True, exist_ok=True)
-    resolved = folder.resolve()
-    if resolved == root or root not in resolved.parents:
-        raise RuntimeError(f'Refusing to clean {label}: outside project root.')
-
-    removed = 0
-    skipped: list[str] = []
-    for item in folder.iterdir():
-        if item.name == '.gitkeep':
-            continue
-        try:
-            if item.is_dir() and not item.is_symlink():
-                shutil.rmtree(item)
-            else:
-                item.unlink()
-            removed += 1
-            context.log(f'Removed from {label}: {item.name}')
-        except OSError as exc:
-            skipped.append(f'{item.name}: {exc}')
-    return {'folder': label, 'removed': removed, 'skipped': skipped}
-
-
-def cleanup_input_output(context: JobContext) -> dict[str, Any]:
-    context.log('Cleaning managed input/output folders.')
-    input_result = _clean_folder(context, context.paths.input, 'input')
-    context.progress(0.5)
-    output_result = _clean_folder(context, context.paths.output, 'output')
-    context.progress(1.0)
-    return {'input': input_result, 'output': output_result}

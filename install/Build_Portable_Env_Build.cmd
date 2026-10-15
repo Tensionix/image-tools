@@ -14,12 +14,16 @@ set "RUNTIME_DIR=%ROOT%\runtime"
 set "WHEELHOUSE_DIR=%ROOT%\wheelhouse"
 set "REQ_FILE=%INSTALL_DIR%\requirements_full.in"
 set "DOCTOR=%ROOT%\system_core\doctor.py"
-set "GUI_APP=%ROOT%\system_core\ui_nicegui\app.py"
 set "GET_PIP=%DOWNLOAD_DIR%\get-pip.py"
 set "CMD_ENCODING=%INSTALL_DIR%\Check-CmdEncoding.cmd"
 
+rem The PowerShell the program carries comes first; the one of the machine - where App\ is not built yet.
+rem Started by call inside for /f: without it cmd strips the quotes and a path with spaces breaks.
+set "PS_EXE=%ROOT%\App\AudionPs.exe"
+if not exist "%PS_EXE%" set "PS_EXE=powershell.exe"
+
 set "PYTHON_MINOR=12"
-for /f "usebackq delims=" %%V in (`powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $latest=$null; for($i=0; $i -le 40; $i++){ $v='3.%PYTHON_MINOR%.'+$i; $u='https://www.python.org/ftp/python/'+$v+'/python-'+$v+'-embed-amd64.zip'; try{ Invoke-WebRequest -Uri $u -Method Head -TimeoutSec 10 | Out-Null; $latest=$v } catch { if($latest){ break } } }; if(-not $latest){ exit 1 }; $latest"`) do set "PYTHON_VERSION=%%V"
+for /f "usebackq delims=" %%V in (`call "%PS_EXE%" -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $latest=$null; for($i=0; $i -le 40; $i++){ $v='3.%PYTHON_MINOR%.'+$i; $u='https://www.python.org/ftp/python/'+$v+'/python-'+$v+'-embed-amd64.zip'; try{ Invoke-WebRequest -Uri $u -Method Head -TimeoutSec 10 | Out-Null; $latest=$v } catch { if($latest){ break } } }; if(-not $latest){ exit 1 }; $latest"`) do set "PYTHON_VERSION=%%V"
 if not defined PYTHON_VERSION goto USE_POWERSHELL
 set "PYTHON_ZIP=python-%PYTHON_VERSION%-embed-amd64.zip"
 set "PYTHON_URL=https://www.python.org/ftp/python/%PYTHON_VERSION%/%PYTHON_ZIP%"
@@ -28,7 +32,7 @@ set "PYTHON_ZIP_PATH=%DOWNLOAD_DIR%\%PYTHON_ZIP%"
 call "%INSTALL_DIR%\init_folders.cmd"
 
 if exist "%CMD_ENCODING%" (
-  echo [0/7] Normalizing project CMD files...
+  echo [0/8] Normalizing project CMD files...
   call "%CMD_ENCODING%" -Fix
   if errorlevel 1 goto ERR_CMD_ENCODING
 )
@@ -51,35 +55,35 @@ if errorlevel 1 goto USE_POWERSHELL
 where tar.exe >nul 2>nul
 if errorlevel 1 goto USE_POWERSHELL
 
-echo [1/7] Downloading Python Embedded...
+echo [1/8] Downloading Python Embedded...
 curl.exe -L --fail --retry 5 --connect-timeout 30 -o "%PYTHON_ZIP_PATH%" "%PYTHON_URL%"
 if errorlevel 1 goto ERR_DOWNLOAD
 
-echo [2/7] Extracting runtime...
+echo [2/8] Extracting runtime...
 if exist "%RUNTIME_DIR%\" rd /s /q "%RUNTIME_DIR%" >nul 2>nul
 mkdir "%RUNTIME_DIR%" >nul 2>nul
 tar.exe -xf "%PYTHON_ZIP_PATH%" -C "%RUNTIME_DIR%"
 if errorlevel 1 goto USE_POWERSHELL
 
-echo [3/7] Enabling import site...
+echo [3/8] Enabling import site...
 call :PATCH_PTH "%RUNTIME_DIR%\python3%PYTHON_MINOR%._pth"
 if errorlevel 1 goto ERR_PTH
 
-echo [4/7] Downloading get-pip.py...
+echo [4/8] Downloading get-pip.py...
 curl.exe -L --fail --retry 5 --connect-timeout 30 -o "%GET_PIP%" "https://bootstrap.pypa.io/get-pip.py"
 if errorlevel 1 goto ERR_GETPIP
 
 if not exist "%RUNTIME_DIR%\python.exe" goto ERR_PYTHON
 
-echo [5/7] Installing pip...
+echo [5/8] Installing pip...
 "%RUNTIME_DIR%\python.exe" "%GET_PIP%"
 if errorlevel 1 goto ERR_PIP
 
-echo [6/7] Installing build bootstrap...
+echo [6/8] Installing build bootstrap...
 "%RUNTIME_DIR%\python.exe" -m pip install --disable-pip-version-check --upgrade setuptools wheel packaging
 if errorlevel 1 goto ERR_INSTALL
 
-echo [6/7] Building wheelhouse...
+echo [6/8] Building wheelhouse...
 for /f "delims=" %%F in ('dir /a /b "%WHEELHOUSE_DIR%" 2^>nul') do (
   if /I not "%%F"==".gitkeep" (
     if exist "%WHEELHOUSE_DIR%\%%F\" (
@@ -92,17 +96,18 @@ for /f "delims=" %%F in ('dir /a /b "%WHEELHOUSE_DIR%" 2^>nul') do (
 "%RUNTIME_DIR%\python.exe" -m pip wheel --disable-pip-version-check --prefer-binary --no-build-isolation --timeout 120 --retries 12 -r "%REQ_FILE%" -w "%WHEELHOUSE_DIR%"
 if errorlevel 1 goto ERR_WHEELS
 
-echo [6/7] Installing packages from local wheelhouse...
+echo [6/8] Installing packages from local wheelhouse...
 "%RUNTIME_DIR%\python.exe" -m pip install --disable-pip-version-check --no-build-isolation --no-index --find-links="%WHEELHOUSE_DIR%" -r "%REQ_FILE%"
 if errorlevel 1 goto ERR_INSTALL
 
-echo [7/7] Verifying environment...
+rem jpegtran turns a JPEG without loss; without it a JPEG is turned by its pixels - a warning, not a failure.
+echo [7/8] jpegtran of libjpeg-turbo (turns of JPEG without loss)...
+"%RUNTIME_DIR%\python.exe" "%INSTALL_DIR%\get_jpegtran.py"
+if errorlevel 1 echo [WARN] jpegtran was not brought: a JPEG is turned by its pixels - install\launcher-tools-update_jpegtran.cmd
+
+echo [8/8] Verifying environment...
 "%RUNTIME_DIR%\python.exe" "%DOCTOR%" --project-root "%ROOT%"
 if errorlevel 1 goto ERR_VERIFY
-if exist "%GUI_APP%" (
-  "%RUNTIME_DIR%\python.exe" "%GUI_APP%" --smoke
-  if errorlevel 1 goto ERR_VERIFY
-)
 
 echo.
 echo [SUCCESS] Portable environment is ready.

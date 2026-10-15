@@ -101,8 +101,8 @@ def parse_positive_float(value):
 
 def parse_scale_percent(value):
     parsed = parse_positive_float(value)
-    if parsed > 100:
-        raise argparse.ArgumentTypeError('must be between 0.1 and 100')
+    if parsed > 400:
+        raise argparse.ArgumentTypeError('must be between 0.1 and 400')
     return parsed
 
 
@@ -170,8 +170,8 @@ def build_parser() -> argparse.ArgumentParser:
     formats = sub.add_parser('formats', help='Show supported formats and adapter status')
     formats.set_defaults(func=lambda args: emit_formats())
 
-    convert = sub.add_parser('convert', help='Convert images to JPG, PNG, TIFF, WebP, AVIF or HEIF/HEIC')
-    add_common_io(convert)
+    convert = sub.add_parser('convert', help='Convert images to JPG, PNG, TIFF, WebP, AVIF, HEIF/HEIC or ICO')
+    add_common_io(convert, output_choices=(*OUTPUT_FORMAT_CHOICES, 'ico'))
     convert.set_defaults(func=cmd_convert)
 
     normalize = sub.add_parser('normalize', help='Normalize EXIF/color/alpha and optionally update DPI')
@@ -390,6 +390,26 @@ def build_parser() -> argparse.ArgumentParser:
     downscale.add_argument('--print-size-mode', default='scale', choices=['scale', 'dpi'], help='scale keeps source DPI metadata; dpi writes proportional DPI to preserve physical print size')
     downscale.set_defaults(func=cmd_downscale_percent)
 
+    # The pictures inside DOCX, PPTX and PDF: their resolution checked, and raised in a copy.
+    from documents.commands import add_parsers as add_document_parsers
+    add_document_parsers(sub)
+
+    # Turns, mirrors, a turn by an angle and margins: the section TRANSFORM.
+    from image_tools.transform import add_parsers as add_transform_parsers
+    add_transform_parsers(sub, add_common_io)
+    # SIZE: by a percent, up as well as down, and to an exact width and height.
+    from image_tools.sizing import add_parsers as add_sizing_parsers
+    add_sizing_parsers(sub, add_common_io)
+    # Pictures without EXIF and GPS, the picture itself not written again.
+    from image_tools.strip_meta import add_parsers as add_strip_parsers
+    add_strip_parsers(sub)
+    # Frames: a picture of many frames taken apart, frames put together into an animation.
+    from image_tools.frames import add_parsers as add_frames_parsers
+    add_frames_parsers(sub)
+    # COLOUR: a correction of the colour, a palette of a few colours.
+    from image_tools.adjust import add_parsers as add_adjust_parsers
+    add_adjust_parsers(sub, add_common_io)
+
     return parser
 
 
@@ -408,10 +428,8 @@ def print_info() -> int:
             'report': str(root / 'report'),
             'workspace': str(root / 'workspace'),
             'config': str(root / 'config'),
-            'data': str(root / 'data'),
             'runtime': str(root / 'runtime'),
             'wheelhouse': str(root / 'wheelhouse'),
-            'release': str(root / 'release'),
         },
         'focus': 'Broad input conversion plus deep JPG/PNG processing',
     }

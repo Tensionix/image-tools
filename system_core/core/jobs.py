@@ -5,11 +5,11 @@ from pathlib import Path
 from typing import Any, Callable
 import importlib
 import json
-import locale
 import os
 import subprocess
 import traceback
 
+from .lines import paint
 from .logging_utils import append_log, timestamp
 from .manifest import Operation
 from .output_decode import decode_process_bytes
@@ -98,60 +98,6 @@ def unbuffer_python_command(command: list[str]) -> list[str]:
     return [command[0], "-u", *command[1:]]
 
 
-def windows_oem_encoding() -> str | None:
-    if os.name != "nt":
-        return None
-    try:
-        import ctypes
-
-        code_page = int(ctypes.windll.kernel32.GetOEMCP())
-    except Exception:
-        return None
-    return f"cp{code_page}" if code_page else None
-
-
-def output_decodings() -> list[str]:
-    candidates = [
-        windows_oem_encoding(),
-        "cp866" if os.name == "nt" else None,
-        locale.getencoding() if hasattr(locale, "getencoding") else locale.getpreferredencoding(False),
-        "mbcs" if os.name == "nt" else None,
-        "cp1251" if os.name == "nt" else None,
-    ]
-    seen: set[str] = set()
-    result: list[str] = []
-    for item in candidates:
-        if not item:
-            continue
-        key = item.lower()
-        if key in seen:
-            continue
-        seen.add(key)
-        result.append(item)
-    return result
-
-
-def _decode_utf16ish(raw_line: bytes, encoding: str) -> str | None:
-    data = raw_line
-    if encoding == "utf-16-le" and data.startswith(b"\x00") and len(data) > 1:
-        data = data[1:]
-    elif encoding == "utf-16-be" and data.endswith(b"\x00") and len(data) > 1:
-        data = data[:-1]
-    if len(data) % 2:
-        data = data + b"\x00" if encoding == "utf-16-le" else b"\x00" + data
-    try:
-        return data.decode(encoding)
-    except UnicodeDecodeError:
-        try:
-            return data.decode(encoding, errors="replace")
-        except Exception:
-            return None
-
-
-def decode_process_line(raw_line: bytes) -> str:
-    return decode_process_bytes(raw_line)
-
-
 SPINNER_FRAME_CHARS = set("-\\|/ \t")
 
 
@@ -214,13 +160,14 @@ def execute_operation(
     context = JobContext(paths, operation, log_file, report_dir, log_callback, progress_callback, cancel_callback)
 
     try:
-        context.log(f"Starting operation: {operation.id}")
+        # Where an operation begins and ends and what it was given: the window says it too - quiet here.
+        context.log(paint(f"Starting operation: {operation.id}", "muted"))
         if operation.parameters:
-            context.log(f"Parameters: {json.dumps(operation.parameters, ensure_ascii=False, sort_keys=True)}")
+            context.log(paint(f"Parameters: {json.dumps(operation.parameters, ensure_ascii=False, sort_keys=True)}", "muted"))
         context.progress(0.0)
         result = _load_callable(operation.service)(context)
         context.progress(1.0)
-        context.log(f"Finished operation: {operation.id}")
+        context.log(paint(f"Finished operation: {operation.id}", "muted"))
 
         if isinstance(result, dict):
             return JobResult(True, "Operation finished.", result)
@@ -228,9 +175,17 @@ def execute_operation(
 
     except UserFacingError as exc:
         context.progress(1.0)
-        context.log(f"Operation stopped: {exc}")
+        context.log(paint(f"Operation stopped: {exc}", "warn"))
         return JobResult(False, str(exc), dict(exc.data))
 
     except Exception as exc:
         context.log(traceback.format_exc())
         return JobResult(False, f"{exc.__class__.__name__}: {exc}", {})
+
+    finally:
+        # The folder of the report is made before the run. Until 3.0.0 an empty one was left by
+        # every operation that writes no report - all of them. `rmdir` takes only an empty folder.
+        try:
+            report_dir.rmdir()
+        except OSError:
+            pass

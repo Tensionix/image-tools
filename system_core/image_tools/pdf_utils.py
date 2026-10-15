@@ -3,11 +3,10 @@ from __future__ import annotations
 import io
 import tempfile
 from pathlib import Path
-from typing import Iterable
 
 from PIL import Image, ImageOps
 
-from .io_utils import discover_inputs, ensure_dir, img2pdf, fitz, open_image
+from .io_utils import discover_inputs, ensure_dir, img2pdf, fitz, open_image, write_whole, written_whole
 from .pipeline import flatten_alpha, normalize_profile, save_image
 
 
@@ -130,7 +129,7 @@ def normalize_pdf_to_pdf(
                 )
         if img2pdf is not None:
             pdf_bytes = img2pdf.convert([str(p) for p in page_paths])
-            output_pdf.write_bytes(pdf_bytes)
+            write_whole(output_pdf, pdf_bytes)
         else:
             _pil_save_pdf(page_paths, output_pdf, jpeg_quality=90)
     return output_pdf
@@ -170,7 +169,7 @@ def extract_embedded_images(
                 target_ext = ext if out_format == 'original' else out_format
                 out_path = _unique_path(output_dir / _embedded_output_name(stem, page_num, total_pages, image_num, total_images, target_ext))
                 if out_format == 'original':
-                    out_path.write_bytes(image_bytes)
+                    write_whole(out_path, image_bytes)
                     written.append(out_path)
                     continue
 
@@ -275,7 +274,8 @@ def _pil_save_pdf(image_paths: list[Path], output_pdf: Path, jpeg_quality: int =
     save_kwargs = {'format': 'PDF', 'save_all': True, 'append_images': rest, 'quality': jpeg_quality}
     if dpi is not None:
         save_kwargs['resolution'] = dpi
-    first.save(output_pdf, **save_kwargs)
+    with written_whole(output_pdf) as temp:
+        first.save(temp, **save_kwargs)
     return 'pillow'
 
 
@@ -291,7 +291,6 @@ def images_to_pdf_from_paths(
         raise RuntimeError('No supported images found for PDF export')
     output_pdf.parent.mkdir(parents=True, exist_ok=True)
 
-    backend = 'img2pdf' if img2pdf is not None else 'pillow'
     mode = (mode or 'lossless').lower()
 
     if mode == 'lossless':
@@ -300,7 +299,7 @@ def images_to_pdf_from_paths(
             if dpi is not None:
                 kwargs['layout_fun'] = img2pdf.get_fixed_dpi_layout_fun((dpi, dpi))
             pdf_bytes = img2pdf.convert([str(p) for p in image_paths], **kwargs)
-            output_pdf.write_bytes(pdf_bytes)
+            write_whole(output_pdf, pdf_bytes)
             payload = {'backend': 'img2pdf', 'mode': 'lossless', 'count': len(image_paths), 'output': str(output_pdf)}
             if dpi is not None:
                 payload['dpi'] = dpi
@@ -334,7 +333,7 @@ def images_to_pdf_from_paths(
             if dpi is not None:
                 kwargs['layout_fun'] = img2pdf.get_fixed_dpi_layout_fun((dpi, dpi))
             pdf_bytes = img2pdf.convert(temp_paths, **kwargs)
-            output_pdf.write_bytes(pdf_bytes)
+            write_whole(output_pdf, pdf_bytes)
             payload = {'backend': 'img2pdf', 'mode': mode, 'count': len(image_paths), 'output': str(output_pdf)}
             if dpi is not None:
                 payload['dpi'] = dpi

@@ -205,7 +205,33 @@ operation_groups:
             label_ru: "Форматы вывода"
             default: ["jpg"]
             min_selected: 1
-            options: *delivery_format_options
+            options:
+              - value: "jpg"
+                label: "JPG"
+                label_ru: "JPG"
+              - value: "png"
+                label: "PNG"
+                label_ru: "PNG"
+              - value: "tiff"
+                label: "TIFF"
+                label_ru: "TIFF"
+              - value: "webp"
+                label: "WebP"
+                label_ru: "WebP"
+              - value: "avif"
+                label: "AVIF"
+                label_ru: "AVIF"
+              - value: "heif"
+                label: "HEIF"
+                label_ru: "HEIF"
+              - value: "heic"
+                label: "HEIC"
+                label_ru: "HEIC"
+              - value: "ico"
+                label: "ICO"
+                label_ru: "ICO"
+                hint: "A Windows icon: the picture in a square with transparent margins, sizes 16 to 256 inside."
+                hint_ru: "Значок Windows: картинка в квадрате с прозрачными полями, внутри размеры от 16 до 256."
           - id: jpeg_quality
             type: "quality"
             group: "format"
@@ -242,6 +268,78 @@ operation_groups:
             min: 1
             max: 1200
             step: 1
+          - id: png_preset
+            type: "radio"
+            group: "format"
+            label: "PNG compression"
+            label_ru: "Сжатие PNG"
+            hint: "Without loss whatever is chosen: stronger - a smaller file written longer."
+            hint_ru: "Без потерь при любом выборе: сильнее - файл меньше, пишется дольше."
+            disabled_if:
+              field: "to"
+              not_contains_any: ["png"]
+            default: "balanced"
+            options:
+              - value: "fast"
+                label: "Fast"
+                label_ru: "Быстро"
+              - value: "balanced"
+                label: "Usual"
+                label_ru: "Обычно"
+              - value: "small"
+                label: "Stronger"
+                label_ru: "Сильнее"
+          - id: alpha_bg
+            type: "radio"
+            group: "format"
+            label: "Background under transparency"
+            label_ru: "Фон под прозрачность"
+            hint: "What the transparent parts are laid on in a format that keeps no transparency here: JPG, WebP, AVIF, HEIC."
+            hint_ru: "На что ложатся прозрачные места в форматах, которые здесь прозрачность не хранят: JPG, WebP, AVIF, HEIC."
+            disabled_if:
+              field: "to"
+              not_contains_any: *quality_output_formats
+            default: "white"
+            options:
+              - value: "white"
+                label: "White"
+                label_ru: "Белый"
+                swatch: "#ffffff"
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрный"
+                swatch: "#000000"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой"
+          - id: alpha_rgb
+            type: "rgb_color"
+            group: "format"
+            label: "Own background"
+            label_ru: "Свой фон"
+            default: "255,255,255"
+            visible_if:
+              field: "alpha_bg"
+              equals: "custom"
+          - &metadata_field
+            id: metadata
+            type: "radio"
+            group: "options"
+            label: "Metadata"
+            label_ru: "Метаданные"
+            hint: "DPI + colour: the density and the colour profile stay, EXIF goes - with GPS, the camera and the date. Preserve all: EXIF stays too. Strip all: the profile and the density go as well."
+            hint_ru: "DPI + цвет: остаются плотность и цветовой профиль, EXIF уходит - с GPS, камерой и датой. Сохранить всё: остаётся и EXIF. Удалить всё: уходят и профиль, и плотность."
+            default: "preserve_dpi_color"
+            options:
+              - value: "preserve_dpi_color"
+                label: "DPI + color"
+                label_ru: "DPI + цвет"
+              - value: "preserve_all"
+                label: "Preserve all"
+                label_ru: "Сохранить всё"
+              - value: "strip_all"
+                label: "Strip all"
+                label_ru: "Удалить всё"
         parameters:
           fixed_args: ["convert"]
           multi_field: "to"
@@ -252,9 +350,115 @@ operation_groups:
             "--to": "to"
             "--jpeg-quality": "jpeg_quality"
             "--set-dpi": "set_dpi"
+            "--png-preset": "png_preset"
+            "--metadata": "metadata"
+          composite_args:
+            "--alpha-bg":
+              field: "alpha_bg"
+              custom_if:
+                field: "alpha_bg"
+                equals: "custom"
+              fields: ["bg_r", "bg_g", "bg_b"]
+              separator: ","
           defaults:
             input_path: "input"
             output_path: "output"
+
+      - id: frames_to_animation
+        title: "Animation from frames"
+        title_ru: "Анимация из кадров"
+        description: "Put the pictures of a folder of the Source together into one GIF, WebP or APNG, in the order of their names (2 before 10), named after the folder; a folder of such folders gives one animation a folder. The pauses come from frames.json when Split into frames left it there. A frame of another size is fitted into the size of the first."
+        description_ru: "Собрать картинки папки источника в один GIF, WebP или APNG, в порядке имён (2 раньше 10), с именем папки; папка таких папок даёт по анимации на папку. Паузы берутся из frames.json, если его оставил «Разделить на кадры». Кадр другого размера вписывается в размер первого."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Animation"
+            label_ru: "Анимация"
+            default: "gif"
+            options:
+              - value: "gif"
+                label: "GIF"
+                label_ru: "GIF"
+              - value: "webp"
+                label: "WebP"
+                label_ru: "WebP"
+              - value: "apng"
+                label: "APNG"
+                label_ru: "APNG"
+          - id: quality
+            type: "quality"
+            group: "format"
+            label: "WebP quality"
+            label_ru: "Качество WebP"
+            hint: "100 - without loss."
+            hint_ru: "100 - без потерь."
+            disabled_if:
+              field: "to"
+              not_equals: "webp"
+            default: 90
+            options:
+              - value: 80
+                label: "80%"
+                label_ru: "80%"
+              - value: 90
+                label: "90%"
+                label_ru: "90%"
+              - value: 100
+                label: "Without loss"
+                label_ru: "Без потерь"
+          - id: timing
+            type: "radio"
+            group: "parameters"
+            label: "Pauses"
+            label_ru: "Паузы"
+            hint: "From frames.json - as the animation that was taken apart had them; where there is no file, the frames a second count."
+            hint_ru: "Из frames.json - как были у разобранной анимации; где файла нет, считаются кадры в секунду."
+            default: "file"
+            options:
+              - value: "file"
+                label: "From frames.json"
+                label_ru: "Из frames.json"
+              - value: "fps"
+                label: "By frames a second"
+                label_ru: "По частоте"
+          - id: fps
+            type: "number"
+            group: "parameters"
+            label: "Frames a second"
+            label_ru: "Кадров в секунду"
+            default: 10
+            min: 1
+            max: 60
+            step: 1
+          - id: loop
+            type: "radio"
+            group: "parameters"
+            label: "Plays"
+            label_ru: "Повтор"
+            default: "0"
+            options:
+              - value: "0"
+                label: "Endless"
+                label_ru: "Бесконечно"
+              - value: "1"
+                label: "Once"
+                label_ru: "Один раз"
+        parameters:
+          fixed_args: ["frames-to-animation"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--to": "to"
+            "--quality": "quality"
+            "--timing": "timing"
+            "--fps": "fps"
+            "--loop": "loop"
+          defaults:
+            input_path: "input"
+            output_path: "output/animation"
 
       - id: quick_jpg_75
         title: "JPG 75% quality"
@@ -511,22 +715,41 @@ operation_groups:
             min_selected: 1
             options: *delivery_format_options
           - *quality_field_75
-          - id: metadata
+          - *metadata_field
+          - id: srgb_profile_mode
             type: "radio"
-            group: "options"
-            label: "Metadata"
-            label_ru: "Метаданные"
-            default: "preserve_dpi_color"
+            group: "advanced"
+            label: "sRGB profile"
+            label_ru: "Профиль sRGB"
+            default: "colororg"
+            visible_if:
+              field: "target_profile"
+              equals: "srgb"
             options:
-              - value: "preserve_dpi_color"
-                label: "DPI + color"
-                label_ru: "DPI + цвет"
-              - value: "preserve_all"
-                label: "Preserve all"
-                label_ru: "Сохранить всё"
-              - value: "strip_all"
-                label: "Strip all"
-                label_ru: "Удалить всё"
+              - value: "colororg"
+                label: "sRGB 2014 (color.org)"
+                label_ru: "sRGB 2014 (color.org)"
+              - value: "pillow"
+                label: "Built into Pillow"
+                label_ru: "Встроенный Pillow"
+          - id: cmyk_profile
+            type: "radio"
+            group: "advanced"
+            label: "CMYK profile"
+            label_ru: "Профиль CMYK"
+            hint: "Photoshop 5 - the usual default; Coated FOGRA39 - offset on coated paper, the European standard."
+            hint_ru: "Photoshop 5 - обычный по умолчанию; Coated FOGRA39 - офсет на мелованной бумаге, европейский стандарт."
+            default: "config/icc/Photoshop5DefaultCMYK.icc"
+            visible_if:
+              field: "target_profile"
+              equals: "cmyk"
+            options:
+              - value: "config/icc/Photoshop5DefaultCMYK.icc"
+                label: "Photoshop 5"
+                label_ru: "Photoshop 5"
+              - value: "config/icc/CoatedFOGRA39.icc"
+                label: "Coated FOGRA39"
+                label_ru: "Coated FOGRA39"
         parameters:
           fixed_args: ["normalize"]
           multi_field: "to"
@@ -538,13 +761,331 @@ operation_groups:
             "--jpeg-quality": "jpeg_quality"
             "--target-profile": "target_profile"
             "--metadata": "metadata"
+            "--srgb-profile-mode": "srgb_profile_mode"
+            "--cmyk-profile": "cmyk_profile"
           defaults:
             input_path: "input"
             output_path: "output"
 
+      - id: color_adjust
+        title: "Correction"
+        title_ru: "Коррекция"
+        description: "Correct the colour of every picture of the Source: the levels stretched, brightness, contrast, saturation, gamma, a tone - grey, sepia or a tint - the inversion, and white made transparent. The transparency of a picture is kept. A picture keeps its format; one whose white became transparent and that was a JPEG is written as a PNG."
+        description_ru: "Поправить цвет каждой картинки источника: растянуть уровни, яркость, контраст, насыщенность, гамма, тон - ч/б, сепия или тонировка, - инверсия и белое в прозрачное. Прозрачность картинки сохраняется. Формат остаётся прежним; JPEG, у которого белое стало прозрачным, пишется в PNG."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: levels
+            type: "radio"
+            group: "parameters"
+            label: "Auto levels"
+            label_ru: "Автоуровни"
+            hint: "By channels: every channel stretched apart - a cast of colour goes. With the tone: stretched together - the tone of the picture kept."
+            hint_ru: "По каналам: каждый канал растягивается отдельно - уходит цветной налёт. С тоном: растягиваются вместе - тон картинки сохраняется."
+            default: "none"
+            options:
+              - value: "none"
+                label: "No"
+                label_ru: "Нет"
+              - value: "channels"
+                label: "By channels"
+                label_ru: "По каналам"
+              - value: "tone"
+                label: "With the tone"
+                label_ru: "С тоном"
+          - id: cutoff
+            type: "number"
+            group: "parameters"
+            label: "Left out, %"
+            label_ru: "Отсечь, %"
+            hint: "Percent of the darkest and the lightest pixels left out of the stretch: a speck of dust does not set the levels."
+            hint_ru: "Процент самых тёмных и самых светлых пикселей, которые не участвуют: пылинка не задаёт уровни."
+            default: 0.5
+            min: 0
+            max: 5
+            step: 0.1
+            visible_if:
+              field: "levels"
+              not_equals: "none"
+          - id: brightness
+            type: "slider"
+            group: "parameters"
+            label: "Brightness"
+            label_ru: "Яркость"
+            track: ["#000000", "#ffffff"]
+            default: 0
+            min: -100
+            max: 100
+            step: 1
+          - id: contrast
+            type: "slider"
+            group: "parameters"
+            label: "Contrast"
+            label_ru: "Контраст"
+            track: ["#808080", "#808080", "#000000", "#ffffff"]
+            default: 0
+            min: -100
+            max: 100
+            step: 1
+          - id: saturation
+            type: "slider"
+            group: "parameters"
+            label: "Saturation"
+            label_ru: "Насыщенность"
+            track: ["#808080", "#ff3b30", "#ffcc00", "#34c759", "#007aff"]
+            default: 0
+            min: -100
+            max: 100
+            step: 1
+          - id: gamma
+            type: "slider"
+            group: "parameters"
+            label: "Gamma"
+            label_ru: "Гамма"
+            track: ["#000000", "#404040", "#c0c0c0", "#ffffff"]
+            default: 1
+            min: 0.2
+            max: 3
+            step: 0.05
+          - id: tone
+            type: "radio"
+            group: "parameters"
+            label: "Tone"
+            label_ru: "Тон"
+            default: "keep"
+            options:
+              - value: "keep"
+                label: "As it is"
+                label_ru: "Как есть"
+              - value: "gray"
+                label: "Black and white"
+                label_ru: "Ч/б"
+                tone: "gray"
+              - value: "sepia"
+                label: "Sepia"
+                label_ru: "Сепия"
+                tone: "sepia"
+              - value: "tint"
+                label: "Tint"
+                label_ru: "Тонировать"
+                tone: "tint"
+          - id: tone_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Colour of the tint"
+            label_ru: "Цвет тонировки"
+            default: "40,110,180"
+            visible_if:
+              field: "tone"
+              equals: "tint"
+          - id: invert
+            type: "checkbox"
+            group: "parameters"
+            label: "Invert"
+            label_ru: "Инвертировать"
+            default: false
+          - id: white_transparent
+            type: "checkbox"
+            group: "parameters"
+            label: "White to transparent"
+            label_ru: "Белое в прозрачное"
+            hint: "The near-white goes transparent, with a soft edge: a stamp, a signature, a drawing on white paper over another picture."
+            hint_ru: "Почти белое становится прозрачным, с мягким краем: печать, подпись, рисунок на белой бумаге поверх другой картинки."
+            default: false
+          - id: tolerance
+            type: "slider"
+            group: "parameters"
+            label: "Still white, %"
+            label_ru: "Ещё белое, %"
+            track: ["#ffffff", "#808080"]
+            default: 8
+            min: 0
+            max: 60
+            step: 1
+            visible_if:
+              field: "white_transparent"
+              equals: true
+          - id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "keep"
+            options:
+              - value: "keep"
+                label: "As the source"
+                label_ru: "Как у исходника"
+              - value: "jpg"
+                label: "JPG"
+                label_ru: "JPG"
+              - value: "png"
+                label: "PNG"
+                label_ru: "PNG"
+              - value: "tiff"
+                label: "TIFF"
+                label_ru: "TIFF"
+              - value: "webp"
+                label: "WebP"
+                label_ru: "WebP"
+          - id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "Quality"
+            label_ru: "Качество"
+            hint: "For a JPEG and a WebP: a corrected picture is written again."
+            hint_ru: "Для JPEG и WebP: поправленная картинка пишется заново."
+            disabled_if:
+              field: "to"
+              not_contains_any: ["keep", "jpg", "webp"]
+            default: 95
+            options:
+              - value: 90
+                label: "90% quality"
+                label_ru: "90% качества"
+              - value: 95
+                label: "95% quality"
+                label_ru: "95% качества"
+        parameters:
+          fixed_args: ["adjust"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--levels": "levels"
+            "--cutoff": "cutoff"
+            "--brightness": "brightness"
+            "--contrast": "contrast"
+            "--saturation": "saturation"
+            "--gamma": "gamma"
+            "--tolerance": "tolerance"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+          flag_args:
+            "--invert": "invert"
+            "--white-transparent": "white_transparent"
+          composite_args:
+            "--tone":
+              field: "tone"
+              custom_if:
+                field: "tone"
+                equals: "tint"
+              fields: ["tone_r", "tone_g", "tone_b"]
+              separator: ","
+          defaults:
+            input_path: "input"
+            output_path: "output/adjust"
+
+      - id: png_palette
+        title: "PNG 256 colours"
+        title_ru: "PNG 256 цветов"
+        description: "Write every picture of the Source as a PNG of at most so many colours: drawings, plans, maps, screenshots, CAD - many times lighter without a visible change. A transparent picture keeps its transparency."
+        description_ru: "Записать каждую картинку источника в PNG не больше чем из стольких цветов: чертежи, планы, карты, скриншоты, CAD - во много раз легче без видимой разницы. Прозрачная картинка сохраняет прозрачность."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: colors
+            type: "slider"
+            group: "parameters"
+            label: "Colours"
+            label_ru: "Цветов"
+            track: ["#606060", "#ff3b30", "#ff9500", "#ffcc00", "#34c759", "#007aff", "#af52de"]
+            default: 256
+            min: 2
+            max: 256
+            step: 1
+          - id: dither
+            type: "radio"
+            group: "parameters"
+            label: "Dithering"
+            label_ru: "Растр"
+            hint: "Off - drawings and plans: clean edges, the lightest file. On - photographs: smooth transitions."
+            hint_ru: "Выкл - чертежи и планы: чистые края, самый лёгкий файл. Вкл - фотографии: плавные переходы."
+            default: "off"
+            options:
+              - value: "off"
+                label: "Off"
+                label_ru: "Выкл"
+              - value: "on"
+                label: "On"
+                label_ru: "Вкл"
+          - id: method
+            type: "radio"
+            group: "parameters"
+            label: "Colours chosen by"
+            label_ru: "Подбор цветов"
+            default: "mediancut"
+            options:
+              - value: "mediancut"
+                label: "Median cut"
+                label_ru: "Медианное сечение"
+              - value: "maxcoverage"
+                label: "Most coverage"
+                label_ru: "Наибольший охват"
+              - value: "octree"
+                label: "Octree"
+                label_ru: "Октодерево"
+        parameters:
+          fixed_args: ["palette"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--colors": "colors"
+            "--dither": "dither"
+            "--method": "method"
+          defaults:
+            input_path: "input"
+            output_path: "output/png_palette"
+
+      - id: quick_auto_levels
+        title: "Auto levels"
+        title_ru: "Автоуровни"
+        description: "Stretch the levels of every picture of the Source by channels, leaving out half a percent at both ends: a dull scan or a cast of colour goes. A picture keeps its format; a JPEG is written again at quality 95."
+        description_ru: "Растянуть уровни каждой картинки источника по каналам, отсекая по полпроцента с краёв: уходят тусклость скана и цветной налёт. Формат остаётся прежним; JPEG пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["adjust", "--levels", "channels"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/auto_levels"
+
+      - id: quick_png_256
+        title: "PNG 256"
+        title_ru: "PNG 256"
+        description: "Write every picture of the Source as a PNG of 256 colours, without dithering: drawings, plans, CAD many times lighter."
+        description_ru: "Записать каждую картинку источника в PNG из 256 цветов, без растра: чертежи, планы, CAD во много раз легче."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["palette", "--colors", "256"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/png_256"
+
+      - id: quick_strip_meta
+        title: "No EXIF and GPS"
+        title_ru: "Без EXIF и GPS"
+        description: "Copy every JPEG, PNG and WebP of the Source into the Target without what it tells about itself: EXIF with GPS, the camera, the date and the thumbnail, XMP, IPTC, comments, the pictures a phone writes after the photograph. The picture itself is not written again - the copy decodes into the same pixels, which is checked; the colour profile, the density and the turn of a photograph stay. Another format is named and passed by: Convert with DPI + colour leaves no EXIF."
+        description_ru: "Скопировать каждый JPEG, PNG и WebP источника в назначение без того, что файл рассказывает о себе: EXIF с GPS, камерой, датой и миниатюрой, XMP, IPTC, комментариев, картинок, которые телефон пишет после снимка. Сама картинка не переписывается - копия даёт те же пиксели, это проверяется; цветовой профиль, плотность и поворот снимка остаются. Другой формат назван и пропущен: «Конвертировать» с «DPI + цвет» EXIF не оставляет."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["strip-meta"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/no_exif"
+
   - id: crop
-    title: "Crop"
-    title_ru: "Обрезка"
+    title: "Transform"
+    title_ru: "Трансформация"
     description: "Crop cleanup tools: remove solid borders, trim white fields to content, add safety margins, or split images into strips and grids."
     description_ru: "Инструменты обрезки: убрать однотонные рамки, обрезать белые поля до содержимого, добавить защитный запас или разрезать изображение на ленты и сетку."
     fields: *module_io_fields
@@ -800,6 +1341,302 @@ operation_groups:
             input_path: "input"
             output_path: "output/split_png"
 
+      - id: quick_rotate_cw
+        title: "90° clockwise"
+        title_ru: "90° по часовой"
+        description: "Turn every picture of the Source by 90 degrees clockwise. A picture keeps its format; a JPEG is turned without loss (jpegtran) when its sides are whole numbers of its blocks, else written again at quality 95."
+        description_ru: "Повернуть каждую картинку источника на 90° по часовой. Формат остаётся прежним; JPEG поворачивается без потерь (jpegtran), если его стороны кратны блокам JPEG, иначе пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["rotate", "--turn", "cw90"]
+          value_args: &transform_quick_io
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/rotate_cw90"
+
+      - id: quick_rotate_ccw
+        title: "90° counter-clockwise"
+        title_ru: "90° против"
+        description: "Turn every picture of the Source by 90 degrees counter-clockwise. A picture keeps its format; a JPEG is turned without loss (jpegtran) when its sides are whole numbers of its blocks, else written again at quality 95."
+        description_ru: "Повернуть каждую картинку источника на 90° против часовой. Формат остаётся прежним; JPEG поворачивается без потерь (jpegtran), если его стороны кратны блокам JPEG, иначе пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["rotate", "--turn", "ccw90"]
+          value_args: *transform_quick_io
+          defaults:
+            input_path: "input"
+            output_path: "output/rotate_ccw90"
+
+      - id: quick_rotate_180
+        title: "Turn 180°"
+        title_ru: "Развернуть на 180°"
+        description: "Turn every picture of the Source upside down. A picture keeps its format; a JPEG is turned without loss (jpegtran) when its sides are whole numbers of its blocks, else written again at quality 95."
+        description_ru: "Развернуть каждую картинку источника на 180°. Формат остаётся прежним; JPEG поворачивается без потерь (jpegtran), если его стороны кратны блокам JPEG, иначе пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["rotate", "--turn", "180"]
+          value_args: *transform_quick_io
+          defaults:
+            input_path: "input"
+            output_path: "output/rotate_180"
+
+      - id: quick_flip_h
+        title: "Mirror left-right"
+        title_ru: "Отразить по горизонтали"
+        description: "Mirror every picture of the Source left to right. A picture keeps its format; a JPEG is turned without loss (jpegtran) when its sides are whole numbers of its blocks, else written again at quality 95."
+        description_ru: "Отразить каждую картинку источника слева направо. Формат остаётся прежним; JPEG поворачивается без потерь (jpegtran), если его стороны кратны блокам JPEG, иначе пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["rotate", "--turn", "flip-h"]
+          value_args: *transform_quick_io
+          defaults:
+            input_path: "input"
+            output_path: "output/flip_horizontal"
+
+      - id: quick_flip_v
+        title: "Mirror top-bottom"
+        title_ru: "Отразить по вертикали"
+        description: "Mirror every picture of the Source top to bottom. A picture keeps its format; a JPEG is turned without loss (jpegtran) when its sides are whole numbers of its blocks, else written again at quality 95."
+        description_ru: "Отразить каждую картинку источника сверху вниз. Формат остаётся прежним; JPEG поворачивается без потерь (jpegtran), если его стороны кратны блокам JPEG, иначе пишется заново с качеством 95."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["rotate", "--turn", "flip-v"]
+          value_args: *transform_quick_io
+          defaults:
+            input_path: "input"
+            output_path: "output/flip_vertical"
+
+      - id: rotate_angle
+        title: "Turn by angle"
+        title_ru: "Повернуть на угол"
+        description: "Turn every picture of the Source by any angle, fractions of a degree too. The canvas grows to hold the whole picture, keeps its size, or the corners of the fill are cut away."
+        description_ru: "Повернуть каждую картинку источника на любой угол, с дробями градуса. Холст растёт, чтобы вместить картинку целиком, остаётся прежним, или углы заливки обрезаются."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: angle
+            type: "float"
+            group: "parameters"
+            label: "Angle, °"
+            label_ru: "Угол, °"
+            hint: "Clockwise; counter-clockwise - with a minus. Fractions: 0.5."
+            hint_ru: "По часовой; против часовой - со знаком минус. Дроби: 0,5."
+            required: true
+            default: 1
+            min: -360
+            max: 360
+            step: 0.1
+          - id: fit
+            type: "radio"
+            group: "parameters"
+            label: "Canvas"
+            label_ru: "Холст"
+            hint: "Grow: the whole picture, the corners filled. Keep: the size of the picture, its corners cut. Cut corners: the largest rectangle with no fill - for a scan that leans."
+            hint_ru: "Расширить: картинка целиком, углы залиты. Оставить: размер прежний, углы картинки срезаны. Обрезать углы: самый большой прямоугольник без заливки - для скана с наклоном."
+            default: "expand"
+            options:
+              - value: "expand"
+                label: "Grow"
+                label_ru: "Расширить"
+              - value: "keep"
+                label: "Keep the size"
+                label_ru: "Оставить размер"
+              - value: "inner"
+                label: "Cut the corners"
+                label_ru: "Обрезать углы"
+          - id: fill
+            type: "radio"
+            group: "parameters"
+            label: "Fill"
+            label_ru: "Заливка"
+            hint: "What fills the corners. Transparent - where the format can hold it (PNG, TIFF, WebP); a JPEG gets white."
+            hint_ru: "Чем залить углы. Прозрачная - там, где формат её держит (PNG, TIFF, WebP); JPEG получит белый."
+            default: "white"
+            disabled_if:
+              field: "fit"
+              equals: "inner"
+            options:
+              - value: "white"
+                label: "White"
+                label_ru: "Белая"
+                swatch: "#ffffff"
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрная"
+                swatch: "#000000"
+              - value: "transparent"
+                label: "Transparent"
+                label_ru: "Прозрачная"
+          - &transform_to_field
+            id: to
+            type: "radio"
+            group: "format"
+            label: "Output format"
+            label_ru: "Формат вывода"
+            default: "keep"
+            options:
+              - value: "keep"
+                label: "As the source"
+                label_ru: "Как у исходника"
+              - value: "jpg"
+                label: "JPG"
+                label_ru: "JPG"
+              - value: "png"
+                label: "PNG"
+                label_ru: "PNG"
+              - value: "tiff"
+                label: "TIFF"
+                label_ru: "TIFF"
+              - value: "webp"
+                label: "WebP"
+                label_ru: "WebP"
+          - &transform_quality_field
+            id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "Quality"
+            label_ru: "Качество"
+            hint: "For a JPEG and a WebP: a turned picture is written again. At 95 the difference does not show."
+            hint_ru: "Для JPEG и WebP: повёрнутая картинка пишется заново. При 95 разницы на глаз нет."
+            disabled_if:
+              field: "to"
+              not_contains_any: ["keep", "jpg", "webp"]
+            default: 95
+            options:
+              - value: 90
+                label: "90% quality"
+                label_ru: "90% качества"
+              - value: 95
+                label: "95% quality"
+                label_ru: "95% качества"
+        parameters:
+          fixed_args: ["rotate-angle"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--angle": "angle"
+            "--fit": "fit"
+            "--fill": "fill"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+          defaults:
+            input_path: "input"
+            output_path: "output/rotate_angle"
+
+      - id: add_margins
+        title: "Margins"
+        title_ru: "Поля"
+        description: "Add margins around every picture of the Source, in millimetres, in a colour. Millimetres are counted by the density the picture states; one that states none is counted at the DPI of the form."
+        description_ru: "Добавить поля вокруг каждой картинки источника - в миллиметрах, заданного цвета. Миллиметры считаются по плотности, которую пишет картинка; если она ничего не пишет - по DPI формы."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: top
+            type: "float"
+            group: "parameters"
+            label: "Top, mm"
+            label_ru: "Сверху, мм"
+            default: 5
+            min: 0
+            max: 1000
+            step: 1
+          - id: bottom
+            type: "float"
+            group: "parameters"
+            label: "Bottom, mm"
+            label_ru: "Снизу, мм"
+            default: 5
+            min: 0
+            max: 1000
+            step: 1
+          - id: left
+            type: "float"
+            group: "parameters"
+            label: "Left, mm"
+            label_ru: "Слева, мм"
+            default: 5
+            min: 0
+            max: 1000
+            step: 1
+          - id: right
+            type: "float"
+            group: "parameters"
+            label: "Right, mm"
+            label_ru: "Справа, мм"
+            default: 5
+            min: 0
+            max: 1000
+            step: 1
+          - id: fill_mode
+            type: "radio"
+            group: "parameters"
+            label: "Colour"
+            label_ru: "Цвет"
+            default: "white"
+            options:
+              - value: "white"
+                label: "White"
+                label_ru: "Белый"
+                swatch: "#ffffff"
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрный"
+                swatch: "#000000"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой"
+          - id: custom_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Own colour"
+            label_ru: "Свой цвет"
+            visible_if:
+              field: "fill_mode"
+              equals: "custom"
+          - id: dpi
+            type: "number"
+            group: "parameters"
+            label: "DPI where none is stated"
+            label_ru: "DPI, если в картинке нет"
+            hint: "Millimetres of a picture that states no density are counted at this DPI."
+            hint_ru: "Миллиметры картинки без записанной плотности считаются по этому DPI."
+            default: 300
+            min: 50
+            max: 2400
+            step: 10
+          - *transform_to_field
+          - *transform_quality_field
+        parameters:
+          fixed_args: ["add-margins"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--top": "top"
+            "--right": "right"
+            "--bottom": "bottom"
+            "--left": "left"
+            "--dpi": "dpi"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+          composite_args:
+            "--fill":
+              field: "fill_mode"
+              custom_if:
+                field: "fill_mode"
+                equals: "custom"
+              fields: ["fill_r", "fill_g", "fill_b"]
+              separator: ","
+          defaults:
+            input_path: "input"
+            output_path: "output/margins"
+
   - id: size
     title: "Size"
     title_ru: "Размер"
@@ -810,8 +1647,8 @@ operation_groups:
       - id: downscale_percent
         title: "File size"
         title_ru: "Размер файла"
-        description: "Reduce pixel dimensions by percent or fit output files to a target size."
-        description_ru: "Уменьшить пиксельный размер по проценту или подобрать максимальный процент под целевой размер файла."
+        description: "Change pixel dimensions by percent - down, or up to 400 % - or fit output files to a target size."
+        description_ru: "Изменить пиксельный размер по проценту - уменьшить или увеличить до 400 % - или подобрать максимальный процент под целевой размер файла."
         service: "system_core.services.image_tools_gui:run_manifest_cli"
         kind: "safe"
         fields:
@@ -843,11 +1680,11 @@ operation_groups:
             group: "parameters"
             label: "Custom percent"
             label_ru: "Свой процент"
-            hint: "Manual scale percent from 0.1 to 100. Active only in Custom % mode."
-            hint_ru: "Ручной процент масштаба от 0,1 до 100. Работает только в режиме «Свой %»."
+            hint: "Manual scale percent from 0.1 to 400: over 100 makes the picture larger. Active only in Custom % mode."
+            hint_ru: "Ручной процент масштаба от 0,1 до 400: больше 100 - увеличение. Работает только в режиме «Свой %»."
             default: 75
             min: 0.1
-            max: 100
+            max: 400
             step: 1
             visible_if:
               field: "scale_mode"
@@ -1034,6 +1871,8 @@ operation_groups:
             disabled_if:
               field: "dpi_preset"
               not_equals: "custom"
+            # Asked for while "Custom" is chosen: an empty one used to become 300 without a word.
+            required: true
             default: ""
             min: 1
             max: 2400
@@ -1093,6 +1932,42 @@ operation_groups:
               - value: "pad"
                 label: "Pad"
                 label_ru: "Поля"
+              - value: "by-height"
+                label: "By height"
+                label_ru: "По высоте"
+              - value: "by-width"
+                label: "By width"
+                label_ru: "По ширине"
+          - id: background
+            type: "radio"
+            group: "parameters"
+            label: "Margins"
+            label_ru: "Цвет полей"
+            default: "black"
+            visible_if:
+              field: "mode"
+              equals: "pad"
+            options:
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрные"
+                swatch: "#000000"
+              - value: "white"
+                label: "White"
+                label_ru: "Белые"
+                swatch: "#ffffff"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой цвет"
+          - id: background_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Own colour"
+            label_ru: "Свой цвет"
+            default: "0,0,0"
+            visible_if:
+              field: "background"
+              equals: "custom"
           - id: to
             type: "radio"
             group: "format"
@@ -1110,6 +1985,14 @@ operation_groups:
             "--jpeg-quality": "jpeg_quality"
             "--target": "target"
             "--mode": "mode"
+          composite_args:
+            "--background":
+              field: "background"
+              custom_if:
+                field: "background"
+                equals: "custom"
+              fields: ["background_r", "background_g", "background_b"]
+              separator: ","
           defaults:
             input_path: "input"
             output_path: "output/screen_fit"
@@ -1163,6 +2046,42 @@ operation_groups:
               - value: "pad"
                 label: "Pad"
                 label_ru: "Поля"
+              - value: "by-height"
+                label: "By height"
+                label_ru: "По высоте"
+              - value: "by-width"
+                label: "By width"
+                label_ru: "По ширине"
+          - id: background
+            type: "radio"
+            group: "parameters"
+            label: "Margins"
+            label_ru: "Цвет полей"
+            default: "black"
+            visible_if:
+              field: "mode"
+              equals: "pad"
+            options:
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрные"
+                swatch: "#000000"
+              - value: "white"
+                label: "White"
+                label_ru: "Белые"
+                swatch: "#ffffff"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой цвет"
+          - id: background_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Own colour"
+            label_ru: "Свой цвет"
+            default: "0,0,0"
+            visible_if:
+              field: "background"
+              equals: "custom"
           - id: to
             type: "radio"
             group: "format"
@@ -1180,10 +2099,898 @@ operation_groups:
             "--jpeg-quality": "jpeg_quality"
             "--ratio": "ratio"
             "--mode": "mode"
+          composite_args:
+            "--background":
+              field: "background"
+              custom_if:
+                field: "background"
+                equals: "custom"
+              fields: ["background_r", "background_g", "background_b"]
+              separator: ","
           defaults:
             input_path: "input"
             output_path: "output/aspect_fit"
 
+      - id: exact_size
+        title: "Exact size"
+        title_ru: "Точный размер"
+        description: "Bring every picture of the Source to an exact width and height in pixels: inside the box, the box filled with a background, the box covered with the overflow cut, or stretched. A picture keeps its format unless another is asked."
+        description_ru: "Привести каждую картинку источника к точной ширине и высоте в пикселях: вписать, вписать с полями фона, заполнить с обрезкой лишнего или растянуть. Формат остаётся прежним, если не выбран другой."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        fields:
+          - id: width
+            type: "number"
+            group: "parameters"
+            label: "Width, px"
+            label_ru: "Ширина, px"
+            required: true
+            default: 1920
+            min: 1
+            max: 30000
+            step: 10
+          - id: height
+            type: "number"
+            group: "parameters"
+            label: "Height, px"
+            label_ru: "Высота, px"
+            required: true
+            default: 1080
+            min: 1
+            max: 30000
+            step: 10
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "How"
+            label_ru: "Как"
+            hint: "Fit: proportions kept, one side may be shorter. With margins: fitted and the rest filled with the background. Fill: the box covered, the overflow cut at the edges. Stretch: the proportions given up."
+            hint_ru: "Вписать: пропорции сохраняются, одна сторона может выйти короче. С полями: вписать и заполнить остаток фоном. Заполнить: рамка закрыта целиком, лишнее срезается по краям. Растянуть: пропорции не сохраняются."
+            default: "pad"
+            options:
+              - value: "fit"
+                label: "Fit"
+                label_ru: "Вписать"
+              - value: "pad"
+                label: "With margins"
+                label_ru: "С полями"
+              - value: "crop"
+                label: "Fill"
+                label_ru: "Заполнить"
+              - value: "stretch"
+                label: "Stretch"
+                label_ru: "Растянуть"
+          - id: background_mode
+            type: "radio"
+            group: "parameters"
+            label: "Margins"
+            label_ru: "Поля"
+            default: "white"
+            visible_if:
+              field: "mode"
+              equals: "pad"
+            options:
+              - value: "white"
+                label: "White"
+                label_ru: "Белые"
+                swatch: "#ffffff"
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрные"
+                swatch: "#000000"
+              - value: "transparent"
+                label: "Transparent"
+                label_ru: "Прозрачные"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой цвет"
+          - id: background_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Own colour"
+            label_ru: "Свой цвет"
+            default: "255,255,255"
+            visible_if:
+              field: "background_mode"
+              equals: "custom"
+          - &sizing_algorithm_field
+            id: algorithm
+            type: "radio"
+            group: "parameters"
+            label: "Algorithm"
+            label_ru: "Алгоритм"
+            hint: "Lanczos: photographs. Bicubic: a softer compromise. Box: maps, plans, screenshots. Nearest: no new colours - pixel art and palettes; diagonals become steps."
+            hint_ru: "Lanczos: фотографии. Bicubic: мягкий компромисс. Box: карты, планы, скриншоты. Nearest: без новых цветов - пиксельная графика и палитры; диагонали становятся ступенями."
+            default: "lanczos"
+            options:
+              - value: "lanczos"
+                label: "Lanczos"
+                label_ru: "Lanczos"
+              - value: "bicubic"
+                label: "Bicubic"
+                label_ru: "Bicubic"
+              - value: "box"
+                label: "Box"
+                label_ru: "Box"
+              - value: "nearest"
+                label: "Nearest"
+                label_ru: "Nearest"
+          - *transform_to_field
+          - &sizing_quality_field
+            id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "Quality"
+            label_ru: "Качество"
+            hint: "For a JPEG and a WebP: a picture of another size is written again."
+            hint_ru: "Для JPEG и WebP: картинка нового размера пишется заново."
+            disabled_if:
+              field: "to"
+              not_contains_any: ["keep", "jpg", "webp"]
+            default: 92
+            options:
+              - value: 85
+                label: "85% quality"
+                label_ru: "85% качества"
+              - value: 92
+                label: "92% quality"
+                label_ru: "92% качества"
+              - value: 95
+                label: "95% quality"
+                label_ru: "95% качества"
+        parameters:
+          fixed_args: ["exact-size"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--width": "width"
+            "--height": "height"
+            "--mode": "mode"
+            "--algorithm": "algorithm"
+            "--to": "to"
+            "--jpeg-quality": "jpeg_quality"
+          composite_args:
+            "--background":
+              field: "background_mode"
+              custom_if:
+                field: "background_mode"
+                equals: "custom"
+              fields: ["background_r", "background_g", "background_b"]
+              separator: ","
+          defaults:
+            input_path: "input"
+            output_path: "output/exact_size"
+
+      - id: quick_scale_a3
+        title: "A4 → A3 · 141%"
+        title_ru: "A4 → A3 · 141%"
+        description: "Make every picture of the Source larger by 141.42 % - the step from A4 to A3 and from A3 to A2. A picture keeps its format and the density it states, so it prints larger by as much; a JPEG is written again at quality 92."
+        description_ru: "Увеличить каждую картинку источника на 141,42 % - шаг от A4 к A3 и от A3 к A2. Картинка сохраняет формат и записанную плотность, поэтому и печатается во столько же раз крупнее; JPEG пишется заново с качеством 92."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["scale", "--percent", "141.42"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/scale_a3"
+
+      - id: quick_scale_x2
+        title: "×2"
+        title_ru: "×2"
+        description: "Make every picture of the Source twice as large on each side. A picture keeps its format and the density it states, so it prints larger by as much; a JPEG is written again at quality 92."
+        description_ru: "Увеличить каждую картинку источника вдвое по каждой стороне. Картинка сохраняет формат и записанную плотность, поэтому и печатается во столько же раз крупнее; JPEG пишется заново с качеством 92."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["scale", "--percent", "200"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/scale_x2"
+
+      - id: quick_scale_x3
+        title: "×3"
+        title_ru: "×3"
+        description: "Make every picture of the Source three times as large on each side. A picture keeps its format and the density it states, so it prints larger by as much; a JPEG is written again at quality 92."
+        description_ru: "Увеличить каждую картинку источника втрое по каждой стороне. Картинка сохраняет формат и записанную плотность, поэтому и печатается во столько же раз крупнее; JPEG пишется заново с качеством 92."
+        service: "system_core.services.image_tools_gui:run_manifest_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["scale", "--percent", "300"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/scale_x3"
+
+
+  - id: documents
+    title: "Documents"
+    title_ru: "Документы"
+    description: "The pictures inside DOCX, PPTX and PDF: their resolution checked, and raised in a copy."
+    description_ru: "Картинки внутри DOCX, PPTX и PDF: проверить их разрешение и довести его в копии документа."
+    fields: *module_io_fields
+    children:
+      - id: docs_dpi_check
+        title: "Check DPI"
+        title_ru: "Проверить DPI"
+        description: "Read every document of the Source and write nothing into it: a line for every placed picture - its pixels, the size it is placed at, the resolution that comes of it, the density it states - and the total of those below the threshold. The table goes to the journal and into the report folder as CSV and Markdown."
+        description_ru: "Прочитать каждый документ источника, ничего в него не записывая: строка на каждую вставленную картинку - пиксели, размер вставки, разрешение, которое из этого выходит, и число, которое картинка пишет о себе, - и итог: сколько ниже порога. Таблица - в журнал и в папку отчёта, CSV и Markdown."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - &documents_kinds_field
+            id: kinds
+            type: "checkboxes"
+            group: "source"
+            label: "Documents"
+            label_ru: "Документы"
+            hint: "Which documents of the Source to read."
+            hint_ru: "Какие документы источника читать."
+            min_selected: 1
+            default: ["docx", "pptx", "pdf"]
+            options:
+              - value: "docx"
+                label: "DOCX"
+                label_ru: "DOCX"
+                tone: "docx"
+              - value: "pptx"
+                label: "PPTX"
+                label_ru: "PPTX"
+                tone: "pptx"
+              - value: "pdf"
+                label: "PDF"
+                label_ru: "PDF"
+                tone: "pdf"
+          - &documents_threshold_field
+            id: threshold_preset
+            type: "radio"
+            group: "parameters"
+            label: "Threshold, ppi"
+            label_ru: "Порог, ppi"
+            hint: "The resolution a picture has to reach: its pixels against the size it is placed at."
+            hint_ru: "Разрешение, до которого картинка должна дотянуть: её пиксели против размера вставки."
+            default: "300"
+            options:
+              - value: "150"
+                label: "150"
+                label_ru: "150"
+              - value: "200"
+                label: "200"
+                label_ru: "200"
+              - value: "300"
+                label: "300"
+                label_ru: "300"
+              - value: "600"
+                label: "600"
+                label_ru: "600"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой"
+          - &documents_threshold_custom_field
+            id: threshold_custom
+            type: "number"
+            group: "parameters"
+            label: "Own threshold"
+            label_ru: "Свой порог"
+            hint: "Used when the threshold is set to Custom."
+            hint_ru: "Действует, когда выбран свой порог."
+            required: true
+            default: 400
+            min: 50
+            max: 2400
+            step: 10
+            visible_if:
+              field: "threshold_preset"
+              equals: "custom"
+        parameters:
+          fixed_args: ["docs-dpi-check"]
+          value_args:
+            "--input": "input_path"
+            "--kinds": "kinds"
+          composite_args:
+            "--threshold":
+              field: "threshold_preset"
+              custom_if:
+                field: "threshold_preset"
+                equals: "custom"
+              fields: ["threshold_custom"]
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_dpi_check"
+
+      - id: docs_dpi_raise
+        title: "Raise to DPI"
+        title_ru: "Довести до DPI"
+        description: "Write a copy of every document of the Source into the Target, its pictures at the threshold. Only the pictures change: the text, the pages, the place and the size of every picture stay. A picture below the threshold gets pixels; one at it keeps its pixels and states the threshold of itself. Word and PowerPoint are told not to compress the pictures back. Every copy is checked before it is called done; a signed or encrypted document is refused."
+        description_ru: "Записать в назначение копию каждого документа источника, картинки в ней - не ниже порога. Меняются только картинки: текст, страницы, место и размер каждой вставки остаются. Картинке ниже порога добавляются пиксели; картинка на пороге и выше сохраняет пиксели и только пишет о себе порог. Word и PowerPoint получают запрет сжимать картинки обратно. Каждая копия проверяется, прежде чем названа готовой; документ с подписью или шифром - отказ."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *documents_kinds_field
+          - *documents_threshold_field
+          - *documents_threshold_custom_field
+          - &documents_what_field
+            id: what
+            type: "radio"
+            group: "parameters"
+            label: "What to raise"
+            label_ru: "Что приводить"
+            hint: "Pixels and label: the picture gets the pixels it lacks and states the threshold of itself. Label only: no pixel is added, the picture only states the threshold - its real resolution stays what it was."
+            hint_ru: "Пиксели и метку: картинка получает недостающие пиксели и пишет о себе порог. Только метку: пиксели не добавляются, картинка лишь пишет о себе порог - настоящее разрешение остаётся прежним."
+            default: "actual"
+            options:
+              - value: "actual"
+                label: "Pixels and label"
+                label_ru: "Пиксели и метку"
+              - value: "label"
+                label: "Label only"
+                label_ru: "Только метку"
+          - &documents_method_field
+            id: method
+            type: "radio"
+            group: "parameters"
+            label: "Adding pixels"
+            label_ru: "Как добавлять пиксели"
+            hint: "Repeat: every pixel becomes a square of 2 x 2 (3 x 3 when two are not enough) - the picture looks exactly as before, the file grows. Smooth: Lanczos to the threshold - a smaller file, fine detail softens."
+            hint_ru: "Повтор: каждый пиксель становится квадратом 2 × 2 (3 × 3, если двух мало) - картинка выглядит точно как раньше, файл растёт. Плавный: пересчёт Lanczos до порога - файл меньше, мелкое размывается."
+            default: "repeat"
+            disabled_if:
+              field: "what"
+              equals: "label"
+            options:
+              - value: "repeat"
+                label: "Repeat pixels"
+                label_ru: "Повтор пикселей"
+              - value: "smooth"
+                label: "Smooth"
+                label_ru: "Плавный пересчёт"
+          - &documents_raise_quality_field
+            id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "JPEG quality"
+            label_ru: "Качество JPEG"
+            disabled_if:
+              field: "what"
+              equals: "label"
+            default: 95
+            options:
+              - value: 90
+                label: "90% quality"
+                label_ru: "90% качества"
+              - value: 95
+                label: "95% quality"
+                label_ru: "95% качества"
+          - &documents_keep_lossless_field
+            id: keep_lossless
+            type: "checkbox"
+            group: "format"
+            label: "Keep lossless pictures lossless"
+            label_ru: "Без потерь оставлять без потерь"
+            hint: "A PNG or a Flate picture stays without loss. Off - it becomes a JPEG, unless it has a mask, a palette or one bit to a pixel."
+            hint_ru: "PNG и картинка Flate остаются без потерь. Выключено - становятся JPEG, если у них нет маски, палитры или одного бита на пиксель."
+            default: false
+          - id: office_may_compress
+            type: "checkbox"
+            group: "output"
+            label: "Let Word and PowerPoint compress the pictures"
+            label_ru: "Разрешить Word и PowerPoint сжимать картинки"
+            hint: "Off - the copy carries the flag that keeps Word and PowerPoint from compressing its pictures when it is saved: without it Word takes them back to 220 ppi at the first save (measured)."
+            hint_ru: "Выключено - копия несёт флажок, который не даёт Word и PowerPoint сжимать её картинки при сохранении: без него Word при первом сохранении возвращает их к 220 ppi (замер)."
+            default: false
+        parameters:
+          fixed_args: ["docs-dpi-raise"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--kinds": "kinds"
+            "--what": "what"
+            "--method": "method"
+            "--jpeg-quality": "jpeg_quality"
+          flag_args:
+            "--keep-lossless": "keep_lossless"
+            "--office-may-compress": "office_may_compress"
+          composite_args:
+            "--threshold":
+              field: "threshold_preset"
+              custom_if:
+                field: "threshold_preset"
+                equals: "custom"
+              fields: ["threshold_custom"]
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_dpi_raise"
+
+      - id: docs_shrink
+        title: "Shrink in documents"
+        title_ru: "Уменьшить в документе"
+        description: "Shrink the pictures of every DOCX and PPTX of the Source to a limit and recompress them; the copies go into the Target. HARD: a PNG becomes a JPEG - unless it is lighter than the barrier in KB, would come out heavier as a JPEG, or is transparent: a transparent PNG stays a PNG, made smaller when over the limit. With an own limit a PNG small in pixels may stay as it is, and SAFE touches only JPEGs."
+        description_ru: "Уменьшить картинки каждого DOCX и PPTX источника до предела и пережать их; копии - в назначение. HARD: PNG становится JPEG - если он не легче барьера в КБ, не вышел бы в JPEG тяжелее и не прозрачный: прозрачный PNG остаётся PNG и уменьшается, если больше предела. Со своим пределом мелкие в пикселях PNG можно оставить как есть, а SAFE трогает только JPEG."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - &office_kinds_field
+            id: kinds
+            type: "checkboxes"
+            group: "source"
+            label: "Documents"
+            label_ru: "Документы"
+            hint: "Which documents of the Source to take. A PDF is not the business of these operations."
+            hint_ru: "Какие документы источника брать. PDF этим операциям не по делу."
+            min_selected: 1
+            default: ["docx", "pptx"]
+            options:
+              - value: "docx"
+                label: "DOCX"
+                label_ru: "DOCX"
+                tone: "docx"
+              - value: "pptx"
+                label: "PPTX"
+                label_ru: "PPTX"
+                tone: "pptx"
+          - id: limit
+            type: "radio"
+            group: "parameters"
+            label: "Limit"
+            label_ru: "Предел"
+            hint: "The largest picture a document keeps. 1920 x 1080 - an ordinary document; 2560 x 1440 - a presentation; 3840 x 2160 - print or archive."
+            hint_ru: "Самая большая картинка, которую оставляет документ. 1920 × 1080 - обычный документ; 2560 × 1440 - презентация; 3840 × 2160 - печать или архив."
+            default: "1920x1080"
+            options:
+              - value: "1920x1080"
+                label: "1920 × 1080"
+                label_ru: "1920 × 1080"
+              - value: "2560x1440"
+                label: "2560 × 1440"
+                label_ru: "2560 × 1440"
+              - value: "3840x2160"
+                label: "3840 × 2160"
+                label_ru: "3840 × 2160"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой"
+          - &keep_png_kb_field
+            id: keep_png_kb
+            type: "number"
+            group: "parameters"
+            label: "Keep PNG under, KB"
+            label_ru: "Не трогать PNG до, КБ"
+            hint: "A PNG lighter than this stays a PNG, as it is: emblems, icons, elements, line drawings - as a JPEG they gain nothing and lose their sharp edges. A PNG that as a JPEG would weigh more stays too. 0 - off."
+            hint_ru: "PNG легче этого остаётся PNG, как есть: гербы, пиктограммы, элементы, чертежи - в JPEG они ничего не выигрывают и теряют чёткие края. PNG, который в JPEG вышел бы тяжелее, тоже остаётся. 0 - выключено."
+            default: 200
+            min: 0
+            max: 5000
+            step: 50
+          - id: max_width
+            type: "number"
+            group: "parameters"
+            label: "Width, px"
+            label_ru: "Ширина, px"
+            hint: "Not less than 400."
+            hint_ru: "Не меньше 400."
+            required: true
+            default: 1920
+            min: 400
+            max: 20000
+            step: 100
+            visible_if:
+              field: "limit"
+              equals: "custom"
+          - id: max_height
+            type: "number"
+            group: "parameters"
+            label: "Height, px"
+            label_ru: "Высота, px"
+            hint: "Not less than 400."
+            hint_ru: "Не меньше 400."
+            required: true
+            default: 1080
+            min: 400
+            max: 20000
+            step: 100
+            visible_if:
+              field: "limit"
+              equals: "custom"
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Mode"
+            label_ru: "Режим"
+            hint: "HARD: every raster picture over the limit is shrunk, a PNG becomes a JPEG (but for the light and the transparent ones). SAFE: only JPEGs are touched."
+            hint_ru: "HARD: каждая растровая картинка больше предела уменьшается, PNG становится JPEG (кроме лёгких и прозрачных). SAFE: трогаются только JPEG."
+            default: "hard"
+            visible_if:
+              field: "limit"
+              equals: "custom"
+            options:
+              - value: "hard"
+                label: "HARD"
+                label_ru: "HARD"
+              - value: "safe"
+                label: "SAFE"
+                label_ru: "SAFE"
+          - id: min_skip_width
+            type: "number"
+            group: "parameters"
+            label: "Small PNG: width"
+            label_ru: "Мелкие PNG: ширина"
+            hint: "A PNG up to this size stays as it is. 0 - the rule is off."
+            hint_ru: "PNG до этого размера остаётся как есть. 0 - правило выключено."
+            default: 400
+            min: 0
+            max: 4000
+            step: 50
+            visible_if:
+              field: "limit"
+              equals: "custom"
+          - id: min_skip_height
+            type: "number"
+            group: "parameters"
+            label: "Small PNG: height"
+            label_ru: "Мелкие PNG: высота"
+            hint: "A PNG up to this size stays as it is. 0 - the rule is off."
+            hint_ru: "PNG до этого размера остаётся как есть. 0 - правило выключено."
+            default: 400
+            min: 0
+            max: 4000
+            step: 50
+            visible_if:
+              field: "limit"
+              equals: "custom"
+          - id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "JPEG quality"
+            label_ru: "Качество JPEG"
+            hint: "Lower - smaller. 82 is the balance of weight and look."
+            hint_ru: "Меньше - легче. 82 - баланс веса и вида."
+            default: 82
+            options:
+              - value: 75
+                label: "75% quality"
+                label_ru: "75% качества"
+              - value: 82
+                label: "82% quality"
+                label_ru: "82% качества"
+              - value: 90
+                label: "90% quality"
+                label_ru: "90% качества"
+        parameters:
+          fixed_args: ["docs-shrink"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--kinds": "kinds"
+            "--limit": "limit"
+            "--max-width": "max_width"
+            "--max-height": "max_height"
+            "--mode": "mode"
+            "--min-skip-width": "min_skip_width"
+            "--min-skip-height": "min_skip_height"
+            "--keep-png-under-kb": "keep_png_kb"
+            "--jpeg-quality": "jpeg_quality"
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_shrink"
+
+      - id: docs_fit_size
+        title: "Document to a file size"
+        title_ru: "Документ под размер файла"
+        description: "Fit every DOCX and PPTX of the Source under a size in megabytes. Its pictures go to JPEG - but for a PNG lighter than the barrier in KB - and the limit is lowered step by step - quality 75 and 1920 x 1080 first, then JPEG 65 down to 1280 x 720; a document that does not fit even then is named."
+        description_ru: "Уложить каждый DOCX и PPTX источника в размер в мегабайтах. Картинки уходят в JPEG - кроме PNG легче барьера в КБ, - предел снижается по ступеням - сначала качество 75 и 1920 × 1080, затем JPEG 65 до 1280 × 720; документ, который не уложился и так, назван."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *office_kinds_field
+          - id: target_mb
+            type: "number"
+            group: "parameters"
+            label: "Target size, MB"
+            label_ru: "Целевой размер, МБ"
+            default: 20
+            min: 1
+            max: 500
+            step: 1
+          - *keep_png_kb_field
+        parameters:
+          fixed_args: ["docs-fit-size"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--kinds": "kinds"
+            "--target-mb": "target_mb"
+            "--keep-png-under-kb": "keep_png_kb"
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_fit_size"
+
+      - id: docs_color
+        title: "Profile in documents"
+        title_ru: "Профиль в документе"
+        description: "Bring every picture of every DOCX and PPTX of the Source to sRGB or to CMYK, with the ICC profile written into the picture or without it."
+        description_ru: "Привести каждую картинку каждого DOCX и PPTX источника к sRGB или CMYK - с профилем ICC внутри картинки или без него."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *office_kinds_field
+          - id: profile
+            type: "radio"
+            group: "parameters"
+            label: "Profile"
+            label_ru: "Профиль"
+            default: "srgb"
+            options:
+              - value: "srgb"
+                label: "sRGB"
+                label_ru: "sRGB"
+              - value: "cmyk"
+                label: "CMYK"
+                label_ru: "CMYK"
+          - id: embed_icc
+            type: "checkbox"
+            group: "parameters"
+            label: "Write the ICC profile into the pictures"
+            label_ru: "Записать профиль ICC в картинки"
+            default: false
+        parameters:
+          fixed_args: ["docs-color"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--kinds": "kinds"
+            "--profile": "profile"
+          flag_args:
+            "--embed-icc": "embed_icc"
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_color"
+
+      - id: docs_extract_media
+        title: "Extract from DOCX and PPTX"
+        title_ru: "Извлечь из DOCX и PPTX"
+        description: "Copy the pictures of every DOCX and PPTX of the Source out, as they are stored, into a folder of the Target named after the document."
+        description_ru: "Скопировать картинки каждого DOCX и PPTX источника такими, как они хранятся, в папку назначения с именем документа."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *office_kinds_field
+        parameters:
+          fixed_args: ["docs-extract-media"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--kinds": "kinds"
+          defaults:
+            input_path: "input"
+            output_path: "output/docs_extract_media"
+
+      - id: pdf_dpi_check
+        title: "Check DPI"
+        title_ru: "Проверить DPI"
+        description: "Read every PDF of the Source and write nothing into it: a line for every placed picture - its pixels, the size it is drawn at, the resolution that comes of it, the density it states - and the total of those below the threshold."
+        description_ru: "Прочитать каждый PDF источника, ничего в него не записывая: строка на каждую картинку - пиксели, размер на странице, разрешение, которое из этого выходит, и число, которое картинка пишет о себе, - и итог: сколько ниже порога."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *documents_threshold_field
+          - *documents_threshold_custom_field
+        parameters:
+          fixed_args: ["docs-dpi-check", "--kinds", "pdf"]
+          value_args:
+            "--input": "input_path"
+          composite_args: &documents_threshold_arg
+            "--threshold":
+              field: "threshold_preset"
+              custom_if:
+                field: "threshold_preset"
+                equals: "custom"
+              fields: ["threshold_custom"]
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_dpi_check"
+
+      - id: pdf_dpi_raise
+        title: "Raise to DPI"
+        title_ru: "Довести до DPI"
+        description: "Write a copy of every PDF of the Source into the Target, its pictures at the threshold: only the streams of the pictures change, the pages, their text and the place of every picture stay. Every copy is checked by a second reader before it is called done; a signed or encrypted PDF is refused."
+        description_ru: "Записать в назначение копию каждого PDF источника, картинки в ней - не ниже порога: меняются только потоки картинок, страницы, их текст и место каждой картинки остаются. Каждая копия проверяется вторым читателем, прежде чем названа готовой; PDF с подписью или шифром - отказ."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - *documents_threshold_field
+          - *documents_threshold_custom_field
+          - *documents_what_field
+          - *documents_method_field
+          - *documents_raise_quality_field
+          - *documents_keep_lossless_field
+        parameters:
+          fixed_args: ["docs-dpi-raise", "--kinds", "pdf"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--what": "what"
+            "--method": "method"
+            "--jpeg-quality": "jpeg_quality"
+          flag_args:
+            "--keep-lossless": "keep_lossless"
+          composite_args: *documents_threshold_arg
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_dpi_raise"
+
+      - id: pdf_shrink_images
+        title: "Lighter pictures"
+        title_ru: "Сжать картинки"
+        description: "Write a copy of every PDF of the Source into the Target with lighter pictures: a picture drawn above the target resolution gets fewer pixels and is written as a JPEG; a palette, one bit to a pixel and a mask stay without loss. The pages, their text and the place of every picture stay; every copy is checked before it is called done."
+        description_ru: "Записать в назначение копию каждого PDF источника с облегчёнными картинками: картинка с разрешением выше цели получает меньше пикселей и пишется в JPEG; палитра, один бит на пиксель и маска остаются без потерь. Страницы, их текст и место каждой картинки остаются; каждая копия проверяется, прежде чем названа готовой."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - id: target_preset
+            type: "radio"
+            group: "parameters"
+            label: "Target, ppi"
+            label_ru: "Цель, ppi"
+            hint: "A picture above it gets fewer pixels, down to it; one at it or below stays as it is. 150 - for the screen, 200 - a document, 300 - print."
+            hint_ru: "Картинка выше цели получает меньше пикселей, до цели; картинка на цели и ниже остаётся как есть. 150 - для экрана, 200 - документ, 300 - печать."
+            default: "200"
+            options:
+              - value: "150"
+                label: "150"
+                label_ru: "150"
+              - value: "200"
+                label: "200"
+                label_ru: "200"
+              - value: "300"
+                label: "300"
+                label_ru: "300"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Своя"
+          - id: target_custom
+            type: "number"
+            group: "parameters"
+            label: "Own target"
+            label_ru: "Своя цель"
+            required: true
+            default: 250
+            min: 50
+            max: 1200
+            step: 10
+            visible_if:
+              field: "target_preset"
+              equals: "custom"
+          - id: jpeg_quality
+            type: "quality"
+            group: "format"
+            label: "JPEG quality"
+            label_ru: "Качество JPEG"
+            default: 82
+            options:
+              - value: 75
+                label: "75% quality"
+                label_ru: "75% качества"
+              - value: 82
+                label: "82% quality"
+                label_ru: "82% качества"
+              - value: 90
+                label: "90% quality"
+                label_ru: "90% качества"
+          - *documents_keep_lossless_field
+        parameters:
+          fixed_args: ["docs-pdf-shrink"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--jpeg-quality": "jpeg_quality"
+          flag_args:
+            "--keep-lossless": "keep_lossless"
+          composite_args:
+            "--target-ppi":
+              field: "target_preset"
+              custom_if:
+                field: "target_preset"
+                equals: "custom"
+              fields: ["target_custom"]
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_shrink_images"
+
+      - id: pdf_watermark
+        title: "Watermark"
+        title_ru: "Водяной знак"
+        description: "Write a copy of every PDF of the Source into the Target with a line of text across every page, along its diagonal, half transparent. It is written as text over the page: the page is not drawn anew, its own text stays text. A signed or encrypted PDF is refused."
+        description_ru: "Записать в назначение копию каждого PDF источника со строкой текста через каждую страницу, по её диагонали, полупрозрачной. Знак пишется текстом поверх страницы: страница не перерисовывается, её собственный текст остаётся текстом. PDF с подписью или шифром - отказ."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - id: text
+            type: "text"
+            group: "parameters"
+            label: "Text"
+            label_ru: "Текст"
+            required: true
+            default: "КОПИЯ"
+          - id: opacity
+            type: "number"
+            group: "parameters"
+            label: "Opacity, %"
+            label_ru: "Непрозрачность, %"
+            hint: "100 - opaque; 20-30 - the text of the page reads through the mark."
+            hint_ru: "100 - непрозрачный; 20-30 - текст страницы читается сквозь знак."
+            default: 25
+            min: 5
+            max: 100
+            step: 5
+          - id: coverage
+            type: "number"
+            group: "parameters"
+            label: "Length, % of the diagonal"
+            label_ru: "Длина, % диагонали"
+            default: 70
+            min: 20
+            max: 100
+            step: 5
+          - id: color_mode
+            type: "radio"
+            group: "parameters"
+            label: "Colour"
+            label_ru: "Цвет"
+            default: "red"
+            options:
+              - value: "red"
+                label: "Red"
+                label_ru: "Красный"
+                swatch: "#cc0000"
+              - value: "grey"
+                label: "Grey"
+                label_ru: "Серый"
+                swatch: "#666666"
+              - value: "black"
+                label: "Black"
+                label_ru: "Чёрный"
+                swatch: "#000000"
+              - value: "blue"
+                label: "Blue"
+                label_ru: "Синий"
+                swatch: "#0066cc"
+              - value: "custom"
+                label: "Custom"
+                label_ru: "Свой"
+          - id: custom_rgb
+            type: "rgb_color"
+            group: "parameters"
+            label: "Own colour"
+            label_ru: "Свой цвет"
+            visible_if:
+              field: "color_mode"
+              equals: "custom"
+        parameters:
+          fixed_args: ["docs-pdf-watermark"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--text": "text"
+            "--opacity": "opacity"
+            "--coverage": "coverage"
+          composite_args:
+            "--color":
+              field: "color_mode"
+              custom_if:
+                field: "color_mode"
+                equals: "custom"
+              fields: ["mark_r", "mark_g", "mark_b"]
+              separator: ","
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_watermark"
 
   - id: pdf
     title: "PDF"
@@ -1376,6 +3183,149 @@ operation_groups:
             input_path: "input"
             output_file: "output/images.pdf"
           ui_only_fields: ["preserve_dpi"]
+
+      - id: pdf_rotate_pages
+        title: "Turn pages"
+        title_ru: "Повернуть страницы"
+        description: "Write a copy of every PDF of the Source into the Target with the pages asked for turned. Only the turn of a page is written - the page is not drawn anew, its text stays text, its pictures keep every pixel. A signed or encrypted PDF is refused."
+        description_ru: "Записать в назначение копию каждого PDF источника, повернув указанные страницы. Пишется только поворот страницы - она не перерисовывается, текст остаётся текстом, картинки сохраняют каждый пиксель. PDF с подписью или шифром - отказ."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - id: turn
+            type: "radio"
+            group: "parameters"
+            label: "Turn"
+            label_ru: "Поворот"
+            default: "cw90"
+            options:
+              - value: "cw90"
+                label: "90° clockwise"
+                label_ru: "90° по часовой"
+              - value: "ccw90"
+                label: "90° counter-clockwise"
+                label_ru: "90° против"
+              - value: "180"
+                label: "Turn 180°"
+                label_ru: "Развернуть на 180°"
+          - id: pages
+            type: "text"
+            group: "parameters"
+            label: "Pages"
+            label_ru: "Страницы"
+            hint: "1-3, 5, 8- ; empty - every page."
+            hint_ru: "1-3, 5, 8- ; пусто - все страницы."
+            default: ""
+        parameters:
+          fixed_args: ["docs-pdf-rotate"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--turn": "turn"
+            "--pages": "pages"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_rotate_pages"
+
+      - id: pdf_merge
+        title: "Merge PDF"
+        title_ru: "Собрать PDF"
+        description: "Put every PDF of the Source into one file in the Target, in the order of their names (2 before 10). The pages are carried as they are - nothing is drawn anew. Bookmarks of the documents are not carried."
+        description_ru: "Собрать все PDF источника в один файл в назначении, в порядке имён (2 раньше 10). Страницы переносятся как есть - ничего не перерисовывается. Закладки документов не переносятся."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - id: name
+            type: "text"
+            group: "parameters"
+            label: "Name of the file"
+            label_ru: "Имя файла"
+            required: true
+            default: "merged"
+        parameters:
+          fixed_args: ["docs-pdf-merge"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--name": "name"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_merge"
+
+      - id: pdf_split
+        title: "Split PDF"
+        title_ru: "Разделить PDF"
+        description: "Part every PDF of the Source into files in the Target: one a page, one every N pages, or one a range. The pages are carried as they are - nothing is drawn anew; the files are named name_001.pdf, name_002.pdf."
+        description_ru: "Разделить каждый PDF источника на файлы в назначении: по одной странице, по N страниц или по диапазонам. Страницы переносятся как есть - ничего не перерисовывается; файлы называются имя_001.pdf, имя_002.pdf."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        fields:
+          - id: mode
+            type: "radio"
+            group: "parameters"
+            label: "Split"
+            label_ru: "Делить"
+            default: "each"
+            options:
+              - value: "each"
+                label: "By page"
+                label_ru: "По странице"
+              - value: "every"
+                label: "Every N pages"
+                label_ru: "По N страниц"
+              - value: "ranges"
+                label: "By ranges"
+                label_ru: "По диапазонам"
+          - id: every
+            type: "number"
+            group: "parameters"
+            label: "Pages a file"
+            label_ru: "Страниц в файле"
+            default: 10
+            min: 2
+            max: 1000
+            step: 1
+            visible_if:
+              field: "mode"
+              equals: "every"
+          - id: ranges
+            type: "text"
+            group: "parameters"
+            label: "Ranges"
+            label_ru: "Диапазоны"
+            hint: "A file a range: 1-3, 4-10, 11-"
+            hint_ru: "Файл на диапазон: 1-3, 4-10, 11-"
+            default: ""
+            visible_if:
+              field: "mode"
+              equals: "ranges"
+        parameters:
+          fixed_args: ["docs-pdf-split"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+            "--mode": "mode"
+            "--every": "every"
+            "--ranges": "ranges"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_split"
+
+      - id: quick_pdf_clean_meta
+        title: "No PDF properties"
+        title_ru: "Без свойств PDF"
+        description: "Write a copy of every PDF of the Source into the Target without the properties of the document: author, title, the program that made it, dates, XMP. The pages are not touched. A signed or encrypted PDF is refused."
+        description_ru: "Записать в назначение копию каждого PDF источника без свойств документа: автора, названия, программы, дат, XMP. Страницы не трогаются. PDF с подписью или шифром - отказ."
+        service: "system_core.services.image_tools_gui:run_documents_cli"
+        kind: "safe"
+        parameters:
+          fixed_args: ["docs-pdf-clean-meta"]
+          value_args:
+            "--input": "input_path"
+            "--output": "output_path"
+          defaults:
+            input_path: "input"
+            output_path: "output/pdf_clean_meta"
 
   - id: sheets_and_marks
     title: "Sheets and marks"
@@ -1646,20 +3596,20 @@ operation_groups:
             output_path: "output/tile_sheet"
 
       - id: split_tiff
-        title: "Split TIFF"
-        title_ru: "Разделить TIFF"
-        description: "Split multi-page TIFF to PNG frames."
-        description_ru: "Разделить многостраничный TIFF на PNG-кадры."
+        title: "Split into frames"
+        title_ru: "Разделить на кадры"
+        description: "Take every picture of the Source of more than one frame apart into PNG frames, without loss: a TIFF of many pages, an animated GIF, WebP or APNG, an MPO. The frames of a picture go into a folder of its name - 001_name.png, 002_name.png; an animation leaves frames.json with its pauses, and Animation from frames puts it back together."
+        description_ru: "Разобрать каждую картинку источника из нескольких кадров на PNG-кадры без потерь: многостраничный TIFF, анимированный GIF, WebP или APNG, MPO. Кадры картинки ложатся в папку её имени - 001_имя.png, 002_имя.png; анимация оставляет frames.json со своими паузами, и «Анимация из кадров» собирает её обратно."
         service: "system_core.services.image_tools_gui:run_manifest_cli"
         kind: "safe"
         parameters:
-          fixed_args: ["split-tiff"]
+          fixed_args: ["split-frames"]
           value_args:
             "--input": "input_path"
             "--output": "output_path"
           defaults:
             input_path: "input"
-            output_path: "output/tiff_frames"
+            output_path: "output/frames"
 
       - id: watermark
         title: "Watermark"
@@ -2032,12 +3982,3 @@ operation_groups:
         description_ru: "Запустить проверку окружения проекта."
         service: "system_core.services.image_tools_gui:run_doctor"
         kind: "safe"
-
-maintenance_operations:
-  - id: cleanup_input_output
-    title: "Clear I/O"
-    title_ru: "Очистить I/O"
-    description: "Delete contents of managed input and output folders."
-    description_ru: "Удалить содержимое управляемых папок input и output."
-    service: "system_core.services.image_tools_gui:cleanup_input_output"
-    kind: "dangerous"

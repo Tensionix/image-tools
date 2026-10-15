@@ -4,260 +4,227 @@
 
 - [Purpose](#purpose)
 - [Quick Route](#quick-route)
-- [New GUI Layout](#new-gui-layout)
-- [Workbench I/O](#workbench-io)
-- [Modules](#modules)
-- [Maintenance](#maintenance)
+- [The Window](#the-window)
+- [Source and Target](#source-and-target)
+- [Sections](#sections)
+- [Service Buttons of the Header](#service-buttons-of-the-header)
+- [Threads and Memory](#threads-and-memory)
 - [Main Folders](#main-folders)
-- [CLI Examples](#cli-examples)
+- [The Console Command](#the-console-command)
 - [Before Release](#before-release)
-- [Canonical Workbench labels](#canonical-workbench-labels)
 
 This is the English companion to `USER_GUIDE_RU.md`.
 
 ## Purpose
 
-Audion Image Tools is a portable GUI/CLI toolkit for batch image and PDF processing: conversion, PDF image extraction, image-to-PDF, crop, resize, DPI metadata, color profiles, printable sheets, contact sheets, and diagnostics.
+Audion Image Tools is a portable program for batch work on images, PDF, and the pictures inside DOCX, PPTX and PDF documents: conversion, PDF pages, images to PDF and pictures out of PDF, turning and cropping, size, DPI without touching pixels, colour profiles and correction, metadata, printable sheets, contact sheets, and the resolution and weight of the pictures in documents.
 
-Primary launch:
-
-```bat
-launcher_gui.cmd
-```
+`Start.exe` opens the window. Every button of the window is a run of the console command `image_cli.cmd` with the same settings; the same work can be done from a console (see "The console command").
 
 ## Quick Route
 
-1. Put files into `input\`, stage them from the GUI, or choose a folder in `SOURCE`.
-2. Open `launcher_gui.cmd`.
-3. Choose a ROOT module: `Conversion`, `PDF`, `Crop`, `Resize`, `Color`, `Photo sheet`, `Sheets and labels`, `Contact sheet`, or `Diagnostics`.
-4. Use the action grid at the top of the module. Quick actions run immediately; parameterized actions show their settings in the same window.
-5. Check `SOURCE`, `DESTINATION`, and the visible settings.
-6. Click the amber `RUN` button when the action has parameters.
-7. Read results from `output\` or from the selected `DESTINATION`.
+1. Open `Start.exe`.
+2. Put files into `input\`, or choose a folder (or one file) in the `SOURCE` row.
+3. Choose a section in the row under the header, then an operation - a large button on the page of the section.
+4. Check `SOURCE`, `TARGET` and the fields of the form; for an operation with a preview, look at what it makes of the first picture.
+5. Press the run button at the head of the form. The operations of the `Quick` block run at once, without a form.
+6. Follow the journal on the right; take the result from `TARGET`.
 
-Empty `SOURCE` and `DESTINATION` fields use command defaults, usually `input\` and a subfolder under `output\`.
+Until `SOURCE` and `TARGET` are chosen, an operation reads `input\` and writes into its own subfolder of `output\`.
 
-## New GUI Layout
+## The Window
 
-The left navigation contains ROOT modules only. `Conversion` opens directly as a working window. Other modules show action buttons at the top and the selected action settings below.
+**Header.** On the left - the name and the version, and the badges of what the engine can do on this machine (`HEIC`, `AVIF`, `RAW`, `WORD`, `POWERPOINT`). On the right - `THREADS` (how many pictures are processed at once), the service buttons `FORMATS`, `PROJECT INFO`, `DOCTOR`, the language `RU`/`EN`, the theme (Audion Code Dark, Audion Vault Dark, Audion Dark, Audion Light), `SETTINGS` (colours, fonts and sizes of the window) and `ABOUT`. The language and the theme change without a restart.
 
-Action buttons and `RUN` use a muted amber highlight with light gray text. Navigation buttons remain standard blue Quasar buttons. Settings are grouped into source, output/result, format, parameters, and options blocks.
+**Sections.** The row of large buttons under the header: `CONVERT`, `PDF`, `TRANSFORM`, `CUT`, `SIZE`, `DPI`, `COLOUR`, `PHOTO SHEET`, `SHEETS AND MARKS`. Under the name of a section - a line of what it holds.
 
-Short labels are intentional. Longer explanations live in tooltips on headings, buttons, checkboxes, radio controls, and toggles. The tooltip background is `RGB(23, 33, 43)`. The `BACK` button has no tooltip.
+**A page.** The operations of a section are the large buttons at the top of its page. An operation with settings opens a form; its run button stands at the right of the head of the form, next to the return of the fields to their defaults. The operations over documents wear a frame of their own and the marks of the formats they take: Word - DOCX, PowerPoint - PPTX, Acrobat - PDF. The `Quick` block at the bottom of the page holds the operations of the section without settings: one press - one run.
 
-## Workbench I/O
+**Fields.** A choice of a few is a row of switch buttons; several formats - ticks; numbers - fields with arrows; smooth values (brightness, contrast, saturation) - sliders, their track painted in what the slider does. An own colour is set by a swatch, R, G, B sliders and fields. The rarely needed fields stand under `Advanced`, in sight. Short captions are explained by tooltips.
 
-The two top rows define the active processing route:
+**Preview.** The operations that are hard to set blind (colour, size, turning and cropping, cutting, watermark) show a preview frame under the form: `Before`, `After` or `Side by side`. It shows what the operation will make of one picture of the source, on a smaller copy; the arrows step through the pictures of the source. The picture is made again a moment after a field stops changing.
 
-* **Source** can be the internal `input\` folder, an external folder, or a single
-  external file.
-* **Target** can be the internal `output\` folder or a chosen external folder.
-* The system folder picker sits at the right edge of each row.
-* The pin button shows the route state: an active pin is highlighted, an inactive
-  one is muted. Pinning saves the path to the cache but does not make it the
-  mandatory route for a run.
-* The delete button on the left clears the contents of the current folder without
-  removing the folder itself. The internal `input\` needs no confirmation; an
-  external source raises a warning. If the source is a single file, deleting that
-  file is confirmed separately — it may be the only copy.
+**The right column.** At the top - `SOURCE` and `TARGET` (see below). Under them, after a check of documents, the `RESULT` card: the total, the table, the report and its folder. Below - the `JOURNAL` with `LOGS` (the folder of the logs), `REPORT` (the folder of the reports), `CONFIG` (the folder of the settings), copy, clear, and the journal over the whole window. The column is widened by dragging its edge.
 
-The bottom row is split into groups by meaning:
+**The journal.** The lines of an operation come in their colours: what went - green, what asks for a look - amber, an error - red, service lines - quiet. The start and the end of every run is a bold `=====` line. A batch of many files writes no line for every file: at the bottom of the journal goes one live line - the share done, how many are done and how many there are, the speed, the time left (ETA) and the file, each in its own colour. A file that went wrong stays in the journal as a line with its details. Every line of every file is in the log of the operation in `logs\`.
 
-| button | what it does |
-|---|---|
-| Source | opens the current source in the file manager; for a single file, its folder with the file selected |
-| Add file… | picks exactly one file without copying; the source path becomes that file until the route changes |
-| Target | opens the current output folder |
-| Reset | drops every unpinned path from the cache and returns the active routes to the internal `input\` and `output\` |
-| Delete | after one shared confirmation, clears the contents of the current source and target |
-| List | shows the files of the current source; a single file appears as one line |
+**The status line.** At the bottom of the window: what the window is doing, the bar of the run under the journal across its whole width, the time of the run and `STOP`. `STOP` asks the operation to stop at its next safe point; a second press a few seconds later ends it at once. Every result - a picture, a PDF, a copy of a document - is written beside its place and takes the place only whole: the file being written when the run stops does not spoil the earlier result of the same name.
 
-`Reset` deletes neither files nor pinned entries — it is the safe way to clear
-routes before running the project on another machine.
+## Source and Target
 
-A long path is truncated only on real overflow and fades softly in a narrow zone
-at the right edge; a short path is shown in full. A path change is marked by a
-brief highlight, and these effects switch off with the system reduced-motion
-setting.
+- `SOURCE` is a folder or one file. `TARGET` is the folder of the result. A path can be typed (Enter takes it) or chosen by a button.
+- Each row has: choose a folder, for the source - choose one file, earlier paths, pin the path, open in Explorer.
+- `RESET` returns both paths to the folders of the program, `input\` and `output\`. The history of paths is cleared, the pinned ones stay, no file is touched.
+- `LIST` writes into the journal what lies in the source, with its subfolders.
+- `TO SOURCE` makes the result the source of the next operation: the source is cleared (into the Recycle Bin), then the contents of the target move into it.
+- `CLEAR` deletes the contents of the source, the target or both - into the Recycle Bin. The folders stay; before deleting, the window asks and names the paths.
 
-## Modules
+The folders inside the source are repeated in the target. `TARGET` may not be `SOURCE`, lie inside it or hold it - through a link to a folder as well: the copies of a run would be among its originals. Such a run is refused before it starts, nothing touched.
 
-### Conversion
+## Sections
 
-The Conversion window contains quick actions at the top and the normal conversion settings below.
+### CONVERT
 
-Quick actions:
+`Convert images` turns a folder into one or several formats: `JPG`, `PNG`, `TIFF`, `WebP`, `AVIF`, `HEIF`, `HEIC`, `ICO`. With several formats the result is laid out into a subfolder per format. For JPG and the compact formats - quality `60%`, `75%`, `90%` and an exact field `1..100` (`83` by default). For `JPG`, `PNG` and `TIFF` a DPI can be written without touching pixels. `Background under transparency` - `White`, `Black` or `Custom`: it fills what is transparent where the format keeps no transparency. `Metadata`: `DPI + color`, `Preserve all`, `Strip all`. `ICO` writes every size of an icon Windows asks for into one file.
 
-- `JPG 75% quality`
-- `PNG`
-- `Grayscale PNG`
-- `2160p JPG 90% quality`
-- `16:9 JPG 90% quality`
+Quick operations:
 
-`Convert images` supports `JPG`, `PNG`, `TIFF`, `WebP`, `AVIF`, `HEIF`, and `HEIC`, with 60/75/90 presets and an exact 1..100 quality field defaulting to 83. DPI writing is available for `JPG`, `PNG`, and `TIFF`.
+- `JPG 75% quality`, `PNG`, `Grayscale PNG`.
+- `2160p JPG 90% quality` - to UHD `3840x2160` with a centre crop. When the source is smaller than UHD and is enlarged, a gentle `Unsharp Mask` follows Lanczos.
+- `16:9 JPG 90% quality` - a crop to 16:9.
 
-The `2160p JPG 90% quality` preset uses Lanczos. When the source is actually upscaled to UHD, a mild `Unsharp Mask` is applied after resizing. Downscale to UHD does not add extra sharpening.
+`Animation from frames` puts the pictures of a folder into one GIF, WebP or APNG in the order of their names (2 before 10). The pauses come from `frames.json` when `Split into frames` left one, or from a frame rate.
 
 ### PDF
 
-Actions:
+- `Images to PDF` - a PDF of images: `All images into one PDF` or `Separate PDFs by folder`, `PNG lossless` or JPG 75/90 %. `Do not change DPI` keeps the size of the pages by the DPI of the sources; an own DPI changes the physical size of the pages, not the pixels.
+- `PDF export` - pages through their embedded rasters or rendered at a DPI (up to 1200).
+- `Extract embedded` - the embedded raster objects in their own format or in chosen formats, into one folder or into folders named after the PDF; a TIFF can be written beside a PNG.
+- `Turn pages` - turns the named pages (`1-3, 7`). The page is not redrawn: text stays text, pictures keep every pixel.
+- `Merge PDF` - every PDF of the source into one file, in the order of their names; pages move as they are.
+- `Split PDF` - one page each, N pages each, or by ranges; the files are named `name_001.pdf`, `name_002.pdf`.
+- `Check DPI` - the table of the pictures of every PDF: pixels, size on the page, resolution, and the total "how many below the threshold". The PDF is not changed. The table is in the `RESULT` card and in the report (CSV and Markdown).
+- `Raise to DPI` - a copy of the PDF with its pictures at the threshold or above; the pages, the text and the place of every picture stay.
+- `Lighter pictures` - a copy of the PDF with lighter pictures: what is above the target resolution gets fewer pixels and is written as JPEG.
+- `Watermark` - a line of text across every page along its diagonal, half transparent; it is written as text over the page.
+- `Extract from DOCX and PPTX` - the pictures of documents as they are stored, into a folder named after the document.
+- Quick `No PDF properties` - a copy without author, title, producer, dates and XMP.
 
-- `PDF export` - export pages by embedded images or full render.
-- `Extract from PDF` - extract embedded raster objects, defaulting to original format.
-- `Images to PDF` - build PDF files from images.
+Every copy of a PDF is checked (pages, text, the place of the pictures) before it is called done. A PDF with a signature or encryption is not changed and is named. A copy of a document is written beside its place and takes the place only whole: a `STOP` in the middle of the writing leaves the copy before it as it was.
 
-`PDF export` defaults to embedded raster extraction when possible. If the full page appearance is needed, choose render mode and set DPI. Output format and quality are controlled in the `Format` block.
+### TRANSFORM
 
-`PDF rasterize` renders full PDF pages into images at 150/300/600 DPI. Use it when the PDF page itself matters, not only the embedded raster objects inside it.
+- `Turn by angle` - any angle with fractions of a degree; the canvas grows, stays, or the corners of the fill are cut.
+- `Trim border` - removes a solid border by the colour of the corners.
+- `Smart crop white` - crops a white background to the meaningful pixels.
+- `Margins` - margins around a picture in millimetres of a chosen colour; millimetres are counted by the density of the picture, or by the DPI of the form when it has none.
 
-`Extract from PDF` defaults to writing embedded images in their original format. You can also convert them to target formats, choose flat output or per-PDF folders, and optionally write TIFF sidecars next to PNG.
+`Safety margin, mm = 0` cuts exactly along the found contour; a larger value keeps the source background around the result by the DPI of the picture (300 without one). A PDF can be built right after a crop: `Embedded PNG` lossless or `Embedded JPG 75%` for a compact PDF.
 
-`Images to PDF` defaults to separate PDFs by folder, preserved source DPI, and lossless PNG PDF mode. A custom PDF DPI becomes active only when DPI preservation is off.
+Quick operations: `90° clockwise`, `90° counter-clockwise`, `Turn 180°`, `Mirror left-right`, `Mirror top-bottom`. A JPEG is turned without loss (jpegtran) when its sides are whole numbers of its JPEG blocks; otherwise it is written again at quality 95, and the journal names it.
 
-### Crop
+### CUT
 
-Actions:
+- `Split...` - strips or a grid of rectangles, up to 100 parts: `name_01.png`, `name_02.png` and so on.
+- `Split into frames` - a picture of several frames (a multi-page TIFF, an animated GIF, WebP or APNG, MPO) into lossless PNG frames, in a folder of its name; an animation leaves `frames.json` with its pauses.
 
-- `Trim border` - remove a solid frame using the corner color.
-- `Smart white crop` - trim white background to meaningful pixels.
-- `Split...` - split images into strips or rectangular grid cells.
+### SIZE
 
-`Safety margin, mm = 0` cuts exactly to the detected content. A value above zero keeps source background around the result using image DPI; if DPI is missing, 300 DPI is used.
+- `File size` - smaller or larger by a percent (up to 400 %), or the largest percent that fits a target file size in MB.
+- `Fit to screen` - 1080p, 1440p or 2160p: `Crop` fills the frame and cuts the rest, `Contain` keeps the whole picture, `Pad` adds a background up to the target size, `By height` and `By width` bring one side to the target and keep the proportions.
+- `Fit aspect` - 16:9, A4 or A3 in the same modes.
+- `Exact size` - an exact width and height in pixels: fit, fit with margins (white, black, transparent or of an own colour), fill with a crop, or stretch.
+- `Shrink in documents` - the pictures of DOCX and PPTX to a limit (`1920 × 1080`, `2560 × 1440`, `3840 × 2160` or own) and recompressed. In HARD a PNG becomes a JPEG unless it is lighter than `Keep PNG under, KB`, would come out heavier as a JPEG, or is transparent: coats of arms, signs and pictograms stay PNG. SAFE touches JPEGs only. A signed DOCX or PPTX is not changed: its signature would break.
+- `Document to a file size` - every DOCX and PPTX under a size in megabytes; the limit is lowered step by step, and a document that does not fit is named.
 
-`Trim border` and `Smart white crop` default to PNG, but output can be changed to `JPG`, `TIFF`, `WebP`, `AVIF`, `HEIF`, or `HEIC`. Crop actions can also build a PDF after cropping with embedded PNG or embedded JPG 75% parts without changing pixel resolution.
+Quick operations: `A4 → A3 · 141%`, `×2`, `×3` - enlarged with the written density kept, so the print comes out as many times larger too.
 
-`Split...` writes parts as `name_01.png`, `name_02.png`, and so on. `Strips` uses direction and part count; `Grid` uses row and column counts.
+Algorithms:
 
-### Resize
+- `Lanczos` - the best for photos and soft scans; on PNG maps it can make halos and heavier files.
+- `Bicubic` - a soft compromise for photos and JPG.
+- `Box` - a dry average for maps, plans and screenshots: fewer halos, lighter PNG.
+- `Nearest` - makes no new colours and often the lightest PNG, but diagonals and thin text turn into steps.
 
-Actions:
+In `Fit`, `Target MB` is a limit for every file; a normal result is about `0.8-1.0` of the target. The percent of the scale is chosen, not the JPG quality.
 
-- `Screen` - 1080p, 1440p, or 2160p/UHD.
-- `Aspect` - 16:9, A4, or A3.
-- `Downscale` - 25%, 50%, a custom percent, or automatic fit to a target file size in MB.
-- `Roll` - write DPI for a target physical side without changing pixels.
-- `DPI` - write DPI only.
+### DPI
 
-`Screen -> 2160p` applies a mild Unsharp Mask only on real upscale. `Downscale` applies a mild Unsharp Mask after Lanczos by default. Scale modes are `25%`, `50%`, `Custom %`, and `Fit`. `Fit` searches for the largest percent that keeps each output file below the target MB value; the target spinner steps by `0.1 MB`, and `0.8-1.0` of the target is treated as a good hit.
+- `Fit to roll` - the DPI for a physical side in millimetres; pixels stay.
+- `DPI only for roll` - a DPI written without touching pixels.
+- `Check DPI` - for DOCX, PPTX and PDF: a line for every placed picture - pixels, the size of the placement, the resolution and the number the picture states of itself - and the total "how many below the threshold". The documents are not changed; the table is in the `RESULT` card and in the report.
+- `Raise to DPI` - a copy of the document with its pictures at the threshold or above. Only the pictures change: the text, the pages, the place and size of the placements stay. Word and PowerPoint are told not to compress the pictures back.
 
-Resize algorithms:
+### COLOUR
 
-- `Lanczos` - best visual quality for photos and soft images, but it can create halos and inflate PNG maps.
-- `Bicubic` - good photo/JPG compromise: smoother than simple averaging, but it can add intermediate colors around sharp map lines.
-- `Box` - dry averaging filter for maps, plans, screenshots, and flat graphics; usually fewer halos and smaller PNG than `Lanczos`/`Bicubic`.
-- `Nearest` - creates no new colors and is often the smallest PNG option, but diagonals, labels, and thin lines can become jagged.
+- `Normalize profile` - keep the profile, or bring the result to `sRGB` (`sRGB 2014` of color.org or Pillow's built-in) or `CMYK` (`Photoshop5DefaultCMYK.icc` or `CoatedFOGRA39.icc`); output formats, quality and metadata.
+- `Correction` - auto levels (per channel or with the tone), brightness, contrast, saturation, gamma, tone (`Black and white`, `Sepia`, a `Tint` of an own colour), inverse, white to transparent. Transparency is kept; a JPEG whose white became transparent is written as PNG.
+- `PNG 256 colours` - a PNG of at most the chosen number of colours: drawings, plans, maps and screenshots become many times lighter with no visible difference.
+- `Profile in documents` - the pictures of DOCX and PPTX in sRGB or CMYK, with an ICC profile inside the picture or without.
 
-Practical rule: start with `Lanczos` or `Bicubic` for photos/JPG; for PNG maps and plans, use `Nearest` for minimum size or `Box` for a calmer visual compromise.
+Quick operations:
 
-Tooltip details:
+- `No EXIF and GPS` - a copy of every JPEG, PNG and WebP without EXIF (GPS, camera, date, thumbnail), XMP, IPTC and comments. The picture is not written again: the copy gives the same pixels, and that is checked; the profile, the density and the orientation of the photo stay.
+- `Auto levels` - levels stretched per channel: the dullness of a scan and a colour cast go.
+- `PNG 256` - a PNG of 256 colours without dithering.
 
-- `Fit` does not change JPG quality by itself. It searches for a resize percent that fits the target file size. For JPG, the final size depends on scale, quality, and image complexity; for PNG, it depends on color count, sharp edges, and the resize algorithm.
-- `Target MB` is a per-file limit. If the target is `1.0`, the engine tries to land close to 1 MB, but exact byte-level matching is not expected; about `0.8-1.0` of the target is treated as a good result.
-- `Lanczos` is attractive for photos and soft scans, but on maps it can create semi-transparent transitions around hard lines. That often increases PNG size.
-- `Bicubic` is useful when you want a softer result than `Box`/`Nearest` without the full cost and halo tendency of `Lanczos`.
-- `Box` is usually the safest first try for maps, plans, diagrams, and screenshots: it averages pixels simply and tends to create fewer halos.
-- `Nearest` is useful when original colors and minimum PNG size matter, but it does not smooth diagonals or small text.
+### PHOTO SHEET
 
-### Color
+- `Paper saver` - a dense layout in rows without gaps.
+- `Cut-lines` - grouped by similar height, with a `cut_plan.txt`.
 
-Normalize to keep, sRGB, or CMYK, then choose output formats, quality, and metadata policy.
+Common settings: sheet width in mm, final DPI, reading subfolders, background, format and quality. Source pixels are not resampled: the width and the DPI describe the final sheet. When the chosen DPI is too low for the source pixels at that width, the DPI of the sheet is raised, and the report names it.
 
-### Photo Sheet
+### SHEETS AND MARKS
 
-Build printable sheets. `Paper saver` creates dense rows without gaps. `Cut-lines` groups similar heights and writes `cut_plan.txt`. By default, source pixels are not resampled: sheet width and DPI describe the final output sheet. If the selected DPI is too low for the unchanged source pixels at the selected sheet width, the engine raises the sheet DPI automatically and reports a warning in the GUI/report.
+- `Tile sheet` - one picture across A5, A4, A3 or a roll of a given width. Sizes `As is`, `By width`, `By height`, `Document 40x30`, `Document 60x40`; frame, margins and gap in millimetres.
+- `Watermark` - a horizontal caption in a corner or a diagonal protective line.
+- `Contact sheet` - a grid of thumbnails of a folder: a caption with the name, a `px | cm | DPI` line and the weight in KB. A thumbnail shows the whole picture; without a DPI, centimetres are counted at 300 dpi, and the caption says so.
 
-### Sheets And Labels
+Watermark:
 
-`Tile sheet` repeats one image on A5/A4/A3 or a roll. `Split TIFF` exports multi-page TIFF frames to PNG. `Watermark` adds either a horizontal corner label or a diagonal protective text mark.
+- `Corner` - a tidy technical caption: a date, an author, a draft status; `Corner font size` works here only.
+- `Diagonal protective` - text across the whole picture; `Diagonal coverage, %` sets the length of the caption against the diagonal (60 % suits short words like `COPY`).
+- `Opacity` - `0..255`; `64` by default, about 25 % opaque. For red or black text start at `64-96`, for light text on a dark ground - at `96-128`.
+- `Color` - `Red`, `Black`, `White`, `Yellow`, `Gray`, `Blue` or `Custom RGB` (R, G, B from 0 to 255).
 
-`Watermark` has two modes. `Corner` places normal horizontal text into the selected corner with a controlled margin and font size. `Diagonal protective` centers text across the image diagonal and auto-fits the font size to the selected diagonal coverage; `60%` is a practical default for protective document marking and leaves room for short large words such as `COPY`. The font is intentionally simple and readable: Arial Bold when available. Opacity is adjustable separately: `0` is invisible, `255` is fully opaque. Default `64` is about 25% opacity and is chosen for print, where watermarks usually look darker than on screen.
+## Service Buttons of the Header
 
-Watermark tooltip details:
+- `FORMATS` - which formats and adapters this machine has.
+- `PROJECT INFO` - the paths of the program and its environment.
+- `DOCTOR` - a check of Python and the packages of the engine.
 
-- `Corner` is for tidy technical marking: label, date, author, or draft status.
-- `Diagonal protective` is for discouraging misuse: the text crosses the document and remains visible even after partial cropping.
-- `Diagonal coverage, %` controls target text length relative to the image diagonal, not the font size directly. Shorter text becomes larger at the same coverage percent.
-- `Corner font size` applies only to `Corner`. In diagonal mode the font size is calculated automatically.
-- `Opacity` is the `0..255` alpha channel. Default `64` is about 25% opacity. For red or black diagonal text, start around `64-96`; for light text on dark images, start around `96-128`.
-- `Color` in the GUI is selected from human presets with visible swatches: `Red`, `Black`, `White`, `Yellow`, `Gray`, `Blue`. For exact colors, use `Custom RGB` with `R`, `G`, and `B` channels from `0` to `255`. CLI users can still pass an HTML color or RGB manually, for example `#cc0000` or `204,0,0`.
+They use neither `SOURCE` nor `TARGET`.
 
-### Contact Sheet
+## Threads and Memory
 
-Create an inspection grid with filename, `px | cm | DPI`, and KB under each thumbnail. The thumbnail can be chosen from a list or entered manually.
+`THREADS` in the header is how many independent pictures are processed at once. It helps on batches, but large maps, TIFF and PDF rendering and PNG output take much more memory than the file on disk: every thread may open one more heavy picture.
 
-### Diagnostics And Maintenance
-
-Diagnostics contains `Formats`, `Information`, and `Doctor`. Maintenance actions are separate; global multithreading defaults live there, and `Clean I/O` clears managed `input\` and `output\` folders with confirmation.
-
-### Multithreading And RAM
-
-Multithreading processes independent source images in parallel. It helps with batches, but large maps, TIFF/PDF rendering, and PNG output can occupy far more memory than the source file size on disk. Each extra worker can open another heavy image, so speedups can turn into paging or out-of-memory failures.
-
-Practical guide:
-
-- `16 GB RAM` - keep multithreading disabled; use `1-2` workers only for small files.
-- `32 GB RAM` - usually `4` workers.
-- `64 GB RAM` - `8-12` workers after checking peak memory.
-- `128 GB+ RAM` - `16+` can be tested, but memory must be watched.
-
-The global Maintenance setting is the default for modes without a local override. A local mode switch affects only the current run and does not change Workbench/I/O.
-
-## Maintenance
-
-The maintenance block sits apart from the working commands. It holds the global
-threading setting. Route and file handling live in the Workbench above: `Reset`
-clears routes and cache without deleting files, `Delete` clears the contents of
-the current source and target after confirmation.
-
-### Threading and memory
-
-Threading processes independent images in parallel. It helps on batches, but
-large maps, TIFF and PDF rendering, and PNG output can occupy far more memory
-than the file takes on disk. Every extra worker may open another heavy image, so
-the speed-up turns into swapping — or a crash — sooner than expected.
-
-A practical guide:
-
-| memory | threads |
-|---|---|
-| 16 GB | leave threading off; 1–2 if needed |
-| 32 GB | usually 4 |
-| 64 GB | 8–12, after checking peak memory |
-| 128 GB and above | 16 and up, but only with memory watched |
-
-The global setting acts as the default for modes without a local override. A
-local switch inside a mode affects only the current run and does not change the
-Workbench routes.
+- `16 GB RAM` - `1-2` threads.
+- `32 GB RAM` - usually `4`.
+- `64 GB RAM` - `8-12` after checking the peak memory.
+- `128 GB+ RAM` - `16+` can be tried while watching the memory.
 
 ## Main Folders
 
-```text
-input\      source files
-output\     processed results
-logs\       operation logs
-report\     GUI reports
-workspace\  temporary work area
-config\     manifest, GUI settings, themes, ICC profiles
-docs\       documentation
-system_core\ GUI/CLI code
-```
+- `App\` - the window and the PowerShell the program carries.
+- `input\` - default sources.
+- `output\` - default results.
+- `logs\` - the log of every operation.
+- `report\` - the reports of checks.
+- `workspace\` - temporary working area.
+- `config\` - the operations, the layout of the window, defaults, ICC profiles.
+- `docs\` - documentation.
+- `system_core\` - the engine and the console command.
+- `runtime\`, `wheelhouse\`, `install\download\` - the portable environment and build files.
 
-## CLI Examples
+## The Console Command
 
-Use the project runtime:
+Every operation of the window runs from a console too, with the same fields:
 
 ```bat
-runtime\python.exe system_core\main.py --help
-runtime\python.exe system_core\main.py convert --help
-runtime\python.exe system_core\main.py resize-screen --help
-runtime\python.exe system_core\main.py images-to-pdf --help
+image_cli.cmd describe
+image_cli.cmd run --operation downscale_percent --set scale_mode=custom --set custom_percent=75
+image_cli.cmd run --operation convert_images --source D:\Photos --target D:\Out --set to=jpg,png
+```
+
+`describe` prints every section, operation and field as JSON. Exit codes: `0` done, `1` failed, `130` stopped, `2` a wrong call - and then nothing is run. At every start the journal of the window writes the line that repeats the same operation from a console.
+
+The engine can be called directly as well:
+
+```bat
+runtime\python.exe system_core\main.py plotter-size --input input --output output\plotter_roll_fit --to png --side short --target-mm 900
+runtime\python.exe system_core\main.py plotter-dpi-only --input input --output output\plotter_dpi_only --to png --dpi 300
+runtime\python.exe system_core\main.py smart-crop-white --input input --output output\smart_crop_white --to png --tolerance 10 --safety-margin-mm 0
+runtime\python.exe system_core\main.py images-to-pdf --input input --output output\images.pdf --bundle folders --mode lossless
 ```
 
 ## Before Release
 
-Run compile checks, `system_core\doctor.py`, and the GUI smoke test described in `RELEASE_GUIDE_RU.md` / `RELEASE_GUIDE_EN.md`.
-## Canonical Workbench labels
+Run the interactive cleanup:
 
-Workbench uses the same Audion Image Tools public vocabulary in every project. Its buttons always keep the same order and labels: **Source**, **Add file...**, **Target**, **Reset**, **Delete**, **List**.
+```bat
+cleanup_project.cmd
+```
 
-`Reset` returns to project `input/output` and does not delete files; `Delete` clears the current `Source` and `Target` only after confirmation. The exact Russian labels are **Источник**, **Добавить файл...**, **Назначение**, **Сбросить**, **Удалить**, **Список**. The Workbench variants `Destination`, `Clear`, `Цель`, and `Очистить` are not used.
+It asks `Y/N/Q`. `Y` clears working results, the portable environment, wheelhouse, downloaded archives, caches and temporary files. The window `App\`, the source scripts, folders, documentation, licenses and settings stay.

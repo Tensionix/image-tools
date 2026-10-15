@@ -19,7 +19,10 @@ def load_yaml_or_json(path: Path) -> dict[str, Any]:
     except Exception as exc:
         raise RuntimeError(f"PyYAML is required to read {path.name}. Install package: pyyaml") from exc
 
-    data = yaml.safe_load(text) or {}
+    # The loader of C when PyYAML has it: the manifest of 3500 lines is read in a tenth of the time, and every call
+    # of the console command - the preview among them - waits for it. The same safe loader, written in C.
+    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    data = yaml.load(text, Loader=loader) or {}
     if not isinstance(data, dict):
         raise ValueError(f"Config file must contain a mapping: {path}")
     return data

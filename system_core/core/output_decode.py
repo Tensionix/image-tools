@@ -193,6 +193,3 @@ def decode_process_bytes(data: bytes) -> str:
         return max(candidates, key=lambda candidate: candidate.score).text
     return data.decode("utf-8", errors="replace")
 
-
-def decode_process_output(data: bytes) -> str:
-    return decode_process_bytes(data)

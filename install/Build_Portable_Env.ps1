@@ -7,7 +7,6 @@ $runtimeDir = Join-Path $rootDir "runtime"
 $wheelhouseDir = Join-Path $rootDir "wheelhouse"
 $requirementsFile = Join-Path $installDir "requirements_full.in"
 $doctorScript = Join-Path $rootDir "system_core\doctor.py"
-$guiSmokeScript = Join-Path $rootDir "system_core\ui_nicegui\app.py"
 $cmdEncodingScript = Join-Path $installDir "Repair-CmdEncoding.ps1"
 
 $pythonMinor = 12
@@ -61,27 +60,27 @@ New-Item -ItemType Directory -Force -Path $runtimeDir | Out-Null
 New-Item -ItemType Directory -Force -Path $wheelhouseDir | Out-Null
 
 if (Test-Path $cmdEncodingScript) {
-    Write-Host "[0/7] Normalizing project CMD files..."
+    Write-Host "[0/8] Normalizing project CMD files..."
     & $cmdEncodingScript -Root $rootDir -Fix
 }
 
-Write-Host "[1/7] Downloading Python Embedded..."
+Write-Host "[1/8] Downloading Python Embedded..."
 Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonZipPath
 
-Write-Host "[2/7] Extracting runtime..."
+Write-Host "[2/8] Extracting runtime..."
 if (Test-Path $runtimeDir) {
     Get-ChildItem -Force $runtimeDir | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
 }
 Expand-Archive -Path $pythonZipPath -DestinationPath $runtimeDir -Force
 
-Write-Host "[3/7] Enabling import site..."
+Write-Host "[3/8] Enabling import site..."
 $pthFile = Join-Path $runtimeDir "python3$pythonMinor._pth"
 if (-not (Test-Path $pthFile)) {
     throw "Missing file: $pthFile"
 }
 (Get-Content $pthFile) -replace '^#import site$', 'import site' | Set-Content $pthFile -Encoding ASCII
 
-Write-Host "[4/7] Downloading get-pip.py..."
+Write-Host "[4/8] Downloading get-pip.py..."
 # A dropped connection here used to kill the whole project build.
 $getPipOk = $false
 foreach ($getPipTry in 1..5) {
@@ -105,10 +104,10 @@ if (-not (Test-Path $pythonExe)) {
     throw "Missing file: $pythonExe"
 }
 
-Write-Host "[5/7] Installing pip..."
+Write-Host "[5/8] Installing pip..."
 Invoke-Checked -Label "Installing pip" -Command { & $pythonExe $getPipPath }
 
-Write-Host "[6/7] Building wheelhouse and installing packages..."
+Write-Host "[6/8] Building wheelhouse and installing packages..."
 Get-ChildItem -Force $wheelhouseDir |
     Where-Object { $_.Name -ne ".gitkeep" } |
     Remove-Item -Force -Recurse
@@ -122,11 +121,15 @@ Invoke-Checked -Label "Installing packages" -Command {
     & $pythonExe -m pip install --disable-pip-version-check --no-build-isolation --no-index --find-links=$wheelhouseDir -r $requirementsFile
 }
 
-Write-Host "[7/7] Verifying environment..."
-Invoke-Checked -Label "Verifying environment" -Command { & $pythonExe $doctorScript --project-root $rootDir }
-if (Test-Path $guiSmokeScript) {
-    Invoke-Checked -Label "Verifying NiceGUI smoke" -Command { & $pythonExe $guiSmokeScript --smoke }
+Write-Host "[7/8] jpegtran of libjpeg-turbo (turns of JPEG without loss)..."
+& $pythonExe (Join-Path $installDir "get_jpegtran.py")
+if ($LASTEXITCODE -ne 0) {
+    # Not a reason to stop the build: without jpegtran the turns of a JPEG go through Pillow at quality 95.
+    Write-Host "[WARN] jpegtran is not in place; run install\get_jpegtran.py again when the network or PeaZip is there"
 }
+
+Write-Host "[8/8] Verifying environment..."
+Invoke-Checked -Label "Verifying environment" -Command { & $pythonExe $doctorScript --project-root $rootDir }
 
 Write-Host ""
 Write-Host "[SUCCESS] Portable environment is ready."

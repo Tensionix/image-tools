@@ -1,0 +1,167 @@
+# Where every operation stands in the window on Avalonia.
+#
+# config\tool_manifest.yaml says what an operation is: its service, its fields, its texts.
+# This file says where it stands: a section (a large button under the header) and, inside the
+# section, one of its rows. The console command hands it to the window with `describe`.
+#
+# A section answers "what to do". Inside it:
+#   images:    operations over pictures - the left part of the row of switches
+#   documents: operations over the pictures inside DOCX, PPTX and PDF - the right part of the
+#              same row, with an accent and icons of its own
+#   quick:     operations that start at once, with their defaults and without a form - buttons of
+#              a block "QUICK", never switches: a button that runs must not look like one that chooses
+#
+#   about:  what a section is for - the second line of its button
+#   icon:   a name of the icon set of the window (Source\Tools\build_icons.py)
+#   formats: the documents an operation of the row of documents takes - docx, pptx, pdf; the window draws the
+#            marks of Word, PowerPoint and Acrobat on its button, so that it is seen what it works on
+#   preview: true - the page shows, in the lower left corner, what its operation makes of one picture
+#            before it is run: the engine runs the same command on a copy made smaller (cli.py preview)
+#
+# service: the operations of the button SERVICE in the header.
+# pending: operations of the manifest the window does by itself, another way.
+#
+# An operation of the manifest that stands nowhere here fails a test
+# (tests\test_window_layout.py), and so does one that stands twice.
+
+sections:
+  - id: convert
+    title: "CONVERT"
+    title_ru: "КОНВЕРТАЦИЯ"
+    about: "Formats and quality"
+    about_ru: "Форматы и качество"
+    icon: repeat-2
+    images:
+      - {op: convert_images, icon: repeat-2, preview: true}
+      - {op: frames_to_animation, icon: clapperboard}
+    quick:
+      - {op: quick_jpg_75, icon: image}
+      - {op: quick_png, icon: image}
+      - {op: quick_gray_png, icon: image}
+      - {op: quick_2160_jpg, icon: monitor}
+      - {op: quick_169_jpg, icon: proportions}
+
+  - id: pdf
+    title: "PDF"
+    title_ru: "PDF"
+    about: "Pages, pictures, assembly"
+    about_ru: "Страницы, картинки, сборка"
+    icon: file-type
+    images:
+      - {op: images_to_pdf, icon: file-input}
+      - {op: pdf_export, icon: file-output}
+      - {op: pdf_extract, icon: file-image}
+      - {op: pdf_rotate_pages, icon: rotate-cw}
+      - {op: pdf_merge, icon: combine}
+      - {op: pdf_split, icon: split}
+    documents:
+      - {op: pdf_dpi_check, icon: scan-search, formats: [pdf]}
+      - {op: pdf_dpi_raise, icon: image-upscale, formats: [pdf]}
+      - {op: pdf_shrink_images, icon: image-down, formats: [pdf]}
+      - {op: pdf_watermark, icon: stamp, formats: [pdf]}
+      - {op: docs_extract_media, icon: images, formats: [docx, pptx]}
+    quick:
+      - {op: quick_pdf_clean_meta, icon: eraser}
+
+  - id: crop
+    title: "TRANSFORM"
+    title_ru: "ТРАНСФОРМАЦИЯ"
+    about: "Turn, crop, margins"
+    about_ru: "Поворот, обрезка, поля"
+    icon: rotate-cw-square
+    images:
+      - {op: rotate_angle, icon: rotate-cw, preview: true}
+      - {op: trim_border, icon: square-dashed, preview: true}
+      - {op: smart_crop_white, icon: crop, preview: true}
+      - {op: add_margins, icon: frame, preview: true}
+    quick:
+      - {op: quick_rotate_cw, icon: rotate-cw}
+      - {op: quick_rotate_ccw, icon: rotate-ccw}
+      - {op: quick_rotate_180, icon: rotate-cw-square}
+      - {op: quick_flip_h, icon: flip-horizontal-2}
+      - {op: quick_flip_v, icon: flip-vertical-2}
+
+  - id: cut
+    title: "CUT"
+    title_ru: "РЕЗКА"
+    about: "One picture into several"
+    about_ru: "Одно на несколько"
+    icon: scissors
+    images:
+      - {op: split_half, icon: table-cells-split, preview: true}
+      - {op: split_tiff, icon: layers-2}
+
+  - id: size
+    title: "SIZE"
+    title_ru: "РАЗМЕР"
+    about: "Smaller and larger"
+    about_ru: "Уменьшить и увеличить"
+    icon: scaling
+    images:
+      - {op: downscale_percent, icon: image-down, preview: true}
+      - {op: resize_screen, icon: monitor, preview: true}
+      - {op: aspect_fit, icon: proportions, preview: true}
+      - {op: exact_size, icon: ruler-dimension-line, preview: true}
+    documents:
+      - {op: docs_shrink, icon: image-down, formats: [docx, pptx]}
+      - {op: docs_fit_size, icon: file-down, formats: [docx, pptx]}
+    quick:
+      - {op: quick_scale_a3, icon: image-upscale}
+      - {op: quick_scale_x2, icon: image-upscale}
+      - {op: quick_scale_x3, icon: image-upscale}
+
+  - id: dpi
+    title: "DPI"
+    title_ru: "DPI"
+    about: "Print size, same pixels"
+    about_ru: "Печатный размер, те же пиксели"
+    icon: ruler-dimension-line
+    images:
+      - {op: plotter_size, icon: ruler}
+      - {op: plotter_dpi_only, icon: ruler-dimension-line}
+    documents:
+      - {op: docs_dpi_check, icon: scan-search, formats: [docx, pptx, pdf]}
+      - {op: docs_dpi_raise, icon: image-upscale, formats: [docx, pptx, pdf]}
+
+  - id: color
+    title: "COLOUR"
+    title_ru: "ЦВЕТ"
+    about: "Profiles and metadata"
+    about_ru: "Профили и метаданные"
+    icon: palette
+    images:
+      - {op: normalize_profile, icon: pipette}
+      - {op: color_adjust, icon: sliders-horizontal, preview: true}
+      - {op: png_palette, icon: swatch-book, preview: true}
+    documents:
+      - {op: docs_color, icon: palette, formats: [docx, pptx]}
+    quick:
+      - {op: quick_strip_meta, icon: eraser}
+      - {op: quick_auto_levels, icon: wand-sparkles}
+      - {op: quick_png_256, icon: swatch-book}
+
+  - id: photo_sheet
+    title: "PHOTO SHEET"
+    title_ru: "ФОТО-ЛИСТ"
+    about: "Photos onto a roll"
+    about_ru: "Фото на рулон"
+    icon: images
+    images:
+      - {op: paper_saver, icon: images}
+      - {op: cut_lines, icon: scissors}
+
+  - id: sheets
+    title: "SHEETS AND MARKS"
+    title_ru: "ЛИСТЫ И МЕТКИ"
+    about: "Stickers, marks, overview"
+    about_ru: "Наклейки, знаки, обзор"
+    icon: sticker
+    images:
+      - {op: tile_sheet, icon: grid-2x2}
+      - {op: watermark, icon: stamp, preview: true}
+      - {op: contact_sheet, icon: file-stack}
+
+service:
+  - {op: formats, icon: list}
+  - {op: info, icon: file-text}
+  - {op: doctor, icon: shield-check}

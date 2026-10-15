@@ -1,36 +1,36 @@
 {
   "schema": "audion.build_licenses.pack_manifest.v1",
-  "generated_utc": "2026-09-18T02:56:27Z",
-  "run_id": "20260918T025617Z_audion-image-tools_4a1d29ba",
+  "generated_utc": "2026-10-15T23:36:02Z",
+  "run_id": "20261015T233554Z_audion-image-tools_95f4fea7",
   "project_id": "audion-image-tools",
   "project_name": "Audion Image Tools",
-  "scan_root": "S:\\Releases\\Audion Image Tools",
-  "output_dir": "S:\\Releases\\Audion Image Tools\\licenses",
+  "scan_root": ".",
+  "output_dir": "licenses",
   "files": [
     {
       "name": "THIRD_PARTY_NOTICES.txt",
-      "sha256": "18f09b68f815ebc748c77ffe105a9efc80d34ef4fe9205fdca074e459a53f90a",
-      "size": 751057
+      "sha256": "cab1b742b094ad247cac7ea52cc162c1848a292101b8085e910ecd270372dbe5",
+      "size": 894028
     },
     {
       "name": "SOURCE_CODE_AVAILABILITY.txt",
-      "sha256": "802f37806e49a2322e2f2f823a8b1f1782aab7f88bdcd7cc219ad82ffc3c862d",
-      "size": 1617
+      "sha256": "4009dbabc9577777a40dfa1dc10652aa8204ef56283ba1189402a296dce6d66f",
+      "size": 13459
     },
     {
       "name": "COMPONENTS.json",
-      "sha256": "b015851d44b5c7db2ab7537691d9a048a1f6f88fa4d42d714e4df5b397d99980",
-      "size": 163572
+      "sha256": "bf6a75363c8f45d91fc0c852a8690b4ee9948a4e6d821cf71f884a8cfe8b3a56",
+      "size": 189714
     },
     {
       "name": "_records.json",
-      "sha256": "adcb994e74a5cdc6f2be7264b36c3505512b6471fe0ee7c015219c328cd3a7e1",
-      "size": 40186
+      "sha256": "29b11adeb13f72279e1989cd5469927b89214cd021247967948203ba57634814",
+      "size": 51122
     },
     {
       "name": "LICENSE_SCAN_REPORT.md",
-      "sha256": "0a6c237d8de6642758abb415d99c9d75f6e132183ffec687457ce510a919dcfd",
-      "size": 7073
+      "sha256": "f34d6f98e68a297c584f0cb664873ef71649888c194fdaf14e4f55107dc5ec2c",
+      "size": 9438
     }
   ]
 }

@@ -176,6 +176,9 @@ runtime/
 wheelhouse/
 Tools/
 tools/
+# The two rules above hold at any depth; these two folders are sources, not tool payloads.
+!docs/tools/
+!Source/Tools/
 install/download/
 install/downloads/
 logs/
@@ -193,6 +196,8 @@ node_modules/
 ._runtime/
 _pwsh_tmp/
 system_core/powershell/
+# jpegtran of libjpeg-turbo: put in place by install/get_jpegtran.py, not kept in the repository.
+system_core/jpegtran/
 temp/
 tmp/
 backup/
@@ -218,3 +223,24 @@ config/rclone/
 # Generated documents: rebuilt by Audion Build PDF Render, shipped in archives.
 Docs/PDF/
 docs/PDF/
+
+# --- the window on Avalonia (Source) ---
+# Its markup, its project file and the fonts it carries are its source; what a build leaves
+# and the built program are not.
+!Source/**/*.axaml
+!Source/*.csproj
+# The PowerShell the program carries (App\AudionPs.exe) is a project of its own.
+!Source/Ps/*.csproj
+!Source/app.manifest
+!Source/Assets/**
+Source/bin/
+Source/obj/
+Source/Ps/bin/
+Source/Ps/obj/
+/App/
+# The state of one machine: how the window was left, the folders it was pointed at. By these lines
+# the archiver leaves the files out of a public archive.
+/config/window_settings.json*
+/config/path_history.json*
+/config/parallel_settings.json
+/config/window_settings.json

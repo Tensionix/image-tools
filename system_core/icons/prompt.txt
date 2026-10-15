@@ -1,24 +1,26 @@
 {
   "project": "Audion Image Tools",
-  "source_file": "E:\\TOOLS\\PROJECTS\\_incoming_gpt_image_icons\\Сгенерированное изображение 9.png",
-  "pipeline": "GPT-Image bitmap candidate saved from UI, normalized to 1024 PNG and multi-size ICO",
+  "source_file": "E:\\TOOLS\\output\\audion-image-tools-icon-v4\\audion-image-tools-a-darker.svg",
+  "chosen": "icon v4, variant A - the colours of v3 darker (the owner, 14.10.2026: \"A\")",
+  "pipeline": "SVG rendered by sharp (render-variants.cjs) to a 1024 PNG; ICO by export-icons.py, every frame decoded and matched",
   "sizes": {
     "app.png": "1024x1024",
     "app.ico": [
       "16x16",
+      "20x20",
       "24x24",
       "32x32",
+      "40x40",
       "48x48",
       "64x64",
+      "96x96",
       "128x128",
       "256x256"
     ]
   },
   "style_rules": [
-    "background #17212B",
-    "maximum 3 objects",
-    "no repeated objects",
-    "no text",
-    "bitmap-first"
+    "three frames with a landscape: blue in front, copper in the middle, green at the back",
+    "dark tile",
+    "no text"
   ]
 }

@@ -1,33 +1,24 @@
-
-# Portable baseline
+# Portable baseline: the builder and the lock of the requirements
 pip-tools
-requests
-tqdm
-pydantic
-PyYAML
-rich
-nicegui
-pywebview
 setuptools
 wheel
 packaging
+PyYAML
+tqdm
 
 # Image core
 Pillow
 pillow-heif
+numpy
 
 # Optional extended adapters
 rawpy
 
-# Optional helpers
-# psd-tools
-
-# PDF bridge
+# PDF and the pictures inside DOCX and PPTX
 PyMuPDF
 img2pdf
+pikepdf
+lxml
 
-# Test and audit layer
+# Test layer
 pytest
-# NiceGUI's headless `user` fixture parses the rendered page with BeautifulSoup;
-# the Screen fixture would need selenium and is deliberately not used.
-beautifulsoup4

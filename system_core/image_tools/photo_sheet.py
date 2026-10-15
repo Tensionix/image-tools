@@ -11,6 +11,7 @@ from pathlib import Path
 
 from PIL import Image, ImageOps
 
+from .io_utils import written_whole
 from .pipeline import flatten_alpha, save_image
 
 
@@ -571,10 +572,12 @@ def _render(
         preview = preview.resize((preview_width_px, max(1, round(preview.height * scale))), RESAMPLE)
     if str(out_format).lower() == 'png':
         preview_path = output_dir / 'photo_sheet_preview.png'
-        preview.save(preview_path, format='PNG', optimize=True)
+        with written_whole(preview_path) as temp:
+            preview.save(temp, format='PNG', optimize=True)
     else:
         preview_path = output_dir / 'photo_sheet_preview.jpg'
-        preview.save(preview_path, quality=90, optimize=True)
+        with written_whole(preview_path) as temp:
+            preview.save(temp, quality=90, optimize=True)
     return sheet_path, preview_path
 
 
