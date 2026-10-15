@@ -3,19 +3,20 @@
 <!-- audion:release -->
 <p align="center">
   <a href="https://audion.dev/downloads/image-tools"><img alt="Windows" src="https://img.shields.io/badge/Windows-10%20%7C%2011-0b6db8?style=flat-square&logo=windows&logoColor=white"></a>
-  <a href="https://github.com/Tensionix/image-tools/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/Tensionix/image-tools?style=flat-square&label=release&color=e08a63"></a>
+  <a href="https://github.com/Tensionix/image-tools/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/Tensionix/image-tools?style=flat-square&label=release&color=2a7488"></a>
   <a href="https://github.com/Tensionix/image-tools/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/Tensionix/image-tools/total?style=flat-square&label=downloads&color=5fd08a"></a>
   <a href="https://github.com/Tensionix/image-tools/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/Tensionix/image-tools?style=flat-square&color=5fd08a&logo=apache&logoColor=white&cacheSeconds=3600"></a>
 </p>
 
-**Version 2.4.3** · 2026-09-20 · 298.9 MB
+**Version 3.0.0** · 2026-10-16 · 216.5 MB
 
-- [Direct download](https://audion.dev/get/image-tools/2.4.3/Audion_Image_Tools_v2.4.3_Full.zip) — unmetered, no rate limits
+- [Direct download](https://dl.audion.dev/image-tools/3.0.0/Audion_Image_Tools_v3.0.0_Full.zip) — unmetered, no rate limits
 - [Project page](https://audion.dev/downloads/image-tools) — every version and how to install
+- [GitHub release](https://github.com/Tensionix/image-tools/releases/tag/v3.0.0)
 
 <p align="center"><img src="docs/screenshot.png" alt="The program window" width="560"></p>
 
-`SHA-256: 04b5c5c63dbdbf098559475275592c2ed0270611f290574b9b182b47bcf71322`
+`SHA-256: b9967bec3187fe7512e00ef5e9c8d8595188ba138b7732ac67c585f259d4601b`
 
 ---
 
