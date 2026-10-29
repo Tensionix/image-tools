@@ -1,6 +1,6 @@
 {
   "schema": "audion.build_licenses.components.v1",
-  "generated_utc": "2026-10-15T23:36:02Z",
+  "generated_utc": "2026-10-29T01:23:00Z",
   "project_id": "audion-image-tools",
   "project_name": "Audion Image Tools",
   "scan_root": ".",
@@ -580,7 +580,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "8f19a09b0aec9a4b1ceaad8964b78303d35f3e145e3a7b483645393cc1ac492c",
+      "artifact_sha256": "08892db7d1fb6c4cdf073ec9854fd3d71805a22700210ce2c1f5064f92923b6c",
       "artifact_path": "runtime/Lib/site-packages/build-1.6.1.dist-info/INSTALLER; runtime/Lib/site-packages/build-1.6.1.dist-info/METADATA; runtime/Lib/site-packages/build-1.6.1.dist-info/RECORD; runtime/Lib/site-packages/build-1.6.1.dist-info/WHEEL; runtime/Lib/site-packages/build-1.6.1.dist-info/entry_points.txt; runtime/Lib/site-packages/build-1.6.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/build/__init__.py; runtime/Lib/site-packages/build/__main__.py",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -608,7 +608,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "3b8714f32c8646591cf4fc60b0d809ec48eda5fb14a63e14d525eb735fbef30b",
+      "artifact_sha256": "8cda053a2a34b4b6b25fe2cec9e13b304375be5412ced4ea8348367a696febf2",
       "artifact_path": "runtime/Lib/site-packages/click-8.5.0.dist-info/INSTALLER; runtime/Lib/site-packages/click-8.5.0.dist-info/METADATA; runtime/Lib/site-packages/click-8.5.0.dist-info/RECORD; runtime/Lib/site-packages/click-8.5.0.dist-info/WHEEL; runtime/Lib/site-packages/click-8.5.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/click/__init__.py; runtime/Lib/site-packages/click/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/click/__pycache__/_compat.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -636,7 +636,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "9fd8b29f8397a5b0876a03b1be476ba67d67f3c615f3302b8665cc1de3aeb82c",
+      "artifact_sha256": "b166422db7e871f93ce1f5f78ad6da789188adb5bfb32ca59ceedd92e38fd968",
       "artifact_path": "runtime/Lib/site-packages/colorama-0.4.6.dist-info/INSTALLER; runtime/Lib/site-packages/colorama-0.4.6.dist-info/METADATA; runtime/Lib/site-packages/colorama-0.4.6.dist-info/RECORD; runtime/Lib/site-packages/colorama-0.4.6.dist-info/WHEEL; runtime/Lib/site-packages/colorama-0.4.6.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/colorama/__init__.py; runtime/Lib/site-packages/colorama/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/colorama/__pycache__/ansi.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -790,7 +790,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "561e88846db175ecb4f929cf9858c31a573c1e127a99fac95687c7dc6a96534c",
+      "artifact_sha256": "ccf707021c76cbdca8f4c80742abeaba6a9f62a1c07b9da5399246b2935db064",
       "artifact_path": "runtime/Lib/site-packages/__pycache__/img2pdf.cpython-312.pyc; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/INSTALLER; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/METADATA; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/RECORD; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/REQUESTED; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/WHEEL; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/entry_points.txt; runtime/Lib/site-packages/img2pdf-0.6.3.dist-info/licenses/LICENSE",
       "obligation_class": "weak_copyleft",
       "redistributable": true,
@@ -822,7 +822,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "32fada6dd030064221db8f975599376bed64d549fce9aa10a7d6bb847c929ff4",
+      "artifact_sha256": "683fadb05b1121d72bc3c3cc84457b910f5842cfee73c18e48ad3e9b2ff1a566",
       "artifact_path": "runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/INSTALLER; runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/METADATA; runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/RECORD; runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/WHEEL; runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/iniconfig-2.3.1.dist-info/top_level.txt; runtime/Lib/site-packages/iniconfig/__init__.py; runtime/Lib/site-packages/iniconfig/__pycache__/__init__.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -1090,7 +1090,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "75748e1d6f92612974f6a665ba6a3449e5479ce3b971cac29332bc1b6266a91e",
+      "artifact_sha256": "414d440a4439866a778efb022b59a00669adf269304d9d9e021c24806fedc466",
       "artifact_path": "runtime/Lib/site-packages/lxml-6.1.3.dist-info/INSTALLER; runtime/Lib/site-packages/lxml-6.1.3.dist-info/METADATA; runtime/Lib/site-packages/lxml-6.1.3.dist-info/RECORD; runtime/Lib/site-packages/lxml-6.1.3.dist-info/REQUESTED; runtime/Lib/site-packages/lxml-6.1.3.dist-info/WHEEL; runtime/Lib/site-packages/lxml-6.1.3.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/lxml-6.1.3.dist-info/licenses/LICENSES.txt; runtime/Lib/site-packages/lxml-6.1.3.dist-info/top_level.txt",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -1513,7 +1513,7 @@
       "id": "nuget-microsoft.netcore.app.runtime.win-x64",
       "name": "Microsoft.NETCore.App.Runtime.win-x64",
       "normalized_name": "microsoft-netcore-app-runtime-win-x64",
-      "version": "10.0.13",
+      "version": "10.0.14",
       "license_summary": "MIT",
       "license_expression": "MIT",
       "linkage": "dynamic_library",
@@ -1528,20 +1528,20 @@
       "source_reference": {
         "type": "upstream_pin",
         "url": "https://github.com/dotnet/dotnet",
-        "version": "10.0.13",
-        "commit": "4099f83977f4d29604a9aeb971fb0a7bc1d5f699"
+        "version": "10.0.14",
+        "commit": "0427b9abbead3fa64c6655eb4290c537397131fa"
       },
       "legal_documents": [
         {
           "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
           "display_name": "LICENSE.TXT",
-          "source_path": "nuget/Microsoft.NETCore.App.Runtime.win-x64/10.0.13/LICENSE.TXT",
+          "source_path": "nuget/Microsoft.NETCore.App.Runtime.win-x64/10.0.14/LICENSE.TXT",
           "raw_size": 1139
         },
         {
           "sha256": "c6926930d0181fa515076603e1305461b1bce5275a8b35337d75d2eef3acad4a",
           "display_name": "THIRD-PARTY-NOTICES.TXT",
-          "source_path": "nuget/Microsoft.NETCore.App.Runtime.win-x64/10.0.13/THIRD-PARTY-NOTICES.TXT",
+          "source_path": "nuget/Microsoft.NETCore.App.Runtime.win-x64/10.0.14/THIRD-PARTY-NOTICES.TXT",
           "raw_size": 78041
         }
       ],
@@ -1552,7 +1552,7 @@
         ],
         "runtime_pack": true,
         "copyright": "© Microsoft Corporation. All rights reserved.",
-        "nuget": "https://www.nuget.org/packages/Microsoft.NETCore.App.Runtime.win-x64/10.0.13"
+        "nuget": "https://www.nuget.org/packages/Microsoft.NETCore.App.Runtime.win-x64/10.0.14"
       },
       "license_fingerprint": "cedbe796343121b119bc022839827dadce16619abe9ae08ad9b3d65b240af93c"
     },
@@ -2196,7 +2196,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "260a35c3de82b3aff076e6fd38c06d95ed4a958ff351cdc1b4dba5c4e4febc6a",
+      "artifact_sha256": "c3898c8d101ea5db63a492cdd8bcab32d95fa9e67a33d49aef5dcd5731903160",
       "artifact_path": "runtime/Lib/site-packages/numpy-2.5.4.dist-info/DELVEWHEEL; runtime/Lib/site-packages/numpy-2.5.4.dist-info/INSTALLER; runtime/Lib/site-packages/numpy-2.5.4.dist-info/METADATA; runtime/Lib/site-packages/numpy-2.5.4.dist-info/RECORD; runtime/Lib/site-packages/numpy-2.5.4.dist-info/REQUESTED; runtime/Lib/site-packages/numpy-2.5.4.dist-info/WHEEL; runtime/Lib/site-packages/numpy-2.5.4.dist-info/entry_points.txt; runtime/Lib/site-packages/numpy-2.5.4.dist-info/licenses/LICENSE.txt",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2320,7 +2320,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "6a2f3e64a9af3415ca43a79637b452cf668270f82f63267c2346dc09f51f1653",
+      "artifact_sha256": "de7de03ff3cabecf83f02de8d7b8f358ad170940331fbba1fe556c21ffebea3c",
       "artifact_path": "runtime/Lib/site-packages/packaging-26.3.dist-info/INSTALLER; runtime/Lib/site-packages/packaging-26.3.dist-info/METADATA; runtime/Lib/site-packages/packaging-26.3.dist-info/RECORD; runtime/Lib/site-packages/packaging-26.3.dist-info/REQUESTED; runtime/Lib/site-packages/packaging-26.3.dist-info/WHEEL; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE.APACHE; runtime/Lib/site-packages/packaging-26.3.dist-info/licenses/LICENSE.BSD",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2360,7 +2360,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "43491ee46fe36af01c20cfecc507193133abe214d644821bc663d419b82bf5f9",
+      "artifact_sha256": "a4a19087796943d4af753991a548515c11451301aea2310e2a3e8cb6eca7ee15",
       "artifact_path": "runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/DELVEWHEEL; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/INSTALLER; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/METADATA; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/RECORD; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/REQUESTED; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/WHEEL; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/pikepdf-10.17.0.dist-info/licenses/third-party-licenses/CC-BY-4.0-veraPDF.txt",
       "obligation_class": "weak_copyleft",
       "redistributable": true,
@@ -2456,7 +2456,7 @@
       "id": "pillow",
       "name": "pillow",
       "normalized_name": "pillow",
-      "version": "12.3.0",
+      "version": "13.0.0",
       "license_summary": "MIT-CMU",
       "license_expression": "MIT",
       "linkage": "python_import",
@@ -2464,21 +2464,21 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "db5cc2c21489ac776a3b668e7bb89c28e3b342d5c220fc1c56271a1e1fc9be3c",
+      "artifact_sha256": "fc1b92758030f9043f35da906ba968b0154f310d1aa688265df648246bb158fe",
       "artifact_path": "runtime/Lib/site-packages/PIL/AvifImagePlugin.py; runtime/Lib/site-packages/PIL/BdfFontFile.py; runtime/Lib/site-packages/PIL/BlpImagePlugin.py; runtime/Lib/site-packages/PIL/BmpImagePlugin.py; runtime/Lib/site-packages/PIL/BufrStubImagePlugin.py; runtime/Lib/site-packages/PIL/ContainerIO.py; runtime/Lib/site-packages/PIL/CurImagePlugin.py; runtime/Lib/site-packages/PIL/DcxImagePlugin.py",
       "obligation_class": "permissive",
       "redistributable": true,
       "source_reference": null,
       "legal_documents": [
         {
-          "sha256": "ab0d05ea62c2817a068c92bf068db7a18a493da84cce4e43ad67acacc4d7b881",
+          "sha256": "3160b208998d0cc0b51da8dbac0c904b59f1521d89b4e0308be7e91253b42241",
           "display_name": "LICENSE_1.txt",
-          "source_path": "pillow-12.3.0/LICENSE_1.txt",
-          "raw_size": 78016
+          "source_path": "pillow-13.0.0/LICENSE_1.txt",
+          "raw_size": 78481
         }
       ],
       "metadata": {},
-      "license_fingerprint": "0306abdb2b68da5ed61f680b619320a237413c02cbf7433c3f921dc8d59b2809"
+      "license_fingerprint": "4963deb70249121af2d3323f5d7f2c7bdd39ad4cb660aa1defc8e9d2cb76e5a8"
     },
     {
       "id": "pillow-heif",
@@ -2492,7 +2492,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "c64319b3e879490e46f1413b7986a260a2f5592d5d1b10cb744b11e8338f4ae5",
+      "artifact_sha256": "232a0ae12375afd44583d9d3f6f8ff3ce71a4adee3fa5737dfb9e1f7772465a2",
       "artifact_path": "runtime/Lib/site-packages/_pillow_heif.cp312-win_amd64.pyd; runtime/Lib/site-packages/libde265-0-da04b6b2448c39c0b7f218769dedb2f1.dll; runtime/Lib/site-packages/libgcc_s_seh-1-60817ff87b1fa8e35c12cd1a333734a3.dll; runtime/Lib/site-packages/libheif-18c57b017b404cb1ef96dee8a6eef027.dll; runtime/Lib/site-packages/libstdc++-6-e4d43a335d57132a6ec3004cece76b4f.dll; runtime/Lib/site-packages/libwinpthread-1-71c5c74678606753e0a2f79ceb8c68f9.dll; runtime/Lib/site-packages/libx265-217-276e7d75772a32bd086b54d54e01fd11.dll; runtime/Lib/site-packages/pillow_heif-1.8.1.dist-info/DELVEWHEEL",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2518,7 +2518,7 @@
       "id": "pip",
       "name": "pip",
       "normalized_name": "pip",
-      "version": "26.2.1",
+      "version": "26.2.2",
       "license_summary": "MIT",
       "license_expression": "MIT",
       "linkage": "python_import",
@@ -2526,8 +2526,8 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "9a6da9b247414466ab11747b9be850c7bfe67ba0a4944c9c4332d7f34f299643",
-      "artifact_path": "runtime/Lib/site-packages/pip-26.2.1.dist-info/INSTALLER; runtime/Lib/site-packages/pip-26.2.1.dist-info/METADATA; runtime/Lib/site-packages/pip-26.2.1.dist-info/RECORD; runtime/Lib/site-packages/pip-26.2.1.dist-info/REQUESTED; runtime/Lib/site-packages/pip-26.2.1.dist-info/WHEEL; runtime/Lib/site-packages/pip-26.2.1.dist-info/entry_points.txt; runtime/Lib/site-packages/pip-26.2.1.dist-info/licenses/AUTHORS.txt; runtime/Lib/site-packages/pip-26.2.1.dist-info/licenses/LICENSE.txt",
+      "artifact_sha256": "60bd3b5ac57281e4fe431f70ac680b543c4be54f183bac628adea488dd229365",
+      "artifact_path": "runtime/Lib/site-packages/pip-26.2.2.dist-info/INSTALLER; runtime/Lib/site-packages/pip-26.2.2.dist-info/METADATA; runtime/Lib/site-packages/pip-26.2.2.dist-info/RECORD; runtime/Lib/site-packages/pip-26.2.2.dist-info/REQUESTED; runtime/Lib/site-packages/pip-26.2.2.dist-info/WHEEL; runtime/Lib/site-packages/pip-26.2.2.dist-info/entry_points.txt; runtime/Lib/site-packages/pip-26.2.2.dist-info/licenses/AUTHORS.txt; runtime/Lib/site-packages/pip-26.2.2.dist-info/licenses/LICENSE.txt",
       "obligation_class": "permissive",
       "redistributable": true,
       "source_reference": null,
@@ -2535,127 +2535,127 @@
         {
           "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
           "display_name": "LICENSE_12.txt",
-          "source_path": "pip-26.2.1/LICENSE_12.txt",
+          "source_path": "pip-26.2.2/LICENSE_12.txt",
           "raw_size": 1056
         },
         {
           "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
           "display_name": "LICENSE_13.txt",
-          "source_path": "pip-26.2.1/LICENSE_13.txt",
+          "source_path": "pip-26.2.2/LICENSE_13.txt",
           "raw_size": 1072
         },
         {
           "sha256": "a8ad31b1c3f40dca5a84119351b8fa8ddc868edd77fad8a8ebf6d8f2d16fa4ae",
           "display_name": "LICENSE_14.txt",
-          "source_path": "pip-26.2.1/LICENSE_14.txt",
+          "source_path": "pip-26.2.2/LICENSE_14.txt",
           "raw_size": 11325
         },
         {
           "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
           "display_name": "LICENSE_15.txt",
-          "source_path": "pip-26.2.1/LICENSE_15.txt",
+          "source_path": "pip-26.2.2/LICENSE_15.txt",
           "raw_size": 989
         },
         {
           "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04",
           "display_name": "LICENSE_1md",
-          "source_path": "pip-26.2.1/LICENSE_1md",
+          "source_path": "pip-26.2.2/LICENSE_1md",
           "raw_size": 1541
         },
         {
           "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17",
           "display_name": "LICENSE_16.txt",
-          "source_path": "pip-26.2.1/LICENSE_16.txt",
+          "source_path": "pip-26.2.2/LICENSE_16.txt",
           "raw_size": 1331
         },
         {
           "sha256": "81932e77fef4cec306da54caf7d4d221dfd0f6fb6da214c712e36cb95ac47906",
           "display_name": "LICENSE_17.txt",
-          "source_path": "pip-26.2.1/LICENSE_17.txt",
+          "source_path": "pip-26.2.2/LICENSE_17.txt",
           "raw_size": 10142
         },
         {
           "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
           "display_name": "LICENSE_18.txt",
-          "source_path": "pip-26.2.1/LICENSE_18.txt",
+          "source_path": "pip-26.2.2/LICENSE_18.txt",
           "raw_size": 197
         },
         {
           "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d",
           "display_name": "LICENSE_19.txt",
-          "source_path": "pip-26.2.1/LICENSE_19.txt",
+          "source_path": "pip-26.2.2/LICENSE_19.txt",
           "raw_size": 751
         },
         {
           "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca",
           "display_name": "LICENSE_20.txt",
-          "source_path": "pip-26.2.1/LICENSE_20.txt",
+          "source_path": "pip-26.2.2/LICENSE_20.txt",
           "raw_size": 1086
         },
         {
           "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d",
           "display_name": "LICENSE_4txt",
-          "source_path": "pip-26.2.1/LICENSE_4txt",
+          "source_path": "pip-26.2.2/LICENSE_4txt",
           "raw_size": 14531
         },
         {
           "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
           "display_name": "LICENSE_5txt",
-          "source_path": "pip-26.2.1/LICENSE_5txt",
+          "source_path": "pip-26.2.2/LICENSE_5txt",
           "raw_size": 1093
         },
         {
           "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
           "display_name": "LICENSE_21.txt",
-          "source_path": "pip-26.2.1/LICENSE_21.txt",
+          "source_path": "pip-26.2.2/LICENSE_21.txt",
           "raw_size": 1089
         },
         {
           "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
           "display_name": "LICENSE_1BSD",
-          "source_path": "pip-26.2.1/LICENSE_1BSD",
+          "source_path": "pip-26.2.2/LICENSE_1BSD",
           "raw_size": 1344
         },
         {
           "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
           "display_name": "LICENSE_22.txt",
-          "source_path": "pip-26.2.1/LICENSE_22.txt",
+          "source_path": "pip-26.2.2/LICENSE_22.txt",
           "raw_size": 1023
         },
         {
           "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
           "display_name": "LICENSE_23.txt",
-          "source_path": "pip-26.2.1/LICENSE_23.txt",
+          "source_path": "pip-26.2.2/LICENSE_23.txt",
           "raw_size": 1081
         },
         {
           "sha256": "86eeee87be2a43f3ff1f56496f451f69243926f025fedbb033666c304c4c161b",
           "display_name": "LICENSE_6txt",
-          "source_path": "pip-26.2.1/LICENSE_6txt",
+          "source_path": "pip-26.2.2/LICENSE_6txt",
           "raw_size": 558
         },
         {
           "sha256": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
           "display_name": "LICENSE_1APACHE",
-          "source_path": "pip-26.2.1/LICENSE_1APACHE",
+          "source_path": "pip-26.2.2/LICENSE_1APACHE",
           "raw_size": 10174
         },
         {
           "sha256": "634300a669d49aeae65b12c6c48c924c51a4cdf3d1ff086dc3456dc8bcaa2104",
           "display_name": "LICENSE_7txt",
-          "source_path": "pip-26.2.1/LICENSE_7txt",
+          "source_path": "pip-26.2.2/LICENSE_7txt",
           "raw_size": 1093
         },
         {
           "sha256": "9e98249234446e96ab6cd2ac59cbb2f7bfcb15a8e21a00548e1e14da939b6927",
           "display_name": "COPYING_1.txt",
-          "source_path": "pip-26.2.1/COPYING_1.txt",
+          "source_path": "pip-26.2.2/COPYING_1.txt",
           "raw_size": 614
         },
         {
           "sha256": "4eb1fb1705e2def898e81bcba19c3aac80620d27ba3569d6a6df7b4629d1b5c2",
           "display_name": "AUTHORS_1txt",
-          "source_path": "pip-26.2.1/AUTHORS_1txt",
+          "source_path": "pip-26.2.2/AUTHORS_1txt",
           "raw_size": 12139
         }
       ],
@@ -2674,7 +2674,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "d391149f67580428d60e67b32fc63d669ef9574622d8dceb07e3a1f4ecdfc8e9",
+      "artifact_sha256": "9ce84cdf7bc3592cdb6f10f23fb6ca34a382fb663079dddaf024a78aa4d66260",
       "artifact_path": "runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/INSTALLER; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/METADATA; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/RECORD; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/REQUESTED; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/WHEEL; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/entry_points.txt; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pip_tools-7.6.2.dist-info/top_level.txt",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2702,7 +2702,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "0d2acd903cc0a58954c88a06951dd9c9a9e47bc314523d014722f23e2455bae4",
+      "artifact_sha256": "44654cce9dad01f4bb7a768c548b27e068238aea5c3dae6a6b400fb7c161eb43",
       "artifact_path": "runtime/Lib/site-packages/pluggy-1.7.0.dist-info/INSTALLER; runtime/Lib/site-packages/pluggy-1.7.0.dist-info/METADATA; runtime/Lib/site-packages/pluggy-1.7.0.dist-info/RECORD; runtime/Lib/site-packages/pluggy-1.7.0.dist-info/WHEEL; runtime/Lib/site-packages/pluggy-1.7.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pluggy-1.7.0.dist-info/top_level.txt; runtime/Lib/site-packages/pluggy/__init__.py; runtime/Lib/site-packages/pluggy/__pycache__/__init__.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2730,7 +2730,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "cf95fa5562fa9bd9a3703677c7ddb278d1d98c237a13f11a90c40c2370f85604",
+      "artifact_sha256": "23d49fcaa475523a4bb41bac810f4719496b083634c279b21075c9414bfbabd1",
       "artifact_path": "runtime/Lib/site-packages/pygments-2.21.0.dist-info/INSTALLER; runtime/Lib/site-packages/pygments-2.21.0.dist-info/METADATA; runtime/Lib/site-packages/pygments-2.21.0.dist-info/RECORD; runtime/Lib/site-packages/pygments-2.21.0.dist-info/WHEEL; runtime/Lib/site-packages/pygments-2.21.0.dist-info/entry_points.txt; runtime/Lib/site-packages/pygments-2.21.0.dist-info/licenses/AUTHORS; runtime/Lib/site-packages/pygments-2.21.0.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pygments/__init__.py",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2764,7 +2764,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "beb624a29813bc70f6bcb3721323ac22de0d1233345867ab8f7083626ea50895",
+      "artifact_sha256": "e1a88f72485e36b34f67ae2ff805de04538df536c92910d1b00f846fac2933ca",
       "artifact_path": "runtime/Lib/site-packages/fitz/__init__.py; runtime/Lib/site-packages/fitz/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/fitz/__pycache__/table.cpython-312.pyc; runtime/Lib/site-packages/fitz/__pycache__/utils.cpython-312.pyc; runtime/Lib/site-packages/fitz/table.py; runtime/Lib/site-packages/fitz/utils.py; runtime/Lib/site-packages/pymupdf-1.28.2.dist-info/COPYING; runtime/Lib/site-packages/pymupdf-1.28.2.dist-info/INSTALLER",
       "obligation_class": "strong_copyleft",
       "redistributable": true,
@@ -2796,7 +2796,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "9b2cc3f4ff8d658f06c5018a163bdc1d7a6d517e467ff79a47559916161c9e7a",
+      "artifact_sha256": "e01b024c46a7b671f6b1cce1ee7e2bc59b3f4c6545de38dc1aac9b0693bb66ea",
       "artifact_path": "runtime/Lib/site-packages/pyproject_hooks-1.3.3.dist-info/INSTALLER; runtime/Lib/site-packages/pyproject_hooks-1.3.3.dist-info/METADATA; runtime/Lib/site-packages/pyproject_hooks-1.3.3.dist-info/RECORD; runtime/Lib/site-packages/pyproject_hooks-1.3.3.dist-info/WHEEL; runtime/Lib/site-packages/pyproject_hooks-1.3.3.dist-info/licenses/LICENSE; runtime/Lib/site-packages/pyproject_hooks/__init__.py; runtime/Lib/site-packages/pyproject_hooks/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/pyproject_hooks/__pycache__/_impl.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2816,7 +2816,7 @@
       "id": "pytest",
       "name": "pytest",
       "normalized_name": "pytest",
-      "version": "9.1.1",
+      "version": "9.2.0",
       "license_summary": "MIT",
       "license_expression": "MIT",
       "linkage": "python_import",
@@ -2824,8 +2824,8 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "fb305a9d6da1baebfbb520f9377b1cafc0d26f9fae1766afaf59775adce74b8c",
-      "artifact_path": "runtime/Lib/site-packages/__pycache__/py.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__init__.py; runtime/Lib/site-packages/_pytest/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_argcomplete.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_version.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/cacheprovider.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/capture.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/compat.cpython-312.pyc",
+      "artifact_sha256": "6bd30ba7197bd662f4de763b14cc032a78b8f55c5638a4861c1053b8a88c99bf",
+      "artifact_path": "runtime/Lib/site-packages/__pycache__/py.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__init__.py; runtime/Lib/site-packages/_pytest/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_argcomplete.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/_version.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/approx.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/cacheprovider.cpython-312.pyc; runtime/Lib/site-packages/_pytest/__pycache__/capture.cpython-312.pyc",
       "obligation_class": "permissive",
       "redistributable": true,
       "source_reference": null,
@@ -2833,7 +2833,7 @@
         {
           "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
           "display_name": "LICENSE_1.txt",
-          "source_path": "pytest-9.1.1/LICENSE_1.txt",
+          "source_path": "pytest-9.2.0/LICENSE_1.txt",
           "raw_size": 1091
         }
       ],
@@ -2852,7 +2852,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "94c60035a3b28ce9900e761386319961550668cf48131db98191f87171524e51",
+      "artifact_sha256": "9ed1af2731727d415920bc0fcad47092f87f6c8278ac6db55eb0b32b2c5b92cf",
       "artifact_path": "runtime/LICENSE.txt; runtime/Scripts/f2py.exe; runtime/Scripts/img2pdf-gui.exe; runtime/Scripts/img2pdf.exe; runtime/Scripts/numpy-config.exe; runtime/Scripts/pip-compile.exe; runtime/Scripts/pip-sync.exe; runtime/Scripts/pip.exe",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2895,7 +2895,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "b9a8958216a9f2249573ebdb7d5866cdb74a2e9f79803f8d1f53aef452af89a1",
+      "artifact_sha256": "137fbf949e45c5c0b971bdcc840887b42a7d5eae44aa1d7f3dbaf56d88a2fe3d",
       "artifact_path": "runtime/Lib/site-packages/_yaml/__init__.py; runtime/Lib/site-packages/_yaml/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/INSTALLER; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/METADATA; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/RECORD; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/REQUESTED; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/WHEEL; runtime/Lib/site-packages/pyyaml-6.0.3.dist-info/licenses/LICENSE",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -2923,7 +2923,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "cda2fa4d8deb98408753746ddf4686d060730110358e4dddf73fb82b417058e4",
+      "artifact_sha256": "c91a847ecbb37a76ef2ee17adf560127e73ab35194a61254529714a52f0e0dab",
       "artifact_path": "runtime/Lib/site-packages/rawpy-0.27.1.dist-info/INSTALLER; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/METADATA; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/RECORD; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/REQUESTED; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/WHEEL; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/licenses/LICENSE; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/licenses/LICENSE.LibRaw; runtime/Lib/site-packages/rawpy-0.27.1.dist-info/top_level.txt",
       "obligation_class": "permissive",
       "redistributable": true,
@@ -3033,7 +3033,7 @@
       "id": "setuptools",
       "name": "setuptools",
       "normalized_name": "setuptools",
-      "version": "84.0.0",
+      "version": "84.2.1",
       "license_summary": "MIT",
       "license_expression": "MIT",
       "linkage": "python_import",
@@ -3041,8 +3041,8 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "86b8f0aaebfe8b71035881b75d0d887f26a5d20b58b61b307f5160e95c682188",
-      "artifact_path": "runtime/Lib/site-packages/_distutils_hack/__init__.py; runtime/Lib/site-packages/_distutils_hack/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/__pycache__/override.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/override.py; runtime/Lib/site-packages/distutils-precedence.pth; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/INSTALLER; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/METADATA; runtime/Lib/site-packages/setuptools-84.0.0.dist-info/RECORD",
+      "artifact_sha256": "3e1e4509311f840a32972e59b21cfe12700df2661c4edbd6c6677c91c329a4b5",
+      "artifact_path": "runtime/Lib/site-packages/_distutils_hack/__init__.py; runtime/Lib/site-packages/_distutils_hack/__pycache__/__init__.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/__pycache__/override.cpython-312.pyc; runtime/Lib/site-packages/_distutils_hack/override.py; runtime/Lib/site-packages/distutils-precedence.pth; runtime/Lib/site-packages/setuptools-84.2.1.dist-info/INSTALLER; runtime/Lib/site-packages/setuptools-84.2.1.dist-info/METADATA; runtime/Lib/site-packages/setuptools-84.2.1.dist-info/RECORD",
       "obligation_class": "permissive",
       "redistributable": true,
       "source_reference": null,
@@ -3050,85 +3050,85 @@
         {
           "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741",
           "display_name": "LICENSE_9.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_9.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_9.txt",
           "raw_size": 1023
         },
         {
           "sha256": "6557adc4bc1d59232e27567a185dd70cf2ecca3154018b0be61ea29cf9e814e2",
           "display_name": "LICENSE_10.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_10.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_10.txt",
           "raw_size": 7634
         },
         {
           "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe",
           "display_name": "LICENSE_11.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_11.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_11.txt",
           "raw_size": 1072
         },
         {
           "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d",
           "display_name": "LICENSE_12.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_12.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_12.txt",
           "raw_size": 1076
         },
         {
           "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48",
           "display_name": "LICENSE_13.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_13.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_13.txt",
           "raw_size": 197
         },
         {
           "sha256": "30c23618679108f3e8ea1d2a658c7ca417bdfc891c98ef1a89fa4ff0c9828654",
           "display_name": "LICENSE_1txt",
-          "source_path": "setuptools-84.0.0/LICENSE_1txt",
+          "source_path": "setuptools-84.2.1/LICENSE_1txt",
           "raw_size": 1107
         },
         {
           "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5",
           "display_name": "LICENSE_1BSD",
-          "source_path": "setuptools-84.0.0/LICENSE_1BSD",
+          "source_path": "setuptools-84.2.1/LICENSE_1BSD",
           "raw_size": 1344
         },
         {
           "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6",
           "display_name": "LICENSE_14.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_14.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_14.txt",
           "raw_size": 1089
         },
         {
           "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683",
           "display_name": "LICENSE_15.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_15.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_15.txt",
           "raw_size": 1076
         },
         {
           "sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
           "display_name": "LICENSE_16.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_16.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_16.txt",
           "raw_size": 1053
         },
         {
           "sha256": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec",
           "display_name": "LICENSE_1APACHE",
-          "source_path": "setuptools-84.0.0/LICENSE_1APACHE",
+          "source_path": "setuptools-84.2.1/LICENSE_1APACHE",
           "raw_size": 10174
         },
         {
           "sha256": "458502e12d97bbf64438606a20044aa85eb05fb0a8a807bb35dbec253fd1fc04",
           "display_name": "LICENSE_17.txt",
-          "source_path": "setuptools-84.0.0/LICENSE_17.txt",
+          "source_path": "setuptools-84.2.1/LICENSE_17.txt",
           "raw_size": 10278
         },
         {
           "sha256": "2dddf08818297a3b89d43d95ff659d8da85741108c9136dfa3a4d856c0623bd8",
           "display_name": "NOTICE_2.txt",
-          "source_path": "setuptools-84.0.0/NOTICE_2.txt",
+          "source_path": "setuptools-84.2.1/NOTICE_2.txt",
           "raw_size": 493
         },
         {
           "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7",
           "display_name": "NOTICE_3.txt",
-          "source_path": "setuptools-84.0.0/NOTICE_3.txt",
+          "source_path": "setuptools-84.2.1/NOTICE_3.txt",
           "raw_size": 18737
         }
       ],
@@ -4628,7 +4628,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "c33b5d3654e4f69109d8f026f8dc6397d2ecaad8e270736b2c803e77b958de76",
+      "artifact_sha256": "66e184a4e2ffa6fdf9af2a93bae49f0e1682e3fc35c1e78cb7fab5d15588c25d",
       "artifact_path": "runtime/Lib/site-packages/tqdm-4.70.1.dist-info/INSTALLER; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/METADATA; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/RECORD; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/REQUESTED; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/WHEEL; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/entry_points.txt; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/licenses/LICENCE; runtime/Lib/site-packages/tqdm-4.70.1.dist-info/top_level.txt",
       "obligation_class": "weak_copyleft",
       "redistributable": true,
@@ -4660,7 +4660,7 @@
       "bundled": true,
       "optional_runtime": false,
       "provider": "",
-      "artifact_sha256": "3bf7f94e24a5b28a43673e2c85773b0f7b906d43c5674f68938713a1ba447298",
+      "artifact_sha256": "010a09fbc50ab7fd53a37b67b1a4cff9881806b7217beded7e1b9b0fceaab2f0",
       "artifact_path": "runtime/Lib/site-packages/wheel-0.48.0.dist-info/INSTALLER; runtime/Lib/site-packages/wheel-0.48.0.dist-info/METADATA; runtime/Lib/site-packages/wheel-0.48.0.dist-info/RECORD; runtime/Lib/site-packages/wheel-0.48.0.dist-info/REQUESTED; runtime/Lib/site-packages/wheel-0.48.0.dist-info/WHEEL; runtime/Lib/site-packages/wheel-0.48.0.dist-info/entry_points.txt; runtime/Lib/site-packages/wheel-0.48.0.dist-info/licenses/LICENSE.txt; runtime/Lib/site-packages/wheel/__init__.py",
       "obligation_class": "permissive",
       "redistributable": true,

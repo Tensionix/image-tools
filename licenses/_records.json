@@ -510,7 +510,7 @@
   },
   {
     "name": "Microsoft.NETCore.App.Runtime.win-x64",
-    "version": "10.0.13",
+    "version": "10.0.14",
     "license": "MIT",
     "source": "dotnet-package",
     "license_files": [
@@ -801,15 +801,15 @@
   },
   {
     "name": "pillow",
-    "version": "12.3.0",
+    "version": "13.0.0",
     "license": "MIT-CMU",
     "source": "site-packages",
     "license_files": [
       "licenses/THIRD_PARTY_NOTICES.txt"
     ],
-    "license_fingerprint": "0306abdb2b68da5ed61f680b619320a237413c02cbf7433c3f921dc8d59b2809",
+    "license_fingerprint": "4963deb70249121af2d3323f5d7f2c7bdd39ad4cb660aa1defc8e9d2cb76e5a8",
     "legal_document_hashes": [
-      "ab0d05ea62c2817a068c92bf068db7a18a493da84cce4e43ad67acacc4d7b881"
+      "3160b208998d0cc0b51da8dbac0c904b59f1521d89b4e0308be7e91253b42241"
     ]
   },
   {
@@ -828,7 +828,7 @@
   },
   {
     "name": "pip",
-    "version": "26.2.1",
+    "version": "26.2.2",
     "license": "MIT",
     "source": "site-packages",
     "license_files": [
@@ -927,7 +927,7 @@
   },
   {
     "name": "pytest",
-    "version": "9.1.1",
+    "version": "9.2.0",
     "license": "MIT",
     "source": "site-packages",
     "license_files": [
@@ -1007,7 +1007,7 @@
   },
   {
     "name": "setuptools",
-    "version": "84.0.0",
+    "version": "84.2.1",
     "license": "MIT",
     "source": "site-packages",
     "license_files": [

@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1 — 2026-10-29
+
+The new logos of Audion and Tensionix, and quieter buttons in the dark themes.
+
+- Show the new Audion logo in ABOUT, and the Tensionix logo in curves instead of the amber mark beside a typed name.
+- Dim the filled main buttons of the cards in the dark themes to about half their brightness; the light theme keeps the full colours.
+
 ## 3.0.0 — 2026-10-14
 
 The window is new, every operation can be run from a console, and the program now works on PDF pages and on the pictures inside documents.

@@ -15,7 +15,9 @@ numpy
 rawpy
 
 # PDF and the pictures inside DOCX and PPTX
-PyMuPDF
+# PyMuPDF 2.0 requires pymupdf_layout and pymupdf4llm, whose wheels state no licence, and onnxruntime - none of them
+# is used here. Below 2 until their terms are known.
+PyMuPDF<2
 img2pdf
 pikepdf
 lxml

@@ -1,7 +1,7 @@
 # Audion Build Licenses Scan Report
 
 - Project: **Audion Image Tools** (`audion-image-tools`)
-- Run: `20261015T233554Z_audion-image-tools_95f4fea7`
+- Run: `20261029T012254Z_audion-image-tools_f211ac84`
 - Scan root (from the project root): `.`
 - Output (from the project root): `licenses`
 - Status: **REVIEW**
@@ -58,7 +58,7 @@
 | Microsoft.Management.Infrastructure | `UNCHANGED` | 3.0.0 | 3.0.0 |
 | Microsoft.Management.Infrastructure.CimCmdlets | `UNCHANGED` | 7.6.7 | 7.6.7 |
 | Microsoft.Management.Infrastructure.Runtime.Win | `UNCHANGED` | 3.0.0 | 3.0.0 |
-| Microsoft.NETCore.App.Runtime.win-x64 | `UNCHANGED` | 10.0.13 | 10.0.13 |
+| Microsoft.NETCore.App.Runtime.win-x64 | `UNCHANGED` | 10.0.14 | 10.0.14 |
 | Microsoft.PowerShell.Commands.Diagnostics | `UNCHANGED` | 7.6.7 | 7.6.7 |
 | Microsoft.PowerShell.Commands.Management | `UNCHANGED` | 7.6.7 | 7.6.7 |
 | Microsoft.PowerShell.Commands.Utility | `UNCHANGED` | 7.6.7 | 7.6.7 |
@@ -78,21 +78,21 @@
 | numpy | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.5.4 | 2.5.4 |
 | packaging | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 26.3 | 26.3 |
 | pikepdf | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 10.17.0 | 10.17.0 |
-| pillow | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 12.3.0 | 12.3.0 |
+| pillow | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 13.0.0 | 13.0.0 |
 | pillow_heif | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 1.8.1 | 1.8.1 |
-| pip | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 26.2.1 | 26.2.1 |
+| pip | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 26.2.2 | 26.2.2 |
 | pip-tools | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 7.6.2 | 7.6.2 |
 | pluggy | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 1.7.0 | 1.7.0 |
 | Pygments | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.21.0 | 2.21.0 |
-| pymupdf | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 1.28.2 | 1.28.2 |
+| pymupdf | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 2.0 | 1.28.2 |
 | pyproject_hooks | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 1.3.3 | 1.3.3 |
-| pytest | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 9.1.1 | 9.1.1 |
+| pytest | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 9.2.0 | 9.2.0 |
 | Python Embedded | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 3.12.x | 3.12.x |
 | PyYAML | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 6.0.3 | 6.0.3 |
 | rawpy | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 0.27.1 | 0.27.1 |
 | runtime.native.System.Data.SqlClient.sni | `UNCHANGED` | 4.4.0 | 4.4.0 |
 | runtime.win-x64.runtime.native.System.Data.SqlClient.sni | `UNCHANGED` | 4.4.0 | 4.4.0 |
-| setuptools | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 84.0.0 | 84.0.0 |
+| setuptools | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 84.2.1 | 84.2.1 |
 | SkiaSharp | `UNCHANGED` | 3.119.4 | 3.119.4 |
 | SkiaSharp.NativeAssets.Win32 | `UNCHANGED` | 3.119.4 | 3.119.4 |
 | System.CodeDom | `UNCHANGED` | 10.0.5 | 10.0.5 |
@@ -131,6 +131,14 @@
 | Tmds.DBus.Protocol | `UNCHANGED` | 0.94.1 | 0.94.1 |
 | tqdm | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 4.70.1 | 4.70.1 |
 | wheel | `VERSION_OR_ARTIFACT_CHANGED_LICENSE_SAME` | 0.48.0 | 0.48.0 |
+| flatbuffers | `REMOVED_COMPONENT` | 25.12.19 | - |
+| networkx | `REMOVED_COMPONENT` | 3.7 | - |
+| onnxruntime | `REMOVED_COMPONENT` | 1.31.1 | - |
+| protobuf | `REMOVED_COMPONENT` | 7.36.2 | - |
+| psutil | `REMOVED_COMPONENT` | 7.2.2 | - |
+| pymupdf_layout | `REMOVED_COMPONENT` | 2.0 | - |
+| pymupdf4llm | `REMOVED_COMPONENT` | 2.0 | - |
+| tabulate | `REMOVED_COMPONENT` | 0.10.0 | - |
 
 ## Licence rules
 
